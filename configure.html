@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Configuration</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/jquery.mobile-1.3.2.min.js"></script>
+	</head>
+	<body>
+		<div data-role="page" id="main">
+			<div data-role="header" class="jqm-header">
+				<h1>Configuration</h1>
+			</div>
+
+			<div data-role="content">
+
+				<div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-mini="false">
+
+<div data-role="collapsible" data-collapsed="false">
+	<h3>&#x8868;&#x76D8;&#x8BBE;&#x5B9A;</h3><!--表盘设定-->
+	
+<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+	<legend><h4>&#x9009;&#x62E9;&#x8868;&#x76D8;:</h4></legend><!--选择表盘:-->
+		<input name="key0" id="key0-1" value="1" checked="checked" type="radio">
+		<label for="key0-1">&#x6307;&#x9488;&#x5F0F;</label><!--指针式:-->
+		<input name="key0" id="key0-2" value="2" type="radio">
+		<label for="key0-2">&#x6570;&#x4F4D;&#x5F0F;</label><!--数位式-->
+</fieldset>
+<fieldset data-role="controlgroup" data-mini="true">
+    <legend><h4>&#x8F6C;&#x8155;&#x529F;&#x80FD;:</h4></legend><!--转腕功能:-->
+	    <input name="key1" id="key1-0" value="0" checked="checked" type="radio">
+        <label for="key1-0">&#x5173;&#x95ED;</label><!--关闭-->
+		<input name="key1" id="key1-3" value="3" checked="checked" type="radio">
+        <label for="key1-3">&#x5386;&#x4E66;&#x67E5;&#x8BE2;</label><!--历书查询-->
+	    <input name="key1" id="key1-4" value="4" checked="checked" type="radio">
+        <label for="key1-4">&#x6C14;&#x8C61;&#x67E5;&#x8BE2;</label><!--气象查询-->
+        <input name="key1" id="key1-5" value="5" type="radio">
+        <label for="key1-5">&#x5730;&#x5740;&#x67E5;&#x8BE2;</label><!--地址查询-->
+        <input name="key1" id="key1-6" value="6" type="radio">
+        <label for="key1-6">&#x5BFC;&#x822A;&#x6307;&#x5F15;</label><!--导航指引-->
+        <input name="key1" id="key1-7" value="7" type="radio">
+        <label for="key1-7">&#x516C;&#x4EA4;&#x6307;&#x5F15;</label><!--公交指引-->
+        <input name="key1" id="key1-8" value="8" type="radio">
+        <label for="key1-8">&#x52A0;&#x6CB9;&#x7AD9;&#x6307;&#x5F15;</label><!--加油站指引-->
+	    <div class="ui-field-contain">	
+		    <label for="key2">&#x5F00;&#x59CB;&#x65F6;&#x95F4;:</label><!--开始时间:-->
+		    <input name="key2" id="key2" type="time" value=08:00>
+		    <label for="key3">&#x7ED3;&#x675F;&#x65F6;&#x95F4;:</label><!--结束时间:-->
+		    <input name="key3" id="key3" type="time" value=21:00>
+	    </div>	
+</fieldset>
+<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
+	<legend><h4>&#x632F;&#x52A8;&#x63D0;&#x9192;:</h4></legend><!--振动提醒:-->
+		<input name="key4" id="key4" value="0" type="checkbox">
+		<label for="key4">&#x6574;&#x70B9;&#x63D0;&#x9192;</label><!--整点提醒-->
+		<input name="key5" id="key5" value="0" type="checkbox">
+		<label for="key5">&#x65AD;&#x8FDE;&#x63D0;&#x9192;<!--断连提醒-->
+</fieldset>
+</div>
+					
+<div data-role="collapsible">
+	<h3>&#x8F6C;&#x8155;&#x529F;&#x80FD;</h3><!--转腕功能-->
+<fieldset data-role="controlgroup" data-mini="true">
+    <legend><h4>&#x6C14;&#x8C61;&#x67E5;&#x8BE2;:</h4></legend><!--气象查询:-->
+		<label for="key12">&#x57CE;&#x5E02;(GPS&#x5931;&#x6548;&#x65F6;&#x5907;&#x7528;):</label><!--城市(GPS失效时备用):-->
+		<input name="key12" id="key12" data-mini="true" type="text" maxlength="9">
+</fieldset>	
+<fieldset data-role="controlgroup" data-mini="true">
+    <legend><h4>&#x5BFC;&#x822A;&#x6307;&#x5F15;:</h4></legend><!--导航指引:-->
+		<label for="key140">&#x76EE;&#x7684;&#x5730;:</label><!--目的地:-->
+		<input name="key140" id="key140" data-mini="true" type="text" maxlength="9">
+		<label for="key141">&#x7ECF;&#x5EA6;:</label><!--经度:-->
+		<input name="key141" id="key141" data-mini="true" type="text" maxlength="9">
+		<label for="key142">&#x7EAC;&#x5EA6;:</label><!--纬度:-->
+		<input name="key142" id="key142" data-mini="true" type="text" maxlength="9">
+ </fieldset>
+</div>
+
+<div data-role="collapsible">
+    <h3>&#x6307;&#x9488;&#x5F0F;&#x8868;&#x76D8;</h3><!--指针式表盘-->
+<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+    <legend>&#x5DE6;&#x680F;:</legend><!--左栏-->
+        <input name="key010" id="key010-0" value="0" checked="checked" type="radio">
+        <label for="key010-0">&#x7A7A;&#x767D;</label><!--空白-->
+        <input name="key010" id="key010-11" value="11" type="radio">
+        <label for="key010-11">&#x65E5;&#x671F;</label><!--日期-->
+        <input name="key010" id="key010-13" value="13" type="radio">
+        <label for="key010-13">AM/PM</label>
+</fieldset>	
+<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+    <legend>&#x53F3;&#x680F;:</legend><!--右栏-->
+        <input name="key011" id="key011-0" value="0" checked="checked" type="radio">
+        <label for="key011-0">&#x7A7A;&#x767D;</label><!--空白-->
+        <input name="key011" id="key011-11" value="11" type="radio">
+        <label for="key011-11">&#x65E5;&#x671F;</label><!--日期-->
+        <input name="key011" id="key011-12" value="12" type="radio">
+        <label for="key011-12">&#x661F;&#x671F;</label><!--星期-->
+        <input name="key011" id="key011-13" value="13" type="radio">
+        <label for="key011-13">AM/PM</label>
+</fieldset>
+</div>
+
+<div data-role="collapsible">
+    <h3>&#x6570;&#x4F4D;&#x5F0F;&#x8868;&#x76D8;</h3><!--&#x6570;&#x4F4D;&#x5F0F;&#x8868;&#x9762;-->
+<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+    <legend>&#x4E0A;&#x5DE6;&#x680F;:</legend><!--上左栏:-->
+        <input name="key020" id="key020-0" value="0" checked="checked" type="radio">
+        <label for="key020-0">&#x7A7A;&#x767D;</label><!--空白-->
+        <input name="key020" id="key020-11" value="11" type="radio">
+        <label for="key020-11">&#x65E5;&#x671F;</label><!--日期-->
+        <input name="key020" id="key020-12" value="12" type="radio">
+        <label for="key020-12">&#x661F;&#x671F;</label><!--星期-->
+</fieldset>
+<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+    <legend>&#x4E0A;&#x53F3;&#x680F;:</legend><!--上右栏:-->
+        <input name="key021" id="key021-0" value="0" checked="checked" type="radio">
+        <label for="key021-0">&#x7A7A;&#x767D;</label><!--空白-->
+        <input name="key021" id="key021-11" value="11" type="radio">
+        <label for="key021-11">&#x65E5;&#x671F;</label><!--日期-->
+        <input name="key021" id="key021-12" value="12" type="radio">
+        <label for="key021-12">&#x661F;&#x671F;</label><!--星期-->
+</fieldset>		
+<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+    <legend>&#x4E0B;&#x5DE6;&#x680F;:</legend><!--下左栏:-->
+        <input name="key022" id="key022-0" value="0" checked="checked" type="radio">
+        <label for="key022-0">&#x7A7A;&#x767D;</label><!--空白-->
+        <input name="key022" id="key022-11" value="11" type="radio">
+        <label for="key022-11">&#x65E5;&#x671F;</label><!--日期-->
+        <input name="key022" id="key022-12" value="12" type="radio">
+        <label for="key022-12">&#x661F;&#x671F;</label><!--星期-->
+        <input name="key022" id="key022-13" value="13" type="radio">
+        <label for="key022-13">AM/PM</label>		
+</fieldset>
+<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+    <legend>&#x4E0B;&#x53F3;&#x680F;:</legend><!--下右栏-->
+        <input name="key023" id="key023-0" value="0" checked="checked" type="radio">
+        <label for="key023-0" id="key023-0">&#x7A7A;&#x767D;</label><!--空白-->
+        <input name="key023" id="key023-11" value="11" type="radio">
+        <label for="key023-11" id="key023-11">&#x65E5;&#x671F;</label><!--日期-->	
+        <input name="key023" id="key023-12" value="12" type="radio">
+        <label for="key023-12" id="key023-12">&#x661F;&#x671F;</label><!--星期-->
+        <input name="key023" id="key023-13" value="13" type="radio">
+        <label for="key023-13" id="key023-13">AM/PM</label>
+</fieldset>
+</div>
+
+				</div>
+
+<br />
+<div class="ui-body ui-body-c">
+    <fieldset class="ui-grid-a">
+        <div class="ui-block-a"><button type="submit" data-theme="d" id="b-cancel">&#x53D6;&#x6D88;</button></div>
+        <div class="ui-block-b"><button type="submit" data-theme="a" id="b-submit">&#x786E;&#x5B9A;</button></div>
+    </fieldset>
+</div>
+		
+			</div>
+		</div>
+		
+		
+		
+    <script>
+	
+		$("input[type='checkbox']").click(function(){   
+			if($(this).val() == 1) $(this).val(0);   
+			else $(this).val(1);   
+		});
+	
+		function saveOptions() {
+		
+			console.log($("input[id=key4]").val());
+			console.log($("input[id=key5]").val());
+			var options = {
+				'key_style_face': Number( $("input[name=key0]:checked").val() ),
+				'key_shake_func': Number( $("input[name=key1]:checked").val() ),
+				'key_shake_start': $("input[name=key2]").val(),
+				'key_shake_stop': $("input[name=key3]").val(),
+				'key_hourly_vibr': $("input[name=key4]").val(),
+				'key_disconnect_vibr': $("input[name=key5]").val(),
+				
+				'key_analog_left'      : Number( $("input[name=key010]:checked").val() ),
+				'key_analog_right'     : Number( $("input[name=key011]:checked").val() ),
+				'key_digit_topleft'    : Number( $("input[name=key020]:checked").val() ),
+				'key_digit_topright'   : Number( $("input[name=key021]:checked").val() ),
+				'key_digit_bottomleft' : Number( $("input[name=key022]:checked").val() ),
+				'key_digit_bottomright': Number( $("input[name=key023]:checked").val() ),
+
+				'key_city'        : $("input[name=key12]").val(),
+				
+				'key_navi_dest'    : $("input[name=key140]").val(),
+				'key_navi_dest_lng': $("input[name=key141]").val(),
+				'key_navi_dest_lat': $("input[name=key142]").val(),  
+			}
+			return options;
+		}
+
+		$().ready(function() {
+			if (typeof window.localStorage !== "undefined") {
+				if (window.localStorage.swatch_options) {
+					ls_pto = JSON.parse(window.localStorage.swatch_options);
+					
+					// the Pebble webview dies on the next line...
+					$("input[name=key0][id=key0-"+ls_pto["key_style_face"]+"]").prop('checked',true);
+					$("input[name=key0]").checkboxradio('refresh');
+					$("input[name=key1][id=key1-"+ls_pto["key_shake_func"]+"]").prop('checked',true);
+					$("input[name=key1]").checkboxradio('refresh');
+					if ("key_shake_start" in ls_pto) 
+						$("input[name=key2]").val(ls_pto["key_shake_start"]);
+					if ("key_shake_stop" in ls_pto) 
+						$("input[name=key3]").val(ls_pto["key_shake_stop"]);
+					if(ls_pto["key_hourly_vibr"]==1) {	
+						$("input[name=key4]").prop('checked', true);
+						$("input[name=key4]").checkboxradio('refresh');
+						$("input[name=key4]").val(1);
+					}	
+					if(ls_pto["key_disconnect_vibr"]==1) {
+						$("input[name=key5]").prop('checked', true);
+						$("input[name=key5]").checkboxradio('refresh');
+						$("input[name=key5]").val(1);
+					}
+					if ("key_city" in ls_pto) 
+						$("input[name=key12]").val(ls_pto["key_city"]);
+					if ("key_navi_dest" in ls_pto) {
+						$("input[name=key140]").val(ls_pto["key_navi_dest"]);
+						$("input[name=key141]").val(ls_pto["key_navi_dest_lng"]);
+						$("input[name=key142]").val(ls_pto["key_navi_dest_lat"]);
+					}
+					
+					$("input[name=key010][id=key010-"+ls_pto["key_analog_left"]+"]").prop('checked',true);
+					$("input[name=key010]").checkboxradio('refresh');
+					$("input[name=key011][id=key011-"+ls_pto["key_analog_right"]+"]").prop('checked',true);
+					$("input[name=key011]").checkboxradio('refresh');
+					$("input[name=key020][id=key020-"+ls_pto["key_digit_topleft"]+"]").prop('checked',true);
+					$("input[name=key020]").checkboxradio('refresh');
+					$("input[name=key021][id=key021-"+ls_pto["key_digit_topright"]+"]").prop('checked',true);
+					$("input[name=key021]").checkboxradio('refresh');
+					$("input[name=key022][id=key022-"+ls_pto["key_digit_bottomleft"]+"]").prop('checked',true);
+					$("input[name=key022]").checkboxradio('refresh');
+					$("input[name=key023][id=key023-"+ls_pto["key_digit_bottomright"]+"]").prop('checked',true);
+					$("input[name=key023]").checkboxradio('refresh');
+				}
+			}
+			
+			
+			$("#b-cancel").click(function() {
+				console.log("Cancel");
+				document.location = "pebblejs://close";
+			});
+
+			$("#b-submit").click(function() {
+				console.log("Submit");
+				ls_pto = JSON.stringify(saveOptions());
+				if (typeof window.localStorage !== "undefined") {
+					window.localStorage.swatch_options = ls_pto;
+				}
+				//var location = "pebblejs://close#" + encodeURIComponent(ls_pto);
+				document.location = location;
+			});
+
+		});
+    </script>
+  </body>
+</html>
