@@ -16,8 +16,13 @@
 		<script src="http://api.go2map.com/maps/js/api_v2.5.1.js"></script>
 		<script>
 	   		function initialize() {
-    				var map = new sogou.maps.Map(document.getElementById("map_canvas"),{});
-			}
+				var mclng = document.getElementById("key141").value;
+				var mclat = document.getElementById("key142").value;
+				var myOptions = {
+					zoom: 10,
+					center: new sogou.maps.Point(mclng, mclat)
+				}
+				var map = new sogou.maps.Map(document.getElementById("map_canvas"),myOptions);			}
 		</script>
 
 	</head>
@@ -83,11 +88,11 @@
 <fieldset data-role="controlgroup" data-mini="true">
     <legend><h4>&#x5BFC;&#x822A;&#x6307;&#x5F15;:</h4></legend><!--导航指引:-->
 		<label for="key140">&#x76EE;&#x7684;&#x5730;:</label><!--目的地:-->
-		<input name="key140" id="key140" data-mini="true" type="text" maxlength="9">
+		<input name="key140" id="key140" value="北京" data-mini="true" type="text" maxlength="9">
 		<label for="key141">&#x7ECF;&#x5EA6;:</label><!--经度:-->
-		<input name="key141" id="key141" data-mini="true" type="text" maxlength="9">
+		<input name="key141" id="key141" value="12956000" data-mini="true" type="text" maxlength="9">
 		<label for="key142">&#x7EAC;&#x5EA6;:</label><!--纬度:-->
-		<input name="key142" id="key142" data-mini="true" type="text" maxlength="9">
+		<input name="key142" id="key142" value="4824875" data-mini="true" type="text" maxlength="9">
 </fieldset>
 <div id="map_canvas"></div>
 </div>
@@ -246,9 +251,13 @@
 					if ("key_city" in ls_pto) 
 						$("input[name=key12]").val(ls_pto["key_city"]);
 					if ("key_navi_dest" in ls_pto) {
-						$("input[name=key140]").val(ls_pto["key_navi_dest"]);
-						$("input[name=key141]").val(ls_pto["key_navi_dest_lng"]);
-						$("input[name=key142]").val(ls_pto["key_navi_dest_lat"]);
+						if(ls_pto["key_navi_dest"] != "") {
+							$("input[name=key140]").val(ls_pto["key_navi_dest"]);
+							if(ls_pto["key_navi_dest_lng"] != "")
+								$("input[name=key141]").val(ls_pto["key_navi_dest_lng"]);
+							if(ls_pto["key_navi_dest_lat"] != "")
+								$("input[name=key142]").val(ls_pto["key_navi_dest_lat"]);
+						}	
 					}
 					
 					$("input[name=key010][id=key010-"+ls_pto["key_analog_left"]+"]").prop('checked',true);
