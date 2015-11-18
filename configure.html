@@ -16,19 +16,24 @@
 		<script src="http://api.go2map.com/maps/js/api_v2.5.1.js"></script>
 		<script>
 			var map;
+			var marker;
+			
 	   		function initialize() {
-				var myLatlng = new sogou.maps.LatLng(39.992792,116.326142);
-				//var mclng = document.getElementById("key141").value;
-				//var mclat = document.getElementById("key142").value;
+				//var myLatlng = new sogou.maps.LatLng(39.992792,116.326142);
+				var mclng = document.getElementById("key141").value;
+				var mclat = document.getElementById("key142").value;
+				var target = new sogou.maps.Point(mclng, mclat);
 				var myOptions = {
 					zoom: 12,
-					//center: new sogou.maps.Point(mclng, mclat),
-					center: myLatlng,
+					center: target,
+					//center: myLatlng,
 					mapTypeId: sogou.maps.MapTypeId.ROADMAP
 				}
 				map = new sogou.maps.Map(document.getElementById("map_canvas"),myOptions);
+				placeMarker(target);
 				
 				sogou.maps.event.addListener(map, 'click', function(event) {
+					marker.setMap(null);
 					alert(event.point)
 					placeMarker(event.point);
 					document.getElementById("key141").value = event.point.x;
@@ -37,8 +42,8 @@
 			}
 			
 			function placeMarker(location) {
-				var clickedLocation = location;
-				var marker = new sogou.maps.Marker({
+				//var clickedLocation = location;		
+				marker = new sogou.maps.Marker({
 				position: location,
 				map: map
 				});
