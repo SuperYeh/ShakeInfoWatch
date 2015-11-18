@@ -16,7 +16,7 @@
 		<script src="http://api.go2map.com/maps/js/api_v2.5.1.js"></script>
 
 	</head>
-	<body>
+	<body onload="initialize()">
 		<div data-role="page" id="main">
 			<div data-role="header" class="jqm-header">
 				<h1>Configuration</h1>
@@ -84,6 +84,7 @@
 		<label for="key142">&#x7EAC;&#x5EA6;:</label><!--纬度:-->
 		<input name="key142" id="key142" data-mini="true" type="text" maxlength="9">
  </fieldset>
+ <div id="map_canvas"></div>
 </div>
 
 <div data-role="collapsible">
