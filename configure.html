@@ -14,6 +14,11 @@
 		<script src="js/jquery-1.9.1.min.js"></script>
 		<script src="js/jquery.mobile-1.3.2.min.js"></script>
 		<script src="http://api.go2map.com/maps/js/api_v2.5.1.js"></script>
+		<script>
+	   		function initialize() {
+    				var map = new sogou.maps.Map(document.getElementById("map_canvas"),{});
+			}
+		</script>
 
 	</head>
 	<body onload="initialize()">
@@ -172,10 +177,6 @@
 		
     <script>
     
-    		function initialize() {
-    			var map = new sogou.maps.Map(document.getElementById("map_canvas"),{});
-		}
-	
 		$("input[type='checkbox']").click(function(){   
 			if($(this).val() == 1) $(this).val(0);   
 			else $(this).val(1);   
