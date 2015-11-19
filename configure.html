@@ -166,52 +166,7 @@ body {height:auto; margin:0; padding:0;}
         <label for="key011-13">AM/PM</label>
 </fieldset>
 </div>
-
-<div data-role="collapsible">
-    <h3>&#x6570;&#x4F4D;&#x5F0F;&#x8868;&#x76D8;</h3><!--&#x6570;&#x4F4D;&#x5F0F;&#x8868;&#x9762;-->
-<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-    <legend>&#x4E0A;&#x5DE6;&#x680F;:</legend><!--上左栏:-->
-        <input name="key020" id="key020-0" value="0" checked="checked" type="radio">
-        <label for="key020-0">&#x7A7A;&#x767D;</label><!--空白-->
-        <input name="key020" id="key020-11" value="11" type="radio">
-        <label for="key020-11">&#x65E5;&#x671F;</label><!--日期-->
-        <input name="key020" id="key020-12" value="12" type="radio">
-        <label for="key020-12">&#x661F;&#x671F;</label><!--星期-->
-</fieldset>
-<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-    <legend>&#x4E0A;&#x53F3;&#x680F;:</legend><!--上右栏:-->
-        <input name="key021" id="key021-0" value="0" checked="checked" type="radio">
-        <label for="key021-0">&#x7A7A;&#x767D;</label><!--空白-->
-        <input name="key021" id="key021-11" value="11" type="radio">
-        <label for="key021-11">&#x65E5;&#x671F;</label><!--日期-->
-        <input name="key021" id="key021-12" value="12" type="radio">
-        <label for="key021-12">&#x661F;&#x671F;</label><!--星期-->
-</fieldset>		
-<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-    <legend>&#x4E0B;&#x5DE6;&#x680F;:</legend><!--下左栏:-->
-        <input name="key022" id="key022-0" value="0" checked="checked" type="radio">
-        <label for="key022-0">&#x7A7A;&#x767D;</label><!--空白-->
-        <input name="key022" id="key022-11" value="11" type="radio">
-        <label for="key022-11">&#x65E5;&#x671F;</label><!--日期-->
-        <input name="key022" id="key022-12" value="12" type="radio">
-        <label for="key022-12">&#x661F;&#x671F;</label><!--星期-->
-        <input name="key022" id="key022-13" value="13" type="radio">
-        <label for="key022-13">AM/PM</label>		
-</fieldset>
-<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-    <legend>&#x4E0B;&#x53F3;&#x680F;:</legend><!--下右栏-->
-        <input name="key023" id="key023-0" value="0" checked="checked" type="radio">
-        <label for="key023-0" id="key023-0">&#x7A7A;&#x767D;</label><!--空白-->
-        <input name="key023" id="key023-11" value="11" type="radio">
-        <label for="key023-11" id="key023-11">&#x65E5;&#x671F;</label><!--日期-->	
-        <input name="key023" id="key023-12" value="12" type="radio">
-        <label for="key023-12" id="key023-12">&#x661F;&#x671F;</label><!--星期-->
-        <input name="key023" id="key023-13" value="13" type="radio">
-        <label for="key023-13" id="key023-13">AM/PM</label>
-</fieldset>
-</div>
-
-				</div>
+					</div>
 
 <br />
 <div class="ui-body ui-body-c">
@@ -239,10 +194,6 @@ body {height:auto; margin:0; padding:0;}
 				
 				'key_analog_left'      : Number( $("input[name=key010]:checked").val() ),
 				'key_analog_right'     : Number( $("input[name=key011]:checked").val() ),
-				'key_digit_topleft'    : Number( $("input[name=key020]:checked").val() ),
-				'key_digit_topright'   : Number( $("input[name=key021]:checked").val() ),
-				'key_digit_bottomleft' : Number( $("input[name=key022]:checked").val() ),
-				'key_digit_bottomright': Number( $("input[name=key023]:checked").val() ),
 				'key_city'        : $("input[name=key12]").val(),
 				
 				'key_navi_dest'    : $("input[name=key140]").val(),
@@ -302,14 +253,6 @@ body {height:auto; margin:0; padding:0;}
 					$("input[name=key010]").checkboxradio('refresh');
 					$("input[name=key011][id=key011-"+ls_pto["key_analog_right"]+"]").prop('checked',true);
 					$("input[name=key011]").checkboxradio('refresh');
-					$("input[name=key020][id=key020-"+ls_pto["key_digit_topleft"]+"]").prop('checked',true);
-					$("input[name=key020]").checkboxradio('refresh');
-					$("input[name=key021][id=key021-"+ls_pto["key_digit_topright"]+"]").prop('checked',true);
-					$("input[name=key021]").checkboxradio('refresh');
-					$("input[name=key022][id=key022-"+ls_pto["key_digit_bottomleft"]+"]").prop('checked',true);
-					$("input[name=key022]").checkboxradio('refresh');
-					$("input[name=key023][id=key023-"+ls_pto["key_digit_bottomright"]+"]").prop('checked',true);
-					$("input[name=key023]").checkboxradio('refresh');
 				}
 			}
 			
