@@ -125,11 +125,10 @@
 		<input name="key141" id="key141" style="display: none;" value="12956000" data-mini="true" type="text" maxlength="9">
 		<label for="key142" style="display: none;">&#x7EAC;&#x5EA6;:</label><!--纬度:-->
 		<input name="key142" id="key142" style="display: none;" value="4824875" data-mini="true" type="text" maxlength="9">
-		<input name="key143" id="key143" value="0" type="checkbox">
-		<label for="key143">map</label><!--整点提醒-->
 </fieldset>
-</div>
 <div id="map_canvas"></div>
+</div>
+
 
 <div data-role="collapsible">
     <h3>&#x6307;&#x9488;&#x5F0F;&#x8868;&#x76D8;</h3><!--指针式表盘-->
@@ -216,17 +215,6 @@
 		
     <script>
     
-		$("input[type='checkbox']").click(function(){   
-			if($(this).val() == 1) $(this).val(0);   
-			else $(this).val(1);   
-		});
-		
-		$("input[id='key143']").click(function(){   
-			var canvas = document.getElementById("map_canvas");
-			if($(this).val() == 0) canvas.style.display = "none";
-			else canvas.style.display = "block";
-		});
-	
 		function getConfigData() {
 			var options = {
 				'key_style_face': Number( $("input[name=key0]:checked").val() ),
@@ -250,6 +238,7 @@
 			}
 			return options;
 		}
+		
 		function getQueryParam(variable, defaultValue) {
     			var query = location.search.substring(1);
     			var vars = query.split('&');
@@ -261,7 +250,8 @@
     			}
     			return defaultValue || false;
   		}
-		$().ready(function() {
+  		
+ 		$().ready(function() {
 			if (typeof window.localStorage !== "undefined") {
 				if (window.localStorage.swatch_options) {
 					ls_pto = JSON.parse(window.localStorage.swatch_options);
@@ -312,6 +302,10 @@
 				}
 			}
 			
+			$("input[type='checkbox']").click(function(){   
+				if($(this).val() == 1) $(this).val(0);   
+				else $(this).val(1);   
+			});
 			
 			$("#b-cancel").click(function() {
 				console.log("Cancel");
