@@ -35,7 +35,7 @@
 				}
 				map = new sogou.maps.Map(canvas, myOptions);
 				placeMarker(target);
-				//canvas.style.display = "none";
+				canvas.style.display = "none";
 				
 				sogou.maps.event.addListener(map, 'click', function(event) {
 					marker.setMap(null);
@@ -52,7 +52,7 @@
 				position: location,
 				map: map
 				});
-				map.setCenter(location);
+				//map.setCenter(location);
 			}
 			
 		</script>
