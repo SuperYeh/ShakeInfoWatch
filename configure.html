@@ -2,19 +2,18 @@
 <html>
 	<head>
 		<title>Configuration</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-		<style type="text/css">
-			html {height:auto;}
-			body {height:auto; margin:0; padding:0;}
-			#map_canvas {width:100%; height:500px; position:absolute;}
-			@media print {#map_canvas {height:950px;}}
-
-		</style>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8">
+		<meta name="viewport" content=="width=device-width, initial-scale=1.0, user-scalable=no" >
 		<link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
 		<script src="js/jquery-1.9.1.min.js"></script>
 		<script src="js/jquery.mobile-1.3.2.min.js"></script>
-		<script src="http://api.go2map.com/maps/js/api_v2.5.1.js"></script>
+		<script type="text/javascript" src="http://api.go2map.com/maps/js/api_v2.5.1.js"></script>
+		<style type="text/css">
+			html {height:auto;}
+			body {height:auto; margin:0; padding:0;}
+			#map_canvas {width:300px; height:300px; position:absolute;}
+			@media print {#map_canvas {height:950px;}}
+		</style>
 		<script>
 			var map;
 			var marker;
@@ -116,6 +115,13 @@
     <legend><h4>&#x6C14;&#x8C61;&#x67E5;&#x8BE2;:</h4></legend><!--气象查询:-->
 		<label for="key12">&#x57CE;&#x5E02;(GPS&#x5931;&#x6548;&#x65F6;&#x5907;&#x7528;):</label><!--城市(GPS失效时备用):-->
 		<input name="key12" id="key12" data-mini="true" type="text" maxlength="9">
+		<select id="Provinces" name="Provinces">  
+           <option value="-1">&#x7701;</option>  
+		</select>  
+		<select id="Cities" name="Cities">  
+           <option value="-1">&#x5E02;</option>  
+		</select>  
+       <input id="btnGet" name="btnGet" type="button" value="&#x83B7;&#x53D6;&#x57CE;&#x5E02;&#x7F16;&#x7801;" />  
 </fieldset>	
 <fieldset data-role="controlgroup" data-mini="true">
     <legend><h4>&#x5BFC;&#x822A;&#x6307;&#x5F15;:</h4></legend><!--导航指引:-->
@@ -126,9 +132,8 @@
 		<label for="key142" style="display: none;">&#x7EAC;&#x5EA6;:</label><!--纬度:-->
 		<input name="key142" id="key142" style="display: none;" value="4824875" data-mini="true" type="text" maxlength="9">
 </fieldset>
-<div id="map_canvas"></div>
 </div>
-
+<div id="map_canvas"></div>
 
 <div data-role="collapsible">
     <h3>&#x6307;&#x9488;&#x5F0F;&#x8868;&#x76D8;</h3><!--指针式表盘-->
@@ -214,7 +219,7 @@
 		
 		
     <script>
-    
+		
 		function getConfigData() {
 			var options = {
 				'key_style_face': Number( $("input[name=key0]:checked").val() ),
@@ -238,7 +243,6 @@
 			}
 			return options;
 		}
-		
 		function getQueryParam(variable, defaultValue) {
     			var query = location.search.substring(1);
     			var vars = query.split('&');
@@ -250,8 +254,13 @@
     			}
     			return defaultValue || false;
   		}
-  		
- 		$().ready(function() {
+		
+		$("input[type='checkbox']").click(function(){   
+			if($(this).val() == 1) $(this).val(0);   
+			else $(this).val(1);   
+		});
+
+		$().ready(function() {
 			if (typeof window.localStorage !== "undefined") {
 				if (window.localStorage.swatch_options) {
 					ls_pto = JSON.parse(window.localStorage.swatch_options);
@@ -302,15 +311,40 @@
 				}
 			}
 			
-			$("input[type='checkbox']").click(function(){   
-				if($(this).val() == 1) $(this).val(0);   
-				else $(this).val(1);   
-			});
-			
+	GetDataList("#Provinces", 0, "Provinces");  
+  
+    $("#Provinces").change(function () {  
+        GetDataList("#Cities", $("#Provinces").val(), "Cities");  
+    });  
+  
+    $("#Cities").change(function () {  
+        GetDataList("#Districts", $("#Cities").val(), "Districts");  
+    });  
+  
+    $("#btnGet").click(function () {  
+        alert($("#Provinces").val() + "--" + $("#Provinces option:selected").text());  
+    }); 
+	
+	function GetDataList(ddlId, id, action, selId) {  
+        $.getJSON("tools/SelectAjax.ashx", { action: action, id: id, rnd: Math.random() }, function (data) {  
+            $(ddlId).empty();  
+  
+            $("<option value=\"-1\">不限</option>").appendTo($(ddlId));  
+            $.each(data, function (i, item) {  
+                $("<option></option>")  
+                .val(item.CityId)  
+                .attr("selected", item.CityId == selId)  
+                .text(item.CityName)  
+                .appendTo($(ddlId));  
+            });  
+        });  
+    }  
+						
 			$("#b-cancel").click(function() {
 				console.log("Cancel");
 				document.location = "pebblejs://close";
 			});
+			
 			var submitButton = document.getElementById('b-submit');
   			submitButton.addEventListener('click', function() {
     				console.log('Submit');
