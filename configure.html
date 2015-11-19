@@ -35,6 +35,7 @@
 				}
 				map = new sogou.maps.Map(canvas, myOptions);
 				placeMarker(target);
+				canvas.style.display = "none";
 				
 				sogou.maps.event.addListener(map, 'click', function(event) {
 					marker.setMap(null);
@@ -131,6 +132,8 @@
 		<input name="key141" id="key141" style="display: none;" value="12956000" data-mini="true" type="text" maxlength="9">
 		<label for="key142" style="display: none;">&#x7EAC;&#x5EA6;:</label><!--纬度:-->
 		<input name="key142" id="key142" style="display: none;" value="4824875" data-mini="true" type="text" maxlength="9">
+		<input name="key143" id="key143" value="0" type="checkbox">
+		<label for="key143">&#x663E;&#x793A;&#x9009;&#x53D6;&#x5730;&#x56FE;
 </fieldset>
 </div>
 <div id="map_canvas"></div>
@@ -254,11 +257,6 @@
     			}
     			return defaultValue || false;
   		}
-		
-		$("input[type='checkbox']").click(function(){   
-			if($(this).val() == 1) $(this).val(0);   
-			else $(this).val(1);   
-		});
 
 		$().ready(function() {
 			if (typeof window.localStorage !== "undefined") {
@@ -311,7 +309,7 @@
 				}
 			}
 			
-	GetDataList("#Provinces", 0, "Provinces");  
+    GetDataList("#Provinces", 0, "Provinces");  
   
     $("#Provinces").change(function () {  
         GetDataList("#Cities", $("#Provinces").val(), "Cities");  
@@ -325,7 +323,7 @@
         alert($("#Provinces").val() + "--" + $("#Provinces option:selected").text());  
     }); 
 	
-	function GetDataList(ddlId, id, action, selId) {  
+    function GetDataList(ddlId, id, action, selId) {  
         $.getJSON("tools/SelectAjax.ashx", { action: action, id: id, rnd: Math.random() }, function (data) {  
             $(ddlId).empty();  
   
@@ -338,7 +336,18 @@
                 .appendTo($(ddlId));  
             });  
         });  
-    }  
+    };  
+    		
+			$("input[type='checkbox']").click(function(){   
+				if($(this).val() == 1) $(this).val(0);   
+				else $(this).val(1);   
+			});
+					
+			$("input[id='key143']").click(function(){   
+			    var canvas = document.getElementById("map_canvas");
+				if($(this).val() == 0)  canvas.style.display = "none";
+				else canvas.style.display = "block";   
+			});
 						
 			$("#b-cancel").click(function() {
 				console.log("Cancel");
