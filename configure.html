@@ -215,6 +215,7 @@ body {height:auto; margin:0; padding:0;}
 				'key_analog_date'      : Number( $("input[name=key010]:checked").val() ),
 
 				'key_city'        : $("input[name=key12]").val(),
+				'key_city_weather_code': Number( getWeatherCode($("input[name=key12]").val()) ),
 				
 				'key_navi_dest'    : $("input[name=key140]").val(),
 				'key_navi_dest_lng': $("input[name=key141]").val(),
@@ -233,6 +234,33 @@ body {height:auto; margin:0; padding:0;}
     			}
     			return defaultValue || false;
   		}
+  		
+  		function getWeatherCode(city) {  
+			var xmlDoc;
+			if(window.ActiveXObject) {
+				xmlDoc = new ActiveXObject('Microsoft.XMLDOM');
+				xmlDoc.async = false;
+				xmlDoc.load("cities.xml");
+			} else if (document.implementation&&document.implementation.createDocument) {
+				xmlDoc = document.implementation.createDocument('', '', null);
+				xmlDoc.load("cities.xml");
+			}
+			var allcounty = xmlDoc.getElementsByTagName('county');	
+			var countyName;
+			var weatherCode;
+			
+			for (var i=0; i<allcounty.length; i++) {
+				countyName = allcounty[i].childNodes[0].childNodes[0].nodeValue;
+				//countyName = countyName.replace(/(^\s*)|(\s*$)/g, ""); 
+				if(countyName == city) {
+					weatherCode = allcounty[i].childNodes[1].childNodes[0].nodeValue;		
+					return weatherCode;
+				}	
+			}
+			return 0;
+		}
+  		
+  		
 		$().ready(function() {
 			if (typeof window.localStorage !== "undefined") {
 				if (window.localStorage.swatch_options) {
@@ -273,36 +301,7 @@ body {height:auto; margin:0; padding:0;}
 					$("input[name=key010]").checkboxradio('refresh');
 				}
 			}
-			
-    GetDataList("#Provinces", 0, "Provinces");  
-  
-    $("#Provinces").change(function () {  
-        GetDataList("#Cities", $("#Provinces").val(), "Cities");  
-    });  
-  
-    $("#Cities").change(function () {  
-        GetDataList("#Districts", $("#Cities").val(), "Districts");  
-    });  
-  
-    $("#btnGet").click(function () {  
-        alert($("#Provinces").val() + "--" + $("#Provinces option:selected").text());  
-    }); 
-	
-    function GetDataList(ddlId, id, action, selId) {  
-        $.getJSON("tools/SelectAjax.ashx", { action: action, id: id, rnd: Math.random() }, function (data) {  
-            $(ddlId).empty();  
-  
-            $("<option value=\"-1\">不限</option>").appendTo($(ddlId));  
-            $.each(data, function (i, item) {  
-                $("<option></option>")  
-                .val(item.CityId)  
-                .attr("selected", item.CityId == selId)  
-                .text(item.CityName)  
-                .appendTo($(ddlId));  
-            });  
-        });  
-    };  
-    		
+		
 			$("input[type='checkbox']").click(function(){   
 				if($(this).val() == 1) $(this).val(0);   
 				else $(this).val(1);   
