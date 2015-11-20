@@ -143,24 +143,13 @@ body {height:auto; margin:0; padding:0;}
 <div data-role="collapsible">
     <h3>&#x6307;&#x9488;&#x5F0F;&#x8868;&#x76D8;</h3><!--指针式表盘-->
 <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-    <legend>&#x5DE6;&#x680F;:</legend><!--左栏-->
+    <legend>&#x65E5;&#x671F;&#x663E;&#x793A;:</legend><!--日期显示-->
         <input name="key010" id="key010-0" value="0" checked="checked" type="radio">
-        <label for="key010-0">&#x7A7A;&#x767D;</label><!--空白-->
+        <label for="key010-0">&#x4E0D;&#x663E;&#x793A;</label><!--不显示-->
         <input name="key010" id="key010-11" value="11" type="radio">
-        <label for="key010-11">&#x65E5;&#x671F;</label><!--日期-->
-        <input name="key010" id="key010-13" value="13" type="radio">
-        <label for="key010-13">AM/PM</label>
-</fieldset>	
-<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-    <legend>&#x53F3;&#x680F;:</legend><!--右栏-->
-        <input name="key011" id="key011-0" value="0" checked="checked" type="radio">
-        <label for="key011-0">&#x7A7A;&#x767D;</label><!--空白-->
-        <input name="key011" id="key011-11" value="11" type="radio">
-        <label for="key011-11">&#x65E5;&#x671F;</label><!--日期-->
-        <input name="key011" id="key011-12" value="12" type="radio">
-        <label for="key011-12">&#x661F;&#x671F;</label><!--星期-->
-        <input name="key011" id="key011-13" value="13" type="radio">
-        <label for="key011-13">AM/PM</label>
+        <label for="key010-11">&#x5C4F;&#x5E55;&#x4E0A;&#x65B9;</label><!--屏幕上方-->
+        <input name="key010" id="key010-12" value="12" type="radio">
+        <label for="key010-12">&#x5C4F;&#x5E55;&#x4E0B;&#x65B9;</label><!--屏幕下方-->
 </fieldset>
 </div>
 			</div>
@@ -189,8 +178,8 @@ body {height:auto; margin:0; padding:0;}
 				'key_hourly_vibr': Number( $("input[name=key4]").val() ),
 				'key_disconnect_vibr': Number( $("input[name=key5]").val() ),
 				
-				'key_analog_left'      : Number( $("input[name=key010]:checked").val() ),
-				'key_analog_right'     : Number( $("input[name=key011]:checked").val() ),
+				'key_analog_date'      : Number( $("input[name=key010]:checked").val() ),
+
 				'key_city'        : $("input[name=key12]").val(),
 				
 				'key_navi_dest'    : $("input[name=key140]").val(),
@@ -248,8 +237,6 @@ body {height:auto; margin:0; padding:0;}
 					
 					$("input[name=key010][id=key010-"+ls_pto["key_analog_left"]+"]").prop('checked',true);
 					$("input[name=key010]").checkboxradio('refresh');
-					$("input[name=key011][id=key011-"+ls_pto["key_analog_right"]+"]").prop('checked',true);
-					$("input[name=key011]").checkboxradio('refresh');
 				}
 			}
 			
