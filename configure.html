@@ -161,11 +161,10 @@ body {height:auto; margin:0; padding:0;}
 		
 		
     <script>
-		
+		var xmlDoc;
+var weatherCode;
+
 		function getConfigData() {
-			var city = $("input[name=key12]").val();
-			//var code = getWeatherCode(city);
-			var code = 101190401;
 			var options = {
 				'key_style_face': Number( $("input[name=key0]:checked").val() ),
 				'key_shake_func': Number( $("input[name=key1]:checked").val() ),
@@ -177,7 +176,7 @@ body {height:auto; margin:0; padding:0;}
 				'key_analog_date'      : Number( $("input[name=key010]:checked").val() ),
 
 				'key_city'        : $("input[name=key12]").val(),
-				'key_city_weather_code': code,
+				'key_city_weather_code':  weatherCode,
 				
 				'key_navi_dest'    : $("input[name=key140]").val(),
 				'key_navi_dest_lng': $("input[name=key141]").val(),
@@ -197,33 +196,6 @@ body {height:auto; margin:0; padding:0;}
     			return defaultValue || false;
   		}
   		
-
-  		function getWeatherCode(city) {  
-			var xmlDoc;
-			if(window.ActiveXObject) {
-				xmlDoc = new ActiveXObject('Microsoft.XMLDOM');
-				xmlDoc.async = false;
-				xmlDoc.load("/xml/cities.xml");
-			} else if (document.implementation&&document.implementation.createDocument) {
-				xmlDoc = document.implementation.createDocument('', '', null);
-				xmlDoc.load("/xml/cities.xml");
-			}
-			if(xmlDoc == null) return 0;
-			
-			var allcounty = xmlDoc.getElementsByTagName('county');	
-			var countyName;
-			var weatherCode;
-			
-			for (var i=0; i<allcounty.length; i++) {
-				countyName = allcounty[i].childNodes[0].childNodes[0].nodeValue;
-				//countyName = countyName.replace(/(^\s*)|(\s*$)/g, ""); 
-				if(countyName == city) {
-					weatherCode = allcounty[i].childNodes[1].childNodes[0].nodeValue;		
-					return weatherCode;
-				}	
-			}
-			return 0;
-		}
 
 		
 		$().ready(function() {
@@ -277,6 +249,37 @@ body {height:auto; margin:0; padding:0;}
 				if($(this).val() == 0)  canvas.style.display = "none";
 				else canvas.style.display = "block";   
 			});
+
+			if(window.ActiveXObject) {
+				xmlDoc = new ActiveXObject('Microsoft.XMLDOM');
+				xmlDoc.async = false;
+				xmlDoc.load("/xml/cities.xml");
+			} else if (document.implementation&&document.implementation.createDocument) {
+				xmlDoc = document.implementation.createDocument('', '', null);
+				xmlDoc.load("/xml/cities.xml");
+			}
+
+                        $("input[name='key12']").change(function() {  
+                        var city = $(this).valu();
+			
+			if(xmlDoc == null) {
+                                alert("资料档载入错误");
+                                return ;
+			};
+
+			var allcounty = xmlDoc.getElementsByTagName('county');	
+			var countyName;
+			
+			        for (var i=0; i<allcounty.length; i++) {
+				countyName = allcounty[i].childNodes[0].childNodes[0].nodeValue;
+				//countyName = countyName.replace(/(^\s*)|(\s*$)/g, ""); 
+				       if(countyName == city) {
+					weatherCode = allcounty[i].childNodes[1].childNodes[0].nodeValue;		
+				  	return;
+				        }	
+			        }
+			        alert("输入错误，未发现符合的城市");
+	  	        });
 						
 			$("#b-cancel").click(function() {
 				console.log("Cancel");
