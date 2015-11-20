@@ -119,47 +119,6 @@ body {height:auto; margin:0; padding:0;}
     <legend><h4>&#x6C14;&#x8C61;&#x67E5;&#x8BE2;:</h4></legend><!--气象查询:-->
 		<label for="key12">&#x57CE;&#x5E02;(GPS&#x5931;&#x6548;&#x65F6;&#x5907;&#x7528;):</label><!--城市(GPS失效时备用):-->
 		<input name="key12" id="key12" data-mini="true" type="text" maxlength="9">
-		<select id="Provinces" name="Provinces">
-		   	<option value="-1">&#x672A;&#x8BBE;&#x5B9A; &#x7701;</option>
-           		<option value="01" >北京市</option>
-           		<option value="02" >上海市</option>
-        		<option value="03" >天津市</option>
-           		<option value="04" >重庆市</option>
-           		<option value="05" >黑龙江省</option>
-           		<option value="06" >吉林省</option>
-           		<option value="07" >辽宁省</option>
-           		<option value="08" >内蒙古自治区</option>
-           		<option value="09" >河北省</option>
-  			<option value="10" >山西省</option>
-  			<option value="11" >陕西省</option>
-  			<option value="12" >山东省</option>
-  			<option value="13" >新疆维吾尔自治区</option>
-  			<option value="14" >西藏自治区</option>
-  			<option value="15" >青海省</option>
-  			<option value="16" >甘肃省</option>
-  			<option value="17" >宁夏回族自治区</option>
-  			<option value="18" >河南省</option>
-  			<option value="19" >江苏省</option>
-  			<option value="20" >湖北省</option>
-  			<option value="21" >浙江省</option>
-  			<option value="22" >安徽省</option>
-  			<option value="23" >福建省</option>
-  			<option value="24" >江西省</option>
-  			<option value="25" >湖南省</option>
-  			<option value="26" >贵州省</option>
-  			<option value="27" >四川省</option>
-  			<option value="28" >广东省</option>
-  			<option value="29" >云南省</option>
-  			<option value="30" >广西壮族自治区</option>
-  			<option value="31" >海南省</option>
-  			<option value="32" >香港特别行政区</option>
-  			<option value="33" >澳门特别行政区</option>
-  			<option value="34" >台湾省</option>	
-		</select>  
-		<select id="Cities" name="Cities">  
-           <option value="-1">&#x5E02;</option>  
-		</select>  
-       <input id="btnGet" name="btnGet" type="button" value="&#x83B7;&#x53D6;&#x57CE;&#x5E02;&#x7F16;&#x7801;" />  
 </fieldset>	
 <fieldset data-role="controlgroup" data-mini="true">
     <legend><h4>&#x5BFC;&#x822A;&#x6307;&#x5F15;:</h4></legend><!--导航指引:-->
@@ -204,7 +163,7 @@ body {height:auto; margin:0; padding:0;}
     <script>
 		
 		function getConfigData() {
-			var code = getWeatherCode($("input[name=key12]").val());
+			//var code = getWeatherCode($("input[name=key12]").val());
 			var options = {
 				'key_style_face': Number( $("input[name=key0]:checked").val() ),
 				'key_shake_func': Number( $("input[name=key1]:checked").val() ),
