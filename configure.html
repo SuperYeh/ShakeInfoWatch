@@ -163,9 +163,9 @@ body {height:auto; margin:0; padding:0;}
     <script>
 		
 		function getConfigData() {
-			//var city = $("input[name=key12]").val();
-			//var code = getWeatherCode(city);
-			var code = 101190401;
+			var city = $("input[name=key12]").val();
+			var code = getWeatherCode(city);
+			//var code = 101190401;
 			var options = {
 				'key_style_face': Number( $("input[name=key0]:checked").val() ),
 				'key_shake_func': Number( $("input[name=key1]:checked").val() ),
