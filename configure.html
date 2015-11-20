@@ -204,6 +204,7 @@ body {height:auto; margin:0; padding:0;}
     <script>
 		
 		function getConfigData() {
+			var code = getWeatherCode($("input[name=key12]").val());
 			var options = {
 				'key_style_face': Number( $("input[name=key0]:checked").val() ),
 				'key_shake_func': Number( $("input[name=key1]:checked").val() ),
@@ -215,7 +216,7 @@ body {height:auto; margin:0; padding:0;}
 				'key_analog_date'      : Number( $("input[name=key010]:checked").val() ),
 
 				'key_city'        : $("input[name=key12]").val(),
-				'key_city_weather_code': Number( getWeatherCode($("input[name=key12]").val()) ),
+				'key_city_weather_code': code,
 				
 				'key_navi_dest'    : $("input[name=key140]").val(),
 				'key_navi_dest_lng': $("input[name=key141]").val(),
