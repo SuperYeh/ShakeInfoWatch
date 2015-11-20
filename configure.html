@@ -161,8 +161,8 @@ body {height:auto; margin:0; padding:0;}
 		
 		
     <script>
-		var xmlDoc;
-var weatherCode;
+		var xmlDoc=null;
+var weatherCode=10001001;
 
 		function getConfigData() {
 			var options = {
@@ -249,7 +249,7 @@ var weatherCode;
 				if($(this).val() == 0)  canvas.style.display = "none";
 				else canvas.style.display = "block";   
 			});
-
+/*
 			if(window.ActiveXObject) {
 				xmlDoc = new ActiveXObject('Microsoft.XMLDOM');
 				xmlDoc.async = false;
@@ -258,9 +258,10 @@ var weatherCode;
 				xmlDoc = document.implementation.createDocument('', '', null);
 				xmlDoc.load("/xml/cities.xml");
 			}
-
-                        $("input[name='key12']").change(function() {  
+*/
+                        $("input[name=key12]").change(function() {  
                         var city = $(this).valu();
+alert(city);
 			
 			if(xmlDoc == null) {
                                 alert("资料档载入错误");
