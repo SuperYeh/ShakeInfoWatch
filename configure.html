@@ -163,7 +163,8 @@ body {height:auto; margin:0; padding:0;}
     <script>
 		
 		function getConfigData() {
-			//var code = getWeatherCode($("input[name=key12]").val());
+			var city = $("input[name=key12]").val();
+			var code = getWeatherCode(city);
 			var options = {
 				'key_style_face': Number( $("input[name=key0]:checked").val() ),
 				'key_shake_func': Number( $("input[name=key1]:checked").val() ),
@@ -195,7 +196,7 @@ body {height:auto; margin:0; padding:0;}
     			return defaultValue || false;
   		}
   		
-/*
+
   		function getWeatherCode(city) {  
 			var xmlDoc;
 			if(window.ActiveXObject) {
@@ -220,7 +221,7 @@ body {height:auto; margin:0; padding:0;}
 			}
 			return 0;
 		}
-*/
+
 		
 		$().ready(function() {
 			if (typeof window.localStorage !== "undefined") {
