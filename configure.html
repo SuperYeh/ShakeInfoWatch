@@ -199,6 +199,18 @@ var weatherCode=10001001;
 
 		
 		$().ready(function() {
+
+if(window.ActiveXObject) {
+				xmlDoc = new ActiveXObject('Microsoft.XMLDOM');
+				xmlDoc.async = false;
+				xmlDoc.load("/xml/cities.xml");
+			} else if (document.implementation&&document.implementation.createDocument) {
+				xmlDoc = document.implementation.createDocument('', '', null);
+				xmlDoc.load("/xml/cities.xml");
+			} else {
+alert("浏览器不支持XML解析!");
+}
+
 			if (typeof window.localStorage !== "undefined") {
 				if (window.localStorage.swatch_options) {
 					ls_pto = JSON.parse(window.localStorage.swatch_options);
