@@ -74,7 +74,6 @@ body {height:auto; margin:0; padding: 0;}
 
 <div data-role="collapsible" data-collapsed="true">
 	<h3>&#x8868;&#x76D8;&#x8BBE;&#x5B9A;</h3><!--表盘设定-->
-	
 <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 	<legend><h4>&#x9009;&#x62E9;&#x8868;&#x76D8;:</h4></legend><!--选择表盘:-->
 		<input name="key0" id="key0-1" value="1" checked="checked" type="radio">
@@ -82,8 +81,19 @@ body {height:auto; margin:0; padding: 0;}
 		<input name="key0" id="key0-2" value="2" type="radio">
 		<label for="key0-2">&#x6570;&#x4F4D;&#x5F0F;</label><!--数位式-->
 </fieldset>
+<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
+	<legend><h4>&#x632F;&#x52A8;&#x63D0;&#x9192;:</h4></legend><!--振动提醒:-->
+		<input name="key4" id="key4" value="0" type="checkbox">
+		<label for="key4">&#x6574;&#x70B9;&#x63D0;&#x9192;</label><!--整点提醒-->
+		<input name="key5" id="key5" value="0" type="checkbox">
+		<label for="key5">&#x65AD;&#x8FDE;&#x63D0;&#x9192;<!--断连提醒-->
+</fieldset>
+</div>
+
+<div data-role="collapsible" data-collapsed="true">
+	<h3>&#x8F6C;&#x8155;&#x8BBE;&#x5B9A;</h3><!--转腕设定-->
 <fieldset data-role="controlgroup" data-mini="true">
-    <legend><h4>&#x8F6C;&#x8155;&#x529F;&#x80FD;:</h4></legend><!--转腕功能:-->
+    <legend><h4>&#x8BBE;&#x5B9A;&#x529F;&#x80FD;:</h4></legend><!--设定功能:-->
 	    <input name="key1" id="key1-0" value="0" checked="checked" type="radio">
         <label for="key1-0">&#x5173;&#x95ED;</label><!--关闭-->
 		<input name="key1" id="key1-3" value="3" checked="checked" type="radio">
@@ -101,15 +111,8 @@ body {height:auto; margin:0; padding: 0;}
 		    <input name="key3" id="key3" type="time" value=21:00>
 	    </div>	
 </fieldset>
-<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
-	<legend><h4>&#x632F;&#x52A8;&#x63D0;&#x9192;:</h4></legend><!--振动提醒:-->
-		<input name="key4" id="key4" value="0" type="checkbox">
-		<label for="key4">&#x6574;&#x70B9;&#x63D0;&#x9192;</label><!--整点提醒-->
-		<input name="key5" id="key5" value="0" type="checkbox">
-		<label for="key5">&#x65AD;&#x8FDE;&#x63D0;&#x9192;<!--断连提醒-->
-</fieldset>
 </div>
-					
+
 <div data-role="collapsible" id="map_selector">
 	<h3>&#x6C14;&#x8C61;&#x67E5;&#x8BE2;</h3><!--气象查询-->
 <fieldset data-role="controlgroup" data-mini="true">
