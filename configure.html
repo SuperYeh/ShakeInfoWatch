@@ -128,8 +128,9 @@ body {height:auto; margin:0; padding:0;}
 		<input name="key141" id="key141" style="display: none;" value="12956000" data-mini="true" type="text" maxlength="9">
 		<label for="key142" style="display: none;">&#x7EAC;&#x5EA6;:</label><!--纬度:-->
 		<input name="key142" id="key142" style="display: none;" value="4824875" data-mini="true" type="text" maxlength="9">
+		<label for="key143">&#x663E;&#x793A;&#x9009;&#x53D6;&#x5730;&#x56FE;</label>
 		<input name="key143" id="key143" value="0" type="checkbox">
-		<label for="key143">&#x663E;&#x793A;&#x9009;&#x53D6;&#x5730;&#x56FE;
+		
 </fieldset>
 </div>
 
@@ -200,17 +201,6 @@ var weatherCode=10001001;
 		
 		$().ready(function() {
 
-if(window.ActiveXObject) {
-				xmlDoc = new ActiveXObject('Microsoft.XMLDOM');
-				xmlDoc.async = false;
-				xmlDoc.load("/xml/cities.xml");
-			} else if (document.implementation&&document.implementation.createDocument) {
-				xmlDoc = document.implementation.createDocument('', '', null);
-				xmlDoc.load("/xml/cities.xml");
-			} else {
-alert("浏览器不支持XML解析!");
-}
-
 			if (typeof window.localStorage !== "undefined") {
 				if (window.localStorage.swatch_options) {
 					ls_pto = JSON.parse(window.localStorage.swatch_options);
@@ -261,39 +251,7 @@ alert("浏览器不支持XML解析!");
 				if($(this).val() == 0)  canvas.style.display = "none";
 				else canvas.style.display = "block";   
 			});
-/*
-			if(window.ActiveXObject) {
-				xmlDoc = new ActiveXObject('Microsoft.XMLDOM');
-				xmlDoc.async = false;
-				xmlDoc.load("/xml/cities.xml");
-			} else if (document.implementation&&document.implementation.createDocument) {
-				xmlDoc = document.implementation.createDocument('', '', null);
-				xmlDoc.load("/xml/cities.xml");
-			}
-*/
-                        $("input[name=key12]").change(function() {  
-                        var city = $(this).valu();
-alert(city);
-			
-			if(xmlDoc == null) {
-                                alert("资料档载入错误");
-                                return ;
-			};
 
-			var allcounty = xmlDoc.getElementsByTagName('county');	
-			var countyName;
-			
-			        for (var i=0; i<allcounty.length; i++) {
-				countyName = allcounty[i].childNodes[0].childNodes[0].nodeValue;
-				//countyName = countyName.replace(/(^\s*)|(\s*$)/g, ""); 
-				       if(countyName == city) {
-					weatherCode = allcounty[i].childNodes[1].childNodes[0].nodeValue;		
-				  	return;
-				        }	
-			        }
-			        alert("输入错误，未发现符合的城市");
-	  	        });
-						
 			$("#b-cancel").click(function() {
 				console.log("Cancel");
 				document.location = "pebblejs://close";
