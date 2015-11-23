@@ -296,7 +296,7 @@ body {height:auto; margin:0; padding: 0;}
 				document.location = "pebblejs://close";
 			});
 			
-
+/*
 			$("#b-submit").click(function() {
 				console.log("Submit");
 				ls_pto = JSON.stringify(getConfigData());
@@ -306,8 +306,8 @@ body {height:auto; margin:0; padding: 0;}
 				var location = "pebblejs://close#" + encodeURIComponent(ls_pto);
 				document.location = location;
 			});
-			
-/*
+*/			
+
 			var submitButton = document.getElementById('b-submit');
   			submitButton.addEventListener('click', function() {
     				console.log('Submit');
@@ -319,7 +319,7 @@ body {height:auto; margin:0; padding: 0;}
     				var return_to = getQueryParam('return_to', 'pebblejs://close#');
     				document.location = return_to + encodeURIComponent(ls_pto);
   			});
-*/
+
 		});
     </script>
   </body>
