@@ -87,6 +87,12 @@ body {height:auto; margin:0; padding: 0;}
 		<label for="key4">&#x6574;&#x70B9;&#x63D0;&#x9192;</label><!--整点提醒-->
 		<input name="key5" id="key5" value="0" type="checkbox">
 		<label for="key5">&#x65AD;&#x8FDE;&#x63D0;&#x9192;<!--断连提醒-->
+		<div class="ui-field-contain">	
+		    <label for="key6">&#x5F00;&#x59CB;&#x65F6;&#x95F4;:</label><!--开始时间:-->
+		    <input name="key6" id="key6" type="time" value=07:00>
+		    <label for="key7">&#x7ED3;&#x675F;&#x65F6;&#x95F4;:</label><!--结束时间:-->
+		    <input name="key7" id="key7" type="time" value=22:00>
+		</div>	
 </fieldset>
 </div>
 
@@ -115,12 +121,12 @@ body {height:auto; margin:0; padding: 0;}
         <label for="key1-5">&#x5730;&#x5740;&#x67E5;&#x8BE2;</label><!--地址查询-->
         <input name="key1" id="key1-6" value="6" type="radio">
         <label for="key1-6">&#x5BFC;&#x822A;&#x6307;&#x5F15;</label><!--导航指引-->
-	    <div class="ui-field-contain">	
+	<div class="ui-field-contain">	
 		    <label for="key2">&#x5F00;&#x59CB;&#x65F6;&#x95F4;:</label><!--开始时间:-->
 		    <input name="key2" id="key2" type="time" value=08:00>
 		    <label for="key3">&#x7ED3;&#x675F;&#x65F6;&#x95F4;:</label><!--结束时间:-->
 		    <input name="key3" id="key3" type="time" value=21:00>
-	    </div>	
+	</div>	
 </fieldset>
 </div>
 
@@ -181,6 +187,8 @@ body {height:auto; margin:0; padding: 0;}
 				'key_shake_stop': $("input[name=key3]").val(),
 				'key_hourly_vibr': Number( $("input[name=key4]").val() ),
 				'key_disconnect_vibr': Number( $("input[name=key5]").val() ),
+				'key_daily_start': $("input[name=key6]").val(),
+				'key_daily_stop': $("input[name=key7]").val(),
 				
 				'key_analog_date'      : Number( $("input[name=key010]:checked").val() ),
 				
@@ -231,6 +239,11 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key5]").checkboxradio('refresh');
 						$("input[name=key5]").val(1);
 					}
+					if ("key_daily_start" in ls_pto) 
+						$("input[name=key6]").val(ls_pto["key_daily_start"]);
+					if ("key_daily_stop" in ls_pto) 
+						$("input[name=key7]").val(ls_pto["key_daily_stop"]);
+						
 					if ("key_city" in ls_pto) 
 						$("input[name=key12]").val(ls_pto["key_city"]);
 					if(ls_pto["key_hourly_weather"]==1) {	
