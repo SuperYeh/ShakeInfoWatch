@@ -19,13 +19,29 @@ body {height:auto; margin:0; padding: 0;}
 			var marker;
 			
 	   		function initialize() {
+	   			var mclng = 12956000;
+				var mclat = 4824875;
+				
+				if (typeof window.localStorage !== "undefined") {
+				    if (window.localStorage.swatch_options) {
+					var ls_pto = JSON.parse(window.localStorage.swatch_options);
+	   				if ("key_navi_dest" in ls_pto) {
+						if(ls_pto["key_navi_dest_lng"] != "")
+							mclng = Number( ls_pto["key_navi_dest_lng"] );
+						if(ls_pto["key_navi_dest_lat"] != "")
+							mclat = Number( ls_pto["key_navi_dest_lat"] );
+	   				}
+				    }	
+				} 
+	   			
 				var canvas = document.getElementById("map_canvas");
 				//canvas.width = 400;
 				//canvas.height = 400;
 				
 				//var myLatlng = new sogou.maps.LatLng(39.992792,116.326142);
-				var mclng = document.getElementById("key141").value;
-				var mclat = document.getElementById("key142").value;
+				//var mclng = document.getElementById("key141").value;
+				//var mclat = document.getElementById("key142").value;
+				
 				var target = new sogou.maps.Point(mclng, mclat);
 				var myOptions = {
 					zoom: 15,
@@ -181,7 +197,7 @@ body {height:auto; margin:0; padding: 0;}
 		var weatherCode;
 		
 		function getConfigData() {
-			$("input[id='key12']").change();
+		    $("input[id='key12']").change();
 		    var options = {
 				'key_style_face': Number( $("input[name=key0]:checked").val() ),
 				'key_shake_func': Number( $("input[name=key1]:checked").val() ),
@@ -204,6 +220,7 @@ body {height:auto; margin:0; padding: 0;}
 			}
 			return options;
 		}
+		
 		function getQueryParam(variable, defaultValue) {
     			var query = location.search.substring(1);
     			var vars = query.split('&');
@@ -220,7 +237,7 @@ body {height:auto; margin:0; padding: 0;}
 			
 		   	if (typeof window.localStorage !== "undefined") {
 				if (window.localStorage.swatch_options) {
-					ls_pto = JSON.parse(window.localStorage.swatch_options);
+					var ls_pto = JSON.parse(window.localStorage.swatch_options);
 					
 					// the Pebble webview dies on the next line...
 					$("input[name=key0][id=key0-"+ls_pto["key_style_face"]+"]").prop('checked',true);
@@ -284,7 +301,7 @@ body {height:auto; margin:0; padding: 0;}
 					return;
 				}
 				var field = "input[name='"+city+"']";
-				code = $(field).val();
+				var code = $(field).val();
 				if(code != null) {
 					//alert(city +":"+ code);
 					weatherCode = code;
@@ -301,7 +318,7 @@ body {height:auto; margin:0; padding: 0;}
 			});
 					
 			$("input[id='key143']").click(function(){   
-			    var canvas = document.getElementById("map_canvas");
+			    	var canvas = document.getElementById("map_canvas");
 				if($(this).val() == 0)  canvas.style.display = "none";
 				else canvas.style.display = "block";   
 			});
@@ -326,13 +343,13 @@ body {height:auto; margin:0; padding: 0;}
 			var submitButton = document.getElementById('b-submit');
   			submitButton.addEventListener('click', function() {
     				console.log('Submit');
-    				ls_pto = JSON.stringify(getConfigData());
+    				var ls_option = JSON.stringify(getConfigData());
     				if (typeof window.localStorage !== "undefined") {
-					window.localStorage.swatch_options = ls_pto;
+					window.localStorage.swatch_options = ls_option;
 				}
     				// Set the return URL depending on the runtime environment
     				var return_to = getQueryParam('return_to', 'pebblejs://close#');
-    				document.location = return_to + encodeURIComponent(ls_pto);
+    				document.location = return_to + encodeURIComponent(ls_option);
   			});
 
 		});
