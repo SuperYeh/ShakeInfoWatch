@@ -10,10 +10,12 @@ body {height:auto; margin:0; padding: 0;}
 #map_canvas {width:90%; height:500px; position:relative;}
 @media print {#map_canvas {height:950px;}}
 </style>
+<link rel='stylesheet' type='text/css' href='css/slate.min.css'>
 <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
 <script type="text/javascript" src="http://api.go2map.com/maps/js/api_v2.5.1.js"></script>
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/jquery.mobile-1.3.2.min.js"></script>
+<script type="text/javascript" src='js/slate.js'></script>
 <script type="text/javascript">
 			var map;
 			var marker;
@@ -115,19 +117,6 @@ body {height:auto; margin:0; padding: 0;}
 </fieldset>
 </div>
 
-<div data-role="collapsible">
-    <h3>&#x6307;&#x9488;&#x5F0F;&#x8868;&#x76D8;</h3><!--指针式表盘-->
-<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-    <legend>&#x65E5;&#x671F;&#x663E;&#x793A;:</legend><!--日期显示:-->
-        <input name="key010" id="key010-0" value="0" checked="checked" type="radio">
-        <label for="key010-0">&#x4E0D;&#x663E;&#x793A;</label><!--不显示-->
-        <input name="key010" id="key010-11" value="11" type="radio">
-        <label for="key010-11">&#x9876;&#x7AEF;</label><!--顶端-->
-        <input name="key010" id="key010-12" value="12" type="radio">
-        <label for="key010-12">&#x5E95;&#x7AEF;</label><!--底端-->
-</fieldset>	
-</div>
-
 <div data-role="collapsible" data-collapsed="true">
 	<h3>&#x8F6C;&#x8155;&#x8BBE;&#x5B9A;</h3><!--转腕设定-->
 <fieldset data-role="controlgroup" data-mini="true">
@@ -177,6 +166,79 @@ body {height:auto; margin:0; padding: 0;}
 </fieldset>
 </div>
 
+<div data-role="collapsible">
+    <h3>&#x6307;&#x9488;&#x8868;&#x76D8;</h3><!--指针表盘-->
+<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+    <legend>日期显示:</legend><!--日期显示:-->
+        <input name="key009" id="key009-0" value="0" checked="checked" type="radio">
+        <label for="key009-0">&#x7A7A;&#x767D;</label><!--空白-->
+        <input name="key009" id="key009-11" value="11" type="radio">
+        <label for="key009-11">顶端</label><!--顶端-->
+        <input name="key009" id="key009-12" value="12" type="radio">
+        <label for="key009-12">底端</label><!--底端-->
+</fieldset>	
+<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+	<legend><h4>色彩选择:</h4></legend><!---->
+		<label for="key000">底色</label><!---->
+		<label class="item">
+          <input name="key000" id="key000" type="text" class="item-color item-color-normal" value="#000000">
+        </label>
+		<label for="key001">时针</label><!---->
+		<label class="item">
+          <input name="key001" id="key001" type="text" class="item-color item-color-normal" value="#FF0000">
+        </label>
+		<label for="key002">分针</label><!---->
+		<label class="item">
+          <input name="key002" id="key002" type="text" class="item-color item-color-normal" value="#FFFFFF">
+        </label>
+		<label for="key003">圆心</label><!---->
+		<label class="item">
+          <input name="key003" id="key003" type="text" class="item-color item-color-normal" value="#00FF00">
+        </label>
+		<label for="key004">文字</label><!---->
+		<label class="item">
+          <input name="key004" id="key004" type="text" class="item-color item-color-normal" value="#FFFFFF">
+        </label>
+</fieldset>
+</div>
+
+<div data-role="collapsible">
+    <h3>数位表盘</h3><!--数位表盘-->
+<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+	<legend><h4>色彩选择:</h4></legend><!---->
+		<label for="key010">底色</label><!---->
+		<label class="item">
+          <input name="key010" id="key010" type="text" class="item-color item-color-normal" value="#000000">
+        </label>
+		<label for="key011">文字</label><!---->
+		<label class="item">
+          <input name="key011" id="key011" type="text" class="item-color item-color-normal" value="#FFFFFF">
+        </label>
+		<label for="key012">图标</label><!---->
+		<label class="item">
+          <input name="key012" id="key012" type="text" class="item-color item-color-normal" value="#FFFFFF">
+        </label>
+</fieldset>
+</div>
+
+<div data-role="collapsible">
+    <h3>天气表盘</h3><!--数位式表盘-->
+<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+	<legend><h4>色彩选择:</h4></legend><!---->
+		<label for="key020">底色</label><!---->
+		<label class="item">
+          <input name="key020" id="key020" type="text" class="item-color item-color-normal" value="#000000">
+        </label>
+		<label for="key021">文字</label><!---->
+		<label class="item">
+          <input name="key021" id="key021" type="text" class="item-color item-color-normal" value="#FFFFFF">
+        </label>
+		<label for="key022">图标</label><!---->
+		<label class="item">
+          <input name="key022" id="key022" type="text" class="item-color item-color-normal" value="#FFFFFF">
+        </label>
+</fieldset>
+</div>
 			</div>
 
 <br />
@@ -209,8 +271,6 @@ body {height:auto; margin:0; padding: 0;}
 				'key_daily_start': $("input[name=key6]").val(),
 				'key_daily_stop': $("input[name=key7]").val(),
 				
-				'key_analog_date'      : Number( $("input[name=key010]:checked").val() ),
-				
 				'key_city'        : $("input[name=key12]").val(),
 				'key_city_weather_code': Number( weatherCode ),
 				'key_hourly_weather': Number( $("input[name=key121]").val() ),
@@ -218,6 +278,19 @@ body {height:auto; margin:0; padding: 0;}
 				'key_navi_dest'    : $("input[name=key140]").val(),
 				'key_navi_dest_lng': $("input[name=key141]").val(),
 				'key_navi_dest_lat': $("input[name=key142]").val(),  
+				
+				'key_analog_date'      : Number( $("input[name=key009]:checked").val() ),
+				'key_analog_face_color'    : $("input[name=key000]").val(),
+				'key_analog_hour_color'    : $("input[name=key001]").val(),
+				'key_analog_min_color'    : $("input[name=key002]").val(),
+				'key_analog_power_color'    : $("input[name=key003]").val(),
+				'key_analog_word_color'    : $("input[name=key004]").val(),
+				'key_digit_face_color'    : $("input[name=key010]").val(),
+				'key_digit_word_color'    : $("input[name=key011]").val(),
+				'key_digit_icon_color'    : $("input[name=key012]").val(),
+				'key_weather_face_color'    : $("input[name=key020]").val(),
+				'key_weather_word_color'    : $("input[name=key021]").val(),
+				'key_weather_icon_color'    : $("input[name=key022]").val(),
 			}
 			return options;
 		}
@@ -282,8 +355,30 @@ body {height:auto; margin:0; padding: 0;}
 						}	
 					}
 					
-					$("input[name=key010][id=key010-"+ls_pto["key_analog_date"]+"]").prop('checked',true);
-					$("input[name=key010]").checkboxradio('refresh');
+					$("input[name=key009][id=key009-"+ls_pto["key_analog_date"]+"]").prop('checked',true);
+					$("input[name=key009]").checkboxradio('refresh');
+					if ("key_analog_face_color" in ls_pto) 
+						$("input[name=key000]").val(ls_pto["key_analog_face_color"]);
+					if ("key_analog_hour_color" in ls_pto) 
+						$("input[name=key001]").val(ls_pto["key_analog_hour_color"]);
+					if ("key_analog_min_color" in ls_pto) 
+						$("input[name=key002]").val(ls_pto["key_analog_min_color"]);
+					if ("key_analog_power_color" in ls_pto) 
+						$("input[name=key003]").val(ls_pto["key_analog_power_color"]);
+					if ("key_analog_word_color" in ls_pto) 
+						$("input[name=key004]").val(ls_pto["key_analog_icon_color"]);
+					if ("key_digit_face_color" in ls_pto) 
+						$("input[name=key010]").val(ls_pto["key_digit_face_color"]);
+					if ("key_digit_word_color" in ls_pto) 
+						$("input[name=key011]").val(ls_pto["key_digit_word_color"]);
+					if ("key_digit_icon_color" in ls_pto) 
+						$("input[name=key012]").val(ls_pto["key_digit_icon_color"]);
+					if ("key_weather_face_color" in ls_pto) 
+						$("input[name=key020]").val(ls_pto["key_weather_face_color"]);
+					if ("key_weather_word_color" in ls_pto) 
+						$("input[name=key021]").val(ls_pto["key_weather_word_color"]);
+					if ("key_weather_icon_color" in ls_pto) 
+						$("input[name=key022]").val(ls_pto["key_weather_icon_color"]);	
 					
 					weatherCode =  Number( ls_pto["key_city_weather_code"] );
 				}
