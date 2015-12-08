@@ -205,9 +205,9 @@ body {height:auto; margin:0; padding: 0;}
 </div>
 
 <div data-role="collapsible">
-    <h3>数位表盘</h3><!--数位表盘-->
+    <h3>&#x6570;&#x4F4D;&#x8868;&#x76D8;</h3><!--数位表盘-->
 <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-	<legend><h4>色彩选择:</h4></legend><!---->
+	<legend><h4>&#x8272;&#x5F69;&#x9009;&#x62E9;:</h4></legend><!--色彩选择:-->
 		<label for="key010">&#x5E95;&#x8272;</label><!--底色-->
 		<label class="item">
           <input name="key010" id="key010" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000">
@@ -224,9 +224,9 @@ body {height:auto; margin:0; padding: 0;}
 </div>
 
 <div data-role="collapsible">
-    <h3>天气表盘</h3><!--数位式表盘-->
+    <h3>&#x5929;&#x6C14;&#x8868;&#x76D8;</h3><!--天气表盘-->
 <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-	<legend><h4>色彩选择:</h4></legend><!---->
+	<legend><h4>&#x8272;&#x5F69;&#x9009;&#x62E9;:</h4></legend><!--色彩选择:-->
 		<label for="key020">&#x5E95;&#x8272;</label><!--底色-->
 		<label class="item">
           <input name="key020" id="key020" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000">
@@ -238,6 +238,25 @@ body {height:auto; margin:0; padding: 0;}
 		<label for="key022">&#x56FE;&#x6807;</label><!--图标-->
 		<label class="item">
           <input name="key022" id="key022" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF">
+        </label>
+</fieldset>
+</div>
+
+<div data-role="collapsible">
+    <h3>&#x9EC4;&#x5386;&#x8868;&#x76D8;</h3><!--黄历表盘-->
+<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+	<legend><h4>&#x8272;&#x5F69;&#x9009;&#x62E9;:</h4></legend><!--色彩选择:-->
+		<label for="key030">&#x5E95;&#x8272;</label><!--底色-->
+		<label class="item">
+          <input name="key030" id="key030" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000">
+        </label>
+		<label for="key031">&#x6587;&#x5B57;</label><!--文字-->
+		<label class="item">
+          <input name="key031" id="key031" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF">
+        </label>
+		<label for="key032">&#x56FE;&#x6807;</label><!--图标-->
+		<label class="item">
+          <input name="key032" id="key032" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF">
         </label>
 </fieldset>
 </div>
@@ -293,6 +312,9 @@ body {height:auto; margin:0; padding: 0;}
 				'key_weather_face_color'    : $("input[name=key020]").val(),
 				'key_weather_word_color'    : $("input[name=key021]").val(),
 				'key_weather_icon_color'    : $("input[name=key022]").val(),
+				'key_hl_face_color'    : $("input[name=key030]").val(),
+				'key_hl_word_color'    : $("input[name=key031]").val(),
+				'key_hl_icon_color'    : $("input[name=key032]").val(),
 			}
 			return options;
 		}
@@ -381,6 +403,12 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key021]").val(ls_pto["key_weather_word_color"]);
 					if ("key_weather_icon_color" in ls_pto) 
 						$("input[name=key022]").val(ls_pto["key_weather_icon_color"]);	
+					if ("key_hl_face_color" in ls_pto) 
+						$("input[name=key030]").val(ls_pto["key_hl_face_color"]);
+					if ("key_hl_word_color" in ls_pto) 
+						$("input[name=key031]").val(ls_pto["key_hl_word_color"]);
+					if ("key_hl_icon_color" in ls_pto) 
+						$("input[name=key032]").val(ls_pto["key_hl_icon_color"]);	
 					
 					weatherCode =  Number( ls_pto["key_city_weather_code"] );
 				}
