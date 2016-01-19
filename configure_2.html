@@ -211,6 +211,10 @@ body {height:auto; margin:0; padding: 0;}
 		<label class="item">
           <input name="key012" id="key012" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
         </label>
+		<label for="key013">&#x65F6;&#x95F4;</label><!--时间-->
+		<label class="item">
+          <input name="key013" id="key013" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
+        </label>
 </fieldset>
 </div>
 
@@ -230,6 +234,10 @@ body {height:auto; margin:0; padding: 0;}
 		<label class="item">
           <input name="key022" id="key022" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
         </label>
+		<label for="key023">&#x65F6;&#x95F4;</label><!--时间-->
+		<label class="item">
+          <input name="key023" id="key023" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
+        </label>
 </fieldset>
 </div>
 
@@ -248,6 +256,10 @@ body {height:auto; margin:0; padding: 0;}
 		<label for="key032">&#x56FE;&#x6807;</label><!--图标-->
 		<label class="item">
           <input name="key032" id="key032" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
+        </label>
+		<label for="key033">&#x65F6;&#x95F4;</label><!--时间-->
+		<label class="item">
+          <input name="key033" id="key033" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
         </label>
 </fieldset>
 </div>
@@ -299,12 +311,15 @@ body {height:auto; margin:0; padding: 0;}
 				'key_digit_face_color'    : $("input[name=key010]").val(),
 				'key_digit_word_color'    : $("input[name=key011]").val(),
 				'key_digit_icon_color'    : $("input[name=key012]").val(),
+				'key_digit_time_color'    : $("input[name=key013]").val(),
 				'key_weather_face_color'    : $("input[name=key020]").val(),
 				'key_weather_word_color'    : $("input[name=key021]").val(),
 				'key_weather_icon_color'    : $("input[name=key022]").val(),
+				'key_weather_time_color'    : $("input[name=key023]").val(),
 				'key_hl_face_color'    : $("input[name=key030]").val(),
 				'key_hl_word_color'    : $("input[name=key031]").val(),
 				'key_hl_icon_color'    : $("input[name=key032]").val(),
+				'key_hl_time_color'    : $("input[name=key033]").val(),
 			}
 			return options;
 		}
@@ -383,19 +398,25 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key011]").val(ls_pto["key_digit_word_color"]);
 					if ("key_digit_icon_color" in ls_pto) 
 						$("input[name=key012]").val(ls_pto["key_digit_icon_color"]);
+					if ("key_digit_time_color" in ls_pto) 
+						$("input[name=key013]").val(ls_pto["key_digit_time_color"]);
 					if ("key_weather_face_color" in ls_pto) 
 						$("input[name=key020]").val(ls_pto["key_weather_face_color"]);
 					if ("key_weather_word_color" in ls_pto) 
 						$("input[name=key021]").val(ls_pto["key_weather_word_color"]);
 					if ("key_weather_icon_color" in ls_pto) 
-						$("input[name=key022]").val(ls_pto["key_weather_icon_color"]);	
+						$("input[name=key022]").val(ls_pto["key_weather_icon_color"]);
+					if ("key_weather_time_color" in ls_pto) 
+						$("input[name=key023]").val(ls_pto["key_weather_time_color"]);	
 					if ("key_hl_face_color" in ls_pto) 
 						$("input[name=key030]").val(ls_pto["key_hl_face_color"]);
 					if ("key_hl_word_color" in ls_pto) 
 						$("input[name=key031]").val(ls_pto["key_hl_word_color"]);
 					if ("key_hl_icon_color" in ls_pto) 
 						$("input[name=key032]").val(ls_pto["key_hl_icon_color"]);	
-					
+					if ("key_hl_time_color" in ls_pto) 
+						$("input[name=key033]").val(ls_pto["key_hl_time_color"]);	
+						
 					weatherCode =  Number( ls_pto["key_city_weather_code"] );
 				}
 			}
