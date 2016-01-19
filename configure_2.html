@@ -125,10 +125,10 @@ body {height:auto; margin:0; padding: 0;}
 </fieldset>		
 <fieldset data-role="controlgroup" data-type="vertical" data-mini="true">		
 		<div class="ui-field-contain">	
-		    <label for="key6">&#x5F00;&#x59CB;&#x65F6;&#x95F4;:</label><!--开始时间:-->
-		    <input name="key6" id="key6" type="time" value=07:00>
-		    <label for="key7">&#x7ED3;&#x675F;&#x65F6;&#x95F4;:</label><!--结束时间:-->
-		    <input name="key7" id="key7" type="time" value=22:00>
+		    <label for="key2">&#x5F00;&#x59CB;&#x65F6;&#x95F4;:</label><!--开始时间:-->
+		    <input name="key2" id="key2" type="time" value=07:00>
+		    <label for="key3">&#x7ED3;&#x675F;&#x65F6;&#x95F4;:</label><!--结束时间:-->
+		    <input name="key3" id="key3" type="time" value=22:00>
 		</div>	
 </fieldset>
 </div>
@@ -291,8 +291,8 @@ body {height:auto; margin:0; padding: 0;}
 				'key_shake_func': Number( $("input[name=key1]:checked").val() ),
 				'key_hourly_vibr': Number( $("input[name=key4]").val() ),
 				'key_disconnect_vibr': Number( $("input[name=key5]").val() ),
-				'key_daily_start': $("input[name=key6]").val(),
-				'key_daily_stop': $("input[name=key7]").val(),
+				'key_daily_start': $("input[name=key2]").val(),
+				'key_daily_stop': $("input[name=key3]").val(),
 				
 				'key_city'        : $("input[name=key12]").val(),
 				'key_city_weather_code': Number( weatherCode ),
@@ -358,9 +358,9 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key5]").val(1);
 					}
 					if ("key_daily_start" in ls_pto) 
-						$("input[name=key6]").val(ls_pto["key_daily_start"]);
+						$("input[name=key2]").val(ls_pto["key_daily_start"]);
 					if ("key_daily_stop" in ls_pto) 
-						$("input[name=key7]").val(ls_pto["key_daily_stop"]);
+						$("input[name=key3]").val(ls_pto["key_daily_stop"]);
 						
 					if ("key_city" in ls_pto) 
 						$("input[name=key12]").val(ls_pto["key_city"]);
