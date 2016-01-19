@@ -277,8 +277,6 @@ body {height:auto; margin:0; padding: 0;}
 				'key_app': 0,
 				'key_style_face': Number( $("input[name=key0]:checked").val() ),
 				'key_shake_func': Number( $("input[name=key1]:checked").val() ),
-				'key_shake_start': $("input[name=key2]").val(),
-				'key_shake_stop': $("input[name=key3]").val(),
 				'key_hourly_vibr': Number( $("input[name=key4]").val() ),
 				'key_disconnect_vibr': Number( $("input[name=key5]").val() ),
 				'key_daily_start': $("input[name=key6]").val(),
@@ -334,10 +332,6 @@ body {height:auto; margin:0; padding: 0;}
 					$("input[name=key0]").checkboxradio('refresh');
 					$("input[name=key1][id=key1-"+ls_pto["key_shake_func"]+"]").prop('checked',true);
 					$("input[name=key1]").checkboxradio('refresh');
-					if ("key_shake_start" in ls_pto) 
-						$("input[name=key2]").val(ls_pto["key_shake_start"]);
-					if ("key_shake_stop" in ls_pto) 
-						$("input[name=key3]").val(ls_pto["key_shake_stop"]);
 					if(ls_pto["key_hourly_vibr"]==1) {	
 						$("input[name=key4]").prop('checked', true);
 						$("input[name=key4]").checkboxradio('refresh');
