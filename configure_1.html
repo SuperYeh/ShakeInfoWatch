@@ -100,6 +100,19 @@ body {height:auto; margin:0; padding: 0;}
 		<input name="key0" id="key0-3" value="3" type="radio">
 		<label for="key0-3">&#x9EC4;&#x5386;</label><!--黄历表盘-->
 </fieldset>
+<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+    <legend><h4>&#x8F6C;&#x8155;&#x8BBE;&#x5B9A;:</h4></legend><!--转腕设定:-->
+	<input name="key1" id="key1-0" value="0" checked="checked" type="radio">
+        <label for="key1-0">&#x5173;&#x95ED;</label><!--关闭-->
+        <input name="key1" id="key1-4" value="4" type="radio">   
+        <label for="key1-4">&#x9EC4;&#x5386;</label><!--黄历-->
+        <input name="key1" id="key1-5" value="5" type="radio">   
+        <label for="key1-5">&#x5929;&#x6C14;</label><!--天气-->
+        <input name="key1" id="key1-6" value="6" type="radio">
+        <label for="key1-6">&#x5730;&#x5740;</label><!--地址-->
+        <input name="key1" id="key1-7" value="7" type="radio">
+        <label for="key1-7">&#x5BFC;&#x822A;</label><!--导航-->
+</fieldset>
 <fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
 	<legend><h4>&#x632F;&#x52A8;&#x63D0;&#x9192;:</h4></legend><!--振动提醒:-->
 		<input name="key4" id="key4" value="0" type="checkbox">
@@ -109,34 +122,11 @@ body {height:auto; margin:0; padding: 0;}
 </fieldset>		
 <fieldset data-role="controlgroup" data-type="vertical" data-mini="true">		
 		<div class="ui-field-contain">	
-		    <label for="key6">&#x5F00;&#x59CB;&#x65F6;&#x95F4;:</label><!--开始时间:-->
-		    <input name="key6" id="key6" type="time" value=07:00>
-		    <label for="key7">&#x7ED3;&#x675F;&#x65F6;&#x95F4;:</label><!--结束时间:-->
-		    <input name="key7" id="key7" type="time" value=22:00>
-		</div>	
-</fieldset>
-</div>
-
-<div data-role="collapsible" data-collapsed="true">
-	<h3>&#x8F6C;&#x8155;&#x8BBE;&#x5B9A;</h3><!--转腕设定-->
-<fieldset data-role="controlgroup" data-mini="true">
-    <legend><h4>&#x8BBE;&#x5B9A;&#x529F;&#x80FD;:</h4></legend><!--设定功能:-->
-	<input name="key1" id="key1-0" value="0" checked="checked" type="radio">
-        <label for="key1-0">&#x5173;&#x95ED;</label><!--关闭-->
-        <input name="key1" id="key1-4" value="4" type="radio">   
-        <label for="key1-4">&#x9EC4;&#x5386;&#x67E5;&#x8BE2;</label><!--黄历查询-->
-        <input name="key1" id="key1-5" value="5" type="radio">   
-        <label for="key1-5">&#x6C14;&#x8C61;&#x67E5;&#x8BE2;</label><!--气象查询-->
-        <input name="key1" id="key1-6" value="6" type="radio">
-        <label for="key1-6">&#x5730;&#x5740;&#x67E5;&#x8BE2;</label><!--地址查询-->
-        <input name="key1" id="key1-7" value="7" type="radio">
-        <label for="key1-7">&#x5BFC;&#x822A;&#x6307;&#x5F15;</label><!--导航指引-->
-	<div class="ui-field-contain">	
 		    <label for="key2">&#x5F00;&#x59CB;&#x65F6;&#x95F4;:</label><!--开始时间:-->
-		    <input name="key2" id="key2" type="time" value=08:00>
+		    <input name="key2" id="key2" type="time" value=07:00>
 		    <label for="key3">&#x7ED3;&#x675F;&#x65F6;&#x95F4;:</label><!--结束时间:-->
-		    <input name="key3" id="key3" type="time" value=21:00>
-	</div>	
+		    <input name="key3" id="key3" type="time" value=22:00>
+		</div>	
 </fieldset>
 </div>
 
@@ -193,12 +183,10 @@ body {height:auto; margin:0; padding: 0;}
 		    		'key_app': 0,
 				'key_style_face': Number( $("input[name=key0]:checked").val() ),
 				'key_shake_func': Number( $("input[name=key1]:checked").val() ),
-				'key_shake_start': $("input[name=key2]").val(),
-				'key_shake_stop': $("input[name=key3]").val(),
+				'key_daily_start': $("input[name=key2]").val(),
+				'key_daily_stop': $("input[name=key3]").val(),
 				'key_hourly_vibr': Number( $("input[name=key4]").val() ),
 				'key_disconnect_vibr': Number( $("input[name=key5]").val() ),
-				'key_daily_start': $("input[name=key6]").val(),
-				'key_daily_stop': $("input[name=key7]").val(),
 				
 				'key_city'        : $("input[name=key12]").val(),
 				'key_city_weather_code': Number( weatherCode ),
@@ -235,10 +223,10 @@ body {height:auto; margin:0; padding: 0;}
 					$("input[name=key0]").checkboxradio('refresh');
 					$("input[name=key1][id=key1-"+ls_pto["key_shake_func"]+"]").prop('checked',true);
 					$("input[name=key1]").checkboxradio('refresh');
-					if ("key_shake_start" in ls_pto) 
-						$("input[name=key2]").val(ls_pto["key_shake_start"]);
-					if ("key_shake_stop" in ls_pto) 
-						$("input[name=key3]").val(ls_pto["key_shake_stop"]);
+					if ("key_daily_start" in ls_pto) 
+						$("input[name=key2]").val(ls_pto["key_daily_start"]);
+					if ("key_daily_stop" in ls_pto) 
+						$("input[name=key3]").val(ls_pto["key_daily_stop"]);
 					if(ls_pto["key_hourly_vibr"]==1) {	
 						$("input[name=key4]").prop('checked', true);
 						$("input[name=key4]").checkboxradio('refresh');
@@ -249,10 +237,6 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key5]").checkboxradio('refresh');
 						$("input[name=key5]").val(1);
 					}
-					if ("key_daily_start" in ls_pto) 
-						$("input[name=key6]").val(ls_pto["key_daily_start"]);
-					if ("key_daily_stop" in ls_pto) 
-						$("input[name=key7]").val(ls_pto["key_daily_stop"]);
 						
 					if ("key_city" in ls_pto) 
 						$("input[name=key12]").val(ls_pto["key_city"]);
