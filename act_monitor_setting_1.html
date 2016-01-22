@@ -66,14 +66,14 @@ body {height: auto;margin: 0;padding: 0;}
 			<fieldset data-role="controlgroup" data-mini="true">
 				<legend><h4>LONG SEAT REMINDER:</h4></legend>
 					<label for="key3" >MINUTE:</label>
-					<input name="key3" id="key3" data-mini="true" type="text" maxlength="9">
+					<input name="key3" id="key3" data-mini="true" type="text" maxlength="9" value="60">
 					<input name="key4" id="key4" value="0" type="checkbox">
 					<label for="key4">TO REMIND	</label>	
 			</fieldset>	
 			<fieldset data-role="controlgroup" data-mini="true">
 				<legend><h4>LONG RUNNING REMINDER:</h4></legend>
 					<label for="key5" >MINUTE:</label>
-					<input name="key5" id="key5" data-mini="true" type="text" maxlength="9">
+					<input name="key5" id="key5" data-mini="true" type="text" maxlength="9" value="15">
 					<input name="key6" id="key6" value="0" type="checkbox">
 					<label for="key6">TO REMIND	</label>	
 			</fieldset>	
@@ -146,14 +146,14 @@ body {height: auto;margin: 0;padding: 0;}
 					$("input[name=key2]").checkboxradio('refresh');
 	
 					if ("key_time_longsit" in ls_pto) 
-					$("input[name=key3]").val(ls_pto["key_time_longsit"]);
+					        $("input[name=key3]").val(ls_pto["key_time_longsit"]);
 					if(ls_pto["key_longsit_vibr"]==1) {	
 						$("input[name=key4]").prop('checked', true);
 						$("input[name=key4]").checkboxradio('refresh');
 						$("input[name=key4]").val(1);
 					}
 					if ("key_time_longrun" in ls_pto) 
-					$("input[name=key5]").val(ls_pto["key_time_longrun"]);
+					        $("input[name=key5]").val(ls_pto["key_time_longrun"]);
 					if(ls_pto["key_longrun_vibr"]==1) {
 						$("input[name=key6]").prop('checked', true);
 						$("input[name=key6]").checkboxradio('refresh');
