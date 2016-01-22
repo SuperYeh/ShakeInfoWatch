@@ -63,20 +63,28 @@ body {height: auto;margin: 0;padding: 0;}
 		</div>	
 		
 		<div class="ui-field-contain">	
-			<fieldset data-role="controlgroup" data-mini="true">
-				<legend><h4>LONG SEAT REMINDER:</h4></legend>
-					<label for="key3" >MINUTE:</label>
-					<input name="key3" id="key3" data-mini="true" type="text" maxlength="9" value="60">
-					<input name="key4" id="key4" value="0" type="checkbox">
-					<label for="key4">TO REMIND	</label>	
-			</fieldset>	
-			<fieldset data-role="controlgroup" data-mini="true">
-				<legend><h4>LONG RUNNING REMINDER:</h4></legend>
-					<label for="key5" >MINUTE:</label>
-					<input name="key5" id="key5" data-mini="true" type="text" maxlength="9" value="15">
-					<input name="key6" id="key6" value="0" type="checkbox">
-					<label for="key6">TO REMIND	</label>	
-			</fieldset>	
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>SEAT REMINDER:</h4></legend>
+					<input name="key3" id="key3-0" value="0" checked="checked" type="radio">
+					<label for="key3-0">NONE</label>
+					<input name="key3" id="key3-1" value="1" type="radio">
+					<label for="key3-1">30min</label>
+					<input name="key3" id="key3-2" value="2" type="radio">
+					<label for="key3-2">45min</label>
+					<input name="key3" id="key3-3" value="3" type="radio">
+					<label for="key3-3">60min</label>
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>RUN REMINDER:</h4></legend>
+					<input name="key5" id="key5-0" value="0" checked="checked" type="radio">
+					<label for="key5-0">NONE</label>
+					<input name="key5" id="key5-1" value="1" type="radio">
+					<label for="key5-1">15min</label>
+					<input name="key5" id="key5-2" value="2" type="radio">
+					<label for="key5-2">20min</label>
+					<input name="key5" id="key5-3" value="3" type="radio">
+					<label for="key5-3">30min</label>
+			</fieldset>		
 		</div>	
 	
 		<div class="ui-field-contain">	
@@ -107,9 +115,7 @@ body {height: auto;margin: 0;padding: 0;}
 				'key_time_style': Number( $("input[name=key1]:checked").val() ),
 				'key_time_tick': Number( $("input[name=key2]:checked").val() ),
 				'key_time_longsit': $("input[name=key3]").val(),
-				'key_longsit_vibr': Number( $("input[name=key4]").val() ),
 				'key_time_longrun': $("input[name=key5]").val(),
-				'key_longrun_vibr': Number( $("input[name=key6]").val() ),
 				
 				'key_hourly_vibr': Number( $("input[name=key7]").val() ),
 				'key_disconnect_vibr': Number( $("input[name=key8]").val() ),
@@ -121,6 +127,7 @@ body {height: auto;margin: 0;padding: 0;}
 			}
 			return options;
 		}
+		
 		function getQueryParam(variable, defaultValue) {
     			var query = location.search.substring(1);
     			var vars = query.split('&');
@@ -145,20 +152,12 @@ body {height: auto;margin: 0;padding: 0;}
 					$("input[name=key2][id=key2-"+ls_pto["key_time_tick"]+"]").prop('checked',true);
 					$("input[name=key2]").checkboxradio('refresh');
 	
-					if ("key_time_longsit" in ls_pto) 
-					        $("input[name=key3]").val(ls_pto["key_time_longsit"]);
-					if(ls_pto["key_longsit_vibr"]==1) {	
-						$("input[name=key4]").prop('checked', true);
-						$("input[name=key4]").checkboxradio('refresh');
-						$("input[name=key4]").val(1);
-					}
-					if ("key_time_longrun" in ls_pto) 
-					        $("input[name=key5]").val(ls_pto["key_time_longrun"]);
-					if(ls_pto["key_longrun_vibr"]==1) {
-						$("input[name=key6]").prop('checked', true);
-						$("input[name=key6]").checkboxradio('refresh');
-						$("input[name=key6]").val(1);
-					}
+					$("input[name=key3][id=key3-"+ls_pto["key_time_longsit"]+"]").prop('checked',true);
+					$("input[name=key3]").checkboxradio('refresh');
+
+					$("input[name=key5][id=key5-"+ls_pto["key_time_longrun"]+"]").prop('checked',true);
+					$("input[name=key5]").checkboxradio('refresh');
+
 						
 					if(ls_pto["key_hourly_vibr"]==1) {	
 						$("input[name=key7]").prop('checked', true);
@@ -193,7 +192,7 @@ body {height: auto;margin: 0;padding: 0;}
 				document.location = "pebblejs://close";
 			});
 			
-
+/*
 			$("#b-submit").click(function() {
 				console.log("Submit");
 				ls_pto = JSON.stringify(getConfigData());
@@ -204,7 +203,7 @@ body {height: auto;margin: 0;padding: 0;}
 				document.location = location;
 			});
 			
-/*
+*/
 			var submitButton = document.getElementById('b-submit');
   			submitButton.addEventListener('click', function() {
     				console.log('Submit');
@@ -216,7 +215,7 @@ body {height: auto;margin: 0;padding: 0;}
     				var return_to = getQueryParam('return_to', 'pebblejs://close#');
     				document.location = return_to + encodeURIComponent(ls_pto);
   			});
-*/
+
 		});
     </script>
   </body>
