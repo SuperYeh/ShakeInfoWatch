@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=gb2312"/>
+<title>ACT monitor SETTINGS</title>
+<style type="text/css">
+html {height: auto;}
+body {height: auto;margin: 0;padding: 0;}
+</style>
+<link rel='stylesheet' type='text/css' href='css/slate.min.css'>
+<link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+<script type="text/javascript" src='js/slate.js'></script>
+
+</head>
+
+<body>
+	<div data-role="header" class="jqm-header">
+		<h1>ACT monitor SETTINGS</h1>
+	</div>	
+	
+	<div id="main">
+		<div data-role="content">
+
+		<div class="ui-field-contain">	
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>CLOCK STYLE:</h4></legend>
+					<input name="key1" id="key1-0" value="0" checked="checked" type="radio">
+					<label for="key1-0">DIGIT</label>
+					<input name="key1" id="key1-1" value="1" type="radio">
+					<label for="key1-1">ANALOG</label>
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>ANALOG TICK:</h4></legend>
+					<input name="key2" id="key2-0" value="0" checked="checked" type="radio">
+					<label for="key2-0">SECOND</label>
+					<input name="key2" id="key2-1" value="1" type="radio">
+					<label for="key2-1">MINUTE</label>
+			</fieldset>
+		</div>	
+		
+		<div class="ui-field-contain">		
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>TEMPERATURE UNIT:</h4></legend>
+					<input name="key14" id="key14-0" value="0" checked="checked" type="radio">
+					<label for="key14-0">&#x00B0C;</label>
+					<input name="key14" id="key14-1" value="1" type="radio">
+					<label for="key14-1">&#x00B0F;</label>
+			</fieldset>
+		</div>	
+		
+		<div class="ui-field-contain">	
+			<fieldset data-role="controlgroup" data-mini="true">
+				<legend><h4>LONG SEAT REMINDER:</h4></legend>
+					<label for="key3" >MINUTE:</label>
+					<input name="key3" id="key3" data-mini="true" type="text" maxlength="9">
+					<input name="key4" id="key4" value="0" type="checkbox">
+					<label for="key4">TO REMIND	</label>	
+			</fieldset>	
+			<fieldset data-role="controlgroup" data-mini="true">
+				<legend><h4>LONG RUNNING REMINDER:</h4></legend>
+					<label for="key5" >MINUTE:</label>
+					<input name="key5" id="key5" data-mini="true" type="text" maxlength="9">
+					<input name="key6" id="key6" value="0" type="checkbox">
+					<label for="key6">TO REMIND	</label>	
+			</fieldset>	
+			<fieldset data-role="controlgroup" data-mini="true">
+					<input name="key7" id="key7" value="0" type="checkbox">
+					<label for="key7">HOURLY VIBRATION</label>	
+			</fieldset>	
+			<fieldset data-role="controlgroup" data-mini="true">
+					<input name="key8" id="key8" value="0" type="checkbox">
+					<label for="key8">DISCONNECTED VIBRATION</label>	
+			</fieldset>	
+		</div>	
+	
+		<div class="ui-field-contain">	
+		    <label for="key20">DAILY START:</label><!--开始时间:-->
+		    <input name="key20" id="key20" type="time" value=08:00>
+		    <label for="key21">DAILY STOP:</label><!--结束时间:-->
+		    <input name="key21" id="key21" type="time" value=21:00>
+	    </div>	
+
+		</div>
+
+<br />
+<div class="ui-body ui-body-c">
+    <fieldset class="ui-grid-a">
+        <div class="ui-block-a"><button type="submit" data-theme="d" id="b-cancel">&#x53D6;&#x6D88;</button></div>
+        <div class="ui-block-b"><button type="submit" data-theme="a" id="b-submit">&#x786E;&#x5B9A;</button></div>
+    </fieldset>
+</div>
+
+ 		
+		</div>
+	</div>
+	
+    <script>
+		function getConfigData() {
+			$("input[id='key12']").change();
+		    var options = {
+				'key_time_style': Number( $("input[name=key1]:checked").val() ),
+				'key_time_tick': Number( $("input[name=key2]:checked").val() ),
+				'key_time_longsit': $("input[name=key3]").val(),
+				'key_longsit_vibr': Number( $("input[name=key4]").val() ),
+				'key_time_longrun': $("input[name=key5]").val(),
+				'key_longrun_vibr': Number( $("input[name=key6]").val() ),
+				
+				'key_hourly_vibr': Number( $("input[name=key7]").val() ),
+				'key_disconnect_vibr': Number( $("input[name=key8]").val() ),
+				
+				'key_temperature_unit': Number( $("input[name=key14]:checked").val() ),
+				
+				'key_start_time': $("input[name=key20]").val(),
+				'key_stop_time': $("input[name=key21]").val(),
+			}
+			return options;
+		}
+		function getQueryParam(variable, defaultValue) {
+    			var query = location.search.substring(1);
+    			var vars = query.split('&');
+    			for (var i = 0; i < vars.length; i++) {
+      				var pair = vars[i].split('=');
+      				if (pair[0] === variable) {
+        				return decodeURIComponent(pair[1]);
+      				}
+    			}
+    			return defaultValue || false;
+  		}
+		
+		$().ready(function() {
+			
+		   	if (typeof window.localStorage !== "undefined") {
+				if (window.localStorage.actmonitor_options) {
+					ls_pto = JSON.parse(window.localStorage.actmonitor_options);
+					
+					// the Pebble webview dies on the next line...
+					$("input[name=key1][id=key1-"+ls_pto["key_time_style"]+"]").prop('checked',true);
+					$("input[name=key1]").checkboxradio('refresh');
+					$("input[name=key2][id=key2-"+ls_pto["key_time_tick"]+"]").prop('checked',true);
+					$("input[name=key2]").checkboxradio('refresh');
+	
+					if ("key_time_longsit" in ls_pto) 
+					$("input[name=key3]").val(ls_pto["key_time_longsit"]);
+					if(ls_pto["key_longsit_vibr"]==1) {	
+						$("input[name=key4]").prop('checked', true);
+						$("input[name=key4]").checkboxradio('refresh');
+						$("input[name=key4]").val(1);
+					}
+					if ("key_time_longrun" in ls_pto) 
+					$("input[name=key5]").val(ls_pto["key_time_longrun"]);
+					if(ls_pto["key_longrun_vibr"]==1) {
+						$("input[name=key6]").prop('checked', true);
+						$("input[name=key6]").checkboxradio('refresh');
+						$("input[name=key6]").val(1);
+					}
+						
+					if(ls_pto["key_hourly_vibr"]==1) {	
+						$("input[name=key7]").prop('checked', true);
+						$("input[name=key7]").checkboxradio('refresh');
+						$("input[name=key7]").val(1);
+					}	
+					if(ls_pto["key_disconnect_vibr"]==1) {
+						$("input[name=key8]").prop('checked', true);
+						$("input[name=key8]").checkboxradio('refresh');
+						$("input[name=key8]").val(1);
+					}
+
+					$("input[name=key14][id=key14-"+ls_pto["key_temperature_unit"]+"]").prop('checked',true);
+					$("input[name=key14]").checkboxradio('refresh');
+									
+					if ("key_start_time" in ls_pto) 
+						$("input[name=key20]").val(ls_pto["key_start_time"]);
+					if ("key_stop_time" in ls_pto) 
+						$("input[name=key21]").val(ls_pto["key_stop_time"]);
+					
+				}
+			}
+			
+			$("input[type='checkbox']").click(function(){   
+				if($(this).val() == 1) $(this).val(0);   
+				else $(this).val(1);   
+			});
+					
+				
+			$("#b-cancel").click(function() {
+				console.log("Cancel");
+				document.location = "pebblejs://close";
+			});
+			
+
+			$("#b-submit").click(function() {
+				console.log("Submit");
+				ls_pto = JSON.stringify(getConfigData());
+				if (typeof window.localStorage !== "undefined") {
+					window.localStorage.actmonitor_options = ls_pto;
+				}
+				var location = "pebblejs://close#" + encodeURIComponent(ls_pto);
+				document.location = location;
+			});
+			
+/*
+			var submitButton = document.getElementById('b-submit');
+  			submitButton.addEventListener('click', function() {
+    				console.log('Submit');
+    				ls_pto = JSON.stringify(getConfigData());
+    				if (typeof window.localStorage !== "undefined") {
+					window.localStorage.actmonitor_options = ls_pto;
+				}
+    				// Set the return URL depending on the runtime environment
+    				var return_to = getQueryParam('return_to', 'pebblejs://close#');
+    				document.location = return_to + encodeURIComponent(ls_pto);
+  			});
+*/
+		});
+    </script>
+  </body>
+</html>
