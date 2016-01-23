@@ -33,7 +33,7 @@ body {height: auto;margin: 0;padding: 0;}
 					<label for="key1-1">DIGIT</label>
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-				<legend><h4>ANALOG TICK:</h4></legend>
+				<legend><h4>TIME TICK:</h4></legend>
 					<input name="key2" id="key2-0" value="0" checked="checked" type="radio">
 					<label for="key2-0">SECOND</label>
 					<input name="key2" id="key2-1" value="1" type="radio">
@@ -42,13 +42,14 @@ body {height: auto;margin: 0;padding: 0;}
 		</div>	
 		
 		<div class="ui-field-contain">
-			<fieldset data-role="controlgroup" data-mini="true">
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>VIBRATION REMINDE:</h4></legend>
 					<input name="key7" id="key7" value="0" type="checkbox">
-					<label for="key7">HOURLY VIBRATION</label>	
+					<label for="key7">HOURLY</label>	
 			</fieldset>	
 			<fieldset data-role="controlgroup" data-mini="true">
 					<input name="key8" id="key8" value="0" type="checkbox">
-					<label for="key8">DISCONNECTED VIBRATION</label>	
+					<label for="key8">DISCONNECTED</label>	
 			</fieldset>	
 		</div>
 		
@@ -88,6 +89,8 @@ body {height: auto;margin: 0;padding: 0;}
 		</div>	
 	
 		<div class="ui-field-contain">	
+<fieldset data-role="controlgroup" data-mini="true">
+				<legend><h4>WORKING TIME:</h4></legend>
 		    <label for="key20">DAILY START:</label>
 		    <input name="key20" id="key20" type="time" value=08:00>
 		    <label for="key21">DAILY STOP:</label>
