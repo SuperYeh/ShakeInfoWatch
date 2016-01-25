@@ -94,7 +94,8 @@ var Zepto=function(){function L(t){return null==t?String(t):j[S.call(t)]||"objec
             grid += '<i ' +
               'class="color-box ' + selectable + roundedTL +
                       roundedTR + roundedBL + roundedBR + '" ' +
-              'data-value="' + color.replace(/^#/, '0x') + '" ' +
+              //'data-value="' + color.replace(/^#/, '0x') + '" ' +
+              'data-value="' + color + '" ' +
               'style="' +
                 'width:' + itemWidth + '%; ' +
                 'height:' + itemHeight + '%; ' +
