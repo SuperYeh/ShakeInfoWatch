@@ -44,6 +44,16 @@ body {height:auto; margin:0; padding: 0;}
 				//var mclng = document.getElementById("key141").value;
 				//var mclat = document.getElementById("key142").value;
 				
+				var ctx = canvas.getContext('2d');
+        			ctx.moveTo(20,30);
+            			ctx.lineTo(120,90);
+            			ctx.lineTo(220,60);
+            			ctx.lineWidth=3;
+            			ctx.strokeStyle = 'red';
+            			ctx.stroke();
+				
+/*				
+				
 				var target = new sogou.maps.Point(mclng, mclat);
 				var myOptions = {
 					zoom: 15,
@@ -62,6 +72,7 @@ body {height:auto; margin:0; padding: 0;}
 					document.getElementById("key141").value = event.point.x;
 					document.getElementById("key142").value = event.point.y;
 				});
+*/				
 			}
 			
 			function placeMarker(location) {
