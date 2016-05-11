@@ -22,6 +22,15 @@ canvas {border:dashed 2px #CCC}
 			var marker;
 			
 	   		function initialize() {
+	   			var can = document.getElementById('can');
+            			var cans = can.getContext('2d');
+            			cans.moveTo(20,30);//第一个起点
+            			cans.lineTo(120,90);//第二个点
+            			cans.lineTo(220,60);//第三个点（以第二个点为起点）
+            			cans.lineWidth=3;
+            			cans.strokeStyle = 'red';
+            			cans.stroke();
+
 	   			var mclng = 12956000;
 				var mclat = 4824875;
 				
@@ -73,18 +82,6 @@ canvas {border:dashed 2px #CCC}
 				});
 				//map.setCenter(location);
 			}
-			
-			function pageLoad() {
-            			var can = document.getElementById('can');
-            			var cans = can.getContext('2d');
-            			cans.moveTo(20,30);//第一个起点
-            			cans.lineTo(120,90);//第二个点
-            			cans.lineTo(220,60);//第三个点（以第二个点为起点）
-            			cans.lineWidth=3;
-            			cans.strokeStyle = 'red';
-            			cans.stroke();
-        		}
-			
 </script>
 
 </head>
