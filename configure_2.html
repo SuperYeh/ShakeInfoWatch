@@ -7,7 +7,6 @@
 <style type="text/css">
 html {height:auto;}
 body {height:auto; margin:0; padding: 0;}
-canvas {width:90%; height:500px; border:dashed 2px #CCC}
 #map_canvas {width:90%; height:500px; position:relative;}
 @media print {#map_canvas {height:950px;}}
 </style>
@@ -22,15 +21,6 @@ canvas {width:90%; height:500px; border:dashed 2px #CCC}
 			var marker;
 			
 	   		function initialize() {
-	   			var can = document.getElementById('can');
-            			var cans = can.getContext('2d');
-            			cans.moveTo(20,30);//第一个起点
-            			cans.lineTo(120,90);//第二个点
-            			cans.lineTo(220,60);//第三个点（以第二个点为起点）
-            			cans.lineWidth=3;
-            			cans.strokeStyle = 'red';
-            			cans.stroke();
-
 	   			var mclng = 12956000;
 				var mclat = 4824875;
 				
@@ -167,8 +157,6 @@ canvas {width:90%; height:500px; border:dashed 2px #CCC}
 		<input name="key142" id="key142" style="display: none;" value="4824875" data-mini="true" type="text" maxlength="9">
 		<label for="key143">&#x663E;&#x793A;&#x9009;&#x53D6;&#x5730;&#x56FE;</label>
 		<input name="key143" id="key143" value="0" type="checkbox">
-		
-		<canvas id="can"></canvas>
 </fieldset>
 </div>
 
