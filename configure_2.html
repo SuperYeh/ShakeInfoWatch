@@ -7,7 +7,7 @@
 <style type="text/css">
 html {height:auto;}
 body {height:auto; margin:0; padding: 0;}
-#map_canvas {width:98%; height:300px; position:relative;}
+#map_canvas {width:98%; height:200px; position:relative;}
 @media print {#map_canvas {height:400px;}}
 </style>
 <link rel='stylesheet' type='text/css' href='css/slate.min.css'>
@@ -133,19 +133,6 @@ body {height:auto; margin:0; padding: 0;}
 </div>
 
 <div data-role="collapsible" id="map_selector">
-	<h3>&#x6C14;&#x8C61;&#x67E5;&#x8BE2;</h3><!--气象查询-->
-<fieldset data-role="controlgroup" data-mini="true">
-    <legend><h4>&#x672A;&#x6765;&#x5929;&#x6C14;&#x67E5;&#x8BE2;:</h4></legend><!--未来天气查询:-->
-		<label for="key12" >&#x8F93;&#x5165;&#x57CE;&#x5E02;&#x6216;&#x5730;&#x533A;&#x540D;&#x79F0;&#xFF08;&#x4E0D;&#x52A0;&#x5E02;&#x6216;&#x533A;&#x7B49;&#x5B57;&#x5C3E;&#xFF09;&#x3002;</label><!--输入城市或地区名称（不加市区等字尾）-->
-		<input name="key12" id="key12" data-mini="true" type="text" maxlength="16">
-</fieldset>	
-<fieldset data-role="controlgroup" data-mini="true">
-		<label for="key121">&#x6574;&#x70B9;&#x5929;&#x6C14;&#x66F4;&#x65B0;</label><!--整点天气更新-->		
- 		<input name="key121" id="key121" value="0" type="checkbox">
-</fieldset>	
-</div>
-
-<div data-role="collapsible" id="map_selector">
 	<h3>&#x5BFC;&#x822A;&#x6307;&#x5F15;</h3><!--导航指引-->
 <fieldset data-role="controlgroup" data-mini="true">
     <legend><h4>&#x5BFC;&#x822A;&#x76EE;&#x7684;&#x5730;:</h4></legend><!--导航目的地:-->
@@ -158,6 +145,19 @@ body {height:auto; margin:0; padding: 0;}
 		<label for="key143">&#x663E;&#x793A;&#x9009;&#x53D6;&#x5730;&#x56FE;</label>
 		<input name="key143" id="key143" value="0" type="checkbox">
 </fieldset>
+</div>
+
+<div data-role="collapsible" id="map_selector">
+	<h3>&#x6C14;&#x8C61;&#x67E5;&#x8BE2;</h3><!--气象查询-->
+<fieldset data-role="controlgroup" data-mini="true">
+    <legend><h4>&#x672A;&#x6765;&#x5929;&#x6C14;&#x67E5;&#x8BE2;:</h4></legend><!--未来天气查询:-->
+		<label for="key12" >&#x8F93;&#x5165;&#x57CE;&#x5E02;&#x6216;&#x5730;&#x533A;&#x540D;&#x79F0;&#xFF08;&#x4E0D;&#x52A0;&#x5E02;&#x6216;&#x533A;&#x7B49;&#x5B57;&#x5C3E;&#xFF09;&#x3002;</label><!--输入城市或地区名称（不加市区等字尾）-->
+		<input name="key12" id="key12" data-mini="true" type="text" maxlength="16">
+</fieldset>	
+<fieldset data-role="controlgroup" data-mini="true">
+		<label for="key121">&#x6574;&#x70B9;&#x5929;&#x6C14;&#x66F4;&#x65B0;</label><!--整点天气更新-->		
+ 		<input name="key121" id="key121" value="0" type="checkbox">
+</fieldset>	
 </div>
 
 <div data-role="collapsible">
