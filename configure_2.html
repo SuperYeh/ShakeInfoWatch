@@ -7,6 +7,7 @@
 <style type="text/css">
 html {height:auto;}
 body {height:auto; margin:0; padding: 0;}
+canvas {border:dashed 2px #CCC}
 #map_canvas {width:90%; height:500px; position:relative;}
 @media print {#map_canvas {height:950px;}}
 </style>
@@ -44,16 +45,6 @@ body {height:auto; margin:0; padding: 0;}
 				//var mclng = document.getElementById("key141").value;
 				//var mclat = document.getElementById("key142").value;
 				
-				var ctx = canvas.getContext('2d');
-        			ctx.moveTo(20,30);
-            			ctx.lineTo(120,90);
-            			ctx.lineTo(220,60);
-            			ctx.lineWidth=3;
-            			ctx.strokeStyle = 'red';
-            			ctx.stroke();
-				
-/*				
-				
 				var target = new sogou.maps.Point(mclng, mclat);
 				var myOptions = {
 					zoom: 15,
@@ -72,7 +63,6 @@ body {height:auto; margin:0; padding: 0;}
 					document.getElementById("key141").value = event.point.x;
 					document.getElementById("key142").value = event.point.y;
 				});
-*/				
 			}
 			
 			function placeMarker(location) {
@@ -83,6 +73,17 @@ body {height:auto; margin:0; padding: 0;}
 				});
 				//map.setCenter(location);
 			}
+			
+			function pageLoad() {
+            			var can = document.getElementById('can');
+            			var cans = can.getContext('2d');
+            			cans.moveTo(20,30);//第一个起点
+            			cans.lineTo(120,90);//第二个点
+            			cans.lineTo(220,60);//第三个点（以第二个点为起点）
+            			cans.lineWidth=3;
+            			cans.strokeStyle = 'red';
+            			cans.stroke();
+        		}
 			
 </script>
 
@@ -169,6 +170,8 @@ body {height:auto; margin:0; padding: 0;}
 		<input name="key142" id="key142" style="display: none;" value="4824875" data-mini="true" type="text" maxlength="9">
 		<label for="key143">&#x663E;&#x793A;&#x9009;&#x53D6;&#x5730;&#x56FE;</label>
 		<input name="key143" id="key143" value="0" type="checkbox">
+		
+		<canvas id="can" width="400px" height="300px">4</canvas>
 </fieldset>
 </div>
 
