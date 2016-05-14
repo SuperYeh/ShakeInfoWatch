@@ -1,24 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-<meta http-equiv="content-type" content="text/html; charset=gb2312"/>
-<style type="text/css">
-html {height:auto;}
-body {height:auto; margin:0; padding: 0;}
-#map_canvas {width:98%; height:250px; position:relative;}
-@media print {#map_canvas {height:250px;}}
-</style>
-<title>搜狗地图 JavaScript API示例: Hello World</title>
-<script type="text/javascript" src="js/api_v2.5.1.js"></script>
-<script type="text/javascript">
-function initialize()
-{
-    var map = new sogou.maps.Map(document.getElementById("map_canvas"),{});
-}
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+<title>Hello, World</title>  
+<style type="text/css">  
+html{height:100%}  
+body{height:100%;margin:0px;padding:0px}  
+#container{height:500px;position:relative}  
+</style>  
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥">
+//v2.0版本的引用方式：src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"
+//v1.4版本及以前版本的引用方式：src="http://api.map.baidu.com/api?v=1.4&key=您的密钥&callback=initialize"
 </script>
-</head>
-<body onload="initialize()">
-  <div id="map_canvas"></div>
-</body>
+</head>  
+ 
+<body>  
+<div id="container"></div> 
+<script type="text/javascript"> 
+var map = new BMap.Map("container");          // 创建地图实例  
+var point = new BMap.Point(116.404, 39.915);  // 创建点坐标  
+map.centerAndZoom(point, 15);                 // 初始化地图，设置中心点坐标和地图级别  
+</script>  
+</body>  
 </html>
