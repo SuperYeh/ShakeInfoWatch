@@ -27,12 +27,8 @@ body {height:auto; margin:0; padding: 0;}
 				if (typeof window.localStorage !== "undefined") {
 				    if (window.localStorage.address_here_options) {
 					var ls_pto = JSON.parse(window.localStorage.address_here_options);
-	   				if ("key_navi_dest" in ls_pto) {
-						if(ls_pto["key_navi_dest_lng"] != "")
-							mclng = Number( ls_pto["key_navi_dest_lng"] );
-						if(ls_pto["key_navi_dest_lat"] != "")
-							mclat = Number( ls_pto["key_navi_dest_lat"] );
-	   				}
+					mclng = Number( ls_pto["key_navi_dest_lng"] );
+					mclat = Number( ls_pto["key_navi_dest_lat"] );
 				    }	
 				} 
 	   			
@@ -146,6 +142,11 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key142]").val(ls_pto["key_navi_dest_lat"]);
 				}
 			}
+			
+			$("input[type='checkbox']").click(function(){   
+				if($(this).val() == 1) $(this).val(0);   
+				else $(this).val(1);   
+			});
 			
 			$("#b-cancel").click(function() {
 				console.log("Cancel");
