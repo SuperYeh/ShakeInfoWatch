@@ -16,18 +16,17 @@ body {height:auto; margin:0; padding: 0;}
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
 <script type="text/javascript" src='js/slate.js'></script>
-
 </head>
 
 <body onload="initialize()">
-	<div data-role="header" class="jqm-header">
-		<h1>Configuration</h1>
-	</div>	
+<div data-role="header" class="jqm-header">
+	<h1>Configuration</h1>
+</div>	
+
+<div id="map_canvas"></div>
 	
-	<div id="map_canvas"></div>
-	
-	<div id="main">
-		<div data-role="content">
+<div id="main">
+<div data-role="content">
 <fieldset data-role="controlgroup" data-mini="true">
 		<input name="key140" id="key140" value="0" type="checkbox">
 		<label for="key140">&#x5F00;&#x542F;&#x5BFC;&#x822A;&#x54A8;&#x8BE2;&#xFF08;&#x4E8E;&#x5730;&#x56FE;&#x4E0A;&#x70B9;&#x9009;&#x76EE;&#x7684;&#x5730;&#xFF09;
@@ -45,114 +44,108 @@ body {height:auto; margin:0; padding: 0;}
     </fieldset>
 </div>
 
-		</div>
-	</div>
+</div>
+</div>
 	
 		
-    <script>
-			var map;
-			var marker;
+<script>
+	var map;
+	var marker;
+	var mclng = 12956000;
+	var mclat = 4824875;
 			
-	   		function initialize() {
-	   			var mclng = 12956000;
-				var mclat = 4824875;
-				
-				if (typeof window.localStorage !== "undefined") {
-				    if (window.localStorage.address_here_options) {
-					var ls_pto = JSON.parse(window.localStorage.address_here_options);
-					if(ls_pto["key_navi_dest_lng"] != "")
-						mclng = Number( ls_pto["key_navi_dest_lng"] );
-					if(ls_pto["key_navi_dest_lat"] != "")	
-						mclat = Number( ls_pto["key_navi_dest_lat"] );
-				    }	
-				} 
+	function initialize() {
+	   	if (typeof window.localStorage !== "undefined") {
+			if (window.localStorage.address_here_options) {
+				var ls_pto = JSON.parse(window.localStorage.address_here_options);
+				if(ls_pto["key_navi_dest_lng"] != "")
+					mclng = Number( ls_pto["key_navi_dest_lng"] );
+				if(ls_pto["key_navi_dest_lat"] != "")	
+					mclat = Number( ls_pto["key_navi_dest_lat"] );
+			}	
+		} 
 	   			
-				var canvas = document.getElementById("map_canvas");
-				//canvas.width = 400;
-				//canvas.height = 400;
+		var canvas = document.getElementById("map_canvas");
+		//canvas.width = 400;
+		//canvas.height = 400;
 				
-				//var myLatlng = new sogou.maps.LatLng(39.992792,116.326142);
-				//var mclng = document.getElementById("key141").value;
-				//var mclat = document.getElementById("key142").value;
-				
-				var target = new sogou.maps.Point(mclng, mclat);
-				var myOptions = {
-					zoom: 15,
-					center: target,
-					//center: myLatlng,
-					mapTypeId: sogou.maps.MapTypeId.ROADMAP
-				}
-				map = new sogou.maps.Map(canvas, myOptions);
-				placeMarker(target);
+		//var myLatlng = new sogou.maps.LatLng(39.992792,116.326142);
 
-				sogou.maps.event.addListener(map, 'click', function(event) {
-					marker.setMap(null);
-					//alert(event.point)
-					placeMarker(event.point);
-					document.getElementById("key141").value = event.point.x;
-					document.getElementById("key142").value = event.point.y;
-				});
-			}
-			
-			function placeMarker(location) {
-				//var clickedLocation = location;		
-				marker = new sogou.maps.Marker({
-				position: location,
-				map: map
-				});
-				//map.setCenter(location);
-			}
-			
-		
-		
-		function getConfigData() {
-		    var options = {
-				'key_navi'    : Number( $("input[name=key140]").val() ),
-				'key_navi_dest_lng': $("input[name=key141]").val(),
-				'key_navi_dest_lat': $("input[name=key142]").val(),  
-			}
-			return options;
+		var target = new sogou.maps.Point(mclng, mclat);
+		var myOptions = {
+			zoom: 15,
+			center: target,
+			//center: myLatlng,
+			mapTypeId: sogou.maps.MapTypeId.ROADMAP
 		}
-		
-		function getQueryParam(variable, defaultValue) {
-    			var query = location.search.substring(1);
-    			var vars = query.split('&');
-    			for (var i = 0; i < vars.length; i++) {
-      				var pair = vars[i].split('=');
-      				if (pair[0] === variable) {
-        				return decodeURIComponent(pair[1]);
-      				}
-    			}
-    			return defaultValue || false;
-  		}
-		
-		$().ready(function() {
+		map = new sogou.maps.Map(canvas, myOptions);
+		placeMarker(target);
+
+		sogou.maps.event.addListener(map, 'click', function(event) {
+			marker.setMap(null);
+			//alert(event.point)
+			placeMarker(event.point);
+			mclng = event.point.x;
+			mclat = event.point.y;
+		});
+	}
 			
-		   	if (typeof window.localStorage !== "undefined") {
-				if (window.localStorage.address_here_options) {
-					var ls_pto = JSON.parse(window.localStorage.address_here_options);
+	function placeMarker(location) {
+		//var clickedLocation = location;		
+		marker = new sogou.maps.Marker({
+			position: location,
+			map: map
+		});
+		//map.setCenter(location);
+	}
+			
+		
+		
+	function getConfigData() {
+		var options = {
+			'key_navi'    : Number( $("input[name=key140]").val() ),
+			'key_navi_dest_lng': mclng,
+			'key_navi_dest_lat': mclat,  
+		}
+		return options;
+	}
+		
+	function getQueryParam(variable, defaultValue) {
+    		var query = location.search.substring(1);
+    		var vars = query.split('&');
+    		for (var i = 0; i < vars.length; i++) {
+      			var pair = vars[i].split('=');
+      			if (pair[0] === variable) {
+        			return decodeURIComponent(pair[1]);
+      			}
+    		}
+    		return defaultValue || false;
+  	}
+		
+	$().ready(function() {
+		if (typeof window.localStorage !== "undefined") {
+			if (window.localStorage.address_here_options) {
+				var ls_pto = JSON.parse(window.localStorage.address_here_options);
 					
-					if(ls_pto["key_navi"]==1) {	
-						$("input[name=key140]").prop('checked', true);
-						$("input[name=key140]").checkboxradio('refresh');
-						$("input[name=key140]").val(1);
-					}	
-					if(ls_pto["key_navi_dest_lng"] != "")
-						$("input[name=key141]").val(ls_pto["key_navi_dest_lng"]);
-					if(ls_pto["key_navi_dest_lat"] != "")
-						$("input[name=key142]").val(ls_pto["key_navi_dest_lat"]);
-				}
+				if(ls_pto["key_navi"]==1) {	
+					$("input[name=key140]").prop('checked', true);
+					$("input[name=key140]").checkboxradio('refresh');
+					$("input[name=key140]").val(1);
+				}	
+				mclng = ls_pto["key_navi_dest_lng"];
+				mclat = ls_pto["key_navi_dest_lat"];
 			}
+		}
 			
-			$("input[type='checkbox']").click(function(){   
-				if($(this).val() == 1) $(this).val(0);   
-				else $(this).val(1);   
-			});
+		$("input[type='checkbox']").click(function(){   
+			if($(this).val() == 1) $(this).val(0);   
+			else $(this).val(1);   
+		});
 			
-			$("#b-cancel").click(function() {
-				console.log("Cancel");
-				document.location = "pebblejs://close";
-			});
+		$("#b-cancel").click(function() {
+			console.log("Cancel");
+			document.location = "pebblejs://close";
+		});
 			
 /*
 			$("#b-submit").click(function() {
@@ -165,18 +158,19 @@ body {height:auto; margin:0; padding: 0;}
 				document.location = location;
 			});
 */			
-			var submitButton = document.getElementById('b-submit');
-  			submitButton.addEventListener('click', function() {
-    				console.log('Submit');
-    				var ls_option = JSON.stringify(getConfigData());
-    				if (typeof window.localStorage !== "undefined") {
-					window.localStorage.address_here_options = ls_option;
-				}
-    				// Set the return URL depending on the runtime environment
-    				var return_to = getQueryParam('return_to', 'pebblejs://close#');
-    				document.location = return_to + encodeURIComponent(ls_option);
-  			});
-		});
-    </script>
-  </body>
+		var submitButton = document.getElementById('b-submit');
+  		submitButton.addEventListener('click', function() {
+    			console.log('Submit');
+    			var ls_option = JSON.stringify(getConfigData());
+    			if (typeof window.localStorage !== "undefined") {
+				window.localStorage.address_here_options = ls_option;
+			}
+    			// Set the return URL depending on the runtime environment
+    			var return_to = getQueryParam('return_to', 'pebblejs://close#');
+    			document.location = return_to + encodeURIComponent(ls_option);
+  		});
+	});
+</script>
+
+</body>
 </html>
