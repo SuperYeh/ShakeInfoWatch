@@ -86,9 +86,8 @@ body {height:auto; margin:0; padding: 0;}
 	<div id="main">
 		<div data-role="content">
 <fieldset data-role="controlgroup" data-mini="true">
-    <legend><h4>&#x5BFC;&#x822A;&#x76EE;&#x7684;&#x5730;:</h4></legend><!--导航目的地:-->
-		<label for="key140">&#x8BF7;&#x81EA;&#x5B9A;&#x76EE;&#x7684;&#x5730;&#x540D;&#x79F0;&#xFF0C;&#x5E76;&#x5F00;&#x542F;&#x5730;&#x56FE;&#x9009;&#x53D6;&#x3002;</label><!--请自定目的地名称，并开启地图选取-->
-		<input name="key140" id="key140" value="" data-mini="true" type="text" maxlength="16">
+		<input name="key140" id="key140" value="0" type="checkbox">
+		<label for="key140">&#x5F00;&#x542F;&#x5BFC;&#x822A;&#x54A8;&#x8BE2;&#xFF08;&#x4E8E;&#x5730;&#x56FE;&#x4E0A;&#x70B9;&#x9009;&#x76EE;&#x7684;&#x5730;&#xFF09;
 		<label for="key141" style="display: none;">&#x7ECF;&#x5EA6;:</label><!--经度:-->
 		<input name="key141" id="key141" style="display: none;" value="12956000" data-mini="true" type="text" maxlength="9">
 		<label for="key142" style="display: none;">&#x7EAC;&#x5EA6;:</label><!--纬度:-->
@@ -111,7 +110,7 @@ body {height:auto; margin:0; padding: 0;}
 		
 		function getConfigData() {
 		    var options = {
-				'key_navi_dest'    : $("input[name=key140]").val(),
+				'key_navi'    : Number( $("input[name=key140]").val() ),
 				'key_navi_dest_lng': $("input[name=key141]").val(),
 				'key_navi_dest_lat': $("input[name=key142]").val(),  
 			}
@@ -136,15 +135,15 @@ body {height:auto; margin:0; padding: 0;}
 				if (window.localStorage.address_here_options) {
 					var ls_pto = JSON.parse(window.localStorage.address_here_options);
 					
-					if ("key_navi_dest" in ls_pto) {
-						if(ls_pto["key_navi_dest"] != "") {
-							$("input[name=key140]").val(ls_pto["key_navi_dest"]);
-							if(ls_pto["key_navi_dest_lng"] != "")
-								$("input[name=key141]").val(ls_pto["key_navi_dest_lng"]);
-							if(ls_pto["key_navi_dest_lat"] != "")
-								$("input[name=key142]").val(ls_pto["key_navi_dest_lat"]);
-						}	
-					}
+					if(ls_pto["key_navi"]==1) {	
+						$("input[name=key140]").prop('checked', true);
+						$("input[name=key140]").checkboxradio('refresh');
+						$("input[name=key140]").val(1);
+					}	
+					if(ls_pto["key_navi_dest_lng"] != "")
+						$("input[name=key141]").val(ls_pto["key_navi_dest_lng"]);
+					if(ls_pto["key_navi_dest_lat"] != "")
+						$("input[name=key142]").val(ls_pto["key_navi_dest_lat"]);
 				}
 			}
 			
