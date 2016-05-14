@@ -53,6 +53,9 @@ body {height:auto; margin:0; padding: 0;}
 	var marker;
 	var mclng = 12956000;
 	var mclat = 4824875;
+	var address;
+    	var city;
+    	var province;
 			
 	function initialize() {
 	   	if (typeof window.localStorage !== "undefined") {
@@ -89,6 +92,13 @@ body {height:auto; margin:0; padding: 0;}
 			mclat = event.point.y;
 		});
 	}
+	
+	function callback(a){
+    		var geometry = a.data[0];
+    		address = geometry.address;
+    		city = geometry.city
+    		province = geometry.province;	
+	}
 			
 	function placeMarker(location) {
 		//var clickedLocation = location;		
@@ -96,16 +106,25 @@ body {height:auto; margin:0; padding: 0;}
 			position: location,
 			map: map
 		});
+	
 		//map.setCenter(location);
+		var request={
+        		location:{
+                  		points:[point],
+                  		type:0
+            		}
+        	}
+         
+        	var geo=new sogou.maps.Geocoder();
+        	geo.geocode(request,callback);
 	}
-			
-		
 		
 	function getConfigData() {
 		var options = {
 			'key_navi'    : Number( $("input[name=key140]").val() ),
 			'key_navi_dest_lng': mclng,
 			'key_navi_dest_lat': mclat,  
+			'key_navi_dest_region': city, 
 		}
 		return options;
 	}
