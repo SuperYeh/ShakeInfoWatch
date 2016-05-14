@@ -90,6 +90,16 @@ body {height:auto; margin:0; padding: 0;}
 			placeMarker(event.point);
 			mclng = event.point.x;
 			mclat = event.point.y;
+			
+			var request={
+        			location:{
+                  			points:[event.point],
+                  			type:0
+            			}
+        		}
+         
+        		var geo=new sogou.maps.Geocoder();
+        		geo.geocode(request,callback);
 		});
 	}
 	
@@ -108,15 +118,6 @@ body {height:auto; margin:0; padding: 0;}
 		});
 	
 		//map.setCenter(location);
-		var request={
-        		location:{
-                  		points:[point],
-                  		type:0
-            		}
-        	}
-         
-        	var geo=new sogou.maps.Geocoder();
-        	geo.geocode(request,callback);
 	}
 		
 	function getConfigData() {
