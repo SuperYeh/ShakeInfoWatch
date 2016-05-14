@@ -27,8 +27,10 @@ body {height:auto; margin:0; padding: 0;}
 				if (typeof window.localStorage !== "undefined") {
 				    if (window.localStorage.address_here_options) {
 					var ls_pto = JSON.parse(window.localStorage.address_here_options);
-					mclng = Number( ls_pto["key_navi_dest_lng"] );
-					mclat = Number( ls_pto["key_navi_dest_lat"] );
+					if(ls_pto["key_navi_dest_lng"] != "")
+						mclng = Number( ls_pto["key_navi_dest_lng"] );
+					if(ls_pto["key_navi_dest_lat"] != "")	
+						mclat = Number( ls_pto["key_navi_dest_lat"] );
 				    }	
 				} 
 	   			
