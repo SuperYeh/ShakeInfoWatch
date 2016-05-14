@@ -7,7 +7,7 @@
 <style type="text/css">
 html {height:auto;}
 body {height:auto; margin:0; padding: 0;}
-#map_canvas {width:98%; height:500px; position:relative;}
+#map_canvas {width:98%; height:250px; position:relative;}
 @media print {#map_canvas {height:500px;}}
 </style>
 <link rel='stylesheet' type='text/css' href='css/slate.min.css'>
@@ -53,8 +53,7 @@ body {height:auto; margin:0; padding: 0;}
 				}
 				map = new sogou.maps.Map(canvas, myOptions);
 				placeMarker(target);
-				canvas.style.display = "none";
-				
+
 				sogou.maps.event.addListener(map, 'click', function(event) {
 					marker.setMap(null);
 					//alert(event.point)
