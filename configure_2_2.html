@@ -238,7 +238,7 @@ body {height:auto; margin:0; padding: 0;}
 				'key_app': 0,
 				'key_clock_type': Number( $("input[name=key_clock_type]:checked").val() ),
 				'key_clock_tick': Number( $("input[name=key_clock_tick]:checked").val() ),
-				'key_shake_func': Number( $("input[name=key_shake]:checked").val() ),
+				'key_shake_face': Number( $("input[name=key_shake]:checked").val() ),
 				'key_daily_start': $("input[name=key_vibr_start]").val(),
 				'key_daily_stop': $("input[name=key_vibr_end]").val(),
 				'key_hourly_vibr': Number( $("input[name=key_vibr_hourly]").val() ),
@@ -293,7 +293,7 @@ body {height:auto; margin:0; padding: 0;}
 
 
 
-					$("input[name=key_shake][id=key_shake-"+ls_pto["key_shake_func"]+"]").prop('checked',true);
+					$("input[name=key_shake][id=key_shake-"+ls_pto["key_shake_face"]+"]").prop('checked',true);
 					$("input[name=key_shake]").checkboxradio('refresh');
 					if ("key_daily_start" in ls_pto) 
 						$("input[name=key_vibr_start]").val(ls_pto["key_daily_start"]);
