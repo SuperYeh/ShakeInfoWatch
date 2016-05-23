@@ -114,10 +114,6 @@ body {height:auto; margin:0; padding: 0;}
 			        <input name="key_shake" id="key_shake-2" value="2" type="radio">
 			        <label for="key_shake-2">&#x5730;&#x5740;</label><!--地址-->
 			</fieldset>
-			<fieldset data-role="controlgroup" data-mini="true">
-					<label for="key_mono_invert">&#x8868;&#x76D8;&#x53CD;&#x767D;</label><!--表盘反白-->		
-			 		<input name="key_mono_invert" id="key_mono_invert" value="0" type="checkbox">
-			</fieldset>	
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
 				<legend><h4>&#x632F;&#x52A8;&#x63D0;&#x9192;:</h4></legend><!--振动提醒:-->
 					<input name="key_vibr_hourly" id="key_vibr_hourly" value="0" type="checkbox">
@@ -131,14 +127,17 @@ body {height:auto; margin:0; padding: 0;}
 					    <input name="key_vibr_end" id="key_vibr_end" type="time" value=22:00>
 					</div>	
 			</fieldset>
+			<fieldset data-role="controlgroup" data-mini="true">
+					<label for="key_mono_invert">&#x8868;&#x76D8;&#x53CD;&#x767D;</label><!--表盘反白-->		
+			 		<input name="key_mono_invert" id="key_mono_invert" value="0" type="checkbox">
+			</fieldset>	
+
 </div>
 
 <div data-role="collapsible" id="map_selector">
 	<h3>&#x5BFC;&#x822A;&#x6307;&#x5F15;</h3><!--导航指引-->
 			<fieldset data-role="controlgroup" data-mini="true">
 			    <legend><h4>&#x5BFC;&#x822A;&#x76EE;&#x7684;&#x5730;:</h4></legend><!--导航目的地:-->
-					<input name="key_navi" id="key_navi" value="0" type="checkbox">
-					<label for="key_navi">&#x4F7F;&#x7528;&#x5BFC;&#x822A;&#x6307;&#x5F15;</label><!--使用导航指引-->
 					<label for="key_navi_dest">&#x8BF7;&#x81EA;&#x5B9A;&#x76EE;&#x7684;&#x5730;&#x540D;&#x79F0;&#xFF0C;&#x5E76;&#x5F00;&#x542F;&#x5730;&#x56FE;&#x9009;&#x53D6;&#x3002;</label><!--请自定目的地名称，并开启地图选取-->
 					<input name="key_navi_dest" id="key_navi_dest" value="" data-mini="true" type="text" maxlength="16">
 					<label for="key_navi_dest_lng" style="display: none;">&#x7ECF;&#x5EA6;:</label><!--经度:-->
@@ -147,6 +146,8 @@ body {height:auto; margin:0; padding: 0;}
 					<input name="key_navi_dest_lat" id="key_navi_dest_lat" style="display: none;" value="4824875" data-mini="true" type="text" maxlength="9">
 					<label for="key_navi_map">&#x70B9;&#x9009;&#x663E;&#x793A;&#x5730;&#x56FE;</label><!--点选显示地图-->
 					<input name="key_navi_map" id="key_navi_map" value="0" type="checkbox">
+					<input name="key_navi" id="key_navi" value="0" type="checkbox">
+					<label for="key_navi">&#x4F7F;&#x7528;&#x5BFC;&#x822A;&#x6307;&#x5F15;</label><!--使用导航指引-->
 			</fieldset>
 </div>
 
