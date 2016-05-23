@@ -93,31 +93,27 @@ body {height:auto; margin:0; padding: 0;}
 	<h3>&#x8868;&#x76D8;&#x8BBE;&#x5B9A;</h3><!--表盘设定-->
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>&#x65F6;&#x949F;&#x7C7B;&#x522B;:</h4></legend><!--时钟类别:-->
-					<input name="key_time_type" id="key_time_type-0" value="0" checked="checked" type="radio">
-					<label for="key_time_type-0">&#x6307;&#x9488;</label><!--指针-->
-					<input name="key_time_type" id="key_time_type-1" value="1" type="radio">
-					<label for="key_time_type-1">&#x6570;&#x4F4D;</label><!--数位-->
+					<input name="key_clock_type" id="key_clock_type-0" value="0" checked="checked" type="radio">
+					<label for="key_clock_type-0">&#x6307;&#x9488;</label><!--指针-->
+					<input name="key_clock_type" id="key_clock_type-1" value="1" type="radio">
+					<label for="key_clock_type-1">&#x6570;&#x4F4D;</label><!--数位-->
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>&#x8BA1;&#x65F6;&#x5355;&#x4F4D;:</h4></legend><!--计时单位:-->
-					<input name="key_time_tick" id="key_time_tick-0" value="0" checked="checked" type="radio">
-					<label for="key_time_tick-0">&#x79D2;</label><!--秒-->
-					<input name="key_time_tick" id="key_time_tick-1" value="1" type="radio">
-					<label for="key_time_tick-1">&#x5206;</label><!--分-->
+					<input name="key_clock_tick" id="key_clock_tick-0" value="0" checked="checked" type="radio">
+					<label for="key_clock_tick-0">&#x79D2;</label><!--秒-->
+					<input name="key_clock_tick" id="key_clock_tick-1" value="1" type="radio">
+					<label for="key_clock_tick-1">&#x5206;</label><!--分-->
 			</fieldset>	
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 			    <legend><h4>&#x8F6C;&#x8155;&#x8BBE;&#x5B9A;:</h4></legend><!--转腕设定:-->
 				<input name="key_shake" id="key_shake-0" value="0" checked="checked" type="radio">
 			        <label for="key_shake-0">&#x5173;&#x95ED;</label><!--关闭-->
-			        <input name="key_shake" id="key_shake-4" value="4" type="radio">   
-			        <label for="key_shake-4">&#x9EC4;&#x5386;</label><!--黄历-->
-			        <input name="key_shake" id="key_shake-6" value="6" type="radio">
-			        <label for="key_shake-6">&#x5730;&#x5740;</label><!--地址-->
+			        <input name="key_shake" id="key_shake-1" value="1" type="radio">   
+			        <label for="key_shake-1">&#x9EC4;&#x5386;</label><!--黄历-->
+			        <input name="key_shake" id="key_shake-2" value="2" type="radio">
+			        <label for="key_shake-2">&#x5730;&#x5740;</label><!--地址-->
 			</fieldset>
-			<fieldset data-role="controlgroup" data-mini="true">
-					<label for="key_invert">&#x8868;&#x76D8;&#x53CD;&#x767D;</label><!--表盘反白-->		
-			 		<input name="key_invert" id="key_invert" value="0" type="checkbox">
-			</fieldset>	
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
 				<legend><h4>&#x632F;&#x52A8;&#x63D0;&#x9192;:</h4></legend><!--振动提醒:-->
 					<input name="key_vibr_hourly" id="key_vibr_hourly" value="0" type="checkbox">
@@ -162,9 +158,63 @@ body {height:auto; margin:0; padding: 0;}
 			 		<input name="key_weather_hourly" id="key_weather_hourly" value="0" type="checkbox">
 			</fieldset>		
 </div>
+
+<div data-role="collapsible">
+    <h3>&#x8272;&#x5F69;&#x9009;&#x62E9;</h3><!--色彩选择-->
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>&#x65E5;&#x671F;&#x680F;&#x4F4D;:</h4></legend><!--日期栏位:-->
+					<label for="key_title_face_color">&#x5E95;&#x8272;</label><!--底色-->
+					<label class="item">
+			          <input name="key_title_face_color" id="key_title_face_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
+			        </label>
+					<label for="key_title_word_color">&#x6587;&#x5B57;</label><!--文字-->
+					<label class="item">
+			          <input name="key_title_word_color" id="key_title_word_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
+			        </label>
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>&#x5929;&#x6c14;&#x680F;&#x4F4D;:</h4></legend><!--天气栏位:-->
+					<label for="key_win_face_color">&#x5E95;&#x8272;</label><!--底色-->
+					<label class="item">
+			          <input name="key_win_face_color" id="key_win_face_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
+			        </label>
+					<label for="key_win_word_color">&#x6587;&#x5B57;</label><!--文字-->
+					<label class="item">
+			          <input name="key_win_word_color" id="key_win_word_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
+			        </label>
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>&#x65F6;&#x95F4;&#x680F;&#x4F4D;:</h4></legend><!--时间栏位:-->
+					<label for="key_clock_hour_color">&#x65F6;&#x9488;</label><!--时针-->
+					<label class="item">
+			        <input name="key_clock_hour_color" id="key_clock_hour_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
+			        </label>
+					<label for="key_clock_min_color">&#x5206;&#x9488;</label><!--分针-->
+					<label class="item">
+			        <input name="key_clock_min_color" id="key_clock_min_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
+			        </label>
+					<label for="key_clock_sec_color">&#x79D2;&#x9488;</label><!--秒针-->
+					<label class="item">
+ 			        <input name="key_clock_sec_color" id="key_clock_sec_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
+			        </label>
+			</fieldset>	
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>&#x7529;&#x5C4F;&#x680F;&#x4F4D;:</h4></legend><!--甩屏栏位:-->
+					<label for="key_data_face_color">&#x5E95;&#x8272;</label><!--底色-->
+					<label class="item">
+			          <input name="key_data_face_color" id="key_data_face_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
+			        </label>
+					<label for="key_data_word_color">&#x6587;&#x5B57;</label><!--文字-->
+					<label class="item">
+			          <input name="key_data_word_color" id="key_data_word_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
+			        </label>
+			</fieldset>
+</div>
+
 			</div>
 
 <br />
+
 <div class="ui-body ui-body-c">
     <fieldset class="ui-grid-a">
         <div class="ui-block-a"><button type="submit" data-theme="d" id="b-cancel">&#x53D6;&#x6D88;</button></div>
@@ -186,21 +236,31 @@ body {height:auto; margin:0; padding: 0;}
 		    $("input[id='key_city']").change();
 		    var options = {
 				'key_app': 0,
-				'key_time_style': Number( $("input[name=key_time_type]:checked").val() ),
-				'key_time_tick': Number( $("input[name=key_time_tick]:checked").val() ),
+				'key_clock_type': Number( $("input[name=key_clock_type]:checked").val() ),
+				'key_clock_tick': Number( $("input[name=key_clock_tick]:checked").val() ),
 				'key_shake_func': Number( $("input[name=key_shake]:checked").val() ),
 				'key_daily_start': $("input[name=key_vibr_start]").val(),
 				'key_daily_stop': $("input[name=key_vibr_end]").val(),
 				'key_hourly_vibr': Number( $("input[name=key_vibr_hourly]").val() ),
 				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
-				'key_mono_invert': Number( $("input[name=key_invert]").val() ),
 				
 				'key_city'        : $("input[name=key_city]").val(),
 				'key_city_weather_code': Number( weatherCode ),
+				
+				'key_navi': Number( $("input[name=key_navi]").val() ),
 				'key_navi_dest'    : $("input[name=key_navi_dest]").val(),
 				'key_navi_dest_lng': $("input[name=key_navi_dest_lng]").val(),
 				'key_navi_dest_lat': $("input[name=key_navi_dest_lat]").val(),  
 				
+				'key_title_face_color'    : $("input[name=key_title_face_color]").val(),
+				'key_title_word_color'    : $("input[name=key_title_word_color]").val(),
+				'key_win_face_color'    : $("input[name=key_win_face_color]").val(),
+				'key_win_word_color'    : $("input[name=key_win_word_color]").val(),
+				'key_clock_hour_color'    : $("input[name=key_clock_hour_color]").val(),
+				'key_clock_min_color'    : $("input[name=key_clock_min_color]").val(),
+				'key_clock_sec_color'    : $("input[name=key_clock_sec_color]").val(),
+				'key_data_face_color'    : $("input[name=key_data_face_color]").val(),
+				'key_data_word_color'    : $("input[name=key_data_word_color]").val(),				
 			}
 			return options;
 		}
@@ -226,10 +286,13 @@ body {height:auto; margin:0; padding: 0;}
 					// the Pebble webview dies on the next line...
 					//$("input[name=key0][id=key0-"+ls_pto["key_style_face"]+"]").prop('checked',true);
 					//$("input[name=key0]").checkboxradio('refresh');
-					$("input[name=key_time_type][id=key_time_type-"+ls_pto["key_time_style"]+"]").prop('checked',true);
-					$("input[name=key_time_type]").checkboxradio('refresh');
-					$("input[name=key_time_tick][id=key_time_tick-"+ls_pto["key_time_tick"]+"]").prop('checked',true);
-					$("input[name=key_time_tick]").checkboxradio('refresh');
+					$("input[name=key_clock_type][id=key_clock_type-"+ls_pto["key_clock_type"]+"]").prop('checked',true);
+					$("input[name=key_clock_type]").checkboxradio('refresh');
+					$("input[name=key_clock_tick][id=key_clock_tick-"+ls_pto["key_clock_tick"]+"]").prop('checked',true);
+					$("input[name=key_clock_tick]").checkboxradio('refresh');
+
+
+
 					$("input[name=key_shake][id=key_shake-"+ls_pto["key_shake_func"]+"]").prop('checked',true);
 					$("input[name=key_shake]").checkboxradio('refresh');
 					if ("key_daily_start" in ls_pto) 
@@ -245,11 +308,6 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_vibr_disconnect]").prop('checked', true);
 						$("input[name=key_vibr_disconnect]").checkboxradio('refresh');
 						$("input[name=key_vibr_disconnect]").val(1);
-					}
-					if(ls_pto["key_mono_invert"]==1) {
-						$("input[name=key_invert]").prop('checked', true);
-						$("input[name=key_invert]").checkboxradio('refresh');
-						$("input[name=key_invert]").val(1);
 					}
 						
 					if ("key_city" in ls_pto) 
@@ -268,7 +326,32 @@ body {height:auto; margin:0; padding: 0;}
 							if(ls_pto["key_navi_dest_lat"] != "")
 								$("input[name=key_navi_dest_lat]").val(ls_pto["key_navi_dest_lat"]);
 						}	
+						if(ls_pto["key_navi"]==1) {	
+							$("input[name=key_navi]").prop('checked', true);
+							$("input[name=key_navi]").checkboxradio('refresh');
+							$("input[name=key_navi]").val(1);
+						}												
 					}
+					
+					if ("key_title_face_color" in ls_pto) 
+						$("input[name=key_title_face_color]").val(ls_pto["key_title_face_color"]);
+					if ("key_title_word_color" in ls_pto) 
+						$("input[name=key_title_word_color]").val(ls_pto["key_title_word_color"]);
+					if ("key_win_face_color" in ls_pto) 
+						$("input[name=key_win_face_color]").val(ls_pto["key_win_face_color"]);
+					if ("key_win_word_color" in ls_pto) 
+						$("input[name=key_win_word_color]").val(ls_pto["key_win_word_color"]);
+					if ("key_clock_hour_color" in ls_pto) 
+						$("input[name=key_clock_hour_color]").val(ls_pto["key_clock_hour_color"]);
+					if ("key_clock_min_color" in ls_pto) 
+						$("input[name=key_clock_min_color]").val(ls_pto["key_clock_min_color"]);
+					if ("key_clock_sec_color" in ls_pto) 
+						$("input[name=key_clock_sec_color]").val(ls_pto["key_clock_sec_color"]);
+					if ("key_data_face_color" in ls_pto) 
+						$("input[name=key_data_face_color]").val(ls_pto["key_data_face_color"]);
+					if ("key_data_word_color" in ls_pto) 
+						$("input[name=key_data_word_color]").val(ls_pto["key_data_word_color"]);
+					
 					weatherCode =  Number( ls_pto["key_city_weather_code"] );
 				}
 			}
