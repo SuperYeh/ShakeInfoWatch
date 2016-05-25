@@ -19,11 +19,13 @@ body {height:auto; margin:0; padding: 0;}
 <script type="text/javascript">
 			var map;
 			var marker;
+			var mclng = 12956000;
+			var mclat = 4824875;
+			var address;
+    			var city;
+    			var province;
 			
 	   		function initialize() {
-	   			var mclng = 12956000;
-				var mclat = 4824875;
-				
 				if (typeof window.localStorage !== "undefined") {
 				    if (window.localStorage.swatch_options) {
 					var ls_pto = JSON.parse(window.localStorage.swatch_options);
@@ -59,9 +61,26 @@ body {height:auto; margin:0; padding: 0;}
 					marker.setMap(null);
 					//alert(event.point)
 					placeMarker(event.point);
-					document.getElementById("key_navi_dest_lng").value = event.point.x;
-					document.getElementById("key_navi_dest_lat").value = event.point.y;
-				});
+					mclng = event.point.x;
+					mclat = event.point.y;
+			
+					var request={
+        					location:{
+                  					points:[event.point],
+                  					type:0
+            					}
+        				}
+         
+        				var geo=new sogou.maps.Geocoder();
+        				geo.geocode(request,callback);
+        			});
+			}
+			
+			function callback(a){
+    				var geometry = a.data[0];
+    				address = geometry.address;
+    				city = geometry.city
+    				province = geometry.province;	
 			}
 			
 			function placeMarker(location) {
@@ -141,10 +160,12 @@ body {height:auto; margin:0; padding: 0;}
 			    <legend><h4>&#x5BFC;&#x822A;&#x76EE;&#x7684;&#x5730;:</h4></legend><!--导航目的地:-->
 					<label for="key_navi_dest">&#x8BF7;&#x81EA;&#x5B9A;&#x76EE;&#x7684;&#x5730;&#x540D;&#x79F0;&#xFF0C;&#x5E76;&#x5F00;&#x542F;&#x5730;&#x56FE;&#x9009;&#x53D6;&#x3002;</label><!--请自定目的地名称，并开启地图选取-->
 					<input name="key_navi_dest" id="key_navi_dest" value="" data-mini="true" type="text" maxlength="16">
-					<label for="key_navi_dest_lng" style="display: none;">&#x7ECF;&#x5EA6;:</label><!--经度:-->
+<!--
+					<label for="key_navi_dest_lng" style="display: none;">&#x7ECF;&#x5EA6;:</label>
 					<input name="key_navi_dest_lng" id="key_navi_dest_lng" style="display: none;" value="12956000" data-mini="true" type="text" maxlength="9">
-					<label for="key_navi_dest_lat" style="display: none;">&#x7EAC;&#x5EA6;:</label><!--纬度:-->
+					<label for="key_navi_dest_lat" style="display: none;">&#x7EAC;&#x5EA6;:</label>
 					<input name="key_navi_dest_lat" id="key_navi_dest_lat" style="display: none;" value="4824875" data-mini="true" type="text" maxlength="9">
+-->
 					<label for="key_navi_map">&#x70B9;&#x9009;&#x663E;&#x793A;&#x5730;&#x56FE;</label><!--点选显示地图-->
 					<input name="key_navi_map" id="key_navi_map" value="0" type="checkbox">
 					<input name="key_navi" id="key_navi" value="0" type="checkbox">
@@ -199,11 +220,14 @@ body {height:auto; margin:0; padding: 0;}
 				
 				'key_city'        : $("input[name=key_city]").val(),
 				'key_city_weather_code': Number( weatherCode ),
+				
 				'key_navi': Number( $("input[name=key_navi]").val() ),
 				'key_navi_dest'    : $("input[name=key_navi_dest]").val(),
-				'key_navi_dest_lng': $("input[name=key_navi_dest_lng]").val(),
-				'key_navi_dest_lat': $("input[name=key_navi_dest_lat]").val(),  
-				
+				//'key_navi_dest_lng': $("input[name=key_navi_dest_lng]").val(),
+				//'key_navi_dest_lat': $("input[name=key_navi_dest_lat]").val(),  
+				'key_navi_dest_lng': mclng,
+				'key_navi_dest_lat': mclat,  
+				'key_navi_dest_region': city, 
 			}
 			return options;
 		}
@@ -267,13 +291,14 @@ body {height:auto; margin:0; padding: 0;}
 					}						
 					
 					if ("key_navi_dest" in ls_pto) {
-						if(ls_pto["key_navi_dest"] != "") {
+						if(ls_pto["key_navi_dest"] != "") 
 							$("input[name=key_navi_dest]").val(ls_pto["key_navi_dest"]);
-							if(ls_pto["key_navi_dest_lng"] != "")
-								$("input[name=key_navi_dest_lng]").val(ls_pto["key_navi_dest_lng"]);
-							if(ls_pto["key_navi_dest_lat"] != "")
-								$("input[name=key_navi_dest_lat]").val(ls_pto["key_navi_dest_lat"]);
-						}	
+						if(ls_pto["key_navi_dest_lng"] != "")
+							mclng = Number( ls_pto["key_navi_dest_lng"] );
+							//$("input[name=key_navi_dest_lng]").val(ls_pto["key_navi_dest_lng"]);
+						if(ls_pto["key_navi_dest_lat"] != "")
+							mclat = Number( ls_pto["key_navi_dest_lat"] );
+							//$("input[name=key_navi_dest_lat]").val(ls_pto["key_navi_dest_lat"]);
 						if(ls_pto["key_navi"]==1) {	
 							$("input[name=key_navi]").prop('checked', true);
 							$("input[name=key_navi]").checkboxradio('refresh');
