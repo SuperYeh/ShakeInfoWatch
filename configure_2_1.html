@@ -185,6 +185,19 @@ body {height:auto; margin:0; padding: 0;}
 			 		<input name="key_weather_hourly" id="key_weather_hourly" value="0" type="checkbox">
 			</fieldset>		
 </div>
+
+<div data-role="collapsible">
+    <h3>&#x663E;&#x793A;&#x9009;&#x62E9;</h3><!--显示选择-->
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+					<label for="key_title_invert">&#x65E5;&#x671F;&#x680F;&#x53CD;&#x767D;</label><!--日期栏反白-->		
+			 		<input name="key_title_invert" id="key_title_invert" value="0" type="checkbox">
+					<label for="key_win_invert">&#x5929;&#x6C14;&#x680F;&#x53CD;&#x767D;</label><!--天气栏反白-->		
+			 		<input name="key_win_invert" id="key_win_invert" value="0" type="checkbox">
+					<label for="key_data_invert">&#x7529;&#x5C4F;&#x680F;&#x53CD;&#x767D;</label><!--甩屏栏反白-->		
+			 		<input name="key_data_invert" id="key_data_invert" value="0" type="checkbox">
+			</fieldset>
+</div>
+
 			</div>
 
 <br />
@@ -217,6 +230,9 @@ body {height:auto; margin:0; padding: 0;}
 				'key_hourly_vibr': Number( $("input[name=key_vibr_hourly]").val() ),
 				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
 				'key_mono_invert': Number( $("input[name=key_mono_invert]").val() ),
+				'key_title_invert': Number( $("input[name=key_title_invert]").val() ),
+				'key_win_invert': Number( $("input[name=key_win_invert]").val() ),
+				'key_data_invert': Number( $("input[name=key_data_invert]").val() ),
 				
 				'key_city'        : $("input[name=key_city]").val(),
 				'key_city_weather_code': Number( weatherCode ),
@@ -281,7 +297,22 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_mono_invert]").checkboxradio('refresh');
 						$("input[name=key_mono_invert]").val(1);
 					}
-						
+					if(ls_pto["key_title_invert"]==1) {
+						$("input[name=key_title_invert]").prop('checked', true);
+						$("input[name=key_title_invert]").checkboxradio('refresh');
+						$("input[name=key_title_invert]").val(1);
+					}
+					if(ls_pto["key_win_invert"]==1) {
+						$("input[name=key_win_invert]").prop('checked', true);
+						$("input[name=key_win_invert]").checkboxradio('refresh');
+						$("input[name=key_win_invert]").val(1);
+					}
+					if(ls_pto["key_data_invert"]==1) {
+						$("input[name=key_data_invert]").prop('checked', true);
+						$("input[name=key_data_invert]").checkboxradio('refresh');
+						$("input[name=key_data_invert]").val(1);
+					}
+					
 					if ("key_city" in ls_pto) 
 						$("input[name=key_city]").val(ls_pto["key_city"]);
 					if(ls_pto["key_hourly_weather"]==1) {	
