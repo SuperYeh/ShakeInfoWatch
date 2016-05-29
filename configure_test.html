@@ -111,6 +111,15 @@ body {height:auto; margin:0; padding: 0;}
 <div data-role="collapsible" data-collapsed="true">
 	<h3>&#x8868;&#x76D8;&#x8BBE;&#x5B9A;</h3><!--表盘设定-->
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>&#x9009;&#x62E9;&#x8868;&#x76D8;:</h4></legend><!--选择表盘:-->
+					<input name="key_style_face" id="key_style_face-0" value="0" checked="checked" type="radio">
+					<label for="key_style_face-0">&#x6708;&#x5386;</label><!--月历表盘:-->
+					<input name="key_style_face" id="key_style_face-1" value="1" type="radio">
+					<label for="key_style_face-1">&#x5929;&#x6C14;</label><!--天气表盘-->
+					<input name="key_style_face" id="key_style_face-2" value="2" type="radio">
+					<label for="key_style_face-2">&#x9EC4;&#x5386;</label><!--黄历表盘-->
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>&#x65F6;&#x949F;&#x7C7B;&#x522B;:</h4></legend><!--时钟类别:-->
 					<input name="key_clock_type" id="key_clock_type-0" value="0" checked="checked" type="radio">
 					<label for="key_clock_type-0">&#x6307;&#x9488;</label><!--指针-->
@@ -128,14 +137,16 @@ body {height:auto; margin:0; padding: 0;}
 			</fieldset>	
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 			    <legend><h4>&#x8F6C;&#x8155;&#x8BBE;&#x5B9A;:</h4></legend><!--转腕设定:-->
-				<input name="key_shake" id="key_shake-0" value="0" checked="checked" type="radio">
-			        <label for="key_shake-0">&#x5173;&#x95ED;</label><!--关闭-->
-			        <input name="key_shake" id="key_shake-1" value="1" type="radio">   
-			        <label for="key_shake-1">&#x5929;&#x6C14;&#x9884;&#x62A5;</label><!--天气预报-->
-			        <input name="key_shake" id="key_shake-2" value="2" type="radio">   
-			        <label for="key_shake-2">&#x9EC4;&#x5386;&#x5409;&#x5FCC;</label><!--黄历吉忌-->
-			        <input name="key_shake" id="key_shake-3" value="3" type="radio">
-			        <label for="key_shake-3">&#x5730;&#x5740;&#x5BFC;&#x822A;</label><!--地址导航-->
+				<input name="key_shake_face" id="key_shake_face-9" value="9" checked="checked" type="radio">
+			        <label for="key_shake_face-9">&#x65E0;</label><!--无-->
+				<input name="key_shake_face" id="key_shake_face-0" value="0" type="radio">
+			        <label for="key_shake_face-0">&#x6708;&#x5386;</label><!--月历-->
+			        <input name="key_shake_face" id="key_shake_face-1" value="1" type="radio">   
+			        <label for="key_shake_face-1">&#x5929;&#x6C14;</label><!--天气-->
+			        <input name="key_shake_face" id="key_shake_face-2" value="2" type="radio">   
+			        <label for="key_shake_face-2">&#x5409;&#x5FCC;</label><!--吉忌-->
+			        <input name="key_shake_face" id="key_shake_face-3" value="3" type="radio">
+			        <label for="key_shake_face-3">&#x5730;&#x5740;&#x5BFC;&#x822A;</label><!--地址导航-->
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
 				<legend><h4>&#x632F;&#x52A8;&#x63D0;&#x9192;:</h4></legend><!--振动提醒:-->
@@ -260,10 +271,10 @@ body {height:auto; margin:0; padding: 0;}
 		function getConfigData() {
 		    $("input[id='key_city']").change();
 		    var options = {
-				'key_app': 0,
+    				'key_style_face': Number( $("input[name=key_style_face]:checked").val() ),
 				'key_clock_type': Number( $("input[name=key_clock_type]:checked").val() ),
 				'key_clock_tick': Number( $("input[name=key_clock_tick]:checked").val() ),
-				'key_shake_face': Number( $("input[name=key_shake]:checked").val() ),
+				'key_shake_face': Number( $("input[name=key_shake_face]:checked").val() ),
 				'key_daily_start': $("input[name=key_vibr_start]").val(),
 				'key_daily_stop': $("input[name=key_vibr_end]").val(),
 				'key_hourly_vibr': Number( $("input[name=key_vibr_hourly]").val() ),
@@ -312,14 +323,14 @@ body {height:auto; margin:0; padding: 0;}
 					var ls_pto = JSON.parse(window.localStorage.swatch_options);
 					
 					// the Pebble webview dies on the next line...
-					//$("input[name=key0][id=key0-"+ls_pto["key_style_face"]+"]").prop('checked',true);
-					//$("input[name=key0]").checkboxradio('refresh');
+					$("input[namekey_style_face][id=key_style_face-"+ls_pto["key_style_face"]+"]").prop('checked',true);
+					$("input[name=key_style_face]").checkboxradio('refresh');
 					$("input[name=key_clock_type][id=key_clock_type-"+ls_pto["key_clock_type"]+"]").prop('checked',true);
 					$("input[name=key_clock_type]").checkboxradio('refresh');
 					$("input[name=key_clock_tick][id=key_clock_tick-"+ls_pto["key_clock_tick"]+"]").prop('checked',true);
 					$("input[name=key_clock_tick]").checkboxradio('refresh');
-					$("input[name=key_shake][id=key_shake-"+ls_pto["key_shake_face"]+"]").prop('checked',true);
-					$("input[name=key_shake]").checkboxradio('refresh');
+					$("input[name=key_shake_face][id=key_shake_face-"+ls_pto["key_shake_face"]+"]").prop('checked',true);
+					$("input[name=key_shake_face]").checkboxradio('refresh');
 					if ("key_daily_start" in ls_pto) 
 						$("input[name=key_vibr_start]").val(ls_pto["key_daily_start"]);
 					if ("key_daily_stop" in ls_pto) 
