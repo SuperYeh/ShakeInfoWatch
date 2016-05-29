@@ -323,7 +323,7 @@ body {height:auto; margin:0; padding: 0;}
 					var ls_pto = JSON.parse(window.localStorage.swatch_options);
 					
 					// the Pebble webview dies on the next line...
-					$("input[namekey_style_face][id=key_style_face-"+ls_pto["key_style_face"]+"]").prop('checked',true);
+					$("input[name=key_style_face][id=key_style_face-"+ls_pto["key_style_face"]+"]").prop('checked',true);
 					$("input[name=key_style_face]").checkboxradio('refresh');
 					$("input[name=key_clock_type][id=key_clock_type-"+ls_pto["key_clock_type"]+"]").prop('checked',true);
 					$("input[name=key_clock_type]").checkboxradio('refresh');
