@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=gb2312"/>
+<title>Configuration</title>
+<style type="text/css">
+html {height:auto;}
+body {height:auto; margin:0; padding: 0;}
+#map_canvas {width:98%; height:250px; position:relative;}
+@media print {#map_canvas {height:250px;}}
+</style>
+<link rel='stylesheet' type='text/css' href='css/slate.min.css'>
+<link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
+<script type="text/javascript" src="js/api_v2.5.1.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+<script type="text/javascript" src='js/slate.js'></script>
+<script type="text/javascript">
+			var map;
+			var marker;
+			var mclng = 12956000;
+			var mclat = 4824875;
+			var address;
+    			var city;
+    			var province;
+			
+	   		function initialize() {
+				if (typeof window.localStorage !== "undefined") {
+				    if (window.localStorage.swatch_options) {
+					var ls_pto = JSON.parse(window.localStorage.swatch_options);
+	   				if ("key_navi_dest" in ls_pto) {
+						if(ls_pto["key_navi_dest_lng"] != "")
+							mclng = Number( ls_pto["key_navi_dest_lng"] );
+						if(ls_pto["key_navi_dest_lat"] != "")
+							mclat = Number( ls_pto["key_navi_dest_lat"] );
+	   				}
+				    }	
+				} 
+	   			
+				var canvas = document.getElementById("map_canvas");
+				//canvas.width = 400;
+				//canvas.height = 400;
+				
+				//var myLatlng = new sogou.maps.LatLng(39.992792,116.326142);
+				//var mclng = document.getElementById("key_navi_dest_lng").value;
+				//var mclat = document.getElementById("key_navi_dest_lat").value;
+				
+				var target = new sogou.maps.Point(mclng, mclat);
+				var myOptions = {
+					zoom: 15,
+					center: target,
+					//center: myLatlng,
+					mapTypeId: sogou.maps.MapTypeId.ROADMAP
+				}
+				map = new sogou.maps.Map(canvas, myOptions);
+				placeMarker(target);
+				canvas.style.display = "none";
+				
+				sogou.maps.event.addListener(map, 'click', function(event) {
+					marker.setMap(null);
+					//alert(event.point)
+					placeMarker(event.point);
+					mclng = event.point.x;
+					mclat = event.point.y;
+			
+					var request={
+        					location:{
+                  					points:[event.point],
+                  					type:0
+            					}
+        				}
+         
+        				var geo=new sogou.maps.Geocoder();
+        				geo.geocode(request,callback);
+				});
+			}
+			
+			function callback(a){
+    				var geometry = a.data[0];
+    				address = geometry.address;
+    				city = geometry.city
+    				province = geometry.province;	
+			}
+			
+			function placeMarker(location) {
+				//var clickedLocation = location;		
+				marker = new sogou.maps.Marker({
+					position: location,
+					map: map
+				});
+				//map.setCenter(location);
+			}
+			
+</script>
+
+</head>
+
+<body onload="initialize()">
+	<div data-role="header" class="jqm-header">
+		<h1>Configuration</h1>
+	</div>	
+	
+	<div id="map_canvas"></div>
+	
+	<div id="main">
+		<div data-role="content">
+
+			<div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-mini="false">
+
+<div data-role="collapsible" data-collapsed="true">
+	<h3>&#x8868;&#x76D8;&#x8BBE;&#x5B9A;</h3><!--表盘设定-->
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>&#x9009;&#x62E9;&#x8868;&#x76D8;:</h4></legend><!--选择表盘:-->
+					<input name="key_style_face" id="key_style_face-0" value="0" checked="checked" type="radio">
+					<label for="key_style_face-0">&#x6708;&#x5386;</label><!--月历:-->
+					<input name="key_style_face" id="key_style_face-1" value="1" type="radio">
+					<label for="key_style_face-1">&#x5929;&#x6C14;</label><!--天气-->
+					<input name="key_style_face" id="key_style_face-2" value="2" type="radio">
+					<label for="key_style_face-2">&#x5409;&#x5FCC;</label><!--吉忌-->
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>&#x65F6;&#x949F;&#x7C7B;&#x522B;:</h4></legend><!--时钟类别:-->
+					<input name="key_clock_type" id="key_clock_type-0" value="0" checked="checked" type="radio">
+					<label for="key_clock_type-0">&#x6307;&#x9488;</label><!--指针-->
+					<input name="key_clock_type" id="key_clock_type-1" value="1" type="radio">
+					<label for="key_clock_type-1">&#x6570;&#x4F4D;</label><!--数位-->
+					<input name="key_clock_type" id="key_clock_type-2" value="2" type="radio">
+					<label for="key_clock_type-2">&#x5E72;&#x652F;</label><!--干支-->
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>&#x8BA1;&#x65F6;&#x5355;&#x4F4D;:</h4></legend><!--计时单位:-->
+					<input name="key_clock_tick" id="key_clock_tick-0" value="0" checked="checked" type="radio">
+					<label for="key_clock_tick-0">&#x79D2;</label><!--秒-->
+					<input name="key_clock_tick" id="key_clock_tick-1" value="1" type="radio">
+					<label for="key_clock_tick-1">&#x5206;</label><!--分-->
+			</fieldset>	
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+			    <legend><h4>&#x8F6C;&#x8155;&#x8BBE;&#x5B9A;:</h4></legend><!--转腕设定:-->
+				<input name="key_shake_face" id="key_shake_face-9" value="9" checked="checked" type="radio">
+			        <label for="key_shake_face-9">&#x65E0;</label><!--无-->
+				<input name="key_shake_face" id="key_shake_face-0" value="0" type="radio">
+			        <label for="key_shake_face-0">&#x6708;&#x5386;</label><!--月历-->
+			        <input name="key_shake_face" id="key_shake_face-1" value="1" type="radio">   
+			        <label for="key_shake_face-1">&#x5929;&#x6C14;</label><!--天气-->
+			        <input name="key_shake_face" id="key_shake_face-2" value="2" type="radio">   
+			        <label for="key_shake_face-2">&#x5409;&#x5FCC;</label><!--吉忌-->
+			        <input name="key_shake_face" id="key_shake_face-3" value="3" type="radio">
+			        <label for="key_shake_face-3">&#x5730;&#x5740;&#x5BFC;&#x822A;</label><!--地址导航-->
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
+				<legend><h4>&#x632F;&#x52A8;&#x63D0;&#x9192;:</h4></legend><!--振动提醒:-->
+					<input name="key_vibr_hourly" id="key_vibr_hourly" value="0" type="checkbox">
+					<label for="key_vibr_hourly">&#x6574;&#x70B9;&#x63D0;&#x9192;</label><!--整点提醒-->
+					<input name="key_vibr_disconnect" id="key_vibr_disconnect" value="0" type="checkbox">
+					<label for="key_vibr_disconnect">&#x65AD;&#x8FDE;&#x63D0;&#x9192;</label><!--断连提醒-->
+					<div class="ui-field-contain">	
+					    <label for="key_vibr_start">&#x5F00;&#x59CB;&#x65F6;&#x95F4;:</label><!--开始时间:-->
+					    <input name="key_vibr_start" id="key_vibr_start" type="time" value=07:00>
+					    <label for="key_vibr_end">&#x7ED3;&#x675F;&#x65F6;&#x95F4;:</label><!--结束时间:-->
+					    <input name="key_vibr_end" id="key_vibr_end" type="time" value=22:00>
+					</div>	
+			</fieldset>
+</div>
+
+<div data-role="collapsible" data-collapsed="true">
+	<h3>&#x8D44;&#x6599;&#x67E5;&#x8BE2;</h3><!--资料查询-->
+			<fieldset data-role="controlgroup" data-mini="true">
+			    <legend><h4 href="//m.kuaidi100.com" target="_blank">&#x5FEB;&#x9012;&#x5355;&#x53F7;&#x67E5;&#x8BE2;:</h4></legend><!--快递单号查询:-->
+			</fieldset>
+</div>
+
+<div data-role="collapsible" data-collapsed="true">
+	<h3>&#x5BFC;&#x822A;&#x6307;&#x5F15;</h3><!--导航指引-->
+			<fieldset data-role="controlgroup" data-mini="true">
+			    <legend><h4>&#x5BFC;&#x822A;&#x76EE;&#x7684;&#x5730;:</h4></legend><!--导航目的地:-->
+					<label for="key_navi_dest">&#x8BF7;&#x81EA;&#x5B9A;&#x76EE;&#x7684;&#x5730;&#x540D;&#x79F0;&#xFF0C;&#x5E76;&#x5F00;&#x542F;&#x5730;&#x56FE;&#x9009;&#x53D6;&#x3002;</label><!--请自定目的地名称，并开启地图选取-->
+					<input name="key_navi_dest" id="key_navi_dest" value="" data-mini="true" type="text" maxlength="16">
+<!--
+					<label for="key_navi_dest_lng" style="display: none;">&#x7ECF;&#x5EA6;:</label>
+					<input name="key_navi_dest_lng" id="key_navi_dest_lng" style="display: none;" value="12956000" data-mini="true" type="text" maxlength="9">
+					<label for="key_navi_dest_lat" style="display: none;">&#x7EAC;&#x5EA6;:</label>
+					<input name="key_navi_dest_lat" id="key_navi_dest_lat" style="display: none;" value="4824875" data-mini="true" type="text" maxlength="9">
+-->
+					<label for="key_navi_map">&#x70B9;&#x9009;&#x663E;&#x793A;&#x5730;&#x56FE;</label><!--点选显示地图-->
+					<input name="key_navi_map" id="key_navi_map" value="0" type="checkbox">
+					<input name="key_navi" id="key_navi" value="0" type="checkbox">
+					<label for="key_navi">&#x8DEF;&#x7EBF;&#x002F;&#x5730;&#x5740;&#x67E5;&#x8BE2;&#x5207;&#x6362;</label><!--路线/地址查询切换-->
+			</fieldset>
+</div>
+
+<div data-role="collapsible" data-collapsed="true">
+	<h3>&#x6C14;&#x8C61;&#x67E5;&#x8BE2;</h3><!--气象查询-->
+			<fieldset data-role="controlgroup" data-mini="true">
+			    <legend><h4>&#x672A;&#x6765;&#x5929;&#x6C14;&#x67E5;&#x8BE2;:</h4></legend><!--未来天气查询:-->
+					<label for="key_city" >&#x8F93;&#x5165;&#x57CE;&#x5E02;&#x540D;&#x79F0;&#xFF08;&#x4E0D;&#x52A0;&#x5E02;&#x6216;&#x533A;&#x7B49;&#x5B57;&#x5C3E;&#xFF09;&#x3002;</label><!--输入城市名称（不加市区等字尾）-->
+					<input name="key_city" id="key_city" value="北京" data-mini="true" type="text" maxlength="16">
+			</fieldset>
+			<fieldset data-role="controlgroup" data-mini="true">
+					<label for="key_weather_hourly">&#x6574;&#x70B9;&#x5929;&#x6C14;&#x66F4;&#x65B0;</label><!--整点天气更新-->		
+			 		<input name="key_weather_hourly" id="key_weather_hourly" value="0" type="checkbox">
+			</fieldset>		
+</div>
+
+<div data-role="collapsible" data-collapsed="true">
+    <h3>&#x8272;&#x5F69;&#x9009;&#x62E9;</h3><!--色彩选择-->
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>&#x65E5;&#x671F;&#x680F;&#x4F4D;:</h4></legend><!--日期栏位:-->
+					<label for="key_title_face_color">&#x5E95;&#x8272;</label><!--底色-->
+					<label class="item">
+			          <input name="key_title_face_color" id="key_title_face_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
+			        </label>
+					<label for="key_title_word_color">&#x6587;&#x5B57;</label><!--文字-->
+					<label class="item">
+			          <input name="key_title_word_color" id="key_title_word_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000" onfocus="this.blur()">
+			        </label>
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>&#x5929;&#x6c14;&#x680F;&#x4F4D;:</h4></legend><!--天气栏位:-->
+					<label for="key_win_face_color">&#x5E95;&#x8272;</label><!--底色-->
+					<label class="item">
+			          <input name="key_win_face_color" id="key_win_face_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
+			        </label>
+					<label for="key_win_word_color">&#x6587;&#x5B57;</label><!--文字-->
+					<label class="item">
+			          <input name="key_win_word_color" id="key_win_word_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000" onfocus="this.blur()">
+			        </label>
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>&#x65F6;&#x95F4;&#x680F;&#x4F4D;:</h4></legend><!--时间栏位:-->
+					<label for="key_clock_hour_color">&#x65F6;&#x9488;</label><!--时针-->
+					<label class="item">
+			        <input name="key_clock_hour_color" id="key_clock_hour_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000" onfocus="this.blur()">
+			        </label>
+					<label for="key_clock_min_color">&#x5206;&#x9488;</label><!--分针-->
+					<label class="item">
+			        <input name="key_clock_min_color" id="key_clock_min_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000" onfocus="this.blur()">
+			        </label>
+					<label for="key_clock_sec_color">&#x79D2;&#x9488;</label><!--秒针-->
+					<label class="item">
+ 			        <input name="key_clock_sec_color" id="key_clock_sec_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000" onfocus="this.blur()">
+			        </label>
+			</fieldset>	
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>&#x7529;&#x5C4F;&#x680F;&#x4F4D;:</h4></legend><!--甩屏栏位:-->
+					<label for="key_data_face_color">&#x5E95;&#x8272;</label><!--底色-->
+					<label class="item">
+			          <input name="key_data_face_color" id="key_data_face_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000" onfocus="this.blur()">
+			        </label>
+					<label for="key_data_word_color">&#x6587;&#x5B57;</label><!--文字-->
+					<label class="item">
+			          <input name="key_data_word_color" id="key_data_word_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#FFFFFF" onfocus="this.blur()">
+			        </label>
+			</fieldset>
+</div>
+
+			</div>
+
+<br />
+
+<div class="ui-body ui-body-c">
+    <fieldset class="ui-grid-a">
+        <div class="ui-block-a"><button type="submit" data-theme="d" id="b-cancel">&#x53D6;&#x6D88;</button></div>
+        <div class="ui-block-b"><button type="submit" data-theme="a" id="b-submit">&#x786E;&#x5B9A;</button></div>
+    </fieldset>
+</div>
+
+ 		
+		</div>
+	</div>
+	
+	<div id="code" name="code" style="display:none"></div>		
+		
+		
+    <script>
+		var weatherCode = -1;
+		
+		function getConfigData() {
+		    $("input[id='key_city']").change();
+		    var options = {
+    				'key_style_face': Number( $("input[name=key_style_face]:checked").val() ),
+				'key_clock_type': Number( $("input[name=key_clock_type]:checked").val() ),
+				'key_clock_tick': Number( $("input[name=key_clock_tick]:checked").val() ),
+				'key_shake_face': Number( $("input[name=key_shake_face]:checked").val() ),
+				'key_daily_start': $("input[name=key_vibr_start]").val(),
+				'key_daily_stop': $("input[name=key_vibr_end]").val(),
+				'key_hourly_vibr': Number( $("input[name=key_vibr_hourly]").val() ),
+				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
+				
+				'key_city'        : $("input[name=key_city]").val(),
+				'key_city_weather_code': Number( weatherCode ),
+				
+				'key_navi': Number( $("input[name=key_navi]").val() ),
+				'key_navi_dest': $("input[name=key_navi_dest]").val(),
+				//'key_navi_dest_lng': $("input[name=key_navi_dest_lng]").val(),
+				//'key_navi_dest_lat': $("input[name=key_navi_dest_lat]").val(),  
+				'key_navi_dest_lng': mclng,
+				'key_navi_dest_lat': mclat,  
+				'key_navi_dest_region': city, 
+				
+				'key_title_face_color'    : $("input[name=key_title_face_color]").val(),
+				'key_title_word_color'    : $("input[name=key_title_word_color]").val(),
+				'key_win_face_color'    : $("input[name=key_win_face_color]").val(),
+				'key_win_word_color'    : $("input[name=key_win_word_color]").val(),
+				'key_clock_hour_color'    : $("input[name=key_clock_hour_color]").val(),
+				'key_clock_min_color'    : $("input[name=key_clock_min_color]").val(),
+				'key_clock_sec_color'    : $("input[name=key_clock_sec_color]").val(),
+				'key_data_face_color'    : $("input[name=key_data_face_color]").val(),
+				'key_data_word_color'    : $("input[name=key_data_word_color]").val(),				
+			}
+			return options;
+		}
+		
+		function getQueryParam(variable, defaultValue) {
+    			var query = location.search.substring(1);
+    			var vars = query.split('&');
+    			for (var i = 0; i < vars.length; i++) {
+      				var pair = vars[i].split('=');
+      				if (pair[0] === variable) {
+        				return decodeURIComponent(pair[1]);
+      				}
+    			}
+    			return defaultValue || false;
+  		}
+		
+		$().ready(function() {
+			
+		   	if (typeof window.localStorage !== "undefined") {
+				if (window.localStorage.swatch_options) {
+					var ls_pto = JSON.parse(window.localStorage.swatch_options);
+					
+					// the Pebble webview dies on the next line...
+					$("input[name=key_style_face][id=key_style_face-"+ls_pto["key_style_face"]+"]").prop('checked',true);
+					$("input[name=key_style_face]").checkboxradio('refresh');
+					$("input[name=key_clock_type][id=key_clock_type-"+ls_pto["key_clock_type"]+"]").prop('checked',true);
+					$("input[name=key_clock_type]").checkboxradio('refresh');
+					$("input[name=key_clock_tick][id=key_clock_tick-"+ls_pto["key_clock_tick"]+"]").prop('checked',true);
+					$("input[name=key_clock_tick]").checkboxradio('refresh');
+					$("input[name=key_shake_face][id=key_shake_face-"+ls_pto["key_shake_face"]+"]").prop('checked',true);
+					$("input[name=key_shake_face]").checkboxradio('refresh');
+					if ("key_daily_start" in ls_pto) 
+						$("input[name=key_vibr_start]").val(ls_pto["key_daily_start"]);
+					if ("key_daily_stop" in ls_pto) 
+						$("input[name=key_vibr_end]").val(ls_pto["key_daily_stop"]);
+					if(ls_pto["key_hourly_vibr"]==1) {	
+						$("input[name=key_vibr_hourly]").prop('checked', true);
+						$("input[name=key_vibr_hourly]").checkboxradio('refresh');
+						$("input[name=key_vibr_hourly]").val(1);
+					}	
+					if(ls_pto["key_disconnect_vibr"]==1) {
+						$("input[name=key_vibr_disconnect]").prop('checked', true);
+						$("input[name=key_vibr_disconnect]").checkboxradio('refresh');
+						$("input[name=key_vibr_disconnect]").val(1);
+					}
+						
+					if ("key_city" in ls_pto) 
+						$("input[name=key_city]").val(ls_pto["key_city"]);
+					if(ls_pto["key_hourly_weather"]==1) {	
+						$("input[name=key_hourly_weather]").prop('checked', true);
+						$("input[name=key_hourly_weather]").checkboxradio('refresh');
+						$("input[name=key_hourly_weather]").val(1);
+					}						
+					
+					if ("key_navi_dest" in ls_pto) {
+						if(ls_pto["key_navi_dest"] != "") 
+							$("input[name=key_navi_dest]").val(ls_pto["key_navi_dest"]);
+						if(ls_pto["key_navi_dest_lng"] != "")
+							mclng = Number( ls_pto["key_navi_dest_lng"] );
+							//$("input[name=key_navi_dest_lng]").val(ls_pto["key_navi_dest_lng"]);
+						if(ls_pto["key_navi_dest_lat"] != "")
+							mclat = Number( ls_pto["key_navi_dest_lat"] );
+							//$("input[name=key_navi_dest_lat]").val(ls_pto["key_navi_dest_lat"]);
+						if(ls_pto["key_navi"]==1) {	
+							$("input[name=key_navi]").prop('checked', true);
+							$("input[name=key_navi]").checkboxradio('refresh');
+							$("input[name=key_navi]").val(1);
+						}												
+					}
+					
+					if ("key_title_face_color" in ls_pto) 
+						$("input[name=key_title_face_color]").val(ls_pto["key_title_face_color"]);
+					if ("key_title_word_color" in ls_pto) 
+						$("input[name=key_title_word_color]").val(ls_pto["key_title_word_color"]);
+					if ("key_win_face_color" in ls_pto) 
+						$("input[name=key_win_face_color]").val(ls_pto["key_win_face_color"]);
+					if ("key_win_word_color" in ls_pto) 
+						$("input[name=key_win_word_color]").val(ls_pto["key_win_word_color"]);
+					if ("key_clock_hour_color" in ls_pto) 
+						$("input[name=key_clock_hour_color]").val(ls_pto["key_clock_hour_color"]);
+					if ("key_clock_min_color" in ls_pto) 
+						$("input[name=key_clock_min_color]").val(ls_pto["key_clock_min_color"]);
+					if ("key_clock_sec_color" in ls_pto) 
+						$("input[name=key_clock_sec_color]").val(ls_pto["key_clock_sec_color"]);
+					if ("key_data_face_color" in ls_pto) 
+						$("input[name=key_data_face_color]").val(ls_pto["key_data_face_color"]);
+					if ("key_data_word_color" in ls_pto) 
+						$("input[name=key_data_word_color]").val(ls_pto["key_data_word_color"]);
+					
+					weatherCode =  Number( ls_pto["key_city_weather_code"] );
+				}
+			}
+			
+			$('#code').load('cityID.html');
+			$("input[id='key_city']").change(function () {
+				var city = $(this).val();
+				city = city.replace(/(^\s*)|(\s*$)/g, ""); 
+				if (city == "") {
+					alert("未输入城市，无法查询。");
+					weatherCode = -1;
+					$(this).val("");
+					return;
+				}
+				var field = "input[name='"+city+"']";
+				var code = $(field).val();
+				if(code != null) {
+					//alert(city +":"+ code);
+					weatherCode = code;
+				} else {
+					weatherCode = -1;
+					alert("输入错误，重新输入！");
+					$(this).val("");
+				}	
+			});
+    		
+			$("input[type='checkbox']").click(function(){   
+				if($(this).val() == 1) $(this).val(0);   
+				else $(this).val(1);   
+			});
+					
+			$("input[id='key_navi_map']").click(function(){   
+			    	var canvas = document.getElementById("map_canvas");
+				if($(this).val() == 0)  canvas.style.display = "none";
+				else canvas.style.display = "block";   
+			});
+						
+			$("#b-cancel").click(function() {
+				console.log("Cancel");
+				document.location = "pebblejs://close";
+			});
+			
+/*
+			$("#b-submit").click(function() {
+				console.log("Submit");
+				ls_pto = JSON.stringify(getConfigData());
+				if (typeof window.localStorage !== "undefined") {
+					window.localStorage.swatch_options = ls_pto;
+				}
+				var location = "pebblejs://close#" + encodeURIComponent(ls_pto);
+				document.location = location;
+			});
+*/			
+			var submitButton = document.getElementById('b-submit');
+  			submitButton.addEventListener('click', function() {
+    				console.log('Submit');
+    				var ls_option = JSON.stringify(getConfigData());
+    				if (typeof window.localStorage !== "undefined") {
+					window.localStorage.swatch_options = ls_option;
+				}
+    				// Set the return URL depending on the runtime environment
+    				var return_to = getQueryParam('return_to', 'pebblejs://close#');
+    				document.location = return_to + encodeURIComponent(ls_option);
+  			});
+		});
+    </script>
+  </body>
+</html>
