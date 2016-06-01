@@ -80,7 +80,8 @@ body {height:auto; margin:0; padding: 0;}
     				var geometry = a.data[0];
     				address = geometry.address;
     				city = geometry.city
-    				province = geometry.province;	
+    				province = geometry.province;
+    				$("input[name=key_navi_dest]").val(address);
 			}
 			
 			function placeMarker(location) {
