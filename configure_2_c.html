@@ -189,10 +189,12 @@ body {height:auto; margin:0; padding: 0;}
 					<label for="key_city" >&#x8F93;&#x5165;&#x57CE;&#x5E02;&#x540D;&#x79F0;&#xFF08;&#x4E0D;&#x52A0;&#x5E02;&#x6216;&#x533A;&#x7B49;&#x5B57;&#x5C3E;&#xFF09;&#x3002;</label><!--输入城市名称（不加市区等字尾）-->
 					<input name="key_city" id="key_city" value="北京" data-mini="true" type="text" maxlength="16">
 			</fieldset>
+<!--			
 			<fieldset data-role="controlgroup" data-mini="true">
-					<label for="key_weather_hourly">&#x6574;&#x70B9;&#x5929;&#x6C14;&#x66F4;&#x65B0;</label><!--整点天气更新-->		
+					<label for="key_weather_hourly">&#x6574;&#x70B9;&#x5929;&#x6C14;&#x66F4;&#x65B0;</label>		
 			 		<input name="key_weather_hourly" id="key_weather_hourly" value="0" type="checkbox">
-			</fieldset>		
+			</fieldset>
+-->			
 </div>
 
 <div data-role="collapsible" data-collapsed="true">
@@ -282,7 +284,7 @@ body {height:auto; margin:0; padding: 0;}
 				
 				'key_city'        : $("input[name=key_city]").val(),
 				'key_city_weather_code': Number( weatherCode ),
-				
+	
 				'key_navi': Number( $("input[name=key_navi]").val() ),
 				'key_navi_dest': $("input[name=key_navi_dest]").val(),
 				//'key_navi_dest_lng': $("input[name=key_navi_dest_lng]").val(),
@@ -348,11 +350,11 @@ body {height:auto; margin:0; padding: 0;}
 						
 					if ("key_city" in ls_pto) 
 						$("input[name=key_city]").val(ls_pto["key_city"]);
-					if(ls_pto["key_hourly_weather"]==1) {	
-						$("input[name=key_hourly_weather]").prop('checked', true);
-						$("input[name=key_hourly_weather]").checkboxradio('refresh');
-						$("input[name=key_hourly_weather]").val(1);
-					}						
+					//if(ls_pto["key_weather_hourly"]==1) {	
+					//	$("input[name=key_weather_hourly]").prop('checked', true);
+					//	$("input[name=key_weather_hourly]").checkboxradio('refresh');
+					//	$("input[name=key_weather_hourly]").val(1);
+					//}						
 					
 					if ("key_navi_dest" in ls_pto) {
 						if(ls_pto["key_navi_dest"] != "") 
