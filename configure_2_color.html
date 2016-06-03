@@ -354,8 +354,8 @@ body {height:auto; margin:0; padding: 0;}
 			var mclng = 12956000;
 			var mclat = 4824875;
 			var address;
-    			var city;
-    			var province;
+    			var city = "北京";
+    			var province = "北京";
 			
 	   		function initialize() {
 				if (typeof window.localStorage !== "undefined") {
@@ -532,7 +532,8 @@ body {height:auto; margin:0; padding: 0;}
 							$("input[name=key_navi]").prop('checked', true);
 							$("input[name=key_navi]").checkboxradio('refresh');
 							$("input[name=key_navi]").val(1);
-						}												
+						}
+						city = ls_pto["key_navi_dest_region"];
 					}
 					
 					if ("key_kuaidi_id" in ls_pto) 
