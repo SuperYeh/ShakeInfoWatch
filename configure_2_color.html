@@ -108,7 +108,7 @@ body {height:auto; margin:0; padding: 0;}
 					<label for="key_kuaidi_id">&#x67E5;&#x8BE2;&#x5355;&#x53F7;:</label><!--查询单号-->
 					<input name="key_kuaidi_id" id="key_kuaidi_id" value="" data-mini="true" type="text" maxlength="16">
 <label>公司名称</label>
-<select name="com">
+<select name="key_kuaidi_com" id="key_kuaidi_com" type="select">
 <option value="aramex">Aramex</option>
 <option value="citylink">City-Link</option>
 <option value="coe">COE</option>
@@ -538,8 +538,7 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_kuaidi_id]").val(ls_pto["key_kuaidi_id"]);
 					if ("key_kuaidi_com" in ls_pto) 
 						$("select[name=key_kuaidi_com]").val(ls_pto["key_kuaidi_com"]);
-					document.getElementById("key_kuaidi_com").value=ls_pto["key_kuaidi_com"];	
-					
+
 					if ("key_title_face_color" in ls_pto) 
 						$("input[name=key_title_face_color]").val(ls_pto["key_title_face_color"]);
 					if ("key_title_word_color" in ls_pto) 
