@@ -81,6 +81,7 @@ body {height:auto; margin:0; padding: 0;}
     				address = geometry.address;
     				city = geometry.city
     				province = geometry.province;	
+    				$("input[name=key_navi_dest]").val(address);
 			}
 			
 			function placeMarker(location) {
@@ -341,10 +342,12 @@ body {height:auto; margin:0; padding: 0;}
 					<label for="key_city" >&#x8F93;&#x5165;&#x57CE;&#x5E02;&#x540D;&#x79F0;&#xFF08;&#x4E0D;&#x52A0;&#x5E02;&#x6216;&#x533A;&#x7B49;&#x5B57;&#x5C3E;&#xFF09;&#x3002;</label><!--输入城市名称（不加市区等字尾）-->
 					<input name="key_city" id="key_city" value="北京" data-mini="true" type="text" maxlength="16">
 			</fieldset>
+<!--			
 			<fieldset data-role="controlgroup" data-mini="true">
-					<label for="key_weather_hourly">&#x6574;&#x70B9;&#x5929;&#x6C14;&#x66F4;&#x65B0;</label><!--整点天气更新-->		
+					<label for="key_weather_hourly">&#x6574;&#x70B9;&#x5929;&#x6C14;&#x66F4;&#x65B0;</label>		
 			 		<input name="key_weather_hourly" id="key_weather_hourly" value="0" type="checkbox">
-			</fieldset>		
+			</fieldset>
+-->			
 </div>
 
 <div data-role="collapsible" data-collapsed="true">
@@ -373,15 +376,15 @@ body {height:auto; margin:0; padding: 0;}
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>&#x65F6;&#x95F4;&#x680F;&#x4F4D;:</h4></legend><!--时间栏位:-->
-					<label for="key_clock_hour_color">&#x65F6;&#x9488;</label><!--时针-->
+					<label for="key_clock_hour_color">&#x65F6;&#x9488;(&#x5E72;&#x652F;)</label><!--时针-->
 					<label class="item">
 			        <input name="key_clock_hour_color" id="key_clock_hour_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000" onfocus="this.blur()">
 			        </label>
-					<label for="key_clock_min_color">&#x5206;&#x9488;</label><!--分针-->
+					<label for="key_clock_min_color">&#x5206;&#x9488;(&#x51B2;&#x715E;)</label><!--分针-->
 					<label class="item">
 			        <input name="key_clock_min_color" id="key_clock_min_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000" onfocus="this.blur()">
 			        </label>
-					<label for="key_clock_sec_color">&#x79D2;&#x9488;</label><!--秒针-->
+					<label for="key_clock_sec_color">&#x79D2;&#x9488;(&#x65F6;&#x95F4;)</label><!--秒针-->
 					<label class="item">
  			        <input name="key_clock_sec_color" id="key_clock_sec_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000" onfocus="this.blur()">
 			        </label>
@@ -504,11 +507,11 @@ body {height:auto; margin:0; padding: 0;}
 						
 					if ("key_city" in ls_pto) 
 						$("input[name=key_city]").val(ls_pto["key_city"]);
-					if(ls_pto["key_hourly_weather"]==1) {	
-						$("input[name=key_hourly_weather]").prop('checked', true);
-						$("input[name=key_hourly_weather]").checkboxradio('refresh');
-						$("input[name=key_hourly_weather]").val(1);
-					}						
+					//if(ls_pto["key_hourly_weather"]==1) {	
+					//	$("input[name=key_hourly_weather]").prop('checked', true);
+					//	$("input[name=key_hourly_weather]").checkboxradio('refresh');
+					//	$("input[name=key_hourly_weather]").val(1);
+					//}						
 					
 					if ("key_navi_dest" in ls_pto) {
 						if(ls_pto["key_navi_dest"] != "") 
