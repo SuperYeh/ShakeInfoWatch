@@ -337,7 +337,8 @@ body {height:auto; margin:0; padding: 0;}
 							$("input[name=key_navi]").prop('checked', true);
 							$("input[name=key_navi]").checkboxradio('refresh');
 							$("input[name=key_navi]").val(1);
-						}												
+						}
+						city = ls_pto["key_navi_dest_region"];
 					}
 					weatherCode =  Number( ls_pto["key_city_weather_code"] );
 				}
