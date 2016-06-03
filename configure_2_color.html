@@ -10,16 +10,13 @@ body {height:auto; margin:0; padding: 0;}
 #map_canvas {width:98%; height:250px; position:relative;}
 @media print {#map_canvas {height:250px;}}
 </style>
-<!--
 <link rel='stylesheet' type='text/css' href='css/slate.min.css'>
--->
 <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
 <script type="text/javascript" src="js/api_v2.5.1.js"></script>
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
-<!--
 <script type="text/javascript" src='js/slate.js'></script>
--->
+
 </head>
 
 <body onload="initialize()">
@@ -541,8 +538,8 @@ body {height:auto; margin:0; padding: 0;}
 					if ("key_kuaidi_id" in ls_pto) 
 						$("input[name=key_kuaidi_id]").val(ls_pto["key_kuaidi_id"]);
 					if ("key_kuaidi_com" in ls_pto) {
-						$("select[name=key_kuaidi_com]").val(ls_pto["key_kuaidi_com"]);
-						//$("select[name=key_kuaidi_com]").find("option[value='"+  ls_pto["key_kuaidi_com"] +"']").attr('selected','selected');
+						//$("select[name=key_kuaidi_com]").val(ls_pto["key_kuaidi_com"]);
+						$("select[name=key_kuaidi_com]").find("option[value='"+  ls_pto["key_kuaidi_com"] +"']").attr('selected','selected');
    					}
 					
 					if ("key_title_face_color" in ls_pto) 
