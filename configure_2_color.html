@@ -565,7 +565,8 @@ body {height:auto; margin:0; padding: 0;}
 			$('#code').load('cityID.html');
 			$("input[id='key_city']").change(function () {
 				var city = $(this).val();
-				city = city.replace(/(^\s*)|(\s*$)/g, ""); 
+				//city = city.replace(/(^\s*)|(\s*$)/g, ""); 
+				city = city.replace(/[ ]/g, ""); 
 				if (city == "") {
 					alert("未输入城市，无法查询。");
 					weatherCode = -1;
