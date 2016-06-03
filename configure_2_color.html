@@ -447,6 +447,9 @@ body {height:auto; margin:0; padding: 0;}
 				'key_navi_dest_lat': mclat,  
 				'key_navi_dest_region': city, 
 				
+				'key_kuaidi_id'        : $("input[name=key_kuaidi_id]").val(),
+				'key_kuaidi_com'        : $("input[name=key_kuaidi_com]").val(),
+				
 				'key_title_face_color'    : $("input[name=key_title_face_color]").val(),
 				'key_title_word_color'    : $("input[name=key_title_word_color]").val(),
 				'key_win_face_color'    : $("input[name=key_win_face_color]").val(),
@@ -528,6 +531,11 @@ body {height:auto; margin:0; padding: 0;}
 							$("input[name=key_navi]").val(1);
 						}												
 					}
+					
+					if ("key_kuaidi_id" in ls_pto) 
+						$("input[name=key_kuaidi_id]").val(ls_pto["key_kuaidi_id"]);
+					if ("key_kuaidi_com" in ls_pto) 
+						$("input[name=key_kuaidi_com]").val(ls_pto["key_kuaidi_com"]);
 					
 					if ("key_title_face_color" in ls_pto) 
 						$("input[name=key_title_face_color]").val(ls_pto["key_title_face_color"]);
