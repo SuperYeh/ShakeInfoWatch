@@ -17,81 +17,7 @@ body {height:auto; margin:0; padding: 0;}
 <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
 <script type="text/javascript" src='js/slate.js'></script>
 <script type="text/javascript">
-			var map;
-			var marker;
-			var mclng = 12956000;
-			var mclat = 4824875;
-			var address;
-    			var city;
-    			var province;
-			
-	   		function initialize() {
-				if (typeof window.localStorage !== "undefined") {
-				    if (window.localStorage.swatch_options) {
-					var ls_pto = JSON.parse(window.localStorage.swatch_options);
-	   				if ("key_navi_dest" in ls_pto) {
-						if(ls_pto["key_navi_dest_lng"] != "")
-							mclng = Number( ls_pto["key_navi_dest_lng"] );
-						if(ls_pto["key_navi_dest_lat"] != "")
-							mclat = Number( ls_pto["key_navi_dest_lat"] );
-	   				}
-				    }	
-				} 
-	   			
-				var canvas = document.getElementById("map_canvas");
-				//canvas.width = 400;
-				//canvas.height = 400;
-				
-				//var myLatlng = new sogou.maps.LatLng(39.992792,116.326142);
-				//var mclng = document.getElementById("key_navi_dest_lng").value;
-				//var mclat = document.getElementById("key_navi_dest_lat").value;
-				
-				var target = new sogou.maps.Point(mclng, mclat);
-				var myOptions = {
-					zoom: 15,
-					center: target,
-					//center: myLatlng,
-					mapTypeId: sogou.maps.MapTypeId.ROADMAP
-				}
-				map = new sogou.maps.Map(canvas, myOptions);
-				placeMarker(target);
-				canvas.style.display = "none";
-				
-				sogou.maps.event.addListener(map, 'click', function(event) {
-					marker.setMap(null);
-					//alert(event.point)
-					placeMarker(event.point);
-					mclng = event.point.x;
-					mclat = event.point.y;
-			
-					var request={
-        					location:{
-                  					points:[event.point],
-                  					type:0
-            					}
-        				}
-         
-        				var geo=new sogou.maps.Geocoder();
-        				geo.geocode(request,callback);
-				});
-			}
-			
-			function callback(a){
-    				var geometry = a.data[0];
-    				address = geometry.address;
-    				city = geometry.city
-    				province = geometry.province;	
-    				$("input[name=key_navi_dest]").val(address);
-			}
-			
-			function placeMarker(location) {
-				//var clickedLocation = location;		
-				marker = new sogou.maps.Marker({
-					position: location,
-					map: map
-				});
-				//map.setCenter(location);
-			}
+
 			
 </script>
 
@@ -423,6 +349,83 @@ body {height:auto; margin:0; padding: 0;}
     <script>
 		var weatherCode = -1;
 		
+			var map;
+			var marker;
+			var mclng = 12956000;
+			var mclat = 4824875;
+			var address;
+    			var city;
+    			var province;
+			
+	   		function initialize() {
+				if (typeof window.localStorage !== "undefined") {
+				    if (window.localStorage.swatch_options) {
+					var ls_pto = JSON.parse(window.localStorage.swatch_options);
+	   				if ("key_navi_dest" in ls_pto) {
+						if(ls_pto["key_navi_dest_lng"] != "")
+							mclng = Number( ls_pto["key_navi_dest_lng"] );
+						if(ls_pto["key_navi_dest_lat"] != "")
+							mclat = Number( ls_pto["key_navi_dest_lat"] );
+	   				}
+				    }	
+				} 
+	   			
+				var canvas = document.getElementById("map_canvas");
+				//canvas.width = 400;
+				//canvas.height = 400;
+				
+				//var myLatlng = new sogou.maps.LatLng(39.992792,116.326142);
+				//var mclng = document.getElementById("key_navi_dest_lng").value;
+				//var mclat = document.getElementById("key_navi_dest_lat").value;
+				
+				var target = new sogou.maps.Point(mclng, mclat);
+				var myOptions = {
+					zoom: 15,
+					center: target,
+					//center: myLatlng,
+					mapTypeId: sogou.maps.MapTypeId.ROADMAP
+				}
+				map = new sogou.maps.Map(canvas, myOptions);
+				placeMarker(target);
+				canvas.style.display = "none";
+				
+				sogou.maps.event.addListener(map, 'click', function(event) {
+					marker.setMap(null);
+					//alert(event.point)
+					placeMarker(event.point);
+					mclng = event.point.x;
+					mclat = event.point.y;
+			
+					var request={
+        					location:{
+                  					points:[event.point],
+                  					type:0
+            					}
+        				}
+         
+        				var geo=new sogou.maps.Geocoder();
+        				geo.geocode(request,callback);
+				});
+			}
+			
+			function callback(a){
+    				var geometry = a.data[0];
+    				address = geometry.address;
+    				city = geometry.city
+    				province = geometry.province;	
+    				$("input[name=key_navi_dest]").val(address);
+			}
+			
+			function placeMarker(location) {
+				//var clickedLocation = location;		
+				marker = new sogou.maps.Marker({
+					position: location,
+					map: map
+				});
+				//map.setCenter(location);
+			}		
+		
+
 		function getConfigData() {
 		    $("input[id='key_city']").change();
 		    var options = {
