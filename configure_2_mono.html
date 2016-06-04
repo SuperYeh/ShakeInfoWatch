@@ -488,6 +488,7 @@ body {height:auto; margin:0; padding: 0;}
 					if ("key_kuaidi_com" in ls_pto) {
 						$("select[name=key_kuaidi_com]").val(ls_pto["key_kuaidi_com"]);
 						//$("select[name=key_kuaidi_com]").find("option[value='"+  ls_pto["key_kuaidi_com"] +"']").attr('selected','selected');
+   						$("select[name=key_kuaidi_com]").selectmenu("refresh", true);
    					}
 					weatherCode =  Number( ls_pto["key_city_weather_code"] );
 				}
