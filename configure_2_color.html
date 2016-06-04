@@ -537,9 +537,11 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_kuaidi_id]").val(ls_pto["key_kuaidi_id"]);
 					if ("key_kuaidi_com" in ls_pto) {
 						$("select[name=key_kuaidi_com]").val(ls_pto["key_kuaidi_com"]);
-						$("select[name=key_kuaidi_com]").find("option[value='"+  ls_pto["key_kuaidi_com"] +"']").attr('selected', true);
-						$("select[name=key_kuaidi_com]").find("option[value='"+  ls_pto["key_kuaidi_com"] +"']").prop('selected', true);
-   					}
+						//$("select[name=key_kuaidi_com]").find("option[value='"+  ls_pto["key_kuaidi_com"] +"']").attr('selected', true);
+						//$("select[name=key_kuaidi_com]").find("option[value='"+  ls_pto["key_kuaidi_com"] +"']").prop('selected', true);
+   						$("select[name=key_kuaidi_com]").selectmenu("refresh", true);
+						
+					}
 					
 					if ("key_title_face_color" in ls_pto) 
 						$("input[name=key_title_face_color]").val(ls_pto["key_title_face_color"]);
