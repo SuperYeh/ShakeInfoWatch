@@ -73,7 +73,7 @@ body {height:auto; margin:0; padding: 0;}
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
 				<legend><h4>&#x5C4F;&#x4FDD;&#x8BBE;&#x5B9A;:</h4></legend><!--屏保设定:-->
-					<input name="key_screensaver_sel" id="key_screensaver_sel" value="1" checked="checked" type="checkbox">
+					<input name="key_screensaver_sel" id="key_screensaver_sel" value="1" checked="true" type="checkbox">
 					<label for="key_screensaver_sel">&#x5C4F;&#x4FDD;&#x5F00;&#x5173;</label><!--屏保开关-->
 			</fieldset>			
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
@@ -505,17 +505,17 @@ body {height:auto; margin:0; padding: 0;}
 					if(ls_pto["key_hourly_vibr"]==1) {	
 						$("input[name=key_vibr_hourly]").prop('checked', true);
 						$("input[name=key_vibr_hourly]").checkboxradio('refresh');
-						$("input[name=key_vibr_hourly]").val(1);
+						$("input[name=key_vibr_hourly]").val("1");
 					}	
 					if(ls_pto["key_disconnect_vibr"]==1) {
 						$("input[name=key_vibr_disconnect]").prop('checked', true);
 						$("input[name=key_vibr_disconnect]").checkboxradio('refresh');
-						$("input[name=key_vibr_disconnect]").val(1);
+						$("input[name=key_vibr_disconnect]").val("1");
 					}
 					if(ls_pto["key_screensaver_sel"]==1) {
 						$("input[name=key_screensaver_sel]").prop('checked', true);
 						$("input[name=key_screensaver_sel]").checkboxradio('refresh');
-						$("input[name=key_screensaver_sel]").val(1);
+						$("input[name=key_screensaver_sel]").val("1");
 					}
 					$("input[name=key_health_data_sel][id=key_health_data_sel-"+ls_pto["key_health_data_sel"]+"]").prop('checked',true);
 					$("input[name=key_health_data_sel]").checkboxradio('refresh');
@@ -540,7 +540,7 @@ body {height:auto; margin:0; padding: 0;}
 						if(ls_pto["key_navi"]==1) {	
 							$("input[name=key_navi]").prop('checked', true);
 							$("input[name=key_navi]").checkboxradio('refresh');
-							$("input[name=key_navi]").val(1);
+							$("input[name=key_navi]").val("1");
 						}
 						city = ls_pto["key_navi_dest_region"];
 					}
@@ -602,8 +602,8 @@ body {height:auto; margin:0; padding: 0;}
 			});
     		
 			$("input[type='checkbox']").click(function(){   
-				if($(this).val() == 1) $(this).val(0);   
-				else $(this).val(1);   
+				if($(this).val() == "1") $(this).val("0");   
+				else $(this).val("1");   
 			});
 					
 			$("input[id='key_navi_map']").click(function(){   
