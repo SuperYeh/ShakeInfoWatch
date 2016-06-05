@@ -72,6 +72,10 @@ body {height:auto; margin:0; padding: 0;}
 					<label for="key_health_data_sel-6">&#x70ED;&#x91CF;(&#x5343;&#x5361;)</label><!--热量(千卡)-->
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+					<input name="key_screensaver_sel" id="key_screensaver_sel" value="1" type="checkbox">
+					<label for="key_screensaver_sel">&#x5C4F;&#x4FDD;&#x5F00;&#x5173;:</label><!--屏保开关-->
+			</fieldset>			
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>&#x8F6C;&#x8155;&#x8BBE;&#x5B9A;:</h4></legend><!--转腕设定:-->
 					<input name="key_shake_face" id="key_shake_face-9" value="9" checked="checked" type="radio">
 					<label for="key_shake_face-9">&#x65E0;</label><!--无-->
@@ -437,6 +441,8 @@ body {height:auto; margin:0; padding: 0;}
 				'key_hourly_vibr': Number( $("input[name=key_vibr_hourly]").val() ),
 				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
 				'key_health_data_sel': Number( $("input[name=key_health_data_sel]:checked").val() ),
+				'key_screensaver_sel': Number( $("input[name=key_screensaver_sel]").val() ),
+				
 				'key_city'        : $("input[name=key_city]").val(),
 				'key_city_weather_code': Number( weatherCode ),
 				
@@ -504,6 +510,11 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_vibr_disconnect]").prop('checked', true);
 						$("input[name=key_vibr_disconnect]").checkboxradio('refresh');
 						$("input[name=key_vibr_disconnect]").val(1);
+					}
+					if(ls_pto["key_screensaver_sel"]==1) {
+						$("input[name=key_screensaver_sel]").prop('checked', true);
+						$("input[name=key_screensaver_sel]").checkboxradio('refresh');
+						$("input[name=key_screensaver_sel]").val(1);
 					}
 					$("input[name=key_health_data_sel][id=key_health_data_sel-"+ls_pto["key_health_data_sel"]+"]").prop('checked',true);
 					$("input[name=key_health_data_sel]").checkboxradio('refresh');
