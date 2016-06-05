@@ -512,10 +512,10 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_vibr_disconnect]").checkboxradio('refresh');
 						$("input[name=key_vibr_disconnect]").val("1");
 					}
-					if(ls_pto["key_screensaver_sel"]==1) {
-						$("input[name=key_screensaver_sel]").prop('checked', true);
+					if(ls_pto["key_screensaver_sel"]==0) {
+						$("input[name=key_screensaver_sel]").prop('checked', false);
 						$("input[name=key_screensaver_sel]").checkboxradio('refresh');
-						$("input[name=key_screensaver_sel]").val("1");
+						$("input[name=key_screensaver_sel]").val("0");
 					}
 					$("input[name=key_health_data_sel][id=key_health_data_sel-"+ls_pto["key_health_data_sel"]+"]").prop('checked',true);
 					$("input[name=key_health_data_sel]").checkboxradio('refresh');
@@ -525,7 +525,7 @@ body {height:auto; margin:0; padding: 0;}
 					//if(ls_pto["key_weather_hourly"]==1) {	
 					//	$("input[name=key_weather_hourly]").prop('checked', true);
 					//	$("input[name=key_weather_hourly]").checkboxradio('refresh');
-					//	$("input[name=key_weather_hourly]").val(1);
+					//	$("input[name=key_weather_hourly]").val("1");
 					//}						
 					
 					if ("key_navi_dest" in ls_pto) {
