@@ -443,32 +443,32 @@ body {height:auto; margin:0; padding: 0;}
 					if(ls_pto["key_hourly_vibr"]==1) {	
 						$("input[name=key_vibr_hourly]").prop('checked', true);
 						$("input[name=key_vibr_hourly]").checkboxradio('refresh');
-						$("input[name=key_vibr_hourly]").val(1);
+						$("input[name=key_vibr_hourly]").val("1");
 					}	
 					if(ls_pto["key_disconnect_vibr"]==1) {
 						$("input[name=key_vibr_disconnect]").prop('checked', true);
 						$("input[name=key_vibr_disconnect]").checkboxradio('refresh');
-						$("input[name=key_vibr_disconnect]").val(1);
+						$("input[name=key_vibr_disconnect]").val("1");
 					}
-					if(ls_pto["key_screensaver_sel"]==1) {
-						$("input[name=key_screensaver_sel]").prop('checked', true);
+					if(ls_pto["key_screensaver_sel"]==0) {
+						$("input[name=key_screensaver_sel]").prop('checked', false);
 						$("input[name=key_screensaver_sel]").checkboxradio('refresh');
-						$("input[name=key_screensaver_sel]").val(1);
+						$("input[name=key_screensaver_sel]").val("0");
 					}
 					if(ls_pto["key_title_invert"]==1) {
 						$("input[name=key_title_invert]").prop('checked', true);
 						$("input[name=key_title_invert]").checkboxradio('refresh');
-						$("input[name=key_title_invert]").val(1);
+						$("input[name=key_title_invert]").val("1");
 					}
 					if(ls_pto["key_win_invert"]==1) {
 						$("input[name=key_win_invert]").prop('checked', true);
 						$("input[name=key_win_invert]").checkboxradio('refresh');
-						$("input[name=key_win_invert]").val(1);
+						$("input[name=key_win_invert]").val("1");
 					}
 					if(ls_pto["key_data_invert"]==1) {
 						$("input[name=key_data_invert]").prop('checked', true);
 						$("input[name=key_data_invert]").checkboxradio('refresh');
-						$("input[name=key_data_invert]").val(1);
+						$("input[name=key_data_invert]").val("1");
 					}
 					
 					if ("key_city" in ls_pto) 
@@ -476,7 +476,7 @@ body {height:auto; margin:0; padding: 0;}
 					//if(ls_pto["key_weather_hourly"]==1) {	
 					//	$("input[name=key_weather_hourly]").prop('checked', true);
 					//	$("input[name=key_weather_hourly]").checkboxradio('refresh');
-					//	$("input[name=key_weather_hourly]").val(1);
+					//	$("input[name=key_weather_hourly]").val("1");
 					//}						
 					
 					if ("key_navi_dest" in ls_pto) {
@@ -491,7 +491,7 @@ body {height:auto; margin:0; padding: 0;}
 						if(ls_pto["key_navi"]==1) {	
 							$("input[name=key_navi]").prop('checked', true);
 							$("input[name=key_navi]").checkboxradio('refresh');
-							$("input[name=key_navi]").val(1);
+							$("input[name=key_navi]").val("1");
 						}
 						city = ls_pto["key_navi_dest_region"];
 					}
@@ -529,8 +529,8 @@ body {height:auto; margin:0; padding: 0;}
 			});
     		
 			$("input[type='checkbox']").click(function(){   
-				if($(this).val() == 1) $(this).val(0);   
-				else $(this).val(1);   
+				if($(this).val() == "1") $(this).val("0");   
+				else $(this).val("1");   
 			});
 					
 			$("input[id='key_navi_map']").click(function(){   
