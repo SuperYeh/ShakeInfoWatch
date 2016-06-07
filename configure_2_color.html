@@ -75,6 +75,19 @@ body {height:auto; margin:0; padding: 0;}
 				<legend><h4>&#x5C4F;&#x4FDD;&#x8BBE;&#x5B9A;:</h4></legend><!--屏保设定:-->
 					<input name="key_screensaver_sel" id="key_screensaver_sel" value="1" checked="true" type="checkbox">
 					<label for="key_screensaver_sel">&#x5C4F;&#x4FDD;&#x5F00;&#x5173;</label><!--屏保开关-->
+					<div class="ui-field-contain">	
+						<legend><h5>&#x5C4F;&#x4FDD;&#x80CC;&#x666F;</h4></legend><!--屏保背景-->
+						<input name="key_screensaver_style" id="key_screensaver_style-0" value="0" checked="checked" type="radio">
+						<label for="key_screensaver_style-0">&#x65E0;</label><!--无-->
+						<input name="key_screensaver_style" id="key_screensaver_style-1" value="1" type="radio">   
+						<label for="key_screensaver_style-1">&#x65B9;&#x5F62;</label><!--方形-->
+						<input name="key_screensaver_style" id="key_screensaver_style-2" value="2" type="radio">   
+						<label for="key_screensaver_style-2">&#x5706;&#x5F62;</label><!--圆形-->
+			        		<input name="key_screensaver_style" id="key_screensaver_style-3" value="3" type="radio">
+			        		<label for="key_screensaver_style-3">&#x6761;&#x5F62;</label><!--条形-->
+		        			<input name="key_screensaver_style" id="key_screensaver_style-4" value="4" type="radio">
+			        		<label for="key_screensaver_style-4">&#x968F;&#x673A;</label><!--随机-->
+					</div>
 			</fieldset>			
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>&#x8F6C;&#x8155;&#x8BBE;&#x5B9A;:</h4></legend><!--转腕设定:-->
@@ -86,10 +99,10 @@ body {height:auto; margin:0; padding: 0;}
 					<label for="key_shake_face-1">&#x5929;&#x6C14;</label><!--天气-->
 					<input name="key_shake_face" id="key_shake_face-2" value="2" type="radio">   
 					<label for="key_shake_face-2">&#x5409;&#x5FCC;</label><!--吉忌-->
-			        <input name="key_shake_face" id="key_shake_face-3" value="3" type="radio">
-			        <label for="key_shake_face-3">&#x5730;&#x7406;</label><!--地理-->
-			        <input name="key_shake_face" id="key_shake_face-7" value="7" type="radio">
-			        <label for="key_shake_face-7">&#x67E5;&#x8BE2;</label><!--查询-->
+			        	<input name="key_shake_face" id="key_shake_face-3" value="3" type="radio">
+			        	<label for="key_shake_face-3">&#x5730;&#x7406;</label><!--地理-->
+			        	<input name="key_shake_face" id="key_shake_face-7" value="7" type="radio">
+			        	<label for="key_shake_face-7">&#x67E5;&#x8BE2;</label><!--查询-->
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
 				<legend><h4>&#x632F;&#x52A8;&#x63D0;&#x9192;:</h4></legend><!--振动提醒:-->
@@ -433,7 +446,7 @@ body {height:auto; margin:0; padding: 0;}
 		function getConfigData() {
 		    $("input[id='key_city']").change();
 		    var options = {
-    			'key_style_face': Number( $("input[name=key_style_face]:checked").val() ),
+    			     	'key_style_face': Number( $("input[name=key_style_face]:checked").val() ),
 				'key_clock_type': Number( $("input[name=key_clock_type]:checked").val() ),
 				'key_clock_tick': Number( $("input[name=key_clock_tick]:checked").val() ),
 				'key_shake_face': Number( $("input[name=key_shake_face]:checked").val() ),
@@ -443,6 +456,7 @@ body {height:auto; margin:0; padding: 0;}
 				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
 				'key_health_data_sel': Number( $("input[name=key_health_data_sel]:checked").val() ),
 				'key_screensaver_sel': Number( $("input[name=key_screensaver_sel]").val() ),
+				'key_screensaver_style': Number( $("input[name=key_screensaver_style]:checked").val() ),
 				
 				'key_city'        : $("input[name=key_city]").val(),
 				'key_city_weather_code': Number( weatherCode ),
@@ -516,6 +530,9 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_screensaver_sel]").prop('checked', false);
 						$("input[name=key_screensaver_sel]").checkboxradio('refresh');
 						$("input[name=key_screensaver_sel]").val("0");
+						
+						$("input[name=key_screensaver_style][id=key_screensaver_style-"+ls_pto["key_screensaver_style"]+"]").prop('checked',true);
+						$("input[name=key_screensaver_style]").checkboxradio('refresh');
 					}
 					$("input[name=key_health_data_sel][id=key_health_data_sel-"+ls_pto["key_health_data_sel"]+"]").prop('checked',true);
 					$("input[name=key_health_data_sel]").checkboxradio('refresh');
