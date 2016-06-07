@@ -71,24 +71,6 @@ body {height:auto; margin:0; padding: 0;}
 					<input name="key_health_data_sel" id="key_health_data_sel-6" value="6" type="radio">
 					<label for="key_health_data_sel-6">&#x70ED;&#x91CF;(&#x5343;&#x5361;)</label><!--热量(千卡)-->
 			</fieldset>
-			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
-				<legend><h4>&#x5C4F;&#x4FDD;&#x8BBE;&#x5B9A;:</h4></legend><!--屏保设定:-->
-					<input name="key_screensaver_sel" id="key_screensaver_sel" value="1" checked="true" type="checkbox">
-					<label for="key_screensaver_sel">&#x5C4F;&#x4FDD;&#x5F00;&#x5173;</label><!--屏保开关-->
-					<fieldset data-type="horizontal" data-mini="true">
-						<legend><h5>&#x5C4F;&#x4FDD;&#x80CC;&#x666F;</h4></legend><!--屏保背景-->
-						<input name="key_screensaver_style" id="key_screensaver_style-0" value="0" checked="checked" type="radio">
-						<label for="key_screensaver_style-0">&#x65E0;</label><!--无-->
-						<input name="key_screensaver_style" id="key_screensaver_style-1" value="1" type="radio">   
-						<label for="key_screensaver_style-1">&#x65B9;&#x5F62;</label><!--方形-->
-						<input name="key_screensaver_style" id="key_screensaver_style-2" value="2" type="radio">   
-						<label for="key_screensaver_style-2">&#x5706;&#x5F62;</label><!--圆形-->
-			        		<input name="key_screensaver_style" id="key_screensaver_style-3" value="3" type="radio">
-			        		<label for="key_screensaver_style-3">&#x6761;&#x5F62;</label><!--条形-->
-		        			<input name="key_screensaver_style" id="key_screensaver_style-4" value="4" type="radio">
-			        		<label for="key_screensaver_style-4">&#x968F;&#x673A;</label><!--随机-->
-					</fieldset>
-			</fieldset>			
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>&#x8F6C;&#x8155;&#x8BBE;&#x5B9A;:</h4></legend><!--转腕设定:-->
 					<input name="key_shake_face" id="key_shake_face-9" value="9" checked="checked" type="radio">
@@ -292,6 +274,27 @@ body {height:auto; margin:0; padding: 0;}
 			 		<input name="key_weather_hourly" id="key_weather_hourly" value="0" type="checkbox">
 			</fieldset>
 -->			
+</div>
+
+<div data-role="collapsible" data-collapsed="true">
+	<h3>&#x5C4F;&#x4FDD;&#x8BBE;&#x5B9A;</h3><!--屏保设定-->
+			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
+				<input name="key_screensaver_sel" id="key_screensaver_sel" value="1" checked="true" type="checkbox">
+				<label for="key_screensaver_sel">&#x5C4F;&#x4FDD;&#x5F00;&#x5173;</label><!--屏保开关-->
+			</fieldset>
+			<fieldset data-type="horizontal" data-mini="true">
+				<legend><h4>&#x5C4F;&#x4FDD;&#x80CC;&#x666F;</h4></legend><!--屏保背景-->
+					<input name="key_screensaver_style" id="key_screensaver_style-0" value="0" checked="checked" type="radio">
+					<label for="key_screensaver_style-0">&#x65E0;</label><!--无-->
+					<input name="key_screensaver_style" id="key_screensaver_style-1" value="1" type="radio">   
+					<label for="key_screensaver_style-1">&#x65B9;&#x5F62;</label><!--方形-->
+					<input name="key_screensaver_style" id="key_screensaver_style-2" value="2" type="radio">   
+					<label for="key_screensaver_style-2">&#x5706;&#x5F62;</label><!--圆形-->
+			        	<input name="key_screensaver_style" id="key_screensaver_style-3" value="3" type="radio">
+			        	<label for="key_screensaver_style-3">&#x6761;&#x5F62;</label><!--条形-->
+		        		<input name="key_screensaver_style" id="key_screensaver_style-4" value="4" type="radio">
+			        	<label for="key_screensaver_style-4">&#x968F;&#x673A;</label><!--随机-->
+			</fieldset>
 </div>
 
 <div data-role="collapsible" data-collapsed="true">
