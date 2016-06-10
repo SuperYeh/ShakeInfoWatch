@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=gb2312"/>
+<title>Configuration</title>
+<style type="text/css">
+html {height:auto;}
+body {height:auto; margin:0; padding: 0;}
+</style>
+<link rel='stylesheet' type='text/css' href='css/slate.min.css'>
+<link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+<script type="text/javascript" src='js/slate.js'></script>
+
+</head>
+
+<body>
+	<div data-role="header" class="jqm-header">
+		<h1>Configuration</h1>
+	</div>	
+
+	<div id="main">
+		<div data-role="content">
+
+			<div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-mini="false">
+
+<div data-role="collapsible" data-collapsed="true">
+	<h3>&#x8868;&#x76D8;&#x8BBE;&#x5B9A;</h3><!--表盘设定-->
+			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
+				<legend><h4>&#x632F;&#x52A8;&#x63D0;&#x9192;:</h4></legend><!--振动提醒:-->
+					<input name="key_vibr_hourly" id="key_vibr_hourly" value="0" type="checkbox">
+					<label for="key_vibr_hourly">&#x6574;&#x70B9;&#x63D0;&#x9192;</label><!--整点提醒-->
+					<input name="key_vibr_disconnect" id="key_vibr_disconnect" value="0" type="checkbox">
+					<label for="key_vibr_disconnect">&#x65AD;&#x8FDE;&#x63D0;&#x9192;</label><!--断连提醒-->
+					<div class="ui-field-contain">	
+					    <label for="key_vibr_start">&#x5F00;&#x59CB;&#x65F6;&#x95F4;:</label><!--开始时间:-->
+					    <input name="key_vibr_start" id="key_vibr_start" type="time" value=07:00>
+					    <label for="key_vibr_end">&#x7ED3;&#x675F;&#x65F6;&#x95F4;:</label><!--结束时间:-->
+					    <input name="key_vibr_end" id="key_vibr_end" type="time" value=22:00>
+					</div>	
+			</fieldset>
+</div>
+
+<div data-role="collapsible" data-collapsed="true">
+	<h3>&#x6C14;&#x8C61;&#x67E5;&#x8BE2;</h3><!--气象查询-->
+			<fieldset data-role="controlgroup" data-mini="true">
+			    <legend><h4>&#x672A;&#x6765;&#x5929;&#x6C14;&#x67E5;&#x8BE2;:</h4></legend><!--未来天气查询:-->
+					<label for="key_city" >&#x8F93;&#x5165;&#x57CE;&#x5E02;&#x540D;&#x79F0;&#xFF08;&#x4E0D;&#x52A0;&#x5E02;&#x6216;&#x533A;&#x7B49;&#x5B57;&#x5C3E;&#xFF09;&#x3002;</label><!--输入城市名称（不加市区等字尾）-->
+					<input name="key_city" id="key_city" value="北京" data-mini="true" type="text" maxlength="16">
+			</fieldset>
+<!--			
+			<fieldset data-role="controlgroup" data-mini="true">
+					<label for="key_weather_hourly">&#x6574;&#x70B9;&#x5929;&#x6C14;&#x66F4;&#x65B0;</label>			
+			 		<input name="key_weather_hourly" id="key_weather_hourly" value="0" type="checkbox">
+			</fieldset>
+-->			
+</div>
+
+<div data-role="collapsible" data-collapsed="true">
+    <h3>&#x663E;&#x793A;&#x9009;&#x62E9;</h3><!--显示选择-->
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+					<label for="key_time_invert">&#x5929;&#x6C14;&#x680F;&#x53CD;&#x767D;</label><!--天气栏反白-->		
+			 		<input name="key_time_invert" id="key_time_invert" value="0" type="checkbox">
+					<label for="key_weather_invert">&#x7529;&#x5C4F;&#x680F;&#x53CD;&#x767D;</label><!--甩屏栏反白-->		
+			 		<input name="key_weather_invert" id="key_weather_invert" value="0" type="checkbox">
+			</fieldset>
+</div>
+
+			</div>
+
+<br />
+<div class="ui-body ui-body-c">
+    <fieldset class="ui-grid-a">
+        <div class="ui-block-a"><button type="submit" data-theme="d" id="b-cancel">&#x53D6;&#x6D88;</button></div>
+        <div class="ui-block-b"><button type="submit" data-theme="a" id="b-submit">&#x786E;&#x5B9A;</button></div>
+    </fieldset>
+</div>
+
+ 		
+		</div>
+	</div>
+	
+	<div id="code" name="code" style="display:none"></div>		
+		
+		
+    <script>
+		var weatherCode = -1;
+		
+		function getConfigData() {
+		    $("input[id='key_city']").change();
+		    var options = {
+				'key_daily_start': $("input[name=key_vibr_start]").val(),
+				'key_daily_stop': $("input[name=key_vibr_end]").val(),
+				'key_hourly_vibr': Number( $("input[name=key_vibr_hourly]").val() ),
+				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
+
+				'key_time_invert': Number( $("input[name=key_time_invert]").val() ),
+				'key_weather_invert': Number( $("input[name=key_weather_invert]").val() ),
+				
+				'key_city'        : $("input[name=key_city]").val(),
+				'key_city_weather_code': Number( weatherCode ),			
+			}
+			return options;
+		}
+		
+		function getQueryParam(variable, defaultValue) {
+    			var query = location.search.substring(1);
+    			var vars = query.split('&');
+    			for (var i = 0; i < vars.length; i++) {
+      				var pair = vars[i].split('=');
+      				if (pair[0] === variable) {
+        				return decodeURIComponent(pair[1]);
+      				}
+    			}
+    			return defaultValue || false;
+  		}
+		
+		$().ready(function() {
+			
+		   	if (typeof window.localStorage !== "undefined") {
+				if (window.localStorage.swatch_options) {
+					var ls_pto = JSON.parse(window.localStorage.swatch_options);
+					
+					// the Pebble webview dies on the next line...
+					if ("key_daily_start" in ls_pto) 
+						$("input[name=key_vibr_start]").val(ls_pto["key_daily_start"]);
+					if ("key_daily_stop" in ls_pto) 
+						$("input[name=key_vibr_end]").val(ls_pto["key_daily_stop"]);
+					if(ls_pto["key_hourly_vibr"]==1) {	
+						$("input[name=key_vibr_hourly]").prop('checked', true);
+						$("input[name=key_vibr_hourly]").checkboxradio('refresh');
+						$("input[name=key_vibr_hourly]").val("1");
+					}	
+					if(ls_pto["key_disconnect_vibr"]==1) {
+						$("input[name=key_vibr_disconnect]").prop('checked', true);
+						$("input[name=key_vibr_disconnect]").checkboxradio('refresh');
+						$("input[name=key_vibr_disconnect]").val("1");
+					}
+					if(ls_pto["key_time_invert"]==1) {
+						$("input[name=key_time_invert]").prop('checked', true);
+						$("input[name=key_time_invert]").checkboxradio('refresh');
+						$("input[name=key_time_invert]").val("1");
+					}
+					if(ls_pto["key_weather_invert"]==1) {
+						$("input[name=key_weather_invert]").prop('checked', true);
+						$("input[name=key_weather_invert]").checkboxradio('refresh');
+						$("input[name=key_weather_invert]").val("1");
+					}
+					
+					if ("key_city" in ls_pto) 
+						$("input[name=key_city]").val(ls_pto["key_city"]);
+					//if(ls_pto["key_weather_hourly"]==1) {	
+					//	$("input[name=key_weather_hourly]").prop('checked', true);
+					//	$("input[name=key_weather_hourly]").checkboxradio('refresh');
+					//	$("input[name=key_weather_hourly]").val("1");
+					//}						
+		
+					weatherCode =  Number( ls_pto["key_city_weather_code"] );
+				}
+			}
+			
+			$('#code').load('cityID.html');
+			$("input[id='key_city']").change(function () {
+				var city = $(this).val();
+				city = city.replace(/(^\s*)|(\s*$)/g, ""); 
+				if (city == "") {
+					alert("未输入城市，无法查询。");
+					weatherCode = -1;
+					$(this).val("");
+					return;
+				}
+				var field = "input[name='"+city+"']";
+				var code = $(field).val();
+				if(code != null) {
+					//alert(city +":"+ code);
+					weatherCode = code;
+				} else {
+					weatherCode = -1;
+					alert("输入错误，重新输入！");
+					$(this).val("");
+				}	
+			});
+    		
+			$("input[type='checkbox']").click(function(){   
+				if($(this).val() == "1") $(this).val("0");   
+				else $(this).val("1");   
+			});
+											
+			$("#b-cancel").click(function() {
+				console.log("Cancel");
+				document.location = "pebblejs://close";
+			});
+			
+/*
+			$("#b-submit").click(function() {
+				console.log("Submit");
+				ls_pto = JSON.stringify(getConfigData());
+				if (typeof window.localStorage !== "undefined") {
+					window.localStorage.swatch_options = ls_pto;
+				}
+				var location = "pebblejs://close#" + encodeURIComponent(ls_pto);
+				document.location = location;
+			});
+*/			
+			var submitButton = document.getElementById('b-submit');
+  			submitButton.addEventListener('click', function() {
+    				console.log('Submit');
+    				var ls_option = JSON.stringify(getConfigData());
+    				if (typeof window.localStorage !== "undefined") {
+					window.localStorage.swatch_options = ls_option;
+				}
+    				// Set the return URL depending on the runtime environment
+    				var return_to = getQueryParam('return_to', 'pebblejs://close#');
+    				document.location = return_to + encodeURIComponent(ls_option);
+  			});
+		});
+    </script>
+  </body>
+</html>
