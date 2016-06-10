@@ -28,6 +28,13 @@ body {height:auto; margin:0; padding: 0;}
 
 <div data-role="collapsible" data-collapsed="true">
 	<h3>&#x8868;&#x76D8;&#x8BBE;&#x5B9A;</h3><!--表盘设定-->
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>&#x8F6C;&#x8155;&#x6B21;&#x6570;:</h4></legend><!--转腕次数:-->
+					<input name="key_is_shake_twice" id="key_is_shake_twice-0" value="0" checked="checked" type="radio">
+					<label for="key_is_shake_twice-0">&#x4E00;&#x6B21;</label><!--一次-->
+					<input name="key_is_shake_twice" id="key_is_shake_twice-1" value="1" type="radio">
+					<label for="key_is_shake_twice-1">&#x4E8C;&#x6B21;</label><!--二次-->
+			</fieldset>
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
 				<legend><h4>&#x632F;&#x52A8;&#x63D0;&#x9192;:</h4></legend><!--振动提醒:-->
 					<input name="key_vibr_hourly" id="key_vibr_hourly" value="0" type="checkbox">
@@ -112,6 +119,7 @@ body {height:auto; margin:0; padding: 0;}
 				'key_daily_stop': $("input[name=key_daily_stop]").val(),
 				'key_hourly_vibr': Number( $("input[name=key_vibr_hourly]").val() ),
 				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
+				'key_is_shake_twice': Number( $("input[name=key_is_shake_twice]:checked").val() ),
 				
 				'key_city'        : $("input[name=key_city]").val(),
 				'key_city_weather_code': Number( weatherCode ),
@@ -155,16 +163,9 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_vibr_disconnect]").checkboxradio('refresh');
 						$("input[name=key_vibr_disconnect]").val("1");
 					}
-
-					if ("key_city" in ls_pto) 
-						$("input[name=key_city]").val(ls_pto["key_city"]);
-					//if(ls_pto["key_weather_hourly"]==1) {	
-					//	$("input[name=key_weather_hourly]").prop('checked', true);
-					//	$("input[name=key_weather_hourly]").checkboxradio('refresh');
-					//	$("input[name=key_weather_hourly]").val("1");
-					//}						
+					$("input[name=key_is_shake_twice][id=key_is_shake_twice-"+ls_pto["key_is_shake_twice"]+"]").prop('checked',true);
+					$("input[name=key_is_shake_twice]").checkboxradio('refresh');
 					
-			
 					if ("key_time_face_color" in ls_pto) 
 						$("input[name=key_time_face_color]").val(ls_pto["key_time_face_color"]);
 					if ("key_time_word_color" in ls_pto) 
@@ -173,7 +174,15 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_weather_face_color]").val(ls_pto["key_weather_face_color"]);
 					if ("key_weather_word_color" in ls_pto) 
 						$("input[name=key_weather_word_color]").val(ls_pto["key_weather_word_color"]);
-				
+					
+					if ("key_city" in ls_pto) 
+						$("input[name=key_city]").val(ls_pto["key_city"]);
+					//if(ls_pto["key_weather_hourly"]==1) {	
+					//	$("input[name=key_weather_hourly]").prop('checked', true);
+					//	$("input[name=key_weather_hourly]").checkboxradio('refresh');
+					//	$("input[name=key_weather_hourly]").val("1");
+					//}	
+					
 					weatherCode =  Number( ls_pto["key_city_weather_code"] );
 				}
 			}
