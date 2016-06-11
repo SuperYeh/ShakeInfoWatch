@@ -78,6 +78,13 @@ body {height:auto; margin:0; padding: 0;}
 			        <input name="key_shake_face" id="key_shake_face-7" value="7" type="radio">
 			        <label for="key_shake_face-7">&#x67E5;&#x8BE2;</label><!--查询-->
 			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>&#x8F6C;&#x8155;&#x6B21;&#x6570;:</h4></legend><!--转腕次数:-->
+					<input name="key_is_shake_twice" id="key_is_shake_twice-0" value="0" checked="checked" type="radio">
+					<label for="key_is_shake_twice-0">&#x4E00;&#x6B21;</label><!--一次-->
+					<input name="key_is_shake_twice" id="key_is_shake_twice-1" value="1" type="radio">
+					<label for="key_is_shake_twice-1">&#x4E8C;&#x6B21;</label><!--二次-->
+			</fieldset>
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
 				<legend><h4>&#x632F;&#x52A8;&#x63D0;&#x9192;:</h4></legend><!--振动提醒:-->
 					<input name="key_vibr_hourly" id="key_vibr_hourly" value="0" type="checkbox">
@@ -388,6 +395,7 @@ body {height:auto; margin:0; padding: 0;}
 				'key_hourly_vibr': Number( $("input[name=key_vibr_hourly]").val() ),
 				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
 				'key_screensaver_sel': Number( $("input[name=key_screensaver_sel]").val() ),
+				'key_is_shake_twice': Number( $("input[name=key_is_shake_twice]:checked").val() ),
 
 				'key_title_invert': Number( $("input[name=key_title_invert]").val() ),
 				'key_win_invert': Number( $("input[name=key_win_invert]").val() ),
@@ -455,6 +463,10 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_screensaver_sel]").checkboxradio('refresh');
 						$("input[name=key_screensaver_sel]").val("0");
 					}
+					$("input[name=key_is_shake_twice][id=key_is_shake_twice-"+ls_pto["key_is_shake_twice"]+"]").prop('checked',true);
+					$("input[name=key_is_shake_twice]").checkboxradio('refresh');
+					
+					
 					if(ls_pto["key_title_invert"]==1) {
 						$("input[name=key_title_invert]").prop('checked', true);
 						$("input[name=key_title_invert]").checkboxradio('refresh');
