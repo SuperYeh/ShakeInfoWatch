@@ -509,8 +509,46 @@ body {height:auto; margin:0; padding: 0;}
 		
 		function getConfigData() {
 		    $("input[id='key_city']").change();
+			
+			var year, month, day, hour, min;
+			var date, time;
+			var UTCseconds1 = 0, UTCseconds2 = 0, UTCseconds3 = 0;
+			
+			date = $("input[name=key_reminder_date_1]").val();
+			time =  $("input[name=key_reminder_time_1]").val();
+			console.log("date " + date + "time " + time);
+			if(date!==null && time!=null) {
+				year = parseInt(date.substring(0, 4));
+				month = parseInt(date.substring(5, 2));
+				day = parseInt(date.substring(8, 2));
+				hour = parseInt(time.substring(0, 2));
+				min = parseInt(time.substring(3, 2));
+				UTCseconds1 = Date.UTC(year, month, day, hour, min);
+			}
+			console.log("" + year +"-"+ month +"-"+ day +"-"+ hour +"-"+ min +":"+ UTCseconds1);
+			date = $("input[name=key_reminder_date_2]").val();
+			time =  $("input[name=key_reminder_time_2]").val();
+			if(date!==null && time!=null) {
+				year = parseInt(date.substring(0, 4));
+				month = parseInt(date.substring(5, 2));
+				day = parseInt(date.substring(8, 2));
+				hour = parseInt(time.substring(0, 2));
+				min = parseInt(time.substring(3, 2));
+				UTCseconds2 = Date.UTC(year, month, day, hour, min);
+			}
+			date = $("input[name=key_reminder_date_3]").val();
+			time =  $("input[name=key_reminder_time_3]").val();
+			if(date!==null && time!=null) {
+				year = parseInt(date.substring(0, 4));
+				month = parseInt(date.substring(5, 2));
+				day = parseInt(date.substring(8, 2));
+				hour = parseInt(time.substring(0, 2));
+				min = parseInt(time.substring(3, 2));
+				UTCseconds3 = Date.UTC(year, month, day, hour, min);
+			}
+		
 		    var options = {
-    			     	'key_style_face': Number( $("input[name=key_style_face]:checked").val() ),
+    			'key_style_face': Number( $("input[name=key_style_face]:checked").val() ),
 				'key_clock_type': Number( $("input[name=key_clock_type]:checked").val() ),
 				'key_clock_tick': Number( $("input[name=key_clock_tick]:checked").val() ),
 				'key_shake_face': Number( $("input[name=key_shake_face]:checked").val() ),
@@ -537,6 +575,19 @@ body {height:auto; margin:0; padding: 0;}
 				'key_kuaidi_id'        : $("input[name=key_kuaidi_id]").val(),
 				'key_kuaidi_com'        : $("select[name=key_kuaidi_com]").val(),
 				
+				'key_reminder_date_1': $("input[name=key_reminder_date_1]").val(),
+				'key_reminder_time_1': $("input[name=key_reminder_time_1]").val(),
+				'key_reminder_seconds_1': UTCseconds1,
+				'key_reminder_note_1': $("input[name=key_reminder_note_1]").val(),
+				'key_reminder_date_2': $("input[name=key_reminder_date_2]").val(),
+				'key_reminder_time_2': $("input[name=key_reminder_time_2]").val(),
+				'key_reminder_seconds_2': UTCseconds2,
+				'key_reminder_note_2': $("input[name=key_reminder_note_2]").val(),
+				'key_reminder_date_3': $("input[name=key_reminder_date_3]").val(),
+				'key_reminder_time_3': $("input[name=key_reminder_time_3]").val(),
+				'key_reminder_seconds_3': UTCseconds3,
+				'key_reminder_note_3': $("input[name=key_reminder_note_3]").val(),
+				
 				'key_title_face_color'    : $("input[name=key_title_face_color]").val(),
 				'key_title_word_color'    : $("input[name=key_title_word_color]").val(),
 				'key_win_face_color'    : $("input[name=key_win_face_color]").val(),
@@ -547,6 +598,7 @@ body {height:auto; margin:0; padding: 0;}
 				'key_data_face_color'    : $("input[name=key_data_face_color]").val(),
 				'key_data_word_color'    : $("input[name=key_data_word_color]").val(),				
 			}
+			
 			return options;
 		}
 		
@@ -629,9 +681,28 @@ body {height:auto; margin:0; padding: 0;}
 					}
 					city = ls_pto["key_navi_dest_region"];
 					
-					$("input[name=key_kuaidi_id]").val(ls_pto["key_kuaidi_id"]);
-					$("select[name=key_kuaidi_com]").val(ls_pto["key_kuaidi_com"]);
-					$("select[name=key_kuaidi_com]").selectmenu("refresh", true);
+					if(ls_pto["key_kuaidi_id"] != "") {
+						$("input[name=key_kuaidi_id]").val(ls_pto["key_kuaidi_id"]);
+						$("select[name=key_kuaidi_com]").val(ls_pto["key_kuaidi_com"]);
+						$("select[name=key_kuaidi_com]").selectmenu("refresh", true);
+					}
+
+					if(ls_pto["key_reminder_note_1"] != "") {
+						$("input[name=key_reminder_note_1]").val(ls_pto["key_reminder_note_1"]);
+						$("input[name=key_reminder_date_1]").val(ls_pto["key_reminder_date_1"]);
+						$("input[name=key_reminder_time_1]").val(ls_pto["key_reminder_time_1"]);
+					}
+					if(ls_pto["key_reminder_note_2"] != "") {
+						$("input[name=key_reminder_note_2]").val(ls_pto["key_reminder_note_2"]);
+						$("input[name=key_reminder_date_2]").val(ls_pto["key_reminder_date_2"]);
+						$("input[name=key_reminder_time_2]").val(ls_pto["key_reminder_time_2"]);
+					}
+					if(ls_pto["key_reminder_note_3"] != "") {
+						$("input[name=key_reminder_note_3]").val(ls_pto["key_reminder_note_3"]);
+						$("input[name=key_reminder_date_3]").val(ls_pto["key_reminder_date_3"]);
+						$("input[name=key_reminder_time_3]").val(ls_pto["key_reminder_time_3"]);
+					}
+					
 					if ("key_title_face_color" in ls_pto) 
 						$("input[name=key_title_face_color]").val(ls_pto["key_title_face_color"]);
 					if ("key_title_word_color" in ls_pto) 
