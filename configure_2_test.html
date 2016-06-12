@@ -498,7 +498,7 @@ body {height:auto; margin:0; padding: 0;}
 			}
 
 		    var options = {
-    			'key_style_face': Number( $("input[name=key_style_face]:checked").val() ),
+    				'key_style_face': Number( $("input[name=key_style_face]:checked").val() ),
 				'key_clock_type': Number( $("input[name=key_clock_type]:checked").val() ),
 				'key_clock_tick': Number( $("input[name=key_clock_tick]:checked").val() ),
 				'key_shake_face': Number( $("input[name=key_shake_face]:checked").val() ),
@@ -529,6 +529,8 @@ body {height:auto; margin:0; padding: 0;}
 				'key_reminder_time': $("input[name=key_reminder_time]").val(),
 				'key_reminder_seconds': UTCseconds,
 				'key_reminder_note': $("input[name=key_reminder_note]").val(),
+				
+				'key_data_sel': Number( $("input[name=key_data_sel]:checked").val() ),
 
 				'key_title_face_color'    : $("input[name=key_title_face_color]").val(),
 				'key_title_word_color'    : $("input[name=key_title_word_color]").val(),
@@ -634,6 +636,9 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_reminder_date]").val(ls_pto["key_reminder_date"]);
 						$("input[name=key_reminder_time]").val(ls_pto["key_reminder_time"]);
 					}
+					
+					$("input[name=key_data_sel][id=key_data_sel-"+ls_pto["key_data_sel"]+"]").prop('checked',true);
+					$("input[name=key_data_sel]").checkboxradio('refresh');
 
 					
 					if ("key_title_face_color" in ls_pto) 
