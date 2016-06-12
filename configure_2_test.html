@@ -516,34 +516,32 @@ body {height:auto; margin:0; padding: 0;}
 			
 			date = $("input[name=key_reminder_date_1]").val();
 			time =  $("input[name=key_reminder_time_1]").val();
-			//console.log("date " + date + "time " + time);
-			if(date!==null && time!=null) {
+			if(date!="" && time!="") {
 				year = parseInt(date.substring(0, 4));
-				month = parseInt(date.substring(5, 2));
-				day = parseInt(date.substring(8, 2));
+				month = parseInt(date.substring(5, 7));
+				day = parseInt(date.substring(8));
 				hour = parseInt(time.substring(0, 2));
-				min = parseInt(time.substring(3, 2));
+				min = parseInt(time.substring(3));
 				UTCseconds1 = Date.UTC(year, month, day, hour, min);
 			}
-			//console.log("" + year +"-"+ month +"-"+ day +"-"+ hour +"-"+ min +":"+ UTCseconds1);
 			date = $("input[name=key_reminder_date_2]").val();
 			time =  $("input[name=key_reminder_time_2]").val();
-			if(date!==null && time!=null) {
+			if(date!="" && time!="") {
 				year = parseInt(date.substring(0, 4));
-				month = parseInt(date.substring(5, 2));
-				day = parseInt(date.substring(8, 2));
+				month = parseInt(date.substring(5, 7));
+				day = parseInt(date.substring(8));
 				hour = parseInt(time.substring(0, 2));
-				min = parseInt(time.substring(3, 2));
+				min = parseInt(time.substring(3));
 				UTCseconds2 = Date.UTC(year, month, day, hour, min);
 			}
 			date = $("input[name=key_reminder_date_3]").val();
 			time =  $("input[name=key_reminder_time_3]").val();
-			if(date!==null && time!=null) {
+			if(date!="" && time!="") {
 				year = parseInt(date.substring(0, 4));
-				month = parseInt(date.substring(5, 2));
-				day = parseInt(date.substring(8, 2));
+				month = parseInt(date.substring(5, 7));
+				day = parseInt(date.substring(8));
 				hour = parseInt(time.substring(0, 2));
-				min = parseInt(time.substring(3, 2));
+				min = parseInt(time.substring(3));
 				UTCseconds3 = Date.UTC(year, month, day, hour, min);
 			}
 		
