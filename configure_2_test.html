@@ -260,44 +260,16 @@ body {height:auto; margin:0; padding: 0;}
 					<div class='wrap'>
 						<fieldset class="ui-grid-a">
 							<div class="ui-block-a">
-							<label for="key_reminder_date_1">日期:</label>
-							<input name="key_reminder_date_1" id="key_reminder_date_1" type="date">
+							<label for="key_reminder_date">日期:</label>
+							<input name="key_reminder_date" id="key_reminder_date" type="date">
 							</div>	
 							<div class="ui-block-b">
-							<label for="key_reminder_time_1">时间:</label>
-							<input name="key_reminder_time_1" id="key_reminder_time_1" type="time">
+							<label for="key_reminder_time">时间:</label>
+							<input name="key_reminder_time" id="key_reminder_time" type="time">
 							</div>	
 						</fieldset>	
-						<label for="key_reminder_note_1">事项:</label>
-						<input name="key_reminder_note_1" id="key_reminder_note_1" value="" data-mini="true" type="text">
-					</div>
-					<div class='wrap'>
-						<fieldset class="ui-grid-a">
-							<div class="ui-block-a">
-							<label for="key_reminder_date_2">日期:</label>
-							<input name="key_reminder_date_2" id="key_reminder_date_2" type="date">
-							</div>	
-							<div class="ui-block-c">
-							<label for="key_reminder_time_2">时间:</label>
-							<input name="key_reminder_time_2" id="key_reminder_time_2" type="time">
-							</div>	
-						</fieldset>	
-						<label for="key_reminder_note_2">事项:</label>
-						<input name="key_reminder_note_2" id="key_reminder_note_2" value="" data-mini="true" type="text">
-					</div>
-					<div class='wrap'>
-						<fieldset class="ui-grid-a">
-							<div class="ui-block-a">
-							<label for="key_reminder_date_3">日期:</label>
-							<input name="key_reminder_date_3" id="key_reminder_date_3" type="date">
-							</div>	
-							<div class="ui-block-c">
-							<label for="key_reminder_time_3">时间:</label>
-							<input name="key_reminder_time_3" id="key_reminder_time_3" type="time">
-							</div>	
-						</fieldset>	
-						<label for="key_reminder_note_3">事项:</label>
-						<input name="key_reminder_note_3" id="key_reminder_note_3" value="" data-mini="true" type="text">
+						<label for="key_reminder_note">事项:</label>
+						<input name="key_reminder_note" id="key_reminder_note" value="" data-mini="true" type="text">
 					</div>
 				</fieldset>		
 	
@@ -512,39 +484,19 @@ body {height:auto; margin:0; padding: 0;}
 			
 			var year, month, day, hour, min;
 			var date, time;
-			var UTCseconds1 = 0, UTCseconds2 = 0, UTCseconds3 = 0;
+			var UTCseconds = 0;
 			
-			date = $("input[name=key_reminder_date_1]").val();
-			time =  $("input[name=key_reminder_time_1]").val();
+			date = $("input[name=key_reminder_date]").val();
+			time =  $("input[name=key_reminder_time]").val();
 			if(date!="" && time!="") {
 				year = parseInt(date.substring(0, 4)) - 2000;
 				month = parseInt(date.substring(5, 7));
 				day = parseInt(date.substring(8));
 				hour = parseInt(time.substring(0, 2));
 				min = parseInt(time.substring(3));
-				UTCseconds1 = min + hour * 100 + day * 10000 + month * 1000000 + year * 100000000;
+				UTCseconds = min + hour * 100 + day * 10000 + month * 1000000 + year * 100000000;
 			}
-			date = $("input[name=key_reminder_date_2]").val();
-			time =  $("input[name=key_reminder_time_2]").val();
-			if(date!="" && time!="") {
-				year = parseInt(date.substring(0, 4)) - 2000;
-				month = parseInt(date.substring(5, 7));
-				day = parseInt(date.substring(8));
-				hour = parseInt(time.substring(0, 2));
-				min = parseInt(time.substring(3));
-				UTCseconds2 = min + hour * 100 + day * 10000 + month * 1000000 + year * 100000000;
-			}
-			date = $("input[name=key_reminder_date_3]").val();
-			time =  $("input[name=key_reminder_time_3]").val();
-			if(date!="" && time!="") {
-				year = parseInt(date.substring(0, 4)) - 2000;
-				month = parseInt(date.substring(5, 7));
-				day = parseInt(date.substring(8));
-				hour = parseInt(time.substring(0, 2));
-				min = parseInt(time.substring(3));
-				UTCseconds3 = min + hour * 100 + day * 10000 + month * 1000000 + year * 100000000;
-			}
-		
+
 		    var options = {
     			'key_style_face': Number( $("input[name=key_style_face]:checked").val() ),
 				'key_clock_type': Number( $("input[name=key_clock_type]:checked").val() ),
@@ -573,19 +525,11 @@ body {height:auto; margin:0; padding: 0;}
 				'key_kuaidi_id'        : $("input[name=key_kuaidi_id]").val(),
 				'key_kuaidi_com'        : $("select[name=key_kuaidi_com]").val(),
 				
-				'key_reminder_date_1': $("input[name=key_reminder_date_1]").val(),
-				'key_reminder_time_1': $("input[name=key_reminder_time_1]").val(),
-				'key_reminder_seconds_1': UTCseconds1,
-				'key_reminder_note_1': $("input[name=key_reminder_note_1]").val(),
-				'key_reminder_date_2': $("input[name=key_reminder_date_2]").val(),
-				'key_reminder_time_2': $("input[name=key_reminder_time_2]").val(),
-				'key_reminder_seconds_2': UTCseconds2,
-				'key_reminder_note_2': $("input[name=key_reminder_note_2]").val(),
-				'key_reminder_date_3': $("input[name=key_reminder_date_3]").val(),
-				'key_reminder_time_3': $("input[name=key_reminder_time_3]").val(),
-				'key_reminder_seconds_3': UTCseconds3,
-				'key_reminder_note_3': $("input[name=key_reminder_note_3]").val(),
-				
+				'key_reminder_date': $("input[name=key_reminder_date]").val(),
+				'key_reminder_time': $("input[name=key_reminder_time]").val(),
+				'key_reminder_seconds': UTCseconds,
+				'key_reminder_note': $("input[name=key_reminder_note]").val(),
+
 				'key_title_face_color'    : $("input[name=key_title_face_color]").val(),
 				'key_title_word_color'    : $("input[name=key_title_word_color]").val(),
 				'key_win_face_color'    : $("input[name=key_win_face_color]").val(),
@@ -685,21 +629,12 @@ body {height:auto; margin:0; padding: 0;}
 						$("select[name=key_kuaidi_com]").selectmenu("refresh", true);
 					}
 
-					if(ls_pto["key_reminder_note_1"] != "") {
-						$("input[name=key_reminder_note_1]").val(ls_pto["key_reminder_note_1"]);
-						$("input[name=key_reminder_date_1]").val(ls_pto["key_reminder_date_1"]);
-						$("input[name=key_reminder_time_1]").val(ls_pto["key_reminder_time_1"]);
+					if(ls_pto["key_reminder_note"] != "") {
+						$("input[name=key_reminder_note]").val(ls_pto["key_reminder_note"]);
+						$("input[name=key_reminder_date]").val(ls_pto["key_reminder_date"]);
+						$("input[name=key_reminder_time]").val(ls_pto["key_reminder_time"]);
 					}
-					if(ls_pto["key_reminder_note_2"] != "") {
-						$("input[name=key_reminder_note_2]").val(ls_pto["key_reminder_note_2"]);
-						$("input[name=key_reminder_date_2]").val(ls_pto["key_reminder_date_2"]);
-						$("input[name=key_reminder_time_2]").val(ls_pto["key_reminder_time_2"]);
-					}
-					if(ls_pto["key_reminder_note_3"] != "") {
-						$("input[name=key_reminder_note_3]").val(ls_pto["key_reminder_note_3"]);
-						$("input[name=key_reminder_date_3]").val(ls_pto["key_reminder_date_3"]);
-						$("input[name=key_reminder_time_3]").val(ls_pto["key_reminder_time_3"]);
-					}
+
 					
 					if ("key_title_face_color" in ls_pto) 
 						$("input[name=key_title_face_color]").val(ls_pto["key_title_face_color"]);
