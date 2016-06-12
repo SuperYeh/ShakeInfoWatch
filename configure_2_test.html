@@ -522,7 +522,7 @@ body {height:auto; margin:0; padding: 0;}
 				day = parseInt(date.substring(8));
 				hour = parseInt(time.substring(0, 2));
 				min = parseInt(time.substring(3));
-				UTCseconds1 = Date.UTC(year, month, day, hour, min);
+				UTCseconds1 = Date.UTC(year, month, day, hour, min)/1000;
 			}
 			date = $("input[name=key_reminder_date_2]").val();
 			time =  $("input[name=key_reminder_time_2]").val();
@@ -532,7 +532,7 @@ body {height:auto; margin:0; padding: 0;}
 				day = parseInt(date.substring(8));
 				hour = parseInt(time.substring(0, 2));
 				min = parseInt(time.substring(3));
-				UTCseconds2 = Date.UTC(year, month, day, hour, min);
+				UTCseconds2 = Date.UTC(year, month, day, hour, min)/1000;
 			}
 			date = $("input[name=key_reminder_date_3]").val();
 			time =  $("input[name=key_reminder_time_3]").val();
@@ -542,7 +542,7 @@ body {height:auto; margin:0; padding: 0;}
 				day = parseInt(date.substring(8));
 				hour = parseInt(time.substring(0, 2));
 				min = parseInt(time.substring(3));
-				UTCseconds3 = Date.UTC(year, month, day, hour, min);
+				UTCseconds3 = Date.UTC(year, month, day, hour, min)/1000;
 			}
 		
 		    var options = {
