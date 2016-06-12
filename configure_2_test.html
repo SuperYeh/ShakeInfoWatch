@@ -114,8 +114,8 @@ body {height:auto; margin:0; padding: 0;}
 
 <div data-role="collapsible" data-collapsed="true">
 	<h3>&#x8D44;&#x6599;&#x67E5;&#x8BE2;</h3><!--资料查询-->
-		<input name="key_data_sel" id="key_data_sel-0" value="0" checked="checked" type="radio">
-		<label for="key_data_sel-0">快递查询</label>
+		<input name="key_info_sel" id="key_info_sel-0" value="0" checked="checked" type="radio">
+		<label for="key_info_sel-0">快递查询</label>
 				<fieldset data-role="controlgroup" data-mini="true">
 				<div class='wrap'>				
 					<label for="key_kuaidi_id">快递查询:(<a href="//m.kuaidi100.com" target="_blank">快递查询</a>)</label><!--查询单号-->
@@ -254,8 +254,8 @@ body {height:auto; margin:0; padding: 0;}
 				</div>		
 				</fieldset>
 			
-		<input name="key_data_sel" id="key_data_sel-1" value="1" type="radio">
-		<label for="key_data_sel-1">备忘提醒</label>
+		<input name="key_info_sel" id="key_info_sel-1" value="1" type="radio">
+		<label for="key_info_sel-1">备忘提醒</label>
 				<fieldset data-role="controlgroup" data-mini="true">
 					<div class='wrap'>
 						<fieldset class="ui-grid-a">
@@ -522,6 +522,8 @@ body {height:auto; margin:0; padding: 0;}
 				'key_navi_dest_lat': mclat,  
 				'key_navi_dest_region': city, 
 				
+				'key_info_sel': Number( $("input[name=key_info_sel]:checked").val() ),
+				
 				'key_kuaidi_id'        : $("input[name=key_kuaidi_id]").val(),
 				'key_kuaidi_com'        : $("select[name=key_kuaidi_com]").val(),
 				
@@ -530,7 +532,6 @@ body {height:auto; margin:0; padding: 0;}
 				'key_reminder_seconds': UTCseconds,
 				'key_reminder_note': $("input[name=key_reminder_note]").val(),
 				
-				'key_data_sel': Number( $("input[name=key_data_sel]:checked").val() ),
 
 				'key_title_face_color'    : $("input[name=key_title_face_color]").val(),
 				'key_title_word_color'    : $("input[name=key_title_word_color]").val(),
@@ -625,6 +626,9 @@ body {height:auto; margin:0; padding: 0;}
 					}
 					city = ls_pto["key_navi_dest_region"];
 					
+					$("input[name=key_info_sel][id=key_info_sel-"+ls_pto["key_info_sel"]+"]").prop('checked',true);
+					$("input[name=key_info_sel]").checkboxradio('refresh');
+					
 					if(ls_pto["key_kuaidi_id"] != "") {
 						$("input[name=key_kuaidi_id]").val(ls_pto["key_kuaidi_id"]);
 						$("select[name=key_kuaidi_com]").val(ls_pto["key_kuaidi_com"]);
@@ -637,8 +641,6 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_reminder_time]").val(ls_pto["key_reminder_time"]);
 					}
 					
-					$("input[name=key_data_sel][id=key_data_sel-"+ls_pto["key_data_sel"]+"]").prop('checked',true);
-					$("input[name=key_data_sel]").checkboxradio('refresh');
 
 					
 					if ("key_title_face_color" in ls_pto) 
