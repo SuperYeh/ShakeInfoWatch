@@ -516,7 +516,7 @@ body {height:auto; margin:0; padding: 0;}
 			
 			date = $("input[name=key_reminder_date_1]").val();
 			time =  $("input[name=key_reminder_time_1]").val();
-			console.log("date " + date + "time " + time);
+			//console.log("date " + date + "time " + time);
 			if(date!==null && time!=null) {
 				year = parseInt(date.substring(0, 4));
 				month = parseInt(date.substring(5, 2));
@@ -525,7 +525,7 @@ body {height:auto; margin:0; padding: 0;}
 				min = parseInt(time.substring(3, 2));
 				UTCseconds1 = Date.UTC(year, month, day, hour, min);
 			}
-			console.log("" + year +"-"+ month +"-"+ day +"-"+ hour +"-"+ min +":"+ UTCseconds1);
+			//console.log("" + year +"-"+ month +"-"+ day +"-"+ hour +"-"+ min +":"+ UTCseconds1);
 			date = $("input[name=key_reminder_date_2]").val();
 			time =  $("input[name=key_reminder_time_2]").val();
 			if(date!==null && time!=null) {
