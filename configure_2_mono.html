@@ -13,6 +13,7 @@ body {height:auto; margin:0; padding: 0;}
       -webkit-box-shadow:4px 4px 5px #333;/*webkit*/ 
 	  -moz-box-shadow:4px 4px 5px #333;/*firefox*/     
 	  box-shadow:4px 4px 5px #333;/*opera或ie9*/ }
+textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 </style>
 <link rel='stylesheet' type='text/css' href='css/slate.min.css'>
 <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
@@ -263,7 +264,7 @@ body {height:auto; margin:0; padding: 0;}
 							</div>	
 						</fieldset>	
 						<label for="key_reminder_note">事项:</label>
-						<input name="key_reminder_note" id="key_reminder_note" value="" data-mini="true" type="text">
+						<textarea name="key_reminder_note" id="key_reminder_note"></textarea>
 					</div>
 			</fieldset>
 </div>
@@ -462,7 +463,7 @@ body {height:auto; margin:0; padding: 0;}
 				'key_reminder_date': $("input[name=key_reminder_date]").val(),
 				'key_reminder_time': $("input[name=key_reminder_time]").val(),
 				'key_reminder_seconds': UTCseconds,
-				'key_reminder_note': $("input[name=key_reminder_note]").val(),
+				'key_reminder_note': $("textarea[name=key_reminder_note]").val(),
 			}
 			return options;
 		}
@@ -564,7 +565,7 @@ body {height:auto; margin:0; padding: 0;}
 						$("select[name=key_kuaidi_com]").selectmenu("refresh", true);
 					}
 					if(ls_pto["key_reminder_note"] != "") {
-						$("input[name=key_reminder_note]").val(ls_pto["key_reminder_note"]);
+						$("textarea[name=key_reminder_note]").val(ls_pto["key_reminder_note"]);
 						$("input[name=key_reminder_date]").val(ls_pto["key_reminder_date"]);
 						$("input[name=key_reminder_time]").val(ls_pto["key_reminder_time"]);
 					}
