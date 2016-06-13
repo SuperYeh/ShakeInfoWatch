@@ -670,7 +670,7 @@ body {height:auto; margin:0; padding: 0;}
 				//city = city.replace(/(^\s*)|(\s*$)/g, ""); 
 				city = city.replace(/[ ]/g, ""); 
 				if (city == "") {
-					alert("未输入城市，无法查询。");
+					alert("气象查询未输入城市，无法查询。");
 					weatherCode = -1;
 					$(this).val("");
 					return;
@@ -682,7 +682,7 @@ body {height:auto; margin:0; padding: 0;}
 					weatherCode = code;
 				} else {
 					weatherCode = -1;
-					alert("输入错误，重新输入！");
+					alert("城市输入错误，请重新输入！");
 					$(this).val("");
 				}	
 			});
