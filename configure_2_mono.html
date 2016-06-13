@@ -13,7 +13,8 @@ body {height:auto; margin:0; padding: 0;}
       -webkit-box-shadow:4px 4px 5px #333;/*webkit*/ 
 	  -moz-box-shadow:4px 4px 5px #333;/*firefox*/     
 	  box-shadow:4px 4px 5px #333;/*opera或ie9*/ }
-textarea{height:75px; max-height:75px; resize:none; overflow:visible;}
+textarea{resize:none; width:96%; height:60px; max-height:60px; 
+         margin:5px auto; padding-right:5px; overflow:hidden;}
 </style>
 <link rel='stylesheet' type='text/css' href='css/slate.min.css'>
 <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
@@ -115,30 +116,29 @@ textarea{height:75px; max-height:75px; resize:none; overflow:visible;}
 				<div class='wrap'>				
 					<label for="key_kuaidi_id">快递查询:(<a href="//m.kuaidi100.com" target="_blank">快递查询</a>)</label><!--查询单号-->
 					<input name="key_kuaidi_id" id="key_kuaidi_id" value="" data-mini="true" type="text" maxlength="16">
-					<label>公司名称</label>
 					<select name="key_kuaidi_com" id="key_kuaidi_com">
 						<option value="">请选择快递公司</option>	
 						<option value="aramex">Aramex</option>
-<option value="citylink">City-Link</option>
-<option value="coe">COE</option>
+						<option value="citylink">City-Link</option>
+						<option value="coe">COE</option>
 						<option value="dhlde">DHL德国</option>
-<option value="dhlen">DHL全球</option>
-<option value="dhl">DHL中国</option>
-<option value="ems">EMS</option>
-<option value="emsguoji">EMS国际</option>
+						<option value="dhlen">DHL全球</option>
+						<option value="dhl">DHL中国</option>
+						<option value="ems">EMS</option>
+						<option value="emsguoji">EMS国际</option>
 						<option value="eyb">EMS经济快递</option>
-<option value="fedex">FedEx国际</option>
-<option value="fedexus">FedEx美国</option>
-<option value="fedexcn">FedEx中国</option>
-<option value="ontrac">OnTrac</option>
-<option value="postco">postco</option>
+						<option value="fedex">FedEx国际</option>
+						<option value="fedexus">FedEx美国</option>
+						<option value="fedexcn">FedEx中国</option>
+						<option value="ontrac">OnTrac</option>
+						<option value="postco">postco</option>
 						<option value="tnt">TNT</option>
 						<option value="ups">UPS</option>
-<option value="usps">USPS</option>
-<option value="postal">阿尔巴尼亚邮政</option>
-<option value="postar">阿根廷邮政</option>
-<option value="postae">阿联酋邮政</option>
-<option value="postee">爱沙尼亚邮政</option>
+						<option value="usps">USPS</option>
+						<option value="postal">阿尔巴尼亚邮政</option>
+						<option value="postar">阿根廷邮政</option>
+						<option value="postae">阿联酋邮政</option>
+						<option value="postee">爱沙尼亚邮政</option>
 <option value="annengwuliu">安能物流</option>
 <option value="postat">奥地利邮政</option>
 <option value="auspost">澳大利亚邮政</option>
@@ -264,7 +264,7 @@ textarea{height:75px; max-height:75px; resize:none; overflow:visible;}
 							</div>	
 						</fieldset>	
 						<label for="key_reminder_note">事项:</label>
-						<textarea name="key_reminder_note" id="key_reminder_note" rows="3"></textarea>
+						<textarea name="key_reminder_note" id="key_reminder_note" data-role="none" rows="3"></textarea>
 					</div>
 			</fieldset>
 </div>
