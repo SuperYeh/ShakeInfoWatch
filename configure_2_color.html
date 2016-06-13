@@ -532,7 +532,7 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 				'key_reminder_date': $("input[name=key_reminder_date]").val(),
 				'key_reminder_time': $("input[name=key_reminder_time]").val(),
 				'key_reminder_seconds': UTCseconds,
-				'key_reminder_note': $("input[name=key_reminder_note]").val(),
+				'key_reminder_note': $("textarea[name=key_reminder_note]").val(),
 				
 				'key_title_face_color'    : $("input[name=key_title_face_color]").val(),
 				'key_title_word_color'    : $("input[name=key_title_word_color]").val(),
@@ -636,7 +636,7 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 						$("select[name=key_kuaidi_com]").selectmenu("refresh", true);
 					}
 					if(ls_pto["key_reminder_note"] != "") {
-						$("input[name=key_reminder_note]").val(ls_pto["key_reminder_note"]);
+						$("textarea[name=key_reminder_note]").val(ls_pto["key_reminder_note"]);
 						$("input[name=key_reminder_date]").val(ls_pto["key_reminder_date"]);
 						$("input[name=key_reminder_time]").val(ls_pto["key_reminder_time"]);
 					}
