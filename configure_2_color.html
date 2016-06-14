@@ -121,7 +121,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 		<input name="key_info_sel" id="key_info_sel-0" value="0" checked="checked" type="radio">
 		<label for="key_info_sel-0">快递查询</label>
 				<fieldset data-role="controlgroup" data-mini="true">
-				<div name="key_wrap-0" id="key_wrap-0" class='wrap'>				
+				<div name="key_wrap-0" id="key_wrap-0" class="wrap" style="display:none">				
 					<label for="key_kuaidi_id">快递查询:(<a href="//m.kuaidi100.com" target="_blank">快递查询</a>)</label><!--查询单号-->
 					<input name="key_kuaidi_id" id="key_kuaidi_id" value="" data-mini="true" type="text">
 					<select name="key_kuaidi_com" id="key_kuaidi_com" autocomplete="off">
@@ -260,7 +260,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 		<input name="key_info_sel" id="key_info_sel-1" value="1" type="radio">
 		<label for="key_info_sel-1">行程提醒</label>
 				<fieldset data-role="controlgroup" data-mini="true">
-					<div name="key_wrap-1" id="key_wrap-1" class='wrap'>
+					<div name="key_wrap-1" id="key_wrap-1" class="wrap" style="display:none">
 						<fieldset class="ui-grid-a" style="padding-right:5px;">
 							<div class="ui-block-a">
 							<label for="key_reminder_date">日期:</label>
@@ -279,7 +279,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 		<input name="key_info_sel" id="key_info_sel-2" value="2" type="radio">
 		<label for="key_info_sel-2">备忘查询</label>
 				<fieldset data-role="controlgroup" data-mini="true">
-					<div name="key_wrap-2" id="key_wrap-2" class='wrap'>
+					<div name="key_wrap-2" id="key_wrap-2" class="wrap" style="display:none">
 						<label for="key_memo_title">标题: (10中文字)</label>
 						<input name="key_memo_title" id="key_memo_title" value="" data-mini="true" type="text">
 						<label for="key_memo_note">内容: (4行x10中文字)</label>
@@ -290,7 +290,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 		<input name="key_info_sel" id="key_info_sel-3" value="3" type="radio">
 		<label for="key_info_sel-3">股票查询</label>
 				<fieldset data-role="controlgroup" data-mini="true">
-					<div name="key_wrap-3" id="key_wrap-3" class='wrap'>
+					<div name="key_wrap-3" id="key_wrap-3" class="wrap" style="display:none">
 						<label for="key_stock_id">股票代码: </label>
 						<input name="key_stock_id" id="key_stock_id" value="" data-mini="true" type="text" maxlength="16">
 					</div>
@@ -654,8 +654,8 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					
 					$("input[name=key_info_sel][id=key_info_sel-"+ls_pto["key_info_sel"]+"]").prop('checked',true);
 					$("input[name=key_info_sel]").checkboxradio('refresh');
-					//var wrap = document.getElementById("key_wrap-" + ls_pto["key_info_sel"]);
-					//wrap.style.display = "block";
+					var wrap = document.getElementById("key_wrap-" + ls_pto["key_info_sel"]);
+					wrap.style.display = "block";
 					
 					if(ls_pto["key_kuaidi_id"] != "") {
 						$("input[name=key_kuaidi_id]").val(ls_pto["key_kuaidi_id"]);
@@ -718,7 +718,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				}	
 			});
 			
-			$("input[name='key_data_sel']").change(function () {
+			$("input[name='key_info_sel']").change(function () {
 			    	var sel = Number($(this).val());
 				var wrap;
 				for (var i=0; i<4; i++) {
