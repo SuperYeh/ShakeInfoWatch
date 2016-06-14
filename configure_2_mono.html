@@ -115,8 +115,8 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 			<fieldset data-role="controlgroup" data-mini="true">
 				<div class='wrap'>				
 					<label for="key_kuaidi_id">快递查询:(<a href="//m.kuaidi100.com" target="_blank">快递查询</a>)</label><!--查询单号-->
-					<input name="key_kuaidi_id" id="key_kuaidi_id" value="" data-mini="true" type="text" maxlength="16">
-					<select name="key_kuaidi_com" id="key_kuaidi_com">
+					<input name="key_kuaidi_id" id="key_kuaidi_id" value="" data-mini="true" type="text">
+					<select name="key_kuaidi_com" id="key_kuaidi_com" autocomplete="off">
 						<option value="">请选择快递公司</option>	
 						<option value="aramex">Aramex</option>
 						<option value="citylink">City-Link</option>
@@ -273,11 +273,20 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				<fieldset data-role="controlgroup" data-mini="true">
 					<div class='wrap'>
 						<label for="key_memo_title">标题: (10中文字)</label>
-						<input name="key_memo_title" id="key_memo_title" value="" data-mini="true" type="text" maxlength="16">
+						<input name="key_memo_title" id="key_memo_title" value="" data-mini="true" type="text">
 						<label for="key_memo_note">内容: (4行x10中文字)</label>
 						<textarea name="key_memo_note" id="key_memo_note" data-role="none" style="height:80px; max-height:80px;" rows="4"></textarea>
 					</div>
 				</fieldset>				
+
+		<input name="key_info_sel" id="key_info_sel-3" value="3" type="radio">
+		<label for="key_info_sel-3">股票查询</label>
+				<fieldset data-role="controlgroup" data-mini="true">
+					<div class='wrap'>
+						<label for="key_stock_id">股票代码: </label>
+						<input name="key_stock_id" id="key_stock_id" value="" data-mini="true" type="text" maxlength="16">
+					</div>
+				</fieldset>			
 	
 </div>
 
@@ -479,7 +488,8 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				
 				'key_memo_title': $("input[name=key_memo_title]").val(),
 				'key_memo_note': $("textarea[name=key_memo_note]").val(),
-
+				
+				'key_stock_id': $("input[name=key_stock_id]").val(),
 			}
 			return options;
 		}
@@ -587,6 +597,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					}
 					$("input[name=key_memo_title]").val(ls_pto["key_memo_title"]);
 					$("textarea[name=key_memo_note]").val(ls_pto["key_memo_note"]);
+					$("input[name=key_stock_id]").val(ls_pto["key_stock_id"]);
 
 					
  					weatherCode =  Number( ls_pto["key_city_weather_code"] );
@@ -610,7 +621,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					weatherCode = code;
 				} else {
 					weatherCode = -1;
-					alert("输入错误，请重新输入！");
+					alert("城市输入错误，请重新输入！");
 					$(this).val("");
 				}	
 			});
