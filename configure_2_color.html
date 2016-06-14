@@ -258,7 +258,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				</fieldset>
 			
 		<input name="key_info_sel" id="key_info_sel-1" value="1" type="radio">
-		<label for="key_info_sel-1">备忘提醒</label>
+		<label for="key_info_sel-1">行程提醒</label>
 				<fieldset data-role="controlgroup" data-mini="true">
 					<div class='wrap'>
 						<fieldset class="ui-grid-a" style="padding-right:5px;">
@@ -271,10 +271,21 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 							<input name="key_reminder_time" id="key_reminder_time" type="time">
 							</div>	
 						</fieldset>	
-						<label for="key_reminder_note">事项:(3行x10中文字)</label>
+						<label for="key_reminder_note">行程: (3行x10中文字)</label>
 						<textarea name="key_reminder_note" id="key_reminder_note" data-role="none" rows="3"></textarea>
 					</div>
-				</fieldset>		
+				</fieldset>
+				
+		<input name="key_info_sel" id="key_info_sel-2" value="2" type="radio">
+		<label for="key_info_sel-2">备忘查询</label>
+				<fieldset data-role="controlgroup" data-mini="true">
+					<div class='wrap'>
+						<label for="key_memo_title">标题: (10中文字)</label>
+						<input name="key_memo_title" id="key_memo_title" value="" data-mini="true" type="text" maxlength="16">
+						<label for="key_memo_note">内容: (3行x10中文字)</label>
+						<textarea name="key_memo_note" id="key_memo_note" data-role="none" rows="3"></textarea>
+					</div>
+				</fieldset>				
 	
 </div>
 
@@ -533,7 +544,10 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				'key_reminder_time': $("input[name=key_reminder_time]").val(),
 				'key_reminder_seconds': UTCseconds,
 				'key_reminder_note': $("textarea[name=key_reminder_note]").val(),
-				
+
+				'key_memo_title': $("input[name=key_memo_title]").val(),
+				'key_memo_note': $("textarea[name=key_memo_note]").val(),
+
 				'key_title_face_color'    : $("input[name=key_title_face_color]").val(),
 				'key_title_word_color'    : $("input[name=key_title_word_color]").val(),
 				'key_win_face_color'    : $("input[name=key_win_face_color]").val(),
@@ -640,7 +654,9 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 						$("input[name=key_reminder_date]").val(ls_pto["key_reminder_date"]);
 						$("input[name=key_reminder_time]").val(ls_pto["key_reminder_time"]);
 					}
-					
+					$("input[name=key_memo_title]").val(ls_pto["key_memo_title"]);
+					$("textarea[name=key_memo_note]").val(ls_pto["key_memo_note"]);
+
 					
 					if ("key_title_face_color" in ls_pto) 
 						$("input[name=key_title_face_color]").val(ls_pto["key_title_face_color"]);
