@@ -281,9 +281,20 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				<fieldset data-role="controlgroup" data-mini="true">
 					<div class='wrap'>
 						<label for="key_memo_title">标题: (10中文字)</label>
-						<input name="key_memo_title" id="key_memo_title" value="" data-mini="true" type="text" maxlength="16">
+						<input name="key_memo_title" id="key_memo_title" value="" data-mini="true" type="text" maxlength="20">
 						<label for="key_memo_note">内容: (4行x10中文字)</label>
 						<textarea name="key_memo_note" id="key_memo_note" data-role="none" style="height:80px; max-height:80px;" rows="4"></textarea>
+					</div>
+				</fieldset>
+				
+		<input name="key_info_sel" id="key_info_sel-3" value="3" type="radio">
+		<label for="key_info_sel-3">股票查询</label>
+				<fieldset data-role="controlgroup" data-mini="true">
+					<div class='wrap'>
+						<label for="key_stock_1">股票代码: </label>
+						<input name="key_stock_1" id="key_stock_1" value="" data-mini="true" type="text" maxlength="16">
+						<label for="key_stock_2">股票代码: </label>
+						<input name="key_stock_2" id="key_stock_2" value="" data-mini="true" type="text" maxlength="16">
 					</div>
 				</fieldset>				
 	
@@ -547,6 +558,9 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 
 				'key_memo_title': $("input[name=key_memo_title]").val(),
 				'key_memo_note': $("textarea[name=key_memo_note]").val(),
+				
+				'key_stock_1': $("input[name=key_stock_1]").val(),
+				'key_stock_2': $("input[name=key_stock_2]").val(),
 
 				'key_title_face_color'    : $("input[name=key_title_face_color]").val(),
 				'key_title_word_color'    : $("input[name=key_title_word_color]").val(),
@@ -656,6 +670,8 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					}
 					$("input[name=key_memo_title]").val(ls_pto["key_memo_title"]);
 					$("textarea[name=key_memo_note]").val(ls_pto["key_memo_note"]);
+					$("input[name=key_stock_1]").val(ls_pto["=key_stock_1"]);
+					$("input[name=key_stock_2]").val(ls_pto["=key_stock_2"]);
 
 					
 					if ("key_title_face_color" in ls_pto) 
