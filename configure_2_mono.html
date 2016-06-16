@@ -10,7 +10,7 @@ body {height:auto; margin:0; padding: 0;}
 #map_canvas {width:98%; height:250px; position:relative;}
 @media print {#map_canvas {height:250px;}}
 .wrap{margin:30px auto; padding:25px; border:solid 2px gray;
-      -webkit-box-shadow:4px 4px 5px #333;/*webkit*/ 
+      	  -webkit-box-shadow:4px 4px 5px #333;/*webkit*/ 
 	  -moz-box-shadow:4px 4px 5px #333;/*firefox*/     
 	  box-shadow:4px 4px 5px #333;/*opera或ie9*/ }
 textarea{resize:none; width:96%; height:60px; max-height:60px;  
@@ -322,6 +322,24 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 			 		<input name="key_weather_hourly" id="key_weather_hourly" value="0" type="checkbox">
 			</fieldset>
 -->			
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>天气资讯:</h4></legend>
+					<input name="key_weather_info_sel" id="key_weather_info_sel-0" value="0" checked="checked" type="radio">
+					<label for="key_weather_info_sel-0">防晒</label>
+					<input name="key_weather_info_sel" id="key_weather_info_sel-1" value="1" type="radio">
+					<label for="key_weather_info_sel-1">穿衣</label>
+					<input name="key_weather_info_sel" id="key_weather_info_sel-2" value="2" type="radio">
+					<label for="key_weather_info_sel-2">运动</label>
+					<input name="key_weather_info_sel" id="key_weather_info_sel-3" value="3" type="radio">
+					<label for="key_weather_info_sel-3">洗车</label>
+					<input name="key_weather_info_sel" id="key_weather_info_sel-4" value="4" type="radio">
+					<label for="key_weather_info_sel-4">晾晒</label>
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
+				<legend><h4> </h4></legend>
+				<input name="key_utf8_decode" id="key_utf8_decode" value="0" type="checkbox">
+				<label for="key_utf8_decode">乱码纠正（显示正常勿选）</label>
+			</fieldset>
 </div>
 
 <div data-role="collapsible" data-collapsed="true">
@@ -461,12 +479,10 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				'key_screensaver_sel': Number( $("input[name=key_screensaver_sel]").val() ),
 				'key_is_shake_twice': Number( $("input[name=key_is_shake_twice]:checked").val() ),
 
-				'key_title_invert': Number( $("input[name=key_title_invert]").val() ),
-				'key_win_invert': Number( $("input[name=key_win_invert]").val() ),
-				'key_data_invert': Number( $("input[name=key_data_invert]").val() ),
-				
 				'key_city'        : $("input[name=key_city]").val(),
 				'key_city_weather_code': Number( weatherCode ),
+				'key_weather_info_sel': Number( $("input[name=key_weather_info_sel]:checked").val() ),
+				'key_utf8_decode': Number( $("input[name=key_utf8_decode]").val() ),
 				
 				'key_navi': Number( $("input[name=key_navi]").val() ),
 				'key_navi_dest'    : $("input[name=key_navi_dest]").val(),
@@ -490,6 +506,11 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				'key_memo_note': $("textarea[name=key_memo_note]").val(),
 				
 				'key_stock_id': $("input[name=key_stock_id]").val(),
+				
+				'key_title_invert': Number( $("input[name=key_title_invert]").val() ),
+				'key_win_invert': Number( $("input[name=key_win_invert]").val() ),
+				'key_data_invert': Number( $("input[name=key_data_invert]").val() ),
+				
 			}
 			return options;
 		}
@@ -560,11 +581,19 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					
 					if ("key_city" in ls_pto) 
 						$("input[name=key_city]").val(ls_pto["key_city"]);
+ 					weatherCode =  Number( ls_pto["key_city_weather_code"] );
 					//if(ls_pto["key_weather_hourly"]==1) {	
 					//	$("input[name=key_weather_hourly]").prop('checked', true);
 					//	$("input[name=key_weather_hourly]").checkboxradio('refresh');
 					//	$("input[name=key_weather_hourly]").val("1");
 					//}						
+					$("input[name=key_weather_info_sel][id=key_weather_info_sel-"+ls_pto["key_weather_info_sel"]+"]").prop('checked',true);
+					$("input[name=key_weather_info_sel]").checkboxradio('refresh');
+					if(ls_pto["key_utf8_decode"]==1) {	
+						$("input[name=key_utf8_decode]").prop('checked', true);
+						$("input[name=key_utf8_decode]").checkboxradio('refresh');
+						$("input[name=key_utf8_decode]").val("1");
+					}	
 					
 					if(ls_pto["key_navi_dest"] != "") 
 						$("input[name=key_navi_dest]").val(ls_pto["key_navi_dest"]);
@@ -601,8 +630,6 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					$("textarea[name=key_memo_note]").val(ls_pto["key_memo_note"]);
 					$("input[name=key_stock_id]").val(ls_pto["key_stock_id"]);
 
-					
- 					weatherCode =  Number( ls_pto["key_city_weather_code"] );
 				}
 			}
 			
