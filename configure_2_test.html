@@ -13,7 +13,8 @@ body {height:auto; margin:0; padding: 0;}
       -webkit-box-shadow:4px 4px 5px #333;/*webkit*/ 
 	  -moz-box-shadow:4px 4px 5px #333;/*firefox*/     
 	  box-shadow:4px 4px 5px #333;/*opera或ie9*/ }
-textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}		  
+textarea{resize:none; width:96%; height:60px; max-height:60px;  
+         margin:5px auto; padding-right:5px; border:solid 1px gray; overflow:hidden;}	  
 </style>
 <link rel='stylesheet' type='text/css' href='css/slate.min.css'>
 <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
@@ -86,10 +87,10 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 					<label for="key_shake_face-1">&#x5929;&#x6C14;</label><!--天气-->
 					<input name="key_shake_face" id="key_shake_face-2" value="2" type="radio">   
 					<label for="key_shake_face-2">&#x5409;&#x5FCC;</label><!--吉忌-->
-			        	<input name="key_shake_face" id="key_shake_face-3" value="3" type="radio">
-			        	<label for="key_shake_face-3">&#x5730;&#x7406;</label><!--地理-->
-			        	<input name="key_shake_face" id="key_shake_face-7" value="7" type="radio">
-			        	<label for="key_shake_face-7">&#x67E5;&#x8BE2;</label><!--查询-->
+					<input name="key_shake_face" id="key_shake_face-3" value="3" type="radio">
+					<label for="key_shake_face-3">&#x5730;&#x7406;</label><!--地理-->
+					<input name="key_shake_face" id="key_shake_face-7" value="7" type="radio">
+					<label for="key_shake_face-7">&#x67E5;&#x8BE2;</label><!--查询-->
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>&#x8F6C;&#x8155;&#x6B21;&#x6570;:</h4></legend><!--转腕次数:-->
@@ -97,7 +98,7 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 					<label for="key_is_shake_twice-0">&#x4E00;&#x6B21;</label><!--一次-->
 					<input name="key_is_shake_twice" id="key_is_shake_twice-1" value="1" type="radio">
 					<label for="key_is_shake_twice-1">&#x4E8C;&#x6B21;</label><!--二次-->
-                                        <input name="key_is_shake_twice" id="key_is_shake_twice-2" value="2" type="radio">
+					<input name="key_is_shake_twice" id="key_is_shake_twice-2" value="2" type="radio">
 					<label for="key_is_shake_twice-2">自动 (使用1次/屏保2次)</label>
 			</fieldset>			
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
@@ -120,10 +121,9 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 		<input name="key_info_sel" id="key_info_sel-0" value="0" checked="checked" type="radio">
 		<label for="key_info_sel-0">快递查询</label>
 				<fieldset data-role="controlgroup" data-mini="true">
-				<div class='wrap'>				
+				<div name="key_wrap-0" id="key_wrap-0" class="wrap" style="display:none">				
 					<label for="key_kuaidi_id">快递查询:(<a href="//m.kuaidi100.com" target="_blank">快递查询</a>)</label><!--查询单号-->
 					<input name="key_kuaidi_id" id="key_kuaidi_id" value="" data-mini="true" type="text">
-					<label>公司名称</label>
 					<select name="key_kuaidi_com" id="key_kuaidi_com" autocomplete="off">
 						<option value="">请选择快递公司</option>	
 						<option value="aramex">Aramex</option>
@@ -258,23 +258,43 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 				</fieldset>
 			
 		<input name="key_info_sel" id="key_info_sel-1" value="1" type="radio">
-		<label for="key_info_sel-1">备忘提醒</label>
+		<label for="key_info_sel-1">行程提醒</label>
 				<fieldset data-role="controlgroup" data-mini="true">
-					<div class='wrap'>
-						<fieldset class="ui-grid-a">
+					<div name="key_wrap-1" id="key_wrap-1" class="wrap" style="display:none">
+						<fieldset class="ui-grid-a" style="padding-right:5px;">
 							<div class="ui-block-a">
 							<label for="key_reminder_date">日期:</label>
 							<input name="key_reminder_date" id="key_reminder_date" type="date">
 							</div>	
-							<div class="ui-block-b">
+							<div class="ui-block-b" style="padding-left:5px;">
 							<label for="key_reminder_time">时间:</label>
 							<input name="key_reminder_time" id="key_reminder_time" type="time">
 							</div>	
 						</fieldset>	
-						<label for="key_reminder_note">事项:</label>
-						<textarea name="key_reminder_note" id="key_reminder_note"></textarea>
+						<label for="key_reminder_note">行程: (3行x10中文字)</label>
+						<textarea name="key_reminder_note" id="key_reminder_note" data-role="none" rows="3"></textarea>
 					</div>
-				</fieldset>		
+				</fieldset>
+				
+		<input name="key_info_sel" id="key_info_sel-2" value="2" type="radio">
+		<label for="key_info_sel-2">备忘查询</label>
+				<fieldset data-role="controlgroup" data-mini="true">
+					<div name="key_wrap-2" id="key_wrap-2" class="wrap" style="display:none">
+						<label for="key_memo_title">标题: (10中文字)</label>
+						<input name="key_memo_title" id="key_memo_title" value="" data-mini="true" type="text">
+						<label for="key_memo_note">内容: (4行x10中文字)</label>
+						<textarea name="key_memo_note" id="key_memo_note" data-role="none" style="height:80px; max-height:80px;" rows="4"></textarea>
+					</div>
+				</fieldset>
+				
+		<input name="key_info_sel" id="key_info_sel-3" value="3" type="radio">
+		<label for="key_info_sel-3">股票查询</label>
+				<fieldset data-role="controlgroup" data-mini="true">
+					<div name="key_wrap-3" id="key_wrap-3" class="wrap" style="display:none">
+						<label for="key_stock_id">股票代码: (例如sz000858)</label>
+						<input name="key_stock_id" id="key_stock_id" value="" data-mini="true" type="text" maxlength="16">
+					</div>
+				</fieldset>				
 	
 </div>
 
@@ -310,6 +330,24 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 			 		<input name="key_weather_hourly" id="key_weather_hourly" value="0" type="checkbox">
 			</fieldset>
 -->			
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>天气资讯:</h4></legend>
+					<input name="key_weather_info_sel" id="key_weather_info_sel-0" value="0" checked="checked" type="radio">
+					<label for="key_weather_info_sel-0">防晒</label>
+					<input name="key_weather_info_sel" id="key_weather_info_sel-1" value="1" type="radio">
+					<label for="key_weather_info_sel-1">穿衣</label>
+					<input name="key_weather_info_sel" id="key_weather_info_sel-2" value="2" type="radio">
+					<label for="key_weather_info_sel-2">运动</label>
+					<input name="key_weather_info_sel" id="key_weather_info_sel-3" value="3" type="radio">
+					<label for="key_weather_info_sel-3">洗车</label>
+					<input name="key_weather_info_sel" id="key_weather_info_sel-4" value="4" type="radio">
+					<label for="key_weather_info_sel-4">晾晒</label>
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
+				<legend><h4> </h4></legend>
+				<input name="key_utf8_decode" id="key_utf8_decode" value="0" type="checkbox">
+				<label for="key_utf8_decode">乱码纠正（显示正常勿选）</label>
+			</fieldset>
 </div>
 
 <div data-role="collapsible" data-collapsed="true">
@@ -406,15 +444,15 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
     <script>
 		var weatherCode = -1;
 		
-			var map;
-			var marker;
-			var mclng = 12956000;
-			var mclat = 4824875;
-			var address;
-    		var city = "北京";
-    		var province = "北京";
+		var map;
+		var marker;
+		var mclng = 12956000;
+		var mclat = 4824875;
+		var address;
+    	var city = "北京";
+    	var province = "北京";
 			
-	   		function initialize() {
+	   	function initialize() {
 				if (typeof window.localStorage !== "undefined") {
 				    if (window.localStorage.swatch_options) {
 						var ls_pto = JSON.parse(window.localStorage.swatch_options);
@@ -463,24 +501,24 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
         			var geo=new sogou.maps.Geocoder();
         			geo.geocode(request,callback);
 				});
-			}
+		}
 			
-			function callback(a){
+		function callback(a){
     			var geometry = a.data[0];
     			address = geometry.address;
     			city = geometry.city
     			province = geometry.province;	
     			$("input[name=key_navi_dest]").val(address);
-			}
+		}
 			
-			function placeMarker(location) {
+		function placeMarker(location) {
 				//var clickedLocation = location;		
 				marker = new sogou.maps.Marker({
 					position: location,
 					map: map
 				});
 				//map.setCenter(location);
-			}		
+		}		
 		
 		function getConfigData() {
 		    $("input[id='key_city']").change();
@@ -499,9 +537,8 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 				min = parseInt(time.substring(3));
 				UTCseconds = min + hour * 100 + day * 10000 + month * 1000000 + year * 100000000;
 			}
-
 		    var options = {
-    				'key_style_face': Number( $("input[name=key_style_face]:checked").val() ),
+				'key_style_face': Number( $("input[name=key_style_face]:checked").val() ),
 				'key_clock_type': Number( $("input[name=key_clock_type]:checked").val() ),
 				'key_clock_tick': Number( $("input[name=key_clock_tick]:checked").val() ),
 				'key_shake_face': Number( $("input[name=key_shake_face]:checked").val() ),
@@ -516,7 +553,8 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 				
 				'key_city'        : $("input[name=key_city]").val(),
 				'key_city_weather_code': Number( weatherCode ),
-				
+				'key_weather_info_sel': Number( $("input[name=key_weather_info_sel]:checked").val() ),
+				'key_utf8_decode': Number( $("input[name=key_utf8_decode]").val() ),
 				'key_navi': Number( $("input[name=key_navi]").val() ),
 				'key_navi_dest': $("input[name=key_navi_dest]").val(),
 				//'key_navi_dest_lng': $("input[name=key_navi_dest_lng]").val(),
@@ -526,16 +564,16 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 				'key_navi_dest_region': city, 
 				
 				'key_info_sel': Number( $("input[name=key_info_sel]:checked").val() ),
-				
 				'key_kuaidi_id'        : $("input[name=key_kuaidi_id]").val(),
 				'key_kuaidi_com'        : $("select[name=key_kuaidi_com]").val(),
-				
 				'key_reminder_date': $("input[name=key_reminder_date]").val(),
 				'key_reminder_time': $("input[name=key_reminder_time]").val(),
 				'key_reminder_seconds': UTCseconds,
-				'key_reminder_note': $("input[name=key_reminder_note]").val(),
+				'key_reminder_note': $("textarea[name=key_reminder_note]").val(),
+				'key_memo_title': $("input[name=key_memo_title]").val(),
+				'key_memo_note': $("textarea[name=key_memo_note]").val(),
 				
-
+				'key_stock_id': $("input[name=key_stock_id]").val(),
 				'key_title_face_color'    : $("input[name=key_title_face_color]").val(),
 				'key_title_word_color'    : $("input[name=key_title_word_color]").val(),
 				'key_win_face_color'    : $("input[name=key_win_face_color]").val(),
@@ -608,11 +646,19 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 					
 					if ("key_city" in ls_pto) 
 						$("input[name=key_city]").val(ls_pto["key_city"]);
+					weatherCode =  Number( ls_pto["key_city_weather_code"] );
 					//if(ls_pto["key_weather_hourly"]==1) {	
 					//	$("input[name=key_weather_hourly]").prop('checked', true);
 					//	$("input[name=key_weather_hourly]").checkboxradio('refresh');
 					//	$("input[name=key_weather_hourly]").val("1");
-					//}						
+					//}	
+					$("input[name=key_weather_info_sel][id=key_weather_info_sel-"+ls_pto["key_weather_info_sel"]+"]").prop('checked',true);
+					$("input[name=key_weather_info_sel]").checkboxradio('refresh');
+					if(ls_pto["key_utf8_decode"]==1) {	
+						$("input[name=key_utf8_decode]").prop('checked', true);
+						$("input[name=key_utf8_decode]").checkboxradio('refresh');
+						$("input[name=key_utf8_decode]").val("1");
+					}	
 					
 					if(ls_pto["key_navi_dest"] != "") 
 						$("input[name=key_navi_dest]").val(ls_pto["key_navi_dest"]);
@@ -631,20 +677,22 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 					
 					$("input[name=key_info_sel][id=key_info_sel-"+ls_pto["key_info_sel"]+"]").prop('checked',true);
 					$("input[name=key_info_sel]").checkboxradio('refresh');
+					var wrap = document.getElementById("key_wrap-" + ls_pto["key_info_sel"]);
+					wrap.style.display = "block";
 					
 					if(ls_pto["key_kuaidi_id"] != "") {
 						$("input[name=key_kuaidi_id]").val(ls_pto["key_kuaidi_id"]);
 						$("select[name=key_kuaidi_com]").val(ls_pto["key_kuaidi_com"]);
 						$("select[name=key_kuaidi_com]").selectmenu("refresh", true);
 					}
-
 					if(ls_pto["key_reminder_note"] != "") {
-						$("input[name=key_reminder_note]").val(ls_pto["key_reminder_note"]);
+						$("textarea[name=key_reminder_note]").val(ls_pto["key_reminder_note"]);
 						$("input[name=key_reminder_date]").val(ls_pto["key_reminder_date"]);
 						$("input[name=key_reminder_time]").val(ls_pto["key_reminder_time"]);
 					}
-					
-
+					$("input[name=key_memo_title]").val(ls_pto["key_memo_title"]);
+					$("textarea[name=key_memo_note]").val(ls_pto["key_memo_note"]);
+					$("input[name=key_stock_id]").val(ls_pto["key_stock_id"]);
 					
 					if ("key_title_face_color" in ls_pto) 
 						$("input[name=key_title_face_color]").val(ls_pto["key_title_face_color"]);
@@ -665,7 +713,6 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 					if ("key_data_word_color" in ls_pto) 
 						$("input[name=key_data_word_color]").val(ls_pto["key_data_word_color"]);
 					
-					weatherCode =  Number( ls_pto["key_city_weather_code"] );
 				}
 			}
 			
@@ -675,7 +722,7 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 				//city = city.replace(/(^\s*)|(\s*$)/g, ""); 
 				city = city.replace(/[ ]/g, ""); 
 				if (city == "") {
-					alert("未输入城市，无法查询。");
+					alert("气象查询未输入城市，无法查询。");
 					weatherCode = -1;
 					$(this).val("");
 					return;
@@ -687,9 +734,19 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 					weatherCode = code;
 				} else {
 					weatherCode = -1;
-					alert("输入错误，重新输入！");
+					alert("城市输入错误，请重新输入！");
 					$(this).val("");
 				}	
+			});
+			
+			$("input[name='key_info_sel']").change(function () {
+			    	var sel = Number($(this).val());
+				var wrap;
+				for (var i=0; i<4; i++) {
+				  wrap = document.getElementById("key_wrap-" + i);
+				  if(i == sel) wrap.style.display = "block";
+				  else wrap.style.display = "none";
+				}
 			});
     		
 			$("input[type='checkbox']").click(function(){   
@@ -707,8 +764,7 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
 				console.log("Cancel");
 				document.location = "pebblejs://close";
 			});
-			
-/*
+/*			
 			$("#b-submit").click(function() {
 				console.log("Submit");
 				ls_pto = JSON.stringify(getConfigData());
@@ -730,6 +786,7 @@ textarea{height:75px; max-height:75px; resize:none; overflow:hidden;}
     				var return_to = getQueryParam('return_to', 'pebblejs://close#');
     				document.location = return_to + encodeURIComponent(ls_option);
   			});
+ 			
 		});
     </script>
   </body>
