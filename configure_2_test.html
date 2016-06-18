@@ -102,6 +102,11 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					<label for="key_is_shake_twice-2">自动 (使用1次/屏保2次)</label>
 			</fieldset>			
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
+				<legend><h4> </h4></legend>
+				<input name="key_is_flash_on" id="key_is_flash_on" value="0" type="checkbox">
+				<label for="key_is_flash_on">切屏显示资讯条滚动效果</label>
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
 				<legend><h4>&#x632F;&#x52A8;&#x63D0;&#x9192;:</h4></legend><!--振动提醒:-->
 					<input name="key_vibr_hourly" id="key_vibr_hourly" value="0" type="checkbox">
 					<label for="key_vibr_hourly">&#x6574;&#x70B9;&#x63D0;&#x9192;</label><!--整点提醒-->
@@ -343,11 +348,6 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					<input name="key_weather_info_sel" id="key_weather_info_sel-4" value="4" type="radio">
 					<label for="key_weather_info_sel-4">晾晒</label>
 			</fieldset>
-			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
-				<legend><h4> </h4></legend>
-				<input name="key_utf8_decode" id="key_utf8_decode" value="0" type="checkbox">
-				<label for="key_utf8_decode">乱码纠正（显示正常勿选）</label>
-			</fieldset>
 </div>
 
 <div data-role="collapsible" data-collapsed="true">
@@ -357,7 +357,14 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				<label for="key_screensaver_sel">&#x5C4F;&#x4FDD;&#x5F00;&#x5173;</label><!--屏保开关-->
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-				<legend><h4>&#x5C4F;&#x4FDD;&#x80CC;&#x666F;</h4></legend><!--屏保背景-->
+				<legend><h4>时间样式</h4></legend>
+					<input name="key_screensaver_time" id="key_screensaver_time-0" value="0" checked="checked" type="radio">
+					<label for="key_screensaver_time-0">指针</label>
+					<input name="key_screensaver_time" id="key_screensaver_time-1" value="1" type="radio">   
+					<label for="key_screensaver_time-1">数位</label>
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>背景图样</h4></legend>
 					<input name="key_screensaver_style" id="key_screensaver_style-0" value="0" checked="checked" type="radio">
 					<label for="key_screensaver_style-0">&#x65E0;</label><!--无-->
 					<input name="key_screensaver_style" id="key_screensaver_style-1" value="1" type="radio">   
@@ -549,12 +556,14 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				'key_health_data_sel': Number( $("input[name=key_health_data_sel]:checked").val() ),
 				'key_screensaver_sel': Number( $("input[name=key_screensaver_sel]").val() ),
 				'key_screensaver_style': Number( $("input[name=key_screensaver_style]:checked").val() ),
+				'key_screensaver_time': Number( $("input[name=key_screensaver_time]:checked").val() ),
 				'key_is_shake_twice': Number( $("input[name=key_is_shake_twice]:checked").val() ),
+				'key_is_flash_on': Number( $("input[name=key_is_flash_on]").val() ),
 				
 				'key_city'        : $("input[name=key_city]").val(),
 				'key_city_weather_code': Number( weatherCode ),
 				'key_weather_info_sel': Number( $("input[name=key_weather_info_sel]:checked").val() ),
-				'key_utf8_decode': Number( $("input[name=key_utf8_decode]").val() ),
+
 				'key_navi': Number( $("input[name=key_navi]").val() ),
 				'key_navi_dest': $("input[name=key_navi_dest]").val(),
 				//'key_navi_dest_lng': $("input[name=key_navi_dest_lng]").val(),
@@ -572,8 +581,8 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				'key_reminder_note': $("textarea[name=key_reminder_note]").val(),
 				'key_memo_title': $("input[name=key_memo_title]").val(),
 				'key_memo_note': $("textarea[name=key_memo_note]").val(),
-				
 				'key_stock_id': $("input[name=key_stock_id]").val(),
+				
 				'key_title_face_color'    : $("input[name=key_title_face_color]").val(),
 				'key_title_word_color'    : $("input[name=key_title_word_color]").val(),
 				'key_win_face_color'    : $("input[name=key_win_face_color]").val(),
@@ -637,12 +646,21 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 						$("input[name=key_screensaver_style][id=key_screensaver_style-"+ls_pto["key_screensaver_style"]+"]").prop('checked',true);
 						$("input[name=key_screensaver_style]").checkboxradio('refresh');
 					}
+					if ("key_screensaver_time" in ls_pto) {
+						$("input[name=key_screensaver_time][id=key_screensaver_time-"+ls_pto["key_screensaver_time"]+"]").prop('checked',true);
+						$("input[name=key_screensaver_time]").checkboxradio('refresh');
+					}
 					if ("key_health_data_sel" in ls_pto) {
 						$("input[name=key_health_data_sel][id=key_health_data_sel-"+ls_pto["key_health_data_sel"]+"]").prop('checked',true);
 						$("input[name=key_health_data_sel]").checkboxradio('refresh');
 					}	
 					$("input[name=key_is_shake_twice][id=key_is_shake_twice-"+ls_pto["key_is_shake_twice"]+"]").prop('checked',true);
 					$("input[name=key_is_shake_twice]").checkboxradio('refresh');
+					if(ls_pto["key_is_flash_on"]==1) {	
+						$("input[name=key_is_flash_on]").prop('checked', true);
+						$("input[name=key_is_flash_on]").checkboxradio('refresh');
+						$("input[name=key_is_flash_on]").val("1");
+					}	
 					
 					if ("key_city" in ls_pto) 
 						$("input[name=key_city]").val(ls_pto["key_city"]);
@@ -654,12 +672,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					//}	
 					$("input[name=key_weather_info_sel][id=key_weather_info_sel-"+ls_pto["key_weather_info_sel"]+"]").prop('checked',true);
 					$("input[name=key_weather_info_sel]").checkboxradio('refresh');
-					if(ls_pto["key_utf8_decode"]==1) {	
-						$("input[name=key_utf8_decode]").prop('checked', true);
-						$("input[name=key_utf8_decode]").checkboxradio('refresh');
-						$("input[name=key_utf8_decode]").val("1");
-					}	
-					
+
 					if(ls_pto["key_navi_dest"] != "") 
 						$("input[name=key_navi_dest]").val(ls_pto["key_navi_dest"]);
 					if(ls_pto["key_navi_dest_lng"] != "")
@@ -786,7 +799,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
     				var return_to = getQueryParam('return_to', 'pebblejs://close#');
     				document.location = return_to + encodeURIComponent(ls_option);
   			});
- 			
+  			
 		});
     </script>
   </body>
