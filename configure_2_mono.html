@@ -680,7 +680,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				document.location = "pebblejs://close";
 			});
 			
-
+/*
 			$("#b-submit").click(function() {
 				console.log("Submit");
 				ls_pto = JSON.stringify(getConfigData());
@@ -690,7 +690,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				var location = "pebblejs://close#" + encodeURIComponent(ls_pto);
 				document.location = location;
 			});
-/*			
+*/			
 			var submitButton = document.getElementById('b-submit');
   			submitButton.addEventListener('click', function() {
     				console.log('Submit');
@@ -702,7 +702,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
     				var return_to = getQueryParam('return_to', 'pebblejs://close#');
     				document.location = return_to + encodeURIComponent(ls_option);
   			});
-*/  			
+  			
 		});
     </script>
   </body>
