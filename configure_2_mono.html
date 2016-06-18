@@ -10,11 +10,11 @@ body {height:auto; margin:0; padding: 0;}
 #map_canvas {width:98%; height:250px; position:relative;}
 @media print {#map_canvas {height:250px;}}
 .wrap{margin:30px auto; padding:25px; border:solid 2px gray;
-      	  -webkit-box-shadow:4px 4px 5px #333;/*webkit*/ 
+      -webkit-box-shadow:4px 4px 5px #333;/*webkit*/ 
 	  -moz-box-shadow:4px 4px 5px #333;/*firefox*/     
 	  box-shadow:4px 4px 5px #333;/*opera或ie9*/ }
 textarea{resize:none; width:96%; height:60px; max-height:60px;  
-         margin:5px auto; padding-right:5px; border:solid 1px gray; overflow:hidden;}
+         margin:5px auto; padding-right:5px; border:solid 1px gray; overflow:hidden;}	  
 </style>
 <link rel='stylesheet' type='text/css' href='css/slate.min.css'>
 <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
@@ -64,25 +64,20 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					<input name="key_clock_tick" id="key_clock_tick-1" value="1" type="radio">
 					<label for="key_clock_tick-1">&#x5206;</label><!--分-->
 			</fieldset>
-			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
-				<legend><h4>&#x5C4F;&#x4FDD;&#x8BBE;&#x5B9A;:</h4></legend><!--屏保设定:-->
-					<input name="key_screensaver_sel" id="key_screensaver_sel" value="1" checked="checked" type="checkbox">
-					<label for="key_screensaver_sel">&#x5C4F;&#x4FDD;&#x5F00;&#x5173;</label><!--屏保开关-->
-			</fieldset>			
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>&#x8F6C;&#x8155;&#x8BBE;&#x5B9A;:</h4></legend><!--转腕设定:-->
 					<input name="key_shake_face" id="key_shake_face-9" value="9" checked="checked" type="radio">
-					<label for="key_shake_face-9">&#x65E0;</label><!--无-->
+					<label for="key_shake_face-9">循环</label>
 					<input name="key_shake_face" id="key_shake_face-0" value="0" type="radio">
 					<label for="key_shake_face-0">&#x6708;&#x5386;</label><!--月历-->
 					<input name="key_shake_face" id="key_shake_face-1" value="1" type="radio">   
 					<label for="key_shake_face-1">&#x5929;&#x6C14;</label><!--天气-->
 					<input name="key_shake_face" id="key_shake_face-2" value="2" type="radio">   
 					<label for="key_shake_face-2">&#x5409;&#x5FCC;</label><!--吉忌-->
-			        <input name="key_shake_face" id="key_shake_face-3" value="3" type="radio">
-			        <label for="key_shake_face-3">&#x5730;&#x7406;</label><!--地理-->
-			        <input name="key_shake_face" id="key_shake_face-7" value="7" type="radio">
-			        <label for="key_shake_face-7">&#x67E5;&#x8BE2;</label><!--查询-->
+					<input name="key_shake_face" id="key_shake_face-3" value="3" type="radio">
+					<label for="key_shake_face-3">&#x5730;&#x7406;</label><!--地理-->
+					<input name="key_shake_face" id="key_shake_face-7" value="7" type="radio">
+					<label for="key_shake_face-7">&#x67E5;&#x8BE2;</label><!--查询-->
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>&#x8F6C;&#x8155;&#x6B21;&#x6570;:</h4></legend><!--转腕次数:-->
@@ -92,7 +87,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					<label for="key_is_shake_twice-1">&#x4E8C;&#x6B21;</label><!--二次-->
 					<input name="key_is_shake_twice" id="key_is_shake_twice-2" value="2" type="radio">
 					<label for="key_is_shake_twice-2">自动 (使用1次/屏保2次)</label>
-			</fieldset>
+			</fieldset>			
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
 				<legend><h4> </h4></legend>
 				<input name="key_is_flash_on" id="key_is_flash_on" value="0" type="checkbox">
@@ -117,7 +112,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 	<h3>&#x8D44;&#x6599;&#x67E5;&#x8BE2;</h3><!--资料查询-->
 		<input name="key_info_sel" id="key_info_sel-0" value="0" checked="checked" type="radio">
 		<label for="key_info_sel-0">快递查询</label>
-			<fieldset data-role="controlgroup" data-mini="true">
+				<fieldset data-role="controlgroup" data-mini="true">
 				<div name="key_wrap-0" id="key_wrap-0" class="wrap" style="display:none">				
 					<label for="key_kuaidi_id">快递查询:(<a href="//m.kuaidi100.com" target="_blank">快递查询</a>)</label><!--查询单号-->
 					<input name="key_kuaidi_id" id="key_kuaidi_id" value="" data-mini="true" type="text">
@@ -144,111 +139,111 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 						<option value="postar">阿根廷邮政</option>
 						<option value="postae">阿联酋邮政</option>
 						<option value="postee">爱沙尼亚邮政</option>
-<option value="annengwuliu">安能物流</option>
-<option value="postat">奥地利邮政</option>
-<option value="auspost">澳大利亚邮政</option>
-<option value="postpk">巴基斯坦邮政</option>
-<option value="brazilposten">巴西邮政</option>
-<option value="postby">白俄罗斯邮政</option>
-<option value="ees">百福东方</option>
-<option value="huitongkuaidi">百世汇通</option>
-<option value="bestqjt">百世物流</option>
-<option value="youzhengguonei">包裹信件</option>
-<option value="postbg">保加利亚邮政</option>
-<option value="bpost">比利时邮政</option>
-<option value="blyz">波兰邮政</option>
-<option value="bjcs">城市100</option>
-<option value="cxcod">传喜物流</option>
-<option value="dtw">大田物流</option>
-<option value="debang">德邦物流</option>
-<option value="disifang">递四方</option>
-<option value="fgyz">法国邮政</option>
-<option value="fanyukuaidi">凡宇快递</option>
-<option value="feibaokuaidi">飞豹快递</option>
-<option value="hzabc">飞远(爱彼西)</option>
-<option value="gzlt">飞远配送</option>
-<option value="postfi">芬兰邮政</option>
-<option value="guotongkuaidi">国通快递</option>
-<option value="koreapost">韩国邮政</option>
-<option value="yct">黑猫宅急便</option>
-<option value="hengluwuliu">恒路物流</option>
-<option value="huaqikuaiyun">华企快运</option>
-<option value="huangmajia">黄马甲配送</option>
-<option value="jiayunmeiwuliu">加运美</option>
-<option value="jiajiwuliu">佳吉快运</option>
-<option value="jiayiwuliu">佳怡物流</option>
-<option value="jialidatong">嘉里大通</option>
-<option value="jkyz">捷克邮政</option>
-<option value="jindouyun">筋斗云物流</option>
-<option value="jd">京东快递</option>
-<option value="jinguangsudikuaijian">京广速递</option>
-<option value="posthr">克罗地亚邮政</option>
-<option value="kuayue">跨越速运</option>
-<option value="kuaijiesudi">快捷快递</option>
-<option value="postlb">黎巴嫩邮政</option>
-<option value="lianhaowuliu">联昊通</option>
-<option value="lb">龙邦速递</option>
-<option value="postmt">马耳他邮政</option>
-<option value="postmk">马其顿邮政</option>
-<option value="postmu">毛里求斯邮政</option>
-<option value="serpost">秘鲁邮政</option>
-<option value="minbangsudi">民邦快递</option>
-<option value="minghangkuaidi">民航快递</option>
-<option value="szml56">明亮物流</option>
-<option value="postmd">摩尔多瓦邮政</option>
-<option value="postza">南非邮政</option>
-<option value="postno">挪威邮政</option>
-<option value="postpt">葡萄牙邮政</option>
-<option value="quanfengkuaidi">全峰快递</option>
-<option value="quanyikuaidi">全一快递</option>
-<option value="japanposten">日本邮政</option>
-<option value="rufengda">如风达</option>
-<option value="swisspost">瑞士邮政</option>
-<option value="postsrb">塞尔维亚邮政</option>
-<option value="postsa">沙特邮政</option>
-<option value="shentong">申通快递</option>
-<option value="shenganwuliu">圣安物流</option>
-<option value="chengbang">晟邦物流</option>
-<option value="shengfengwuliu">盛丰物流</option>
-<option value="shenghuiwuliu">盛辉物流</option>
-<option value="shunfeng">顺丰速运</option>
-<option value="postsk">斯洛伐克邮政</option>
-<option value="postsi">斯洛文尼亚邮政</option>
-<option value="snwl">苏宁快递</option>
-<option value="suer">速尔快递</option>
-<option value="postth">泰国邮政</option>
-<option value="tiandihuayu">天地华宇</option>
-<option value="tiantian">天天快递</option>
-<option value="posttr">土耳其邮政</option>
-<option value="wanjiawuliu">万家物流</option>
-<option value="wanxiangwuliu">万象物流</option>
-<option value="postua">乌克兰邮政</option>
-<option value="postes">西班牙邮政</option>
-<option value="xinbangwuliu">新邦物流</option>
-<option value="xinfengwuliu">信丰物流</option>
-<option value="posthu">匈牙利邮政</option>
-<option value="yafengsudi">亚风速递</option>
-<option value="postam">亚美尼亚邮政</option>
-<option value="postit">意大利邮政</option>
-<option value="yinjiesudi">银捷速递</option>
-<option value="postin">印度邮政</option>
-<option value="royalmail">英国皇家邮政</option>
-<option value="youshuwuliu">优速物流</option>
-<option value="youzhengguoji">邮政国际包裹</option>
-<option value="postb">邮政国内小包</option>
-<option value="yuantong">圆通速递</option>
-<option value="yuanchengwuliu">远成物流</option>
-<option value="yfexpress">越丰物流</option>
-<option value="ytkd">运通中港快递</option>
-<option value="yunda">韵达快递</option>
-<option value="zengyisudi">增益速递</option>
-<option value="zhaijisong">宅急送</option>
-<option value="zimakaimeng">芝麻开门</option>
-<option value="postcl">智利邮政</option>
-<option value="post">中国邮政</option>
-<option value="zhongsukuaidi">中速快递</option>
-<option value="zhongtiewuliu">中铁快运</option>
-<option value="ztky">中铁物流</option>
+						<option value="annengwuliu">安能物流</option>
+						<option value="postat">奥地利邮政</option>
+						<option value="auspost">澳大利亚邮政</option>
+						<option value="postpk">巴基斯坦邮政</option>
+						<option value="brazilposten">巴西邮政</option>
+						<option value="postby">白俄罗斯邮政</option>
+						<option value="ees">百福东方</option>
+						<option value="huitongkuaidi">百世汇通</option>
+						<option value="bestqjt">百世物流</option>
+						<option value="youzhengguonei">包裹信件</option>
+						<option value="postbg">保加利亚邮政</option>
+						<option value="bpost">比利时邮政</option>
+						<option value="blyz">波兰邮政</option>
+						<option value="bjcs">城市100</option>
+						<option value="cxcod">传喜物流</option>
+						<option value="dtw">大田物流</option>
+						<option value="debang">德邦物流</option>
+						<option value="disifang">递四方</option>
+						<option value="fgyz">法国邮政</option>
+						<option value="fanyukuaidi">凡宇快递</option>
+						<option value="feibaokuaidi">飞豹快递</option>
+						<option value="hzabc">飞远(爱彼西)</option>
+						<option value="gzlt">飞远配送</option>
+						<option value="postfi">芬兰邮政</option>
+						<option value="guotongkuaidi">国通快递</option>
+						<option value="koreapost">韩国邮政</option>
+						<option value="yct">黑猫宅急便</option>
+						<option value="hengluwuliu">恒路物流</option>
+						<option value="huaqikuaiyun">华企快运</option>
+						<option value="huangmajia">黄马甲配送</option>
+						<option value="jiayunmeiwuliu">加运美</option>
+						<option value="jiajiwuliu">佳吉快运</option>
+						<option value="jiayiwuliu">佳怡物流</option>
+						<option value="jialidatong">嘉里大通</option>
+						<option value="jkyz">捷克邮政</option>
+						<option value="jindouyun">筋斗云物流</option>
+						<option value="jd">京东快递</option>
+						<option value="jinguangsudikuaijian">京广速递</option>
+						<option value="posthr">克罗地亚邮政</option>
+						<option value="kuayue">跨越速运</option>
+						<option value="kuaijiesudi">快捷快递</option>
+						<option value="postlb">黎巴嫩邮政</option>
+						<option value="lianhaowuliu">联昊通</option>
+						<option value="lb">龙邦速递</option>
+						<option value="postmt">马耳他邮政</option>
+						<option value="postmk">马其顿邮政</option>
+						<option value="postmu">毛里求斯邮政</option>
+						<option value="serpost">秘鲁邮政</option>
+						<option value="minbangsudi">民邦快递</option>
+						<option value="minghangkuaidi">民航快递</option>
+						<option value="szml56">明亮物流</option>
+						<option value="postmd">摩尔多瓦邮政</option>
+						<option value="postza">南非邮政</option>
+						<option value="postno">挪威邮政</option>
+						<option value="postpt">葡萄牙邮政</option>
+						<option value="quanfengkuaidi">全峰快递</option>
+						<option value="quanyikuaidi">全一快递</option>
+						<option value="japanposten">日本邮政</option>
+						<option value="rufengda">如风达</option>
+						<option value="swisspost">瑞士邮政</option>
+						<option value="postsrb">塞尔维亚邮政</option>
+						<option value="postsa">沙特邮政</option>
+						<option value="shentong">申通快递</option>
+						<option value="shenganwuliu">圣安物流</option>
+						<option value="chengbang">晟邦物流</option>
+						<option value="shengfengwuliu">盛丰物流</option>
+						<option value="shenghuiwuliu">盛辉物流</option>
+						<option value="shunfeng">顺丰速运</option>
+						<option value="postsk">斯洛伐克邮政</option>
+						<option value="postsi">斯洛文尼亚邮政</option>
+						<option value="snwl">苏宁快递</option>
+						<option value="suer">速尔快递</option>
+						<option value="postth">泰国邮政</option>
+						<option value="tiandihuayu">天地华宇</option>
+						<option value="tiantian">天天快递</option>
+						<option value="posttr">土耳其邮政</option>
+						<option value="wanjiawuliu">万家物流</option>
+						<option value="wanxiangwuliu">万象物流</option>
+						<option value="postua">乌克兰邮政</option>
+						<option value="postes">西班牙邮政</option>
+						<option value="xinbangwuliu">新邦物流</option>
+						<option value="xinfengwuliu">信丰物流</option>
+						<option value="posthu">匈牙利邮政</option>
+						<option value="yafengsudi">亚风速递</option>
+						<option value="postam">亚美尼亚邮政</option>
+						<option value="postit">意大利邮政</option>
+						<option value="yinjiesudi">银捷速递</option>
+						<option value="postin">印度邮政</option>
+						<option value="royalmail">英国皇家邮政</option>
+						<option value="youshuwuliu">优速物流</option>
+						<option value="youzhengguoji">邮政国际包裹</option>
+						<option value="postb">邮政国内小包</option>
+						<option value="yuantong">圆通速递</option>
+						<option value="yuanchengwuliu">远成物流</option>
+						<option value="yfexpress">越丰物流</option>
+						<option value="ytkd">运通中港快递</option>
+						<option value="yunda">韵达快递</option>
+						<option value="zengyisudi">增益速递</option>
+						<option value="zhaijisong">宅急送</option>
+						<option value="zimakaimeng">芝麻开门</option>
+						<option value="postcl">智利邮政</option>
+						<option value="post">中国邮政</option>
+						<option value="zhongsukuaidi">中速快递</option>
+						<option value="zhongtiewuliu">中铁快运</option>
+						<option value="ztky">中铁物流</option>
 						<option value="zhongtong">中通快递</option>
 					</select>
 				</div>		
@@ -282,16 +277,16 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 						<label for="key_memo_note">内容: (4行x10中文字)</label>
 						<textarea name="key_memo_note" id="key_memo_note" data-role="none" style="height:80px; max-height:80px;" rows="4"></textarea>
 					</div>
-				</fieldset>				
-
+				</fieldset>
+				
 		<input name="key_info_sel" id="key_info_sel-3" value="3" type="radio">
 		<label for="key_info_sel-3">股票查询</label>
 				<fieldset data-role="controlgroup" data-mini="true">
 					<div name="key_wrap-3" id="key_wrap-3" class="wrap" style="display:none">
-						<label for="key_stock_id">股票代码: </label>
+						<label for="key_stock_id">股票代码: (例如sz000858)</label>
 						<input name="key_stock_id" id="key_stock_id" value="" data-mini="true" type="text" maxlength="16">
 					</div>
-				</fieldset>			
+				</fieldset>				
 	
 </div>
 
@@ -323,7 +318,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 			</fieldset>
 <!--			
 			<fieldset data-role="controlgroup" data-mini="true">
-					<label for="key_weather_hourly">&#x6574;&#x70B9;&#x5929;&#x6C14;&#x66F4;&#x65B0;</label>			
+					<label for="key_weather_hourly">&#x6574;&#x70B9;&#x5929;&#x6C14;&#x66F4;&#x65B0;</label>		
 			 		<input name="key_weather_hourly" id="key_weather_hourly" value="0" type="checkbox">
 			</fieldset>
 -->			
@@ -343,6 +338,28 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 </div>
 
 <div data-role="collapsible" data-collapsed="true">
+	<h3>&#x5C4F;&#x4FDD;&#x8BBE;&#x5B9A;</h3><!--屏保设定-->
+			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
+				<input name="key_screensaver_sel" id="key_screensaver_sel" value="1" checked="true" type="checkbox">
+				<label for="key_screensaver_sel">&#x5C4F;&#x4FDD;&#x5F00;&#x5173;</label><!--屏保开关-->
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>时间样式</h4></legend>
+					<input name="key_screensaver_time" id="key_screensaver_time-0" value="0" checked="checked" type="radio">
+					<label for="key_screensaver_time-0">指针</label>
+					<input name="key_screensaver_time" id="key_screensaver_time-1" value="1" type="radio">   
+					<label for="key_screensaver_time-1">数位</label>
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>背景图样</h4></legend>
+					<input name="key_screensaver_style" id="key_screensaver_style-0" value="0" checked="checked" type="radio">
+					<label for="key_screensaver_style-0">&#x65E0;</label><!--无-->
+					<input name="key_screensaver_style" id="key_screensaver_style-2" value="2" type="radio">   
+					<label for="key_screensaver_style-2">&#x5706;&#x5F62;</label><!--圆形-->
+			</fieldset>
+</div>
+
+<div data-role="collapsible" data-collapsed="true">
     <h3>&#x663E;&#x793A;&#x9009;&#x62E9;</h3><!--显示选择-->
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 					<label for="key_title_invert">&#x65E5;&#x671F;&#x680F;&#x53CD;&#x767D;</label><!--日期栏反白-->		
@@ -357,6 +374,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 			</div>
 
 <br />
+
 <div class="ui-body ui-body-c">
     <fieldset class="ui-grid-a">
         <div class="ui-block-a"><button type="submit" data-theme="d" id="b-cancel">&#x53D6;&#x6D88;</button></div>
@@ -374,15 +392,15 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
     <script>
 		var weatherCode = -1;
 		
-			var map;
-			var marker;
-			var mclng = 12956000;
-			var mclat = 4824875;
-			var address;
-    		var city = "北京";
-    		var province = "北京";
+		var map;
+		var marker;
+		var mclng = 12956000;
+		var mclat = 4824875;
+		var address;
+    	var city = "北京";
+    	var province = "北京";
 			
-	   		function initialize() {
+	   	function initialize() {
 				if (typeof window.localStorage !== "undefined") {
 				    if (window.localStorage.swatch_options) {
 						var ls_pto = JSON.parse(window.localStorage.swatch_options);
@@ -422,36 +440,37 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					mclat = event.point.y;
 			
 					var request={
-        					location:{
-                  					points:[event.point],
-                  					type:0
-            				}
+        				location:{
+                  			points:[event.point],
+                  			type:0
+            			}
         			}
          
         			var geo=new sogou.maps.Geocoder();
         			geo.geocode(request,callback);
 				});
-			}
+		}
 			
-			function callback(a){
+		function callback(a){
     			var geometry = a.data[0];
     			address = geometry.address;
     			city = geometry.city
-    			province = geometry.province;
+    			province = geometry.province;	
     			$("input[name=key_navi_dest]").val(address);
-			}
+		}
 			
-			function placeMarker(location) {
+		function placeMarker(location) {
 				//var clickedLocation = location;		
 				marker = new sogou.maps.Marker({
 					position: location,
 					map: map
 				});
 				//map.setCenter(location);
-			}
-			
+		}		
+		
 		function getConfigData() {
 		    $("input[id='key_city']").change();
+			
 			var year, month, day, hour, min;
 			var date, time;
 			var UTCseconds = 0;
@@ -477,15 +496,15 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				'key_hourly_vibr': Number( $("input[name=key_vibr_hourly]").val() ),
 				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
 				'key_screensaver_sel': Number( $("input[name=key_screensaver_sel]").val() ),
+				'key_screensaver_style': Number( $("input[name=key_screensaver_style]:checked").val() ),
+				'key_screensaver_time': Number( $("input[name=key_screensaver_time]:checked").val() ),
 				'key_is_shake_twice': Number( $("input[name=key_is_shake_twice]:checked").val() ),
 				'key_is_flash_on': Number( $("input[name=key_is_flash_on]").val() ),
-
 				'key_city'        : $("input[name=key_city]").val(),
 				'key_city_weather_code': Number( weatherCode ),
 				'key_weather_info_sel': Number( $("input[name=key_weather_info_sel]:checked").val() ),
-
 				'key_navi': Number( $("input[name=key_navi]").val() ),
-				'key_navi_dest'    : $("input[name=key_navi_dest]").val(),
+				'key_navi_dest': $("input[name=key_navi_dest]").val(),
 				//'key_navi_dest_lng': $("input[name=key_navi_dest_lng]").val(),
 				//'key_navi_dest_lat': $("input[name=key_navi_dest_lat]").val(),  
 				'key_navi_dest_lng': mclng,
@@ -493,18 +512,14 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				'key_navi_dest_region': city, 
 				
 				'key_info_sel': Number( $("input[name=key_info_sel]:checked").val() ),
-				
 				'key_kuaidi_id'        : $("input[name=key_kuaidi_id]").val(),
 				'key_kuaidi_com'        : $("select[name=key_kuaidi_com]").val(),
-
 				'key_reminder_date': $("input[name=key_reminder_date]").val(),
 				'key_reminder_time': $("input[name=key_reminder_time]").val(),
 				'key_reminder_seconds': UTCseconds,
 				'key_reminder_note': $("textarea[name=key_reminder_note]").val(),
-				
 				'key_memo_title': $("input[name=key_memo_title]").val(),
 				'key_memo_note': $("textarea[name=key_memo_note]").val(),
-				
 				'key_stock_id': $("input[name=key_stock_id]").val(),
 				
 				'key_title_invert': Number( $("input[name=key_title_invert]").val() ),
@@ -559,6 +574,14 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 						$("input[name=key_screensaver_sel]").checkboxradio('refresh');
 						$("input[name=key_screensaver_sel]").val("0");
 					}
+					if ("key_screensaver_style" in ls_pto) {
+						$("input[name=key_screensaver_style][id=key_screensaver_style-"+ls_pto["key_screensaver_style"]+"]").prop('checked',true);
+						$("input[name=key_screensaver_style]").checkboxradio('refresh');
+					}
+					if ("key_screensaver_time" in ls_pto) {
+						$("input[name=key_screensaver_time][id=key_screensaver_time-"+ls_pto["key_screensaver_time"]+"]").prop('checked',true);
+						$("input[name=key_screensaver_time]").checkboxradio('refresh');
+					}
 					$("input[name=key_is_shake_twice][id=key_is_shake_twice-"+ls_pto["key_is_shake_twice"]+"]").prop('checked',true);
 					$("input[name=key_is_shake_twice]").checkboxradio('refresh');
 					if(ls_pto["key_is_flash_on"]==1) {	
@@ -566,7 +589,6 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 						$("input[name=key_is_flash_on]").checkboxradio('refresh');
 						$("input[name=key_is_flash_on]").val("1");
 					}	
-
 					if(ls_pto["key_title_invert"]==1) {
 						$("input[name=key_title_invert]").prop('checked', true);
 						$("input[name=key_title_invert]").checkboxradio('refresh');
@@ -593,7 +615,6 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					//}						
 					$("input[name=key_weather_info_sel][id=key_weather_info_sel-"+ls_pto["key_weather_info_sel"]+"]").prop('checked',true);
 					$("input[name=key_weather_info_sel]").checkboxradio('refresh');
-
 					if(ls_pto["key_navi_dest"] != "") 
 						$("input[name=key_navi_dest]").val(ls_pto["key_navi_dest"]);
 					if(ls_pto["key_navi_dest_lng"] != "")
@@ -613,10 +634,8 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					$("input[name=key_info_sel]").checkboxradio('refresh');
 					var wrap = document.getElementById("key_wrap-" + ls_pto["key_info_sel"]);
 					wrap.style.display = "block";
-
 					if(ls_pto["key_kuaidi_id"] != "") {
 						$("input[name=key_kuaidi_id]").val(ls_pto["key_kuaidi_id"]);
-
 						$("select[name=key_kuaidi_com]").val(ls_pto["key_kuaidi_com"]);
 						$("select[name=key_kuaidi_com]").selectmenu("refresh", true);
 					}
@@ -628,7 +647,6 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					$("input[name=key_memo_title]").val(ls_pto["key_memo_title"]);
 					$("textarea[name=key_memo_note]").val(ls_pto["key_memo_note"]);
 					$("input[name=key_stock_id]").val(ls_pto["key_stock_id"]);
-
 				}
 			}
 			
