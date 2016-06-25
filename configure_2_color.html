@@ -403,21 +403,6 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 			        </label>
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-				<legend><h4>&#x65F6;&#x95F4;&#x680F;&#x4F4D;:</h4></legend><!--时间栏位:-->
-					<label for="key_clock_hour_color">&#x65F6;&#x9488;(&#x5E72;&#x652F;)</label><!--时针-->
-					<label class="item">
-						<input name="key_clock_hour_color" id="key_clock_hour_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000" onfocus="this.blur()">
-			        </label>
-					<label for="key_clock_min_color">&#x5206;&#x9488;(&#x51B2;&#x715E;)</label><!--分针-->
-					<label class="item">
-						<input name="key_clock_min_color" id="key_clock_min_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000" onfocus="this.blur()">
-			        </label>
-					<label for="key_clock_sec_color">&#x79D2;&#x9488;(&#x65F6;&#x95F4;)</label><!--秒针-->
-					<label class="item">
-						<input name="key_clock_sec_color" id="key_clock_sec_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000" onfocus="this.blur()">
-			        </label>
-			</fieldset>	
-			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>&#x7529;&#x5C4F;&#x680F;&#x4F4D;:</h4></legend><!--甩屏栏位:-->
 					<label for="key_data_face_color">&#x5E95;&#x8272;</label><!--底色-->
 					<label class="item">
@@ -586,9 +571,6 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				'key_title_word_color'    : $("input[name=key_title_word_color]").val(),
 				'key_win_face_color'    : $("input[name=key_win_face_color]").val(),
 				'key_win_word_color'    : $("input[name=key_win_word_color]").val(),
-				'key_clock_hour_color'    : $("input[name=key_clock_hour_color]").val(),
-				'key_clock_min_color'    : $("input[name=key_clock_min_color]").val(),
-				'key_clock_sec_color'    : $("input[name=key_clock_sec_color]").val(),
 				'key_data_face_color'    : $("input[name=key_data_face_color]").val(),
 				'key_data_word_color'    : $("input[name=key_data_word_color]").val(),				
 			}
@@ -713,12 +695,6 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 						$("input[name=key_win_face_color]").val(ls_pto["key_win_face_color"]);
 					if ("key_win_word_color" in ls_pto) 
 						$("input[name=key_win_word_color]").val(ls_pto["key_win_word_color"]);
-					if ("key_clock_hour_color" in ls_pto) 
-						$("input[name=key_clock_hour_color]").val(ls_pto["key_clock_hour_color"]);
-					if ("key_clock_min_color" in ls_pto) 
-						$("input[name=key_clock_min_color]").val(ls_pto["key_clock_min_color"]);
-					if ("key_clock_sec_color" in ls_pto) 
-						$("input[name=key_clock_sec_color]").val(ls_pto["key_clock_sec_color"]);
 					if ("key_data_face_color" in ls_pto) 
 						$("input[name=key_data_face_color]").val(ls_pto["key_data_face_color"]);
 					if ("key_data_word_color" in ls_pto) 
