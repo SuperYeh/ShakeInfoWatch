@@ -137,8 +137,8 @@ body {height:auto; margin:0; padding: 0;}
 		$().ready(function() {
 			
 		   	if (typeof window.localStorage !== "undefined") {
-				if (window.localStorage.swatch_options) {
-					var ls_pto = JSON.parse(window.localStorage.swatch_options);
+				if (window.localStorage.ww_options) {
+					var ls_pto = JSON.parse(window.localStorage.ww_options);
 					
 					// the Pebble webview dies on the next line...
 					$("input[name=key_daily_start]").val(ls_pto["key_daily_start"]);
@@ -187,7 +187,7 @@ body {height:auto; margin:0; padding: 0;}
 				console.log("Submit");
 				ls_pto = JSON.stringify(getConfigData());
 				if (typeof window.localStorage !== "undefined") {
-					window.localStorage.swatch_options = ls_pto;
+					window.localStorage.ww_options = ls_pto;
 				}
 				var location = "pebblejs://close#" + encodeURIComponent(ls_pto);
 				document.location = location;
@@ -198,7 +198,7 @@ body {height:auto; margin:0; padding: 0;}
     				console.log('Submit');
     				var ls_option = JSON.stringify(getConfigData());
     				if (typeof window.localStorage !== "undefined") {
-					window.localStorage.swatch_options = ls_option;
+					window.localStorage.ww_options = ls_option;
 				}
     				// Set the return URL depending on the runtime environment
     				var return_to = getQueryParam('return_to', 'pebblejs://close#');
