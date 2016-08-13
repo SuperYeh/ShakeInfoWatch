@@ -29,11 +29,11 @@ body {height:auto; margin:0; padding: 0;}
 <div data-role="collapsible" data-collapsed="true">
 	<h3>功能设定</h3>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-				<legend><h4>转腕次数:</h4></legend>
-					<input name="key_is_shake_twice" id="key_is_shake_twice-0" value="0" checked="checked" type="radio">
-					<label for="key_is_shake_twice-0">一次</label>
-					<input name="key_is_shake_twice" id="key_is_shake_twice-1" value="1" type="radio">
-					<label for="key_is_shake_twice-1">二次</label>
+				<legend><h4>转腕次数:(以索取天气资料)</h4></legend>
+					<input name="key_shake_twice" id="key_shake_twice-0" value="0" checked="checked" type="radio">
+					<label for="key_shake_twice-0">一次</label>
+					<input name="key_shake_twice" id="key_shake_twice-1" value="1" type="radio">
+					<label for="key_shake_twice-1">二次</label>
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
 				<legend><h4>振动提醒</h4></legend>
@@ -83,7 +83,7 @@ body {height:auto; margin:0; padding: 0;}
 				'key_daily_stop': $("input[name=key_vibr_end]").val(),
 				'key_hourly_vibr': Number( $("input[name=key_vibr_hourly]").val() ),
 				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
-				'key_is_shake_twice': Number( $("input[name=key_is_shake_twice]:checked").val() ),
+				'key_shake_twice': Number( $("input[name=key_shake_twice]:checked").val() ),
 				'key_date_face_invert': Number( $("input[name=key_date_face_invert]").val() ),
 				'key_time_face_invert': Number( $("input[name=key_time_face_invert]").val() ),
 				'key_weather_face_invert': Number( $("input[name=key_weather_face_invert]").val() ),
@@ -124,8 +124,8 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_vibr_disconnect]").checkboxradio('refresh');
 						$("input[name=key_vibr_disconnect]").val("1");
 					}
-					$("input[name=key_is_shake_twice][id=key_is_shake_twice-"+ls_pto["key_is_shake_twice"]+"]").prop('checked',true);
-					$("input[name=key_is_shake_twice]").checkboxradio('refresh');
+					$("input[name=key_shake_twice][id=key_shake_twice-"+ls_pto["key_shake_twice"]+"]").prop('checked',true);
+					$("input[name=key_shake_twice]").checkboxradio('refresh');
 					
 					if(ls_pto["key_date_face_invert"]==1) {
 						$("input[name=key_date_face_invert]").prop('checked', true);
