@@ -35,13 +35,6 @@ body {height:auto; margin:0; padding: 0;}
 					<input name="key_shake_twice" id="key_shake_twice-1" value="1" type="radio">
 					<label for="key_shake_twice-1">TWICE A TIME</label>
 			</fieldset>
-			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-				<legend><h4>TEMPERATURE UNIT:</h4></legend>
-					<input name="key_degree_c" id="key_degree_c-0" value="0" checked="checked" type="radio">
-					<label for="key_degree_c-0">&#x00B0;F</label>
-					<input name="key_degree_c" id="key_degree_c-1" value="1" type="radio">
-					<label for="key_degree_c-1">&#x00B0;C</label>
-			</fieldset>
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
 				<legend><h4>VIBRATION REMINDER</h4></legend>
 					<input name="key_vibr_hourly" id="key_vibr_hourly" value="0" type="checkbox">
@@ -54,6 +47,24 @@ body {height:auto; margin:0; padding: 0;}
 					    <label for="key_vibr_end">CLOSED TIME:</label>
 					    <input name="key_vibr_end" id="key_vibr_end" type="time" value=22:00>
 					</div>	
+			</fieldset>
+</div>
+
+<div data-role="collapsible" data-collapsed="true">
+	<h3>DISPLAY SETTINGS</h3>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>TEMPERATURE UNIT:</h4></legend>
+					<input name="key_degree_c" id="key_degree_c-0" value="0" checked="checked" type="radio">
+					<label for="key_degree_c-0">&#x00B0;F</label>
+					<input name="key_degree_c" id="key_degree_c-1" value="1" type="radio">
+					<label for="key_degree_c-1">&#x00B0;C</label>
+			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>RIGHTNOW POINT:</h4></legend>
+					<input name="key_w_now_offset" id="key_w_now_offset-1" value="1" type="radio">
+					<label for="key_w_now_offset-1">LEFT</label>
+					<input name="key_w_now_offset" id="key_w_now_offset-2" value="2" checked="checked" type="radio">
+					<label for="key_w_now_offset-2">CENTER</label>
 			</fieldset>
 </div>
 
@@ -92,6 +103,7 @@ body {height:auto; margin:0; padding: 0;}
 				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
 				'key_degree_c': Number( $("input[name=key_degree_c]:checked").val() ),
 				'key_shake_twice': Number( $("input[name=key_shake_twice]:checked").val() ),
+				'key_w_now_offset': Number( $("input[name=key_w_now_offset]:checked").val() ),
 				'key_date_face_invert': Number( $("input[name=key_date_face_invert]").val() ),
 				'key_time_face_invert': Number( $("input[name=key_time_face_invert]").val() ),
 				'key_weather_face_invert': Number( $("input[name=key_weather_face_invert]").val() ),
@@ -136,6 +148,8 @@ body {height:auto; margin:0; padding: 0;}
 					$("input[name=key_degree_c]").checkboxradio('refresh');
 					$("input[name=key_shake_twice][id=key_shake_twice-"+ls_pto["key_shake_twice"]+"]").prop('checked',true);
 					$("input[name=key_shake_twice]").checkboxradio('refresh');
+					$("input[name=key_w_now_offset][id=key_w_now_offset-"+ls_pto["key_w_now_offset"]+"]").prop('checked',true);
+					$("input[name=key_w_now_offset]").checkboxradio('refresh');
 					
 					if(ls_pto["key_date_face_invert"]==1) {
 						$("input[name=key_date_face_invert]").prop('checked', true);
