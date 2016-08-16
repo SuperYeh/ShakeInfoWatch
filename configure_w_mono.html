@@ -30,10 +30,12 @@ body {height:auto; margin:0; padding: 0;}
 	<h3>FUNCTION SETTINGS</h3>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>WRISTSHAKE FREQUENCY:(to request weather data)</h4></legend>
-					<input name="key_shake_twice" id="key_shake_twice-0" value="0" checked="checked" type="radio">
-					<label for="key_shake_twice-0">ONCE A TIME</label>
-					<input name="key_shake_twice" id="key_shake_twice-1" value="1" type="radio">
-					<label for="key_shake_twice-1">TWICE A TIME</label>
+					<input name="key_shake_freq" id="key_shake_freq-0" value="0" checked="checked" type="radio">
+					<label for="key_shake_freq-0">OFF</label>
+					<input name="key_shake_freq" id="key_shake_freq-1" value="1" type="radio">
+					<label for="key_shake_freq-1">ONCE</label>
+					<input name="key_shake_freq" id="key_shake_freq-2" value="2" type="radio">
+					<label for="key_shake_freq-2">TWICE</label>
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
 				<legend><h4>VIBRATION REMINDER</h4></legend>
@@ -102,7 +104,7 @@ body {height:auto; margin:0; padding: 0;}
 				'key_hourly_vibr': Number( $("input[name=key_vibr_hourly]").val() ),
 				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
 				'key_degree_c': Number( $("input[name=key_degree_c]:checked").val() ),
-				'key_shake_twice': Number( $("input[name=key_shake_twice]:checked").val() ),
+				'key_shake_freq': Number( $("input[name=key_shake_freq]:checked").val() ),
 				'key_w_now_offset': Number( $("input[name=key_w_now_offset]:checked").val() ),
 				'key_date_face_invert': Number( $("input[name=key_date_face_invert]").val() ),
 				'key_time_face_invert': Number( $("input[name=key_time_face_invert]").val() ),
@@ -146,8 +148,8 @@ body {height:auto; margin:0; padding: 0;}
 					}
 					$("input[name=key_degree_c][id=key_degree_c-"+ls_pto["key_degree_c"]+"]").prop('checked',true);
 					$("input[name=key_degree_c]").checkboxradio('refresh');
-					$("input[name=key_shake_twice][id=key_shake_twice-"+ls_pto["key_shake_twice"]+"]").prop('checked',true);
-					$("input[name=key_shake_twice]").checkboxradio('refresh');
+					$("input[name=key_shake_freq][id=key_shake_freq-"+ls_pto["key_shake_freq"]+"]").prop('checked',true);
+					$("input[name=key_shake_freq]").checkboxradio('refresh');
 					$("input[name=key_w_now_offset][id=key_w_now_offset-"+ls_pto["key_w_now_offset"]+"]").prop('checked',true);
 					$("input[name=key_w_now_offset]").checkboxradio('refresh');
 					
