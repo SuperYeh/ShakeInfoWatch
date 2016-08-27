@@ -198,8 +198,10 @@ body {height:auto; margin:0; padding: 0;}
 					$("input[name=key_degree_c]").checkboxradio('refresh');
 					$("input[name=key_shake_freq][id=key_shake_freq-"+ls_pto["key_shake_freq"]+"]").prop('checked',true);
 					$("input[name=key_shake_freq]").checkboxradio('refresh');
-					$("input[name=key_reminder_start]").val(ls_pto["key_reminder_start"]);
-					$("input[name=key_reminder_stop]").val(ls_pto["key_reminder_stop"]);
+					if ("key_reminder_start" in ls_pto)
+						$("input[name=key_reminder_start]").val(ls_pto["key_reminder_start"]);
+					if ("key_reminder_stop" in ls_pto)
+						$("input[name=key_reminder_stop]").val(ls_pto["key_reminder_stop"]);
 					$("input[name=key_reminder_display][id=key_reminder_display-"+ls_pto["key_reminder_display"]+"]").prop('checked',true);
 					$("input[name=key_reminder_display]").checkboxradio('refresh');
 					$("input[name=key_w_now_offset][id=key_w_now_offset-"+ls_pto["key_w_now_offset"]+"]").prop('checked',true);
