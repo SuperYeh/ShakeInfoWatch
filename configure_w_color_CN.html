@@ -68,6 +68,22 @@ body {height:auto; margin:0; padding: 0;}
 					<input name="key_w_now_offset" id="key_w_now_offset-2" value="2" checked="checked" type="radio">
 					<label for="key_w_now_offset-2">中心</label>
 			</fieldset>
+			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
+				<legend><h4>提醒时段:</h4></legend>
+					<div class="ui-field-contain">	
+					    <label for="key_reminder_start">开始时间:</label>
+					    <input name="key_reminder_start" id="key_reminder_start" type="time" value=12:00>
+					    <label for="key_reminder_stop">结束时间:</label>
+					    <input name="key_reminder_stop" id="key_reminder_stop" type="time" value=13:00>
+					</div>	
+				<legend><h4>提醒次数:</h4></legend>
+					<input name="key_reminder_display" id="key_reminder_display-0" value="0" checked="checked" type="radio">
+					<label for="key_reminder_display-0">关闭</label>
+					<input name="key_reminder_display" id="key_reminder_display-1" value="1" type="radio">
+					<label for="key_reminder_display-1">一次</label>
+					<input name="key_reminder_display" id="key_reminder_display-2" value="2" type="radio">
+					<label for="key_reminder_display-2">重复</label>
+			</fieldset>
 </div>
 
 <div data-role="collapsible" data-collapsed="true">
@@ -132,6 +148,9 @@ body {height:auto; margin:0; padding: 0;}
 				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
 				'key_degree_c': Number( $("input[name=key_degree_c]:checked").val() ),
 				'key_shake_freq': Number( $("input[name=key_shake_freq]:checked").val() ),
+				'key_reminder_start': $("input[name=key_reminder_start]").val(),
+				'key_reminder_stop': $("input[name=key_reminder_stop]").val(),
+				'key_reminder_display': Number( $("input[name=key_reminder_display]:checked").val() ),
 				'key_w_now_offset': Number( $("input[name=key_w_now_offset]:checked").val() ),
 				'key_date_face_color'    : $("input[name=key_date_face_color]").val(),
 				'key_date_word_color'    : $("input[name=key_date_word_color]").val(),
@@ -178,6 +197,10 @@ body {height:auto; margin:0; padding: 0;}
 					$("input[name=key_degree_c]").checkboxradio('refresh');
 					$("input[name=key_shake_freq][id=key_shake_freq-"+ls_pto["key_shake_freq"]+"]").prop('checked',true);
 					$("input[name=key_shake_freq]").checkboxradio('refresh');
+					$("input[name=key_reminder_start]").val(ls_pto["key_reminder_start"]);
+					$("input[name=key_reminder_stop]").val(ls_pto["key_reminder_stop"]);
+					$("input[name=key_reminder_display][id=key_reminder_display-"+ls_pto["key_reminder_display"]+"]").prop('checked',true);
+					$("input[name=key_reminder_display]").checkboxradio('refresh');
 					$("input[name=key_w_now_offset][id=key_w_now_offset-"+ls_pto["key_w_now_offset"]+"]").prop('checked',true);
 					$("input[name=key_w_now_offset]").checkboxradio('refresh');
 					
