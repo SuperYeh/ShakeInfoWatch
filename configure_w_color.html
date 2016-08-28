@@ -122,6 +122,13 @@ body {height:auto; margin:0; padding: 0;}
 						<input name="key_weather_word_color" id="key_weather_word_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#000000" onfocus="this.blur()">
 			        </label>
 			</fieldset>
+			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>REMINDER:</h4></legend>
+					<label for="key_reminder_line_color">LINE COLOR</label>
+					<label class="item">
+						<input name="key_reminder_line_color" id="key_reminder_line_color" style="width:250px;" type="text" class="item-color item-color-normal" value="#FF0000" onfocus="this.blur()">
+			        </label>
+			</fieldset>
 </div>
 
 			</div>
@@ -159,6 +166,7 @@ body {height:auto; margin:0; padding: 0;}
 				'key_time_word_color'    : $("input[name=key_time_word_color]").val(),
 				'key_weather_face_color'    : $("input[name=key_weather_face_color]").val(),
 				'key_weather_word_color'    : $("input[name=key_weather_word_color]").val(),
+				'key_reminder_line_color'    : $("input[name=key_reminder_line_color]").val(),
 			}
 			return options;
 		}
@@ -218,6 +226,8 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_weather_face_color]").val(ls_pto["key_weather_face_color"]);
 					if ("key_weather_word_color" in ls_pto) 
 						$("input[name=key_weather_word_color]").val(ls_pto["key_weather_word_color"]);
+					if ("key_reminder_line_color" in ls_pto) 
+						$("input[name=key_reminder_line_color]").val(ls_pto["key_reminder_line_color"]);
 					
 				}
 			}
