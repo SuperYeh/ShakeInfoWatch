@@ -170,12 +170,17 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				'key_daily_stop': $("input[name=key_daily_stop]").val(),
 				'key_hourly_vibr': Number( $("input[name=key_vibr_hourly]").val() ),
 				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
-				'key_degree_c': Number( $("input[name=key_degree_c]:checked").val() ),
 				'key_shake_freq': Number( $("input[name=key_shake_freq]:checked").val() ),
+
+				'key_degree_c': Number( $("input[name=key_degree_c]:checked").val() ),
+				'key_w_now_offset': Number( $("input[name=key_w_now_offset]:checked").val() ),
+
 				'key_reminder_start': $("input[name=key_reminder_start]").val(),
 				'key_reminder_stop': $("input[name=key_reminder_stop]").val(),
 				'key_reminder_display': Number( $("input[name=key_reminder_display]:checked").val() ),
-				'key_w_now_offset': Number( $("input[name=key_w_now_offset]:checked").val() ),
+				'key_reminder_msg': $("textarea[name=key_reminder_msg]").val(),
+				'key_reminder_msg_display': Number( $("input[name=key_reminder_msg_display]:checked").val() ),
+
 				'key_date_face_color'    : $("input[name=key_date_face_color]").val(),
 				'key_date_word_color'    : $("input[name=key_date_word_color]").val(),
 				'key_time_face_color'    : $("input[name=key_time_face_color]").val(),
@@ -218,19 +223,24 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 						$("input[name=key_vibr_disconnect]").checkboxradio('refresh');
 						$("input[name=key_vibr_disconnect]").val("1");
 					}
-					$("input[name=key_degree_c][id=key_degree_c-"+ls_pto["key_degree_c"]+"]").prop('checked',true);
-					$("input[name=key_degree_c]").checkboxradio('refresh');
 					$("input[name=key_shake_freq][id=key_shake_freq-"+ls_pto["key_shake_freq"]+"]").prop('checked',true);
 					$("input[name=key_shake_freq]").checkboxradio('refresh');
+
+					$("input[name=key_degree_c][id=key_degree_c-"+ls_pto["key_degree_c"]+"]").prop('checked',true);
+					$("input[name=key_degree_c]").checkboxradio('refresh');
+					$("input[name=key_w_now_offset][id=key_w_now_offset-"+ls_pto["key_w_now_offset"]+"]").prop('checked',true);
+					$("input[name=key_w_now_offset]").checkboxradio('refresh');
+
 					if ("key_reminder_start" in ls_pto)
 						$("input[name=key_reminder_start]").val(ls_pto["key_reminder_start"]);
 					if ("key_reminder_stop" in ls_pto)
 						$("input[name=key_reminder_stop]").val(ls_pto["key_reminder_stop"]);
 					$("input[name=key_reminder_display][id=key_reminder_display-"+ls_pto["key_reminder_display"]+"]").prop('checked',true);
 					$("input[name=key_reminder_display]").checkboxradio('refresh');
-					$("input[name=key_w_now_offset][id=key_w_now_offset-"+ls_pto["key_w_now_offset"]+"]").prop('checked',true);
-					$("input[name=key_w_now_offset]").checkboxradio('refresh');
-					
+					$("textarea[name=key_reminder_msg]").val(ls_pto["key_reminder_msg"]);
+					$("input[name=key_reminder_msg_display][id=key_reminder_msg_display-"+ls_pto["key_reminder_msg_display"]+"]").prop('checked',true);
+					$("input[name=key_reminder_msg_display]").checkboxradio('refresh');
+
 					if ("key_date_face_color" in ls_pto) 
 						$("input[name=key_date_face_color]").val(ls_pto["key_date_face_color"]);
 					if ("key_date_word_color" in ls_pto) 
