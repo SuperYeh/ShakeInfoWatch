@@ -164,7 +164,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 		
 		
     <script>
-    		var reminder_changed = false;
+    		var reminder_changed = -1;
     
 		function getConfigData() {
 		    var options = {
@@ -177,7 +177,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				'key_degree_c': Number( $("input[name=key_degree_c]:checked").val() ),
 				'key_w_now_offset': Number( $("input[name=key_w_now_offset]:checked").val() ),
 				
-				if(reminder_changed) {
+				if(reminder_changed == 1) {
 					'key_reminder_start': $("input[name=key_reminder_start]").val(),
 					'key_reminder_stop': $("input[name=key_reminder_stop]").val(),
 					'key_reminder_display': Number( $("input[name=key_reminder_display]:checked").val() ),
@@ -268,7 +268,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 			});
 			
 			$("input[class='reminder']").change(function () {
-				reminder_changed = true;
+				reminder_changed = 1;
 			}
 					
 			$("#b-cancel").click(function() {
