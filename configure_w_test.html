@@ -164,9 +164,9 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 		
 		
     <script>
-    		var reminder_changed = -1;
+    		var reminder_changed = false;
     
-		function getConfigData() {
+		function getConfigData(forstorage) {
 		    var options = {};
 		    	
  			options.key_daily_start = $("input[name=key_daily_start]").val();
@@ -178,7 +178,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 			options.key_degree_c = Number( $("input[name=key_degree_c]:checked").val() );
 			options.key_w_now_offset = Number( $("input[name=key_w_now_offset]:checked").val() );
 				
-			if(reminder_changed == 1) {
+			if(reminder_changed || forstorage) {
 				options.key_reminder_start = $("input[name=key_reminder_start]").val();
 				options.key_reminder_stop = $("input[name=key_reminder_stop]").val();
 				options.key_reminder_display = Number( $("input[name=key_reminder_display]:checked").val() );
@@ -269,7 +269,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 			});
 			
 			$("input[a='reminder']").change(function () {
-				reminder_changed = 1;
+				reminder_changed = true;
 			});
 					
 			$("#b-cancel").click(function() {
@@ -291,10 +291,11 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 			var submitButton = document.getElementById('b-submit');
   			submitButton.addEventListener('click', function() {
     				console.log('Submit');
-    				var ls_option = JSON.stringify(getConfigData());
+    				var ls_option = JSON.stringify(getConfigData(true));
     				if (typeof window.localStorage !== "undefined") {
 					window.localStorage.ww_options = ls_option;
 				}
+				ls_option = JSON.stringify(getConfigData(false));
     				// Set the return URL depending on the runtime environment
     				var return_to = getQueryParam('return_to', 'pebblejs://close#');
     				document.location = return_to + encodeURIComponent(ls_option);
