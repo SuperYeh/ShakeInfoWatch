@@ -19,7 +19,7 @@ body {height:auto; margin:0; padding: 0;}
 
 </head>
 
-<body onload="initialize()">
+<body>
 	<div data-role="header" class="jqm-header">
 		<h1>Configuration</h1>
 	</div>	
@@ -62,55 +62,8 @@ body {height:auto; margin:0; padding: 0;}
 		var marker;
 		var mclng = 12956000;
 		var mclat = 4824875;
+		var canvas;
 			
-	   	function initialize() {
-				var isGPS = true;
-				if (typeof window.localStorage !== "undefined") {
-				    if (window.localStorage.RainGuide_options) {
-						var ls_pto = JSON.parse(window.localStorage.RainGuide_options);
-						if(ls_pto["key_loc_lng"] != "")
-							mclng = Number( ls_pto["key_loc_lng"] );
-						if(ls_pto["key_loc_lat"] != "")
-							mclat = Number( ls_pto["key_loc_lat"] );
-						if(ls_pto["key_isGPS"]==0) {	
-							$("input[name=key_isGPS]").prop('checked', false);
-							$("input[name=key_isGPS]").checkboxradio('refresh');
-							$("input[name=key_isGPS]").val("1");
-							isGPS = false;
-						}
-				    }	
-				} 
-					
-				var canvas = document.getElementById("map_canvas");
-				//canvas.width = 400;
-				//canvas.height = 400;
-				
-				//var myLatlng = new sogou.maps.LatLng(39.992792,116.326142);
-				//var mclng = document.getElementById("key_loc_lng").value;
-				//var mclat = document.getElementById("key_loc_lat").value;
-				
-				var target = new sogou.maps.Point(mclng, mclat);
-				var myOptions = {
-					zoom: 15,
-					center: target,
-					//center: myLatlng,
-					mapTypeId: sogou.maps.MapTypeId.ROADMAP
-				}
-				map = new sogou.maps.Map(canvas, myOptions);
-				placeMarker(target);
-
-				if(isGPS) canvas.style.display = "none";
-				else canvas.style.display = "block";  
-				
-				sogou.maps.event.addListener(map, 'click', function(event) {
-					marker.setMap(null);
-					//alert(event.point)
-					placeMarker(event.point);
-					mclng = event.point.x;
-					mclat = event.point.y;
-				});
-		}
-						
 		function placeMarker(location) {
 				//var clickedLocation = location;		
 				marker = new sogou.maps.Marker({
@@ -132,19 +85,21 @@ body {height:auto; margin:0; padding: 0;}
 		}
 		
 		function getQueryParam(variable, defaultValue) {
-    		var query = location.search.substring(1);
-    		var vars = query.split('&');
-    		for (var i = 0; i < vars.length; i++) {
-      			var pair = vars[i].split('=');
-      			if (pair[0] === variable) {
-        			return decodeURIComponent(pair[1]);
-      			}
-    		}
-    		return defaultValue || false;
+    			var query = location.search.substring(1);
+    			var vars = query.split('&');
+    			for (var i = 0; i < vars.length; i++) {
+      				var pair = vars[i].split('=');
+      				if (pair[0] === variable) {
+        				return decodeURIComponent(pair[1]);
+      				}
+    			}
+    			return defaultValue || false;
   		}
 		
 		$().ready(function() {
 			
+			var isGPS = true;
+
 		   	if (typeof window.localStorage !== "undefined") {
 				if (window.localStorage.RainGuide_options) {
 					var ls_pto = JSON.parse(window.localStorage.RainGuide_options);
@@ -154,10 +109,11 @@ body {height:auto; margin:0; padding: 0;}
 					if(ls_pto["key_loc_lat"] != "")
 						mclat = Number( ls_pto["key_loc_lat"] );
 						
-					if(ls_pto["key_isGPS"]==0) {	
+					if(ls_pto["key_isGPS"] == 0) {	
 						$("input[name=key_isGPS]").prop('checked', false);
 						$("input[name=key_isGPS]").checkboxradio('refresh');
-						$("input[name=key_isGPS]").val("1");
+						$("input[name=key_isGPS]").val("0");
+						isGPS = false;
 					}
 					
 					if(ls_pto["key_face_invert"]==1) {
@@ -167,15 +123,44 @@ body {height:auto; margin:0; padding: 0;}
 					}
 				}
 			}
-					   		
+			
+			canvas = document.getElementById("map_canvas");
+			//canvas.width = 400;
+			//canvas.height = 400;
+				
+			//var myLatlng = new sogou.maps.LatLng(39.992792,116.326142);
+			//var mclng = document.getElementById("key_loc_lng").value;
+			//var mclat = document.getElementById("key_loc_lat").value;
+				
+			var target = new sogou.maps.Point(mclng, mclat);
+			var myOptions = {
+				zoom: 15,
+				center: target,
+				//center: myLatlng,
+				mapTypeId: sogou.maps.MapTypeId.ROADMAP
+			}
+			map = new sogou.maps.Map(canvas, myOptions);
+			placeMarker(target);
+
+			if(isGPS) canvas.style.display = "none";
+			else canvas.style.display = "block";  
+				
+			sogou.maps.event.addListener(map, 'click', function(event) {
+				marker.setMap(null);
+				//alert(event.point)
+				placeMarker(event.point);
+				mclng = event.point.x;
+				mclat = event.point.y;
+			});
+
 			$("input[type='checkbox']").click(function(){   
 				if($(this).val() == "1") $(this).val("0");   
 				else $(this).val("1");   
 			});
 					
 			$("input[id='key_isGPS']").change(function(){   
-			    var canvas = document.getElementById("map_canvas");
-			    if($(this).val() == 0)  canvas.style.display = "block";
+			    //canvas = document.getElementById("map_canvas");
+			    if($(this).val() == "0")  canvas.style.display = "block";
 			    else canvas.style.display = "none";   
 			});
 						
