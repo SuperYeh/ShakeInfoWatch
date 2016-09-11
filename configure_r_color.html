@@ -24,6 +24,7 @@ body {height:auto; margin:0; padding: 0;}
 		<h1>Configuration</h1>
 	</div>	
 	
+	<div id="map_canvas"></div>
 	
 	<div id="main">
 		<div data-role="content">
@@ -33,7 +34,6 @@ body {height:auto; margin:0; padding: 0;}
 					<fieldset data-role="controlgroup" data-mini="true">
 						<input name="key_isGPS" id="key_isGPS" value="1" checked="checked" type="checkbox">
 						<label for="key_isGPS">GPS</label>
-	<div id="map_canvas"></div>
 					</fieldset>
 				</div>	
 				<div data-role="collapsible" data-collapsed="true">
@@ -81,9 +81,10 @@ body {height:auto; margin:0; padding: 0;}
 		var marker;
 		var mclng = 12956000;
 		var mclat = 4824875;
-			
+		var isGPS = true;
+		
 	   	function initialize() {
-				var isGPS = true;
+/*	   		
 				if (typeof window.localStorage !== "undefined") {
 				    if (window.localStorage.RainGuide_options) {
 						var ls_pto = JSON.parse(window.localStorage.RainGuide_options);
@@ -99,7 +100,7 @@ body {height:auto; margin:0; padding: 0;}
 						}
 				    }	
 				} 
-					
+*/					
 				var canvas = document.getElementById("map_canvas");
 				//canvas.width = 400;
 				//canvas.height = 400;
@@ -180,6 +181,7 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_isGPS]").prop('checked', false);
 						$("input[name=key_isGPS]").checkboxradio('refresh');
 						$("input[name=key_isGPS]").val("1");
+						isGPS = false;
 					}
 					
 					if ("key_face_color" in ls_pto) 
