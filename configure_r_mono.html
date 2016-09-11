@@ -30,14 +30,8 @@ body {height:auto; margin:0; padding: 0;}
 		<div data-role="content">
 			<div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-mini="false">
 				<div data-role="collapsible" data-collapsed="true">
-					<h3>定位位置</h3>
-					<fieldset data-role="controlgroup" data-mini="true">
-						<input name="key_isGPS" id="key_isGPS" value="1" checked="checked" type="checkbox">
-						<label for="key_isGPS">GPS</label>
-					</fieldset>
-				</div>	
-				<div data-role="collapsible" data-collapsed="true">
-					<h3>色彩设定 </h3>
+					<input name="key_isGPS" id="key_isGPS" value="1" checked="checked" type="checkbox">
+					<label for="key_isGPS">GPS定位</label>
 					<label for="key_face_invert">反白显示</label>	
 			 		<input name="key_face_invert" id="key_face_invert" value="0" type="checkbox">
 				</div>
@@ -167,15 +161,15 @@ body {height:auto; margin:0; padding: 0;}
 				}
 			}
 					   		
-			$("input[id='key_isGPS']").click(function(){   
+			$("input[type='checkbox']").click(function(){   
+				if($(this).val() == "1") $(this).val("0");   
+				else $(this).val("1");   
+			});
+					
+			$("input[id='key_isGPS']").change(function(){   
 			    var canvas = document.getElementById("map_canvas");
-			    if($(this).val() == "1") {
-			    	$(this).val("0");
-			    	canvas.style.display = "block";   
-			    } else {
-			    	$(this).val("1"); 
-			    	canvas.style.display = "none";  
-			    }
+			    if($(this).val() == 0)  canvas.style.display = "block";
+			    else canvas.style.display = "none";   
 			});
 						
 			$("#b-cancel").click(function() {
