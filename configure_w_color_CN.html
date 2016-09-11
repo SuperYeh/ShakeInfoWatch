@@ -76,32 +76,32 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 	<h3>提醒设定</h3>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>提醒线:</h4></legend>
-					<input name="key_reminder_display" id="key_reminder_display-0" value="0" checked="checked" type="radio">
+					<input name="key_reminder_display" id="key_reminder_display-0" value="0" checked="checked" type="radio" a="reminder">
 					<label for="key_reminder_display-0">不显示</label>
-					<input name="key_reminder_display" id="key_reminder_display-1" value="1" type="radio">
+					<input name="key_reminder_display" id="key_reminder_display-1" value="1" type="radio" a="reminder">
 					<label for="key_reminder_display-1">显示一次</label>
-					<input name="key_reminder_display" id="key_reminder_display-2" value="2" type="radio">
+					<input name="key_reminder_display" id="key_reminder_display-2" value="2" type="radio" a="reminder">
 					<label for="key_reminder_display-2">每日显示</label>
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
 					<div class="ui-field-contain">	
 					    <label for="key_reminder_start">开始时间:</label>
-					    <input name="key_reminder_start" id="key_reminder_start" type="time" value=12:00>
+					    <input name="key_reminder_start" id="key_reminder_start" type="time" value=12:00 a="reminder">
 					    <label for="key_reminder_stop">结束时间:</label>
-					    <input name="key_reminder_stop" id="key_reminder_stop" type="time" value=13:00>
+					    <input name="key_reminder_stop" id="key_reminder_stop" type="time" value=13:00 a="reminder">
 					</div>	
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>提醒文字:</h4></legend>
-					<input name="key_reminder_msg_display" id="key_reminder_msg_display-0" value="0" checked="checked" type="radio">
+					<input name="key_reminder_msg_display" id="key_reminder_msg_display-0" value="0" checked="checked" type="radio" a="reminder">
 					<label for="key_reminder_msg_display-0">不显示</label>
-					<input name="key_reminder_msg_display" id="key_reminder_msg_display-1" value="1" type="radio">
+					<input name="key_reminder_msg_display" id="key_reminder_msg_display-1" value="1" type="radio" a="reminder">
 					<label for="key_reminder_msg_display-1">显示</label>
 			</fieldset>
 			<fieldset data-role="controlgroup" data-mini="true">
 					<div class="ui-field-contain">
 						<label for="key_reminder_msg">提醒内容: (3行x6中文字)</label>
-						<textarea name="key_reminder_msg" id="key_reminder_msg" value="" data-role="none" style="height:60px; max-height:60px;" rows="3"></textarea>
+						<textarea name="key_reminder_msg" id="key_reminder_msg" value="" data-role="none" style="height:60px; max-height:60px;" rows="3" a="reminder"></textarea>
 					</div>
 			</fieldset>
 </div>
@@ -164,28 +164,34 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 		
 		
     <script>
-		function getConfigData() {
-		    var options = {
- 				'key_daily_start': $("input[name=key_daily_start]").val(),
-				'key_daily_stop': $("input[name=key_daily_stop]").val(),
-				'key_hourly_vibr': Number( $("input[name=key_vibr_hourly]").val() ),
-				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
-				'key_shake_freq': Number( $("input[name=key_shake_freq]:checked").val() ),
-				'key_degree_c': Number( $("input[name=key_degree_c]:checked").val() ),
-				'key_w_now_offset': Number( $("input[name=key_w_now_offset]:checked").val() ),
-				'key_reminder_start': $("input[name=key_reminder_start]").val(),
-				'key_reminder_stop': $("input[name=key_reminder_stop]").val(),
-				'key_reminder_display': Number( $("input[name=key_reminder_display]:checked").val() ),
-				'key_reminder_msg': $("textarea[name=key_reminder_msg]").val(),
-				'key_reminder_msg_display': Number( $("input[name=key_reminder_msg_display]:checked").val() ),
-				'key_date_face_color'    : $("input[name=key_date_face_color]").val(),
-				'key_date_word_color'    : $("input[name=key_date_word_color]").val(),
-				'key_time_face_color'    : $("input[name=key_time_face_color]").val(),
-				'key_time_word_color'    : $("input[name=key_time_word_color]").val(),
-				'key_weather_face_color'    : $("input[name=key_weather_face_color]").val(),
-				'key_weather_word_color'    : $("input[name=key_weather_word_color]").val(),
-				'key_reminder_line_color'    : $("input[name=key_reminder_line_color]").val(),
-			}
+    		var reminder_changed = false;
+    
+		function getConfigData(forstorage) {
+		    var options = {};
+		    	
+ 			options.key_daily_start = $("input[name=key_daily_start]").val();
+			options.key_daily_stop = $("input[name=key_daily_stop]").val();
+			options.key_hourly_vibr = Number( $("input[name=key_vibr_hourly]").val() );
+			options.key_disconnect_vibr = Number( $("input[name=key_vibr_disconnect]").val() );
+			options.key_shake_freq = Number( $("input[name=key_shake_freq]:checked").val() );
+			options.key_degree_c = Number( $("input[name=key_degree_c]:checked").val() );
+			options.key_w_now_offset = Number( $("input[name=key_w_now_offset]:checked").val() );
+				
+			if(reminder_changed || forstorage) {
+				options.key_reminder_start = $("input[name=key_reminder_start]").val();
+				options.key_reminder_stop = $("input[name=key_reminder_stop]").val();
+				options.key_reminder_display = Number( $("input[name=key_reminder_display]:checked").val() );
+				options.key_reminder_msg = $("textarea[name=key_reminder_msg]").val();
+				options.key_reminder_msg_display = Number( $("input[name=key_reminder_msg_display]:checked").val() );
+			}	
+			options.key_date_face_color = $("input[name=key_date_face_color]").val();
+			options.key_date_word_color = $("input[name=key_date_word_color]").val();
+			options.key_time_face_color = $("input[name=key_time_face_color]").val();
+			options.key_time_word_color = $("input[name=key_time_word_color]").val();
+			options.key_weather_face_color = $("input[name=key_weather_face_color]").val();
+			options.key_weather_word_color = $("input[name=key_weather_word_color]").val();
+			options.key_reminder_line_color = $("input[name=key_reminder_line_color]").val();
+			
 			return options;
 		}
 		
@@ -256,6 +262,10 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				if($(this).val() == "1") $(this).val("0");   
 				else $(this).val("1");   
 			});
+			
+			$("input[a='reminder']").change(function () {
+				reminder_changed = true;
+			});
 					
 			$("#b-cancel").click(function() {
 				console.log("Cancel");
@@ -276,10 +286,11 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 			var submitButton = document.getElementById('b-submit');
   			submitButton.addEventListener('click', function() {
     				console.log('Submit');
-    				var ls_option = JSON.stringify(getConfigData());
+    				var ls_option = JSON.stringify(getConfigData(true));
     				if (typeof window.localStorage !== "undefined") {
 					window.localStorage.ww_options = ls_option;
 				}
+				ls_option = JSON.stringify(getConfigData(false));
     				// Set the return URL depending on the runtime environment
     				var return_to = getQueryParam('return_to', 'pebblejs://close#');
     				document.location = return_to + encodeURIComponent(ls_option);
