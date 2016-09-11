@@ -84,7 +84,7 @@ body {height:auto; margin:0; padding: 0;}
 		var isGPS = true;
 		
 	   	function initialize() {
-/*	   		
+/*   		
 				if (typeof window.localStorage !== "undefined") {
 				    if (window.localStorage.RainGuide_options) {
 						var ls_pto = JSON.parse(window.localStorage.RainGuide_options);
@@ -92,10 +92,10 @@ body {height:auto; margin:0; padding: 0;}
 							mclng = Number( ls_pto["key_loc_lng"] );
 						if(ls_pto["key_loc_lat"] != "")
 							mclat = Number( ls_pto["key_loc_lat"] );
-						if(ls_pto["key_isGPS"]==0) {	
+						if(ls_pto["key_isGPS"] === 0) {	
 							$("input[name=key_isGPS]").prop('checked', false);
 							$("input[name=key_isGPS]").checkboxradio('refresh');
-							$("input[name=key_isGPS]").val("1");
+							$("input[name=key_isGPS]").val("0");
 							isGPS = false;
 						}
 				    }	
@@ -177,7 +177,7 @@ body {height:auto; margin:0; padding: 0;}
 					if(ls_pto["key_loc_lat"] != "")
 						mclat = Number( ls_pto["key_loc_lat"] );
 						
-					if(ls_pto["key_isGPS"]==0) {	
+					if(ls_pto["key_isGPS"] == 0) {	
 						$("input[name=key_isGPS]").prop('checked', false);
 						$("input[name=key_isGPS]").checkboxradio('refresh');
 						$("input[name=key_isGPS]").val("0");
@@ -202,7 +202,7 @@ body {height:auto; margin:0; padding: 0;}
 					
 			$("input[id='key_isGPS']").change(function(){   
 			    var canvas = document.getElementById("map_canvas");
-			    if($(this).val() == 0)  canvas.style.display = "block";
+			    if($(this).val() == "0")  canvas.style.display = "block";
 			    else canvas.style.display = "none";   
 			});
 
