@@ -32,7 +32,7 @@ body {height:auto; margin:0; padding: 0;}
 				<div data-role="collapsible" data-collapsed="true">
 					<h3>定位位置</h3>
 					<fieldset data-role="controlgroup" data-mini="true">
-						<input name="key_isGPS" id="key_isGPS" value="1" type="checkbox">
+						<input name="key_isGPS" id="key_isGPS" value="1" checked="checked" type="checkbox">
 						<label for="key_isGPS">GPS</label>
 					</fieldset>
 				</div>	
@@ -167,15 +167,15 @@ body {height:auto; margin:0; padding: 0;}
 				}
 			}
 					   		
-			$("input[type='checkbox']").click(function(){   
-				if($(this).val() == "1") $(this).val("0");   
-				else $(this).val("1");   
-			});
-					
 			$("input[id='key_isGPS']").click(function(){   
 			    var canvas = document.getElementById("map_canvas");
-				if($(this).val() == 0)  canvas.style.display = "none";
-				else canvas.style.display = "block";   
+			    if($(this).val() == "1") {
+			    	$(this).val("0");
+			    	canvas.style.display = "block";   
+			    } else {
+			    	$(this).val("1"); 
+			    	canvas.style.display = "none";  
+			    }
 			});
 						
 			$("#b-cancel").click(function() {
