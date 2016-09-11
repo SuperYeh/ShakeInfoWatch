@@ -200,8 +200,8 @@ body {height:auto; margin:0; padding: 0;}
 					
 			$("input[id='key_isGPS']").click(function(){   
 			    var canvas = document.getElementById("map_canvas");
-				if($(this).val() == 0)  canvas.style.display = "none";
-				else canvas.style.display = "block";   
+			    if($(this).val() == 0)  canvas.style.display = "block";
+			    else canvas.style.display = "none";   
 			});
 						
 			$("#b-cancel").click(function() {
