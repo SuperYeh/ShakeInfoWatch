@@ -198,7 +198,7 @@ body {height:auto; margin:0; padding: 0;}
 				else $(this).val("1");   
 			});
 					
-			$("input[id='key_isGPS']").click(function(){   
+			$("input[id='key_isGPS']").change(function(){   
 			    var canvas = document.getElementById("map_canvas");
 			    if($(this).val() == 0)  canvas.style.display = "block";
 			    else canvas.style.display = "none";   
