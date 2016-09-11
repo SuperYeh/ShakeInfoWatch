@@ -40,7 +40,7 @@ body {height:auto; margin:0; padding: 0;}
 					<h3>显示设定</h3>
 					<fieldset data-role="controlgroup" data-mini="true">
 						<label for="key_face_invert">反白显示</label>	
-			 			<input name="key_face_invert" id="key_face_invert" value="0" type="checkbox">
+			 			<input name="key_face_invert" id="key_face_invert" value="1" checked="checked" type="checkbox">
 					</fieldset>
 				</div>
 			</div>
@@ -117,10 +117,10 @@ body {height:auto; margin:0; padding: 0;}
 						isGPS = false;
 					}
 					
-					if(ls_pto["key_face_invert"] == 1) {
-						$("input[name=key_face_invert]").prop('checked', true);
+					if(ls_pto["key_face_invert"] == 0) {
+						$("input[name=key_face_invert]").prop('checked', false);
 						$("input[name=key_face_invert]").checkboxradio('refresh');
-						$("input[name=key_face_invert]").val("1");
+						$("input[name=key_face_invert]").val("0");
 					}
 				}
 			}
