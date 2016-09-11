@@ -194,7 +194,19 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_water_color]").val(ls_pto["key_water_color"]);					
 				}
 			}
-					   		
+
+			$("input[id='key_isGPS']").click(function(){   
+			    var canvas = document.getElementById("map_canvas");
+			    if($(this).val() == 1)  {
+			    	$(this).val("0");
+			    	canvas.style.display = "block";
+			    } else {
+			    	$(this).val("1")
+			    	canvas.style.display = "none";
+			    }	
+			});
+
+/*					   		
 			$("input[type='checkbox']").click(function(){   
 				if($(this).val() == "1") $(this).val("0");   
 				else $(this).val("1");   
@@ -205,7 +217,8 @@ body {height:auto; margin:0; padding: 0;}
 			    if($(this).val() == 0)  canvas.style.display = "block";
 			    else canvas.style.display = "none";   
 			});
-						
+*/
+
 			$("#b-cancel").click(function() {
 				console.log("Cancel");
 				document.location = "pebblejs://close";
