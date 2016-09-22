@@ -30,6 +30,13 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 
 <div data-role="collapsible" data-collapsed="true">
 	<h3>功能设定</h3>
+﻿			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+				<legend><h4>天气资料源：</h4></legend>
+					<input name="key_api_source" id="key_api_source-0" value="0" checked="checked" type="radio">
+					<label for="key_api_source-0">OpenWeatherMap(Worldwide>
+					<input name="key_api_source" id="key_api_source-1" value="1" type="radio">
+					<label for="key_api_source-1">CaiYunApp(ChinaOnly)</label>
+			</fieldset>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>转腕次数:(以索取天气资料)</h4></legend>
 					<input name="key_shake_freq" id="key_shake_freq-0" value="0" checked="checked" type="radio">
@@ -168,7 +175,8 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
     
 		function getConfigData(forstorage) {
 		    var options = {};
-		    	
+		    	options.key_api_source = Number( $("input[name=key_api_source]:checked").val() );
+
  			options.key_daily_start = $("input[name=key_daily_start]").val();
 			options.key_daily_stop = $("input[name=key_daily_stop]").val();
 			options.key_hourly_vibr = Number( $("input[name=key_vibr_hourly]").val() );
@@ -214,8 +222,10 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 		   	if (typeof window.localStorage !== "undefined") {
 				if (window.localStorage.ww_options) {
 					var ls_pto = JSON.parse(window.localStorage.ww_options);
-					
-					// the Pebble webview dies on the next line...
+
+					$("input[name=key_api_source][id=key_api_source-"+ls_pto["key_api_source"]+"]").prop('checked',true);
+					$("input[name=key_api_source]").checkboxradio('refresh');
+
 					$("input[name=key_daily_start]").val(ls_pto["key_daily_start"]);
 					$("input[name=key_daily_stop]").val(ls_pto["key_daily_stop"]);
 					if(ls_pto["key_hourly_vibr"]==1) {	
