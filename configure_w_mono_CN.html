@@ -30,6 +30,13 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 
 <div data-role="collapsible" data-collapsed="true">
 	<h3>功能设定</h3>
+			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
+				<legend><h4>天气资料源：</h4></legend>
+					<input name="key_api_source" id="key_api_source-0" value="0" checked="checked" type="radio">
+					<label for="key_api_source-0">OpenWeatherMap (Worldwide)</label>
+					<input name="key_api_source" id="key_api_source-1" value="1" type="radio">
+					<label for="key_api_source-1">CaiYunApp (ChinaOnly)</label>
+			</fieldset>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>转腕次数:(以索取天气资料)</h4></legend>
 					<input name="key_shake_freq" id="key_shake_freq-0" value="0" checked="checked" type="radio">
@@ -40,16 +47,16 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					<label for="key_shake_freq-2">二次</label>
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
-				<legend><h4>振动提醒</h4></legend>
+				<legend><h4>振动提醒:</h4></legend>
 					<input name="key_vibr_hourly" id="key_vibr_hourly" value="0" type="checkbox">
-					<label for="key_vibr_hourly">整点提醒</label>
+					<label for="key_vibr_hourly">整点</label>
 					<input name="key_vibr_disconnect" id="key_vibr_disconnect" value="0" type="checkbox">
 					<label for="key_vibr_disconnect">蓝牙</label>
 					<div class="ui-field-contain">	
-					    <label for="key_vibr_start">开始时间:</label>
-					    <input name="key_vibr_start" id="key_vibr_start" type="time" value=07:00>
-					    <label for="key_vibr_end">结束时间:</label>
-					    <input name="key_vibr_end" id="key_vibr_end" type="time" value=22:00>
+					    <label for="key_daily_start">开始时间:</label>
+					    <input name="key_daily_start" id="key_daily_start" type="time" value=07:00>
+					    <label for="key_daily_stop">结束时间:</label>
+					    <input name="key_daily_stop" id="key_daily_stop" type="time" value=22:00>
 					</div>	
 			</fieldset>
 </div>
@@ -76,32 +83,32 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 	<h3>提醒设定</h3>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>提醒线:</h4></legend>
-					<input name="key_reminder_display" id="key_reminder_display-0" value="0" checked="checked" type="radio">
+					<input name="key_reminder_display" id="key_reminder_display-0" value="0" checked="checked" type="radio" a="reminder">
 					<label for="key_reminder_display-0">不显示</label>
-					<input name="key_reminder_display" id="key_reminder_display-1" value="1" type="radio">
+					<input name="key_reminder_display" id="key_reminder_display-1" value="1" type="radio" a="reminder">
 					<label for="key_reminder_display-1">显示一次</label>
-					<input name="key_reminder_display" id="key_reminder_display-2" value="2" type="radio">
+					<input name="key_reminder_display" id="key_reminder_display-2" value="2" type="radio" a="reminder">
 					<label for="key_reminder_display-2">每日显示</label>
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
 					<div class="ui-field-contain">	
 					    <label for="key_reminder_start">开始时间:</label>
-					    <input name="key_reminder_start" id="key_reminder_start" type="time" value=12:00>
+					    <input name="key_reminder_start" id="key_reminder_start" type="time" value=12:00 a="reminder">
 					    <label for="key_reminder_stop">结束时间:</label>
-					    <input name="key_reminder_stop" id="key_reminder_stop" type="time" value=13:00>
+					    <input name="key_reminder_stop" id="key_reminder_stop" type="time" value=13:00 a="reminder">
 					</div>	
 			</fieldset>
 			<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
 				<legend><h4>提醒文字:</h4></legend>
-					<input name="key_reminder_msg_display" id="key_reminder_msg_display-0" value="0" checked="checked" type="radio">
+					<input name="key_reminder_msg_display" id="key_reminder_msg_display-0" value="0" checked="checked" type="radio" a="reminder">
 					<label for="key_reminder_msg_display-0">不显示</label>
-					<input name="key_reminder_msg_display" id="key_reminder_msg_display-1" value="1" type="radio">
+					<input name="key_reminder_msg_display" id="key_reminder_msg_display-1" value="1" type="radio" a="reminder">
 					<label for="key_reminder_msg_display-1">显示</label>
 			</fieldset>
 			<fieldset data-role="controlgroup" data-mini="true">
 					<div class="ui-field-contain">
 						<label for="key_reminder_msg">提醒内容: (3行x6中文字)</label>
-						<textarea name="key_reminder_msg" id="key_reminder_msg" value="" data-role="none" style="height:60px; max-height:60px;" rows="3"></textarea>
+						<textarea name="key_reminder_msg" id="key_reminder_msg" value="" data-role="none" style="height:60px; max-height:60px;" rows="3" a="reminder"></textarea>
 					</div>
 			</fieldset>
 </div>
@@ -123,8 +130,8 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 <br />
 <div class="ui-body ui-body-c">
     <fieldset class="ui-grid-a">
-        <div class="ui-block-a"><button type="submit" data-theme="d" id="b-cancel">&#x53D6;&#x6D88;</button></div>
-        <div class="ui-block-b"><button type="submit" data-theme="a" id="b-submit">&#x786E;&#x5B9A;</button></div>
+        <div class="ui-block-a"><button type="submit" data-theme="d" id="b-cancel">取消</button></div>
+        <div class="ui-block-b"><button type="submit" data-theme="a" id="b-submit">确定</button></div>
     </fieldset>
 </div>
 
@@ -133,27 +140,32 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 	</div>
 		
     <script>
-		function getConfigData() {
-		    var options = {
-				'key_daily_start': $("input[name=key_vibr_start]").val(),
-				'key_daily_stop': $("input[name=key_vibr_end]").val(),
-				'key_hourly_vibr': Number( $("input[name=key_vibr_hourly]").val() ),
-				'key_disconnect_vibr': Number( $("input[name=key_vibr_disconnect]").val() ),
-				'key_shake_freq': Number( $("input[name=key_shake_freq]:checked").val() ),
+    		var reminder_changed = false;
+    		
+		function getConfigData(forstorage) {
+		    var options = {};
+		    	options.key_api_source = Number( $("input[name=key_api_source]:checked").val() );
+		    	
+ 			options.key_daily_start = $("input[name=key_daily_start]").val();
+			options.key_daily_stop = $("input[name=key_daily_stop]").val();
+			options.key_hourly_vibr = Number( $("input[name=key_vibr_hourly]").val() );
+			options.key_disconnect_vibr = Number( $("input[name=key_vibr_disconnect]").val() );
+			options.key_shake_freq = Number( $("input[name=key_shake_freq]:checked").val() );
+			options.key_degree_c = Number( $("input[name=key_degree_c]:checked").val() );
+			options.key_w_now_offset = Number( $("input[name=key_w_now_offset]:checked").val() );
 				
-				'key_degree_c': Number( $("input[name=key_degree_c]:checked").val() ),
-				'key_w_now_offset': Number( $("input[name=key_w_now_offset]:checked").val() ),
+			if(reminder_changed || forstorage) {
+				options.key_reminder_start = $("input[name=key_reminder_start]").val();
+				options.key_reminder_stop = $("input[name=key_reminder_stop]").val();
+				options.key_reminder_display = Number( $("input[name=key_reminder_display]:checked").val() );
+				options.key_reminder_msg = $("textarea[name=key_reminder_msg]").val();
+				options.key_reminder_msg_display = Number( $("input[name=key_reminder_msg_display]:checked").val() );
+			}	
 
-				'key_reminder_start': $("input[name=key_reminder_start]").val(),
-				'key_reminder_stop': $("input[name=key_reminder_stop]").val(),
-				'key_reminder_display': Number( $("input[name=key_reminder_display]:checked").val() ),
-				'key_reminder_msg': $("textarea[name=key_reminder_msg]").val(),
-				'key_reminder_msg_display': Number( $("input[name=key_reminder_msg_display]:checked").val() ),
+				options.key_date_face_invert = Number( $("input[name=key_date_face_invert]").val() );
+				options.key_time_face_invert = Number( $("input[name=key_time_face_invert]").val() );
+				options.key_weather_face_invert = Number( $("input[name=key_weather_face_invert]").val() );
 
-				'key_date_face_invert': Number( $("input[name=key_date_face_invert]").val() ),
-				'key_time_face_invert': Number( $("input[name=key_time_face_invert]").val() ),
-				'key_weather_face_invert': Number( $("input[name=key_weather_face_invert]").val() ),
-			}
 			return options;
 		}
 		
@@ -175,11 +187,13 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				if (window.localStorage.ww_options) {
 					var ls_pto = JSON.parse(window.localStorage.ww_options);
 					
-					// the Pebble webview dies on the next line...
+					$("input[name=key_api_source][id=key_api_source-"+ls_pto["key_api_source"]+"]").prop('checked',true);
+					$("input[name=key_api_source]").checkboxradio('refresh');
+
 					if ("key_daily_start" in ls_pto) 
-						$("input[name=key_vibr_start]").val(ls_pto["key_daily_start"]);
+						$("input[name=key_daily_start]").val(ls_pto["key_daily_start"]);
 					if ("key_daily_stop" in ls_pto) 
-						$("input[name=key_vibr_end]").val(ls_pto["key_daily_stop"]);
+						$("input[name=key_daily_stop]").val(ls_pto["key_daily_stop"]);
 					if(ls_pto["key_hourly_vibr"]==1) {	
 						$("input[name=key_vibr_hourly]").prop('checked', true);
 						$("input[name=key_vibr_hourly]").checkboxradio('refresh');
@@ -230,7 +244,11 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				if($(this).val() == "1") $(this).val("0");   
 				else $(this).val("1");   
 			});
-											
+			
+			$("input[a='reminder']").change(function () {
+				reminder_changed = true;
+			});
+
 			$("#b-cancel").click(function() {
 				console.log("Cancel");
 				document.location = "pebblejs://close";
@@ -250,10 +268,11 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 			var submitButton = document.getElementById('b-submit');
   			submitButton.addEventListener('click', function() {
     				console.log('Submit');
-    				var ls_option = JSON.stringify(getConfigData());
+    				var ls_option = JSON.stringify(getConfigData(true));
     				if (typeof window.localStorage !== "undefined") {
 					window.localStorage.ww_options = ls_option;
 				}
+				ls_option = JSON.stringify(getConfigData(false));
     				// Set the return URL depending on the runtime environment
     				var return_to = getQueryParam('return_to', 'pebblejs://close#');
     				document.location = return_to + encodeURIComponent(ls_option);
