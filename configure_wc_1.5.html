@@ -178,11 +178,11 @@ function ConvertLL2MC(lon, lat) {
             break;
         }
 	var s = y / F[9];
-	var mclon = F[0] + F[1] * x;
+	var mclng = F[0] + F[1] * x;
 	var mclat = F[2] + F[3] * s + F[4] * s * s + F[5] * s * s * s + F[6] * s * s * s * s + F[7] * s * s * s * s * s + F[8] * s * s * s * s * s * s;
-	mclon *= ((mclon<0)? -1 : 1);
+	mclng *= ((mclng<0)? -1 : 1);
 	mclat *= ((mclat<0)? -1 : 1);
-	return {mclon:mclon, mclat:mclat};
+	return {mclng:mclng, mclat:mclat};
 }
 		
 		$().ready(function() {
@@ -208,8 +208,11 @@ function ConvertLL2MC(lon, lat) {
 			}
                         var paralng = request("lng");
                         var paralat = request("lat");
-                        if(paralng) mclng = paralng;
-                        if(paralat) mclat = paralat;
+                        if(paralng !== 0 && paralat !== 0) {
+                            var mcll = convertLL2MC(paralng, paralat);
+                            mclng = mcll.mclng;
+                            mclat = mcll.mclat;
+                        }
 			
 			canvas = document.getElementById("map_canvas");
 			//canvas.width = 400;
