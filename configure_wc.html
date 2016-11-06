@@ -118,10 +118,10 @@ body {height:auto; margin:0; padding: 0;}
 		}		
 		
 		function getConfigData() {
-		    var ll = convertMC2LL(mclng, mclat);
+		    var ll = convertMC2LL(mclng/100000, mclat/100000);
 		    var options = {
-				'key_loc_lng': ll.lon,
-				'key_loc_lat': ll.lat,  
+				'key_loc_lng': Math.round(ll.lon*100000),
+				'key_loc_lat': Math.round(ll.lat*100000),  
 				'key_isGPS': Number( $("input[name=key_isGPS]").val() ),
 			}
 			return options;
@@ -148,12 +148,12 @@ body {height:auto; margin:0; padding: 0;}
 					
 					var lng, lat;
 					if(ls_pto["key_loc_lng"] != "")
-						lng = Number( ls_pto["key_loc_lng"] );
+						lng = Number( ls_pto["key_loc_lng"] ) / 100000;
 					if(ls_pto["key_loc_lat"] != "")
-						lat = Number( ls_pto["key_loc_lat"] );
+						lat = Number( ls_pto["key_loc_lat"] ) / 100000;
 					var ll = ConvertLL2MC(lng, lat);
-					mclng = ll.lon;
-					mclat = ll.lat;
+					mclng = Math.round(ll.lon*100000);
+					mclat = Math.round(ll.lat*100000);
 						
 					if(ls_pto["key_isGPS"] == 0) {	
 						$("input[name=key_isGPS]").prop('checked', false);
