@@ -150,9 +150,9 @@ body {height:auto; margin:0; padding: 0;}
 					//lat = getQueryParam("lat", 0);
 					 
 					if(lon === 0 && ls_pto["key_loc_lng"] !== null)
-						lon = ls_pto["key_loc_lng"] / 100000;
+						lon = parseFloat(ls_pto["key_loc_lng"]) / 100000;
 					if(lat === 0 && ls_pto["key_loc_lat"] !== null)
-						lat = ls_pto["key_loc_lat"] / 100000;
+						lat = parseFloat(ls_pto["key_loc_lat"]) / 100000;
 					var mc = ConvertLL2MC(lon, lat);
 					mlon = mc.mclon;
 					mlat = mc.mclat;
