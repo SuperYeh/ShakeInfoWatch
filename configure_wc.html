@@ -54,8 +54,8 @@ body {height:auto; margin:0; padding: 0;}
     <script>
 		var map;
 		var marker;
-		var mclng = 12956000;
-		var mclat = 4824875;
+		var mlon = 12956000;
+		var mlat = 4824875;
 		var canvas;
 
 		function ConvertMC2LL(mclon, mclat) {
@@ -70,17 +70,17 @@ body {height:auto; margin:0; padding: 0;}
     			var x = Math.abs(mclon);
     			var F;
     			for (var i = 0; i < 6; i++) {
-    			    			if (y > range[i]) {
-    			    			    			F = modifact[i];
-    			    			    			break;
-    			    			}
+    			    	if (y > range[i]) {
+    			    		F = modifact[i];
+    			    		break;
+    			    	}
     			}
     			var s = y / F[9];
     			var lon = F[0] + F[1] * x;
     			var lat = F[2] + F[3] * s + F[4] * s * s + F[5] * s * s * s + F[6] * s * s * s * s + F[7] * s * s * s * s * s + F[8] * s * s * s * s * s * s;
     			lon *= ((mclon< 0)? -1 : 1);
     			lat *= ((mclat< 0)? -1 : 1);
-	    			return {lon:lon, lat:lat};
+	    		return {lon:lon, lat:lat};
 		}
 	
 		function ConvertLL2MC(lon, lat) { 
@@ -95,10 +95,10 @@ body {height:auto; margin:0; padding: 0;}
     			var x = Math.abs(lon);
     			var F;
     			for (var i = 0; i < 6; i++)
-    			    			if (y > range[i]) {
-    			    			    			F = modifact[i];
-    			    			    			break;
-    			    			}
+    			    	if (y > range[i]) {
+    			    		F = modifact[i];
+    			    		break;
+    			    	}
     			var s = y / F[9];
     			var mclon = F[0] + F[1] * x;
     			var mclat = F[2] + F[3] * s + F[4] * s * s + F[5] * s * s * s + F[6] * s * s * s * s + F[7] * s * s * s * s * s + F[8] * s * s * s * s * s * s;
@@ -117,7 +117,7 @@ body {height:auto; margin:0; padding: 0;}
 		}		
 		
 		function getConfigData() {
-		    var ll = ConvertMC2LL(mclng, mclat);
+		    var ll = ConvertMC2LL(mlon, mlat);
 		    var options = {
 				'key_loc_lng': Math.round(ll.lon*100000),
 				'key_loc_lat': Math.round(ll.lat*100000),  
@@ -145,14 +145,14 @@ body {height:auto; margin:0; padding: 0;}
 				if (window.localStorage.RainGuide_options) {
 					var ls_pto = JSON.parse(window.localStorage.RainGuide_options);
 					
-					var lng, lat;
+					var lon, lat;
 					if(ls_pto["key_loc_lng"] != "")
-						lng = Number( ls_pto["key_loc_lng"] ) / 100000;
+						lon = Number( ls_pto["key_loc_lng"] ) / 100000;
 					if(ls_pto["key_loc_lat"] != "")
 						lat = Number( ls_pto["key_loc_lat"] ) / 100000;
-					var ll = ConvertLL2MC(lng, lat);
-					mclng = ll.lon;
-					mclat = ll.lat;
+					var mc = ConvertLL2MC(lon, lat);
+					mlon = mc.mclon;
+					mlat = mc.mclat;
 						
 					if(ls_pto["key_isGPS"] == 0) {	
 						$("input[name=key_isGPS]").prop('checked', false);
@@ -171,7 +171,7 @@ body {height:auto; margin:0; padding: 0;}
 			//var mclng = document.getElementById("key_loc_lng").value;
 			//var mclat = document.getElementById("key_loc_lat").value;
 				
-			var target = new sogou.maps.Point(mclng, mclat);
+			var target = new sogou.maps.Point(mlon, mlat);
 			var myOptions = {
 				zoom: 15,
 				center: target,
@@ -187,8 +187,8 @@ body {height:auto; margin:0; padding: 0;}
 				marker.setMap(null);
 				//alert(event.point)
 				placeMarker(event.point);
-				mclng = event.point.x;
-				mclat = event.point.y;
+				mlon = event.point.x;
+				mlat = event.point.y;
 			});
 			$("input[type='checkbox']").click(function(){   
 				if($(this).val() == "1") $(this).val("0");   
