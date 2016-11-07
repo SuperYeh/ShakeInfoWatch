@@ -83,7 +83,6 @@ body {height:auto; margin:0; padding: 0;}
 	    			return {lon:lon, lat:lat};
 		}
 	
-		//convert to sogou geo system
 		function ConvertLL2MC(lon, lat) { 
     			var range = [75, 60, 45, 30, 15, 0];
     			var modifact = [[-0.0015702102444, 111320.7020616939, 1704480524535203, -10338987376042340, 26112667856603880, -35149669176653700, 26595700718403920, -10725012454188240, 1800819912950474, 82.5], 
@@ -118,7 +117,7 @@ body {height:auto; margin:0; padding: 0;}
 		}		
 		
 		function getConfigData() {
-		    var ll = convertMC2LL(mclng/100000, mclat/100000);
+		    var ll = convertMC2LL(mclng, mclat);
 		    var options = {
 				'key_loc_lng': Math.round(ll.lon*100000),
 				'key_loc_lat': Math.round(ll.lat*100000),  
@@ -152,8 +151,8 @@ body {height:auto; margin:0; padding: 0;}
 					if(ls_pto["key_loc_lat"] != "")
 						lat = Number( ls_pto["key_loc_lat"] ) / 100000;
 					var ll = ConvertLL2MC(lng, lat);
-					mclng = Math.round(ll.lon*100000);
-					mclat = Math.round(ll.lat*100000);
+					mclng = ll.lon;
+					mclat = ll.lat;
 						
 					if(ls_pto["key_isGPS"] == 0) {	
 						$("input[name=key_isGPS]").prop('checked', false);
