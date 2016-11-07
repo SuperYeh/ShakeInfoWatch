@@ -134,7 +134,7 @@ body {height:auto; margin:0; padding: 0;}
 					return decodeURIComponent(pair[1]);
 	  			}
 			}
-			return defaultValue || false;
+			return defaultValue;
   		}
 
 		
@@ -145,13 +145,13 @@ body {height:auto; margin:0; padding: 0;}
 				if (window.localStorage.WeatherCity_options) {
 					var ls_pto = JSON.parse(window.localStorage.WeatherCity_options);
 
-					var lon, lat;
+					var lon=0, lat=0;
 					//lon = getQueryParam("lon", 0);
 					//lat = getQueryParam("lat", 0);
 					 
-					if(lon === 0 && ls_pto["key_loc_lng"] !== null)
+					if(lon === 0 && ls_pto["key_loc_lng"])
 						lon = parseFloat(ls_pto["key_loc_lng"]) / 100000;
-					if(lat === 0 && ls_pto["key_loc_lat"] !== null)
+					if(lat === 0 && ls_pto["key_loc_lat"])
 						lat = parseFloat(ls_pto["key_loc_lat"]) / 100000;
 					var mc = ConvertLL2MC(lon, lat);
 					mlon = mc.mclon;
