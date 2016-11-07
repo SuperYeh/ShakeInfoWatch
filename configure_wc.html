@@ -144,9 +144,10 @@ body {height:auto; margin:0; padding: 0;}
 		   	if (typeof window.localStorage !== "undefined") {
 				if (window.localStorage.WeatherCity_options) {
 					var ls_pto = JSON.parse(window.localStorage.WeatherCity_options);
-					
-					var lon = getQueryParam("lon", 0);
-					var lat = getQueryParam("lat", 0);
+
+					var lon, lat;
+					//lon = getQueryParam("lon", 0);
+					//lat = getQueryParam("lat", 0);
 					 
 					if(lon === 0 && ls_pto["key_loc_lng"] !== null)
 						lon = ls_pto["key_loc_lng"] / 100000;
