@@ -28,13 +28,11 @@ body {height:auto; margin:0; padding: 0;}
 	
 	<div id="main">
 		<div data-role="content">
-			<div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-mini="false">
-				<div data-role="collapsible" data-collapsed="false">
+			<div class="ui-body ui-body-c">
 					<fieldset data-role="controlgroup" data-mini="true">
 						<input name="key_isGPS" id="key_isGPS" value="1" checked="checked" type="checkbox">
 						<label for="key_isGPS">使用GPS定位</label>
 					</fieldset>
-				</div>	
 			</div>
 
 			<br />
@@ -146,8 +144,8 @@ body {height:auto; margin:0; padding: 0;}
 					var ls_pto = JSON.parse(window.localStorage.WeatherCity_options);
 
 					var lon=0, lat=0;
-					//lon = getQueryParam("lon", 0);
-					//lat = getQueryParam("lat", 0);
+					lon = parseFloat(getQueryParam("lon", 0));
+					lat = parseFloat(getQueryParam("lat", 0));
 					 
 					if(lon === 0 && ls_pto["key_loc_lng"])
 						lon = parseFloat(ls_pto["key_loc_lng"]) / 100000;
