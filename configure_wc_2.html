@@ -30,8 +30,12 @@ body {height:auto; margin:0; padding: 0;}
 		<div data-role="content">
 			<div class="ui-body ui-body-c">
 					<fieldset data-role="controlgroup" data-mini="true">
-						<input name="key_isGPS" id="key_isGPS" value="1" checked="checked" type="checkbox">
-						<label for="key_isGPS">使用GPS定位</label>
+						<input name="key_GPS" id="key_GPS" value="1" checked="checked" type="checkbox">
+						<label for="key_GPS">使用GPS定位</label>
+					</fieldset>
+					<fieldset data-role="controlgroup" data-mini="true">
+						<input name="key_shakeable" id="key_shakeable" value="0" checked="checked" type="checkbox">
+						<label for="key_shakeable">天气常显</label>
 					</fieldset>
 			</div>
 
@@ -118,7 +122,9 @@ body {height:auto; margin:0; padding: 0;}
 			var options = {
 				'key_loc_lng': Math.round(ll.lon*100000),
 				'key_loc_lat': Math.round(ll.lat*100000),  
-				'key_isGPS': Number( $("input[name=key_isGPS]").val() ),
+				'key_GPS': Number( $("input[name=key_GPS]").val() ),
+				'key_shakeable': Number( $("input[name=key_shakeable]").val() ),
+
 			}
 			return options;
 		}
@@ -153,12 +159,19 @@ body {height:auto; margin:0; padding: 0;}
 					mlon = mc.mclon;
 					mlat = mc.mclat;
 						
-					if(ls_pto["key_isGPS"] == 0) {	
-						$("input[name=key_isGPS]").prop('checked', false);
-						$("input[name=key_isGPS]").checkboxradio('refresh');
-						$("input[name=key_isGPS]").val("0");
+					if(ls_pto["key_GPS"] == 0) {	
+						$("input[name=key_GPS]").prop('checked', false);
+						$("input[name=key_GPS]").checkboxradio('refresh');
+						$("input[name=key_GPS]").val("0");
 						isGPS = false;
 					}
+						
+					if(ls_pto["key_shakeable"] == 1) {	
+						$("input[name=key_shakeable]").prop('checked', false);
+						$("input[name=key_shakeable]").checkboxradio('refresh');
+						$("input[name=key_shakeable").val("1");
+					}
+
 				}
 			}
 			
@@ -189,13 +202,14 @@ body {height:auto; margin:0; padding: 0;}
 				mlon = event.point.x;
 				mlat = event.point.y;
 			});
+
 			$("input[type='checkbox']").click(function(){   
 				if($(this).val() == "1") $(this).val("0");   
 				else $(this).val("1");   
 			});
 			
 /*
-			$("input[id='key_isGPS']").change(function(){   
+			$("input[id='key_GPS']").change(function(){   
 				//canvas = document.getElementById("map_canvas");
 				if($(this).val() == "0")  canvas.style.display = "block";
 				else canvas.style.display = "none";   
