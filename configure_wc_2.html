@@ -38,8 +38,11 @@ body {height:auto; margin:0; padding: 0;}
 					<input name="key_shakeable" id="key_shakeable" value="0" checked="checked" type="checkbox">
 					<label for="key_shakeable">天气常显</label>
 				</fieldset>
-﻿				<fieldset data-role="controlgroup" data-mini="false">			
-					<label for="key_selcity">选择城市剪影</label>
+				<fieldset class="ui-grid-a">
+				    <div class="ui-block-a"><label>选择城市剪影</label></div>
+				    <div class="ui-block-b">
+
+﻿				    <fieldset data-role="controlgroup" data-mini="false">			
 					<select name="key_selcity" id="key_selcity" autocomplete="off">
 						<option value=-1>依地址选择</option>	
 						<option value=0>北京</option>
@@ -78,6 +81,8 @@ body {height:auto; margin:0; padding: 0;}
 						<option value=33>郑州</option>
 						<option value=34>苏州</option>
 					</select>
+				    </fieldset>
+				    </div>
 				</fieldset>
 			</div>
 
