@@ -30,14 +30,55 @@ body {height:auto; margin:0; padding: 0;}
 	<div id="main">
 		<div data-role="content">
 			<div class="ui-body ui-body-c">
-					<fieldset data-role="controlgroup" data-mini="true">
-						<input name="key_GPS" id="key_GPS" value="1" checked="checked" type="checkbox">
-						<label for="key_GPS">使用GPS定位</label>
-					</fieldset>
-					<fieldset data-role="controlgroup" data-mini="true">
-						<input name="key_shakeable" id="key_shakeable" value="0" checked="checked" type="checkbox">
-						<label for="key_shakeable">天气常显</label>
-					</fieldset>
+				<fieldset data-role="controlgroup" data-mini="true">
+					<input name="key_GPS" id="key_GPS" value="1" checked="checked" type="checkbox">
+					<label for="key_GPS">使用GPS定位</label>
+				</fieldset>
+﻿				<fieldset data-role="controlgroup">
+					<label for="key_selcity">选择城市剪影</label>
+					<select name="key_selcity" id="key_selcity" autocomplete="off">
+						<option value=-1>依地址选择</option>	
+						<option value=0>北京</option>
+						<option value=1>上海</option>
+						<option value=2>重庆</option>
+						<option value=3>天津</option>
+						<option value=4>香港</option>
+						<option value=5>澳门</option>
+						<option value=6>长春</option>
+						<option value=7>成都</option>
+						<option value=8>长沙</option>
+						<option value=9>福州</option>
+						<option value=10>贵阳</option>
+						<option value=11>广州</option>
+						<option value=12>哈尔滨</option>
+						<option value=13>合肥</option>
+						<option value=14>呼和浩特</option>
+						<option value=15>海口</option>
+						<option value=16>杭州</option>
+						<option value=17>济南</option>
+						<option value=18>昆明</option>
+						<option value=19>拉萨</option>
+						<option value=20>兰州</option>
+						<option value=21>南昌</option>
+						<option value=22>南京</option>
+						<option value=23>南宁</option>
+						<option value=24>石家庄</option>
+						<option value=25>沈阳</option>
+						<option value=26>台北</option>
+						<option value=27>太原</option>
+						<option value=28>武汉</option>
+						<option value=29>乌鲁木齐</option>
+						<option value=30>西安</option>
+						<option value=31>西宁</option>
+						<option value=32>银川</option>
+						<option value=33>郑州</option>
+						<option value=34>苏州</option>
+					</select>
+				</fieldset>
+				<fieldset data-role="controlgroup" data-mini="true">
+					<input name="key_shakeable" id="key_shakeable" value="0" checked="checked" type="checkbox">
+					<label for="key_shakeable">天气常显</label>
+				</fieldset>
 			</div>
 
 			<br />
@@ -124,6 +165,7 @@ body {height:auto; margin:0; padding: 0;}
 				'key_loc_lng': Math.round(ll.lon*100000),
 				'key_loc_lat': Math.round(ll.lat*100000),  
 				'key_GPS': Number( $("input[name=key_GPS]").val() ),
+				'key_selcity': Number( $("select[name=key_selcity]").val() ),
 				'key_shakeable': Number( $("input[name=key_shakeable]").val() ),
 
 			}
@@ -166,7 +208,12 @@ body {height:auto; margin:0; padding: 0;}
 						$("input[name=key_GPS]").val("0");
 						isGPS = false;
 					}
-						
+
+					if(ls_pto["key_selcity"] != -1) {
+						$("select[name=key_selcity]").val(ls_pto["key_selcity"]);
+						$("select[name=key_selcity]").selectmenu("refresh", true);
+					}
+									
 					if(ls_pto["key_shakeable"] == 1) {	
 						$("input[name=key_shakeable]").prop('checked', false);
 						$("input[name=key_shakeable]").checkboxradio('refresh');
