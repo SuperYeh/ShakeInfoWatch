@@ -38,11 +38,18 @@ body {height:auto; margin:0; padding: 0;}
 					<input name="key_shakeable" id="key_shakeable" value="0" checked="checked" type="checkbox">
 					<label for="key_shakeable">天气常显</label>
 				</fieldset>
-﻿				<fieldset data-role="controlgroup" data-mini="true">			
+				<fieldset data-role="controlgroup" data-mini="true">
+				<legend><h4>照片(144x118/64色/png)网址:</h4></legend>
+					<div class="ui-field-contain">
+						<label for="key_netdownload_address">照片网址: (144x118/64色/png)</label>
+						<textarea name="key_netdownload_address" id="key_netdownload_address" value="" data-role="none" style="height:60px; max-height:60px;" rows="3"></textarea>
+					</div>
+			        </fieldset>
+				<fieldset data-role="controlgroup" data-mini="true">			
 					<div><label>选择城市剪影</label></div>
 					<select name="key_selcity" id="key_selcity" autocomplete="off">
 						<option value=-1>依地址选择</option>	
-<option value=0>自定</option>
+                                                <option value=0>自定</option>
 						<option value=1>北京</option>
 						<option value=2>上海</option>
 						<option value=3>重庆</option>
