@@ -127,7 +127,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 		<label for="key_info_sel-0">快递查询</label>
 				<fieldset data-role="controlgroup" data-mini="true">
 				<div name="key_wrap-0" id="key_wrap-0" class="wrap" style="display:none">				
-					<label for="key_kuaidi_id">快递查询:(<a href="//m.kuaidi100.com" target="_blank">快递查询</a>)</label><!--查询单号-->
+					<label for="key_kuaidi_id">快递查询:(<a href="//m.kuaidi100.com" target="_blank">快递查询</a>)</label>
 					<input name="key_kuaidi_id" id="key_kuaidi_id" value="" data-mini="true" type="text">
 					<select name="key_kuaidi_com" id="key_kuaidi_com" autocomplete="off">
 						<option value="">请选择快递公司</option>	
@@ -441,8 +441,8 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 		var mclng = 12956000;
 		var mclat = 4824875;
 		var address;
-    	var city = "北京";
-    	var province = "北京";
+    	        var city = "北京";
+    	        var province = "北京";
 			
 	   	function initialize() {
 				if (typeof window.localStorage !== "undefined") {
@@ -484,14 +484,14 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 					mclat = event.point.y;
 			
 					var request={
-        				location:{
-                  			points:[event.point],
-                  			type:0
-            			}
-        			}
+        				     location:{
+                  			        points:[event.point],
+                  			        type:0
+            			             }
+        			       }
          
-        			var geo=new sogou.maps.Geocoder();
-        			geo.geocode(request,callback);
+        			       var geo=new sogou.maps.Geocoder();
+        			       geo.geocode(request,callback);
 				});
 		}
 			
@@ -529,7 +529,7 @@ textarea{resize:none; width:96%; height:60px; max-height:60px;
 				min = parseInt(time.substring(3));
 				UTCseconds = min + hour * 100 + day * 10000 + month * 1000000 + year * 100000000;
 			}
-		    var options = {
+		        var options = {
 				'key_style_face': Number( $("input[name=key_style_face]:checked").val() ),
 				'key_clock_type': Number( $("input[name=key_clock_type]:checked").val() ),
 				'key_clock_tick': Number( $("input[name=key_clock_tick]:checked").val() ),
