@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=gb2312"/>
+<title>S Stock China</title>
+<style type="text/css">
+html {height:auto;}
+body {height:auto; margin:0; padding: 0;}
+</style>
+<link rel='stylesheet' type='text/css' href='css/slate.min.css'>
+<link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css" />
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+<script type="text/javascript" src='js/slate.js'></script>
+
+</head>
+
+<body>
+	<div data-role="header" class="jqm-header">
+		<h1>Setting</h1>
+	</div>	
+
+	<div id="main">
+		<div data-role="content">
+			<div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-mini="false">
+
+<div data-role="collapsible" data-collapsed="true">
+	<h3>输入股票代码</h3>			
+	<fieldset data-role="controlgroup" data-mini="true">	
+		<legend><h4>输入股票代码</h4></legend>	
+		<label for="key_stock_list" >最多5个，以 , 分隔</label>	
+		<input name="key_stock_list" id="key_stock_list" value="" data-mini="true" type="text" maxlengthh="50">		
+	</fieldset>
+</div>
+
+			</div>
+
+<br />
+<div class="ui-body ui-body-c">
+    <fieldset class="ui-grid-a">
+        <div class="ui-block-a"><button type="submit" data-theme="d" id="b-cancel">&#x53D6;&#x6D88;</button></div>
+        <div class="ui-block-b"><button type="submit" data-theme="a" id="b-submit">&#x786E;&#x5B9A;</button></div>
+    </fieldset>
+</div>
+
+ 		
+		</div>
+	</div>
+		
+		
+    <script>
+	
+		function getConfigData() {
+		    var options = {
+				'key_stock_list'        : $("input[name=key_stock_list]").val(),
+			}
+			return options;
+		}
+		
+		function getQueryParam(variable, defaultValue) {
+    			var query = location.search.substring(1);
+    			var vars = query.split('&');
+    			for (var i = 0; i < vars.length; i++) {
+      				var pair = vars[i].split('=');
+      				if (pair[0] === variable) {
+        				return decodeURIComponent(pair[1]);
+      				}
+    			}
+    			return defaultValue || false;
+  		}
+		
+		$().ready(function() {
+			
+		   	if (typeof window.localStorage !== "undefined") {
+				if (window.localStorage.swatch_options) {
+					var ls_pto = JSON.parse(window.localStorage.swatch_options);
+					if ("key_stock_list" in ls_pto) 
+						$("input[name=key_stock_list]").val(ls_pto["key_stock_list"]);
+				}
+			}
+											
+			$("#b-cancel").click(function() {
+				console.log("Cancel");
+				document.location = "pebblejs://close";
+			});
+			
+/*
+			$("#b-submit").click(function() {
+				console.log("Submit");
+				ls_pto = JSON.stringify(getConfigData());
+				if (typeof window.localStorage !== "undefined") {
+					window.localStorage.swatch_options = ls_pto;
+				}
+				var location = "pebblejs://close#" + encodeURIComponent(ls_pto);
+				document.location = location;
+			});
+*/			
+			var submitButton = document.getElementById('b-submit');
+  			submitButton.addEventListener('click', function() {
+    				console.log('Submit');
+    				var ls_option = JSON.stringify(getConfigData());
+    				if (typeof window.localStorage !== "undefined") {
+					window.localStorage.swatch_options = ls_option;
+				}
+    				// Set the return URL depending on the runtime environment
+    				var return_to = getQueryParam('return_to', 'pebblejs://close#');
+    				document.location = return_to + encodeURIComponent(ls_option);
+  			});
+		});
+   
+    </script>
+  </body>
+</html>
