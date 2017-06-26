@@ -119,7 +119,7 @@ body {height:auto; margin:0; padding: 0;}
 				'key_stock3_lv'        : $("input[name=key_stock3_lv]").val(),
 				'key_stock4_id'        : $("input[name=key_stock4_id]").val(),
 				'key_stock4_hv'        : $("input[name=key_stock4_hv]").val(),
-				'key_stock5_lv'        : $("input[name=key_stock4_lv]").val(),
+				'key_stock4_lv'        : $("input[name=key_stock4_lv]").val(),
 
 
 			}
@@ -143,6 +143,8 @@ body {height:auto; margin:0; padding: 0;}
 		   	if (typeof window.localStorage !== "undefined") {
 				if (window.localStorage.swatch_options) {
 					var ls_pto = JSON.parse(window.localStorage.swatch_options);
+					if ("key_stock0_id" in ls_pto) 
+						$("input[name=key_stock0_id]").val(ls_pto["key_stock0_id"]);
 					if ("key_stock0_id" in ls_pto) 
 						$("input[name=key_stock0_id]").val(ls_pto["key_stock0_id"]);
 				}
