@@ -162,12 +162,19 @@ body {height:auto; margin:0; padding: 0;}
 		   	if (typeof window.localStorage !== "undefined") {
 				if (window.localStorage.swatch_options) {
 					var ls_pto = JSON.parse(window.localStorage.swatch_options);
+					
+					if ("key_stock0_name" in ls_pto) 
+						$("input[name=key_stock0_name]").val(ls_pto["key_stock0_name"]);
 					if ("key_stock0_id" in ls_pto) 
 						$("input[name=key_stock0_id]").val(ls_pto["key_stock0_id"]);
 					if ("key_stock0_hv" in ls_pto) 
 						$("input[name=key_stock0_hv]").val(ls_pto["key_stock0_hv"]);
 					if ("key_stock0_lv" in ls_pto) 
 						$("input[name=key_stock0_lv]").val(ls_pto["key_stock0_lv"]);
+					
+					
+					
+						
 					if ("key_stock1_id" in ls_pto) 
 						$("input[name=key_stock1_id]").val(ls_pto["key_stock1_id"]);
 					if ("key_stock1_hv" in ls_pto) 
